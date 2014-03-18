@@ -5,6 +5,10 @@ require.config({
         'jQuery': ['https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min', 'vendor/jquery'],
         'underscore': ['https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min', 'vendor/underscore'],
         'q': ['https://cdnjs.cloudflare.com/ajax/libs/q.js/1.0.0/q.min', 'vendor/q'],
+        'react': ['https://cdnjs.cloudflare.com/ajax/libs/react/0.9.0/react.min', 'vendor/react'],
+        'JSXTransformer': ['vendor/JSXTransformer'],
+        'text': "text",
+        'jsx': "jsx",
         'pdf': 'vendor/pdf'
     },
     baseUrl: '/static/scripts',
