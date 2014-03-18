@@ -1,6 +1,7 @@
 'use strict';
 require.config({
     urlArgs: "ts="+new Date().getTime(), // disable caching - remove in production
+    baseUrl: '/static/scripts',
     paths: {
         'jQuery': ['https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min', 'vendor/jquery'],
         'underscore': ['https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min', 'vendor/underscore'],
@@ -11,7 +12,6 @@ require.config({
         'jsx': "vendor/jsx",
         'pdf': 'vendor/pdf'
     },
-    baseUrl: '/static/scripts',
     shim: {
         'jQuery': { exports : 'jQuery' },
         'pdf': { 'exports': 'PDFJS', deps: ['vendor/pdf.worker', 'vendor/ui_utils', 'vendor/text_layer_builder'] }

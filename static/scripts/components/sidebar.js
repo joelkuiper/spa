@@ -1,5 +1,5 @@
 define(['react'], function(React) {
-    var SideBar = React.createClass({
+    var Sidebar = React.createClass({
         componentDidMount: function(el, root) {
         },
         render: function() {
@@ -7,6 +7,6 @@ define(['react'], function(React) {
         }
     });
 
-    return SideBar;
+    return Sidebar;
 
 });

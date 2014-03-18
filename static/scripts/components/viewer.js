@@ -1,4 +1,4 @@
-define(['react', 'jsx!components/sidebar'], function(React, SideBar) {
+define(['react', 'jsx!components/sidebar'], function(React, Sidebar) {
     // from http://stackoverflow.com/questions/12092633/pdf-js-rendering-a-pdf-file-using-a-base64-file-source-instead-of-url
     var BASE64_MARKER = ';base64,';
     function convertDataURIToBinary(dataURI) {
@@ -34,12 +34,17 @@ define(['react', 'jsx!components/sidebar'], function(React, SideBar) {
         },
         render: function() {
             return (
-                <div id="side">
-                    <form enctype="multipart/form-data" onSubmit={this.handleLoadPdf}>
-                        <input name="file" type="file" ref="file" />
-                        <input type="submit" className="pure-button" value="Upload" />
-                    </form>
-                    <SideBar />
+                <div>
+                    <div id="main">
+
+                    </div>
+                    <div id="side">
+                        <form enctype="multipart/form-data" onSubmit={this.handleLoadPdf}>
+                            <input name="file" type="file" ref="file" />
+                            <input type="submit" className="pure-button" value="Upload" />
+                        </form>
+                        <Sidebar />
+                    </div>
                 </div>
             );
         }
