@@ -1,9 +1,10 @@
 'use strict';
 require.config({
+    urlArgs: "ts="+new Date().getTime(), // disable caching - remove in production
     paths: {
-        'jQuery': 'vendor/jquery.min',
-        'underscore': 'vendor/underscore-min',
-        'q': 'vendor/q.min',
+        'jQuery': ['https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min', 'vendor/jquery'],
+        'underscore': ['https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min', 'vendor/underscore'],
+        'q': ['https://cdnjs.cloudflare.com/ajax/libs/q.js/1.0.0/q.min', 'vendor/q'],
         'pdf': 'vendor/pdf'
     },
     baseUrl: '/static/scripts',
@@ -13,7 +14,7 @@ require.config({
     }
 });
 
-require(['jQuery', 'underscore', 'q', 'pdf'], function ($, _, Q) {
+require(['jQuery', 'underscore', 'q', 'pdf'], function ($, _, Q, PDFJS) {
     PDFJS.workerSrc = 'static/scripts/vendor/pdf.worker.js';
     function loadPdf(pdfURI) {
         var pdf = PDFJS.getDocument(pdfURI);
