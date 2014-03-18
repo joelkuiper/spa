@@ -6,9 +6,9 @@ require.config({
         'underscore': ['https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min', 'vendor/underscore'],
         'q': ['https://cdnjs.cloudflare.com/ajax/libs/q.js/1.0.0/q.min', 'vendor/q'],
         'react': ['https://cdnjs.cloudflare.com/ajax/libs/react/0.9.0/react.min', 'vendor/react'],
-        'JSXTransformer': ['vendor/JSXTransformer'],
-        'text': "text",
-        'jsx': "jsx",
+        'JSXTransformer': 'vendor/JSXTransformer',
+        'text': "vendor/text",
+        'jsx': "vendor/jsx",
         'pdf': 'vendor/pdf'
     },
     baseUrl: '/static/scripts',
@@ -18,7 +18,13 @@ require.config({
     }
 });
 
-require(['jQuery', 'underscore', 'q', 'pdf'], function ($, _, Q, PDFJS) {
+require(['jQuery', 'underscore', 'q', 'pdf', 'react', 'jsx!components/viewer'], function ($, _, Q, PDFJS, React, Timer) {
+
+
+    React.renderComponent(
+        Timer({start: new Date()}),
+        document.getElementById('reactTest'));
+
     PDFJS.workerSrc = 'static/scripts/vendor/pdf.worker.js';
     function loadPdf(pdfURI) {
         var pdf = PDFJS.getDocument(pdfURI);
