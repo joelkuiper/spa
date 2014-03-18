@@ -1,0 +1,2 @@
+define(['react'], function(React) {
+});
