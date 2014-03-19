@@ -1,2 +1,0 @@
-define(['react'], function(React) {
-});

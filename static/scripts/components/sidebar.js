@@ -8,5 +8,4 @@ define(['react'], function(React) {
     });
 
     return Sidebar;
-
 });

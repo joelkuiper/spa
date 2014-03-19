@@ -1,4 +1,4 @@
-define(['react', 'jsx!components/sidebar'], function(React, Sidebar) {
+define(['react', 'jsx!components/sidebar', 'jsx!components/display'], function(React, Sidebar, Display) {
     // from http://stackoverflow.com/questions/12092633/pdf-js-rendering-a-pdf-file-using-a-base64-file-source-instead-of-url
     var BASE64_MARKER = ';base64,';
     function convertDataURIToBinary(dataURI) {
@@ -15,17 +15,18 @@ define(['react', 'jsx!components/sidebar'], function(React, Sidebar) {
     }
 
     var Viewer = React.createClass({
+        getInitialState: function() {
+            return {pdfData: []};
+        },
         handleLoadPdf: function() {
+            var self = this;
             var file = this.refs.file.getDOMNode().files[0];
             var pdfType = /application\/(x-)?pdf|text\/pdf/;
             if (file.type.match(pdfType)) {
                 var reader = new FileReader();
-
                 reader.onload = function(e) {
-                    // loadPdf(convertDataURIToBinary(reader.result));
-                    console.log("I should set some state here ...");
+                    self.setState({pdfData: convertDataURIToBinary(reader.result)});
                 };
-
                 reader.readAsDataURL(file);
             } else {
                 alert("File not supported! Probably not a PDF");
@@ -36,7 +37,7 @@ define(['react', 'jsx!components/sidebar'], function(React, Sidebar) {
             return (
                 <div>
                     <div id="main">
-
+                        <Display pdfData={this.state.pdfData} />
                     </div>
                     <div id="side">
                         <form enctype="multipart/form-data" onSubmit={this.handleLoadPdf}>

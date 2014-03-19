@@ -10,11 +10,11 @@ require.config({
         'JSXTransformer': 'vendor/JSXTransformer',
         'text': "vendor/text",
         'jsx': "vendor/jsx",
-        'pdf': 'vendor/pdf'
+        'PDFJS': 'vendor/pdf'
     },
     shim: {
         'jQuery': { exports : 'jQuery' },
-        'pdf': { 'exports': 'PDFJS', deps: ['vendor/pdf.worker', 'vendor/ui_utils', 'vendor/text_layer_builder'] }
+        'PDFJS': { 'exports': 'PDFJS', deps: ['vendor/pdf.worker', 'vendor/ui_utils', 'vendor/text_layer_builder'] }
     }
 });
 
