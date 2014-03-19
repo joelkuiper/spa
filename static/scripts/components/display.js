@@ -1,3 +1,6 @@
+/* -*- Mode: Java; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
+'use strict';
+
 define(['react', 'underscore','Q', 'jQuery', 'PDFJS'], function(React, _, Q, $, PDFJS) {
     PDFJS.workerSrc = 'static/scripts/vendor/pdf.worker.js';
 
@@ -88,10 +91,10 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS'], function(React, _, Q, $, 
         render: function() {
             var pageIndex = this.props.page.pageInfo.pageIndex;
             return (
-              <div ref="container" id={"pageContainer-" + pageIndex} className="page">
-                  <canvas ref="canvas"></canvas>
-                  <div className="textLayer" ref="textLayer"></div>
-              </div>);
+                    <div ref="container" id={"pageContainer-" + pageIndex} className="page">
+                    <canvas ref="canvas"></canvas>
+                    <div className="textLayer" ref="textLayer"></div>
+                    </div>);
         }
     });
 
