@@ -3,10 +3,6 @@
 define(['react', 'underscore','Q', 'jQuery', 'PDFJS'], function(React, _, Q, $, PDFJS) {
     PDFJS.workerSrc = 'static/scripts/vendor/pdf.worker.js';
 
-    var styleToInlineCSS = function(style) {
-        return _.reduce(_.pairs(style), function(memo, el) { return el[0] + ":" + el[1] + ";" + memo; }, "");
-    };
-
     var Page = React.createClass({
         componentWillUpdate: function() {
             var canvas = this.refs.canvas.getDOMNode();
@@ -26,18 +22,19 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS'], function(React, _, Q, $, 
             var canvas = this.refs.canvas.getDOMNode();
             var container = this.refs.container.getDOMNode();
             var textLayerDiv = this.refs.textLayer.getDOMNode();
+            var context = canvas.getContext("2d");
 
             var pageWidthScale = (container.clientWidth + PADDING_AND_MARGIN) / page.view[3];
             var viewport = page.getViewport(pageWidthScale);
 
-            var style =  { width: viewport.width + "px",
-                           height: viewport.height + "px" };
-            container.style.cssText = styleToInlineCSS(style);
-
-            var context = canvas.getContext("2d");
+            $(container)
+                .css("height", viewport.height + "px")
+                .css("width", viewport.width + "px");
 
             //Checks scaling on the context if we are on a HiDPI display
             var outputScale = getOutputScale(context);
+            context._scaleX = outputScale.sx;
+            context._scaleY = outputScale.sy;
 
             if (outputScale.scaled) {
                 // scale up canvas (since the -transform reduces overall dimensions and not just the contents)
@@ -47,19 +44,14 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS'], function(React, _, Q, $, 
                 CustomStyle.setProp('transform', canvas, cssScale);
                 CustomStyle.setProp('transformOrigin', canvas, '0% 0%');
 
-                if (textLayerDiv) {
-                    CustomStyle.setProp('transform', textLayerDiv, cssScale);
-                    CustomStyle.setProp('transformOrigin', textLayerDiv, '0% 0%');
-                }
+                context.scale(outputScale.sx, outputScale.sy);
+
+                // textLayerDiv
+                CustomStyle.setProp('transform', textLayerDiv, cssScale);
+                CustomStyle.setProp('transformOrigin', textLayerDiv, '0% 0%');
             } else {
                 canvas.height = viewport.height;
                 canvas.width = viewport.width;
-            }
-
-            context._scaleX = outputScale.sx;
-            context._scaleY = outputScale.sy;
-            if (outputScale.scaled) {
-                context.scale(outputScale.sx, outputScale.sy);
             }
 
             var containerOffset = $(container).offset();
