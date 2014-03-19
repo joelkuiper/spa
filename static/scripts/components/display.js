@@ -1,29 +1,35 @@
-define(['react', 'underscore','Q', 'PDFJS'], function(React, _, Q, PDFJS) {
+define(['react', 'underscore','Q', 'jQuery', 'PDFJS'], function(React, _, Q, $, PDFJS) {
     PDFJS.workerSrc = 'static/scripts/vendor/pdf.worker.js';
+
+    var styleToInlineCSS = function(style) {
+        return _.reduce(_.pairs(style), function(memo, el) { return el[0] + ":" + el[1] + ";" + memo; }, "");
+    };
 
     var Page = React.createClass({
         componentWillUpdate: function() {
             var canvas = this.refs.canvas.getDOMNode();
             var context = canvas.getContext("2d");
             context.clearRect(0,0, canvas.width, canvas.height);
+            $(this.refs.textLayer.getDOMNode()).empty();
         },
         componentDidUpdate: function() {
-            this.renderPage(this.props.page, this.refs.canvas.getDOMNode());
+            this.renderPage(this.props.page);
         },
         shouldComponentUpdate: function(nextProps) {
             return this.props.fingerprint !== nextProps.fingerprint;
         },
-        renderPage: function(page, canvas) {
-            var container = document.getElementById("main");
-
+        renderPage: function(page) {
             var PADDING_AND_MARGIN = 175;
+
+            var canvas = this.refs.canvas.getDOMNode();
+            var container = this.refs.container.getDOMNode();
+            var textLayerDiv = this.refs.textLayer.getDOMNode();
+
             var pageWidthScale = (container.clientWidth + PADDING_AND_MARGIN) / page.view[3];
             var viewport = page.getViewport(pageWidthScale);
             var style =  { width: viewport.width + "px",
                            height: viewport.height + "px" };
-            var css = _.reduce(_.pairs(style), function(memo, el) { return el[0] + ":" + el[1] + ";" + memo; }, "");
-            var pageContainer = this.refs.container.getDOMNode();
-            pageContainer.style.cssText = css;
+            container.style.cssText = styleToInlineCSS(style);
 
             var context = canvas.getContext("2d");
 
@@ -34,6 +40,14 @@ define(['react', 'underscore','Q', 'PDFJS'], function(React, _, Q, PDFJS) {
                 // scale up canvas (since the -transform reduces overall dimensions and not just the contents)
                 canvas.height = viewport.height * outputScale.sy;
                 canvas.width = viewport.width * outputScale.sx;
+                var cssScale = 'scale(' + (1 / outputScale.sx) + ', ' + (1 / outputScale.sy) + ')';
+                CustomStyle.setProp('transform', canvas, cssScale);
+                CustomStyle.setProp('transformOrigin', canvas, '0% 0%');
+
+                if (textLayerDiv) {
+                    CustomStyle.setProp('transform', textLayer, cssScale);
+                    CustomStyle.setProp('transformOrigin', textLayer, '0% 0%');
+                }
             } else {
                 canvas.height = viewport.height;
                 canvas.width = viewport.width;
@@ -45,23 +59,39 @@ define(['react', 'underscore','Q', 'PDFJS'], function(React, _, Q, PDFJS) {
                 context.scale(outputScale.sx, outputScale.sy);
             }
 
-            var renderContext = {
-                canvasContext: context,
-                viewport: viewport
-                //textLayer: textLayer
-            };
+            var containerOffset = $(container).offset();
+            $(textLayerDiv)
+                .css("height", canvas.height + "px")
+                .css("width", canvas.width + "px")
+                .offset({top: containerOffset.top, left: containerOffset.left});
 
-            page.render(renderContext);
+            page.getTextContent().then(function (textContent) {
+                var textLayerBuilder = new TextLayerBuilder({
+                    textLayerDiv: textLayerDiv,
+                    pageIndex: page.pageIndex
+                });
+
+                textLayerBuilder.setTextContent(textContent);
+                var renderContext = {
+                    canvasContext: context,
+                    viewport: viewport,
+                    textLayer: textLayerBuilder
+                };
+                page.render(renderContext);
+            });
 
         },
         componentDidMount: function() {
-            this.renderPage(this.props.page, this.refs.canvas.getDOMNode());
+            var refs = this.refs;
+            this.renderPage(this.props.page);
         },
         render: function() {
+            var pageIndex = this.props.page.pageInfo.pageIndex;
             return (
-               <div ref="container" id={"pageContainer-" + this.props.page.pageInfo.pageIndex} className="page">
-                    <canvas ref="canvas"></canvas>
-               </div>);
+              <div ref="container" id={"pageContainer-" + pageIndex} className="page">
+                  <canvas ref="canvas"></canvas>
+                  <div className="textLayer" ref="textLayer"></div>
+              </div>);
         }
     });
 
