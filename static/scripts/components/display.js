@@ -29,6 +29,7 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS'], function(React, _, Q, $, 
 
             var pageWidthScale = (container.clientWidth + PADDING_AND_MARGIN) / page.view[3];
             var viewport = page.getViewport(pageWidthScale);
+
             var style =  { width: viewport.width + "px",
                            height: viewport.height + "px" };
             container.style.cssText = styleToInlineCSS(style);
@@ -47,8 +48,8 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS'], function(React, _, Q, $, 
                 CustomStyle.setProp('transformOrigin', canvas, '0% 0%');
 
                 if (textLayerDiv) {
-                    CustomStyle.setProp('transform', textLayer, cssScale);
-                    CustomStyle.setProp('transformOrigin', textLayer, '0% 0%');
+                    CustomStyle.setProp('transform', textLayerDiv, cssScale);
+                    CustomStyle.setProp('transformOrigin', textLayerDiv, '0% 0%');
                 }
             } else {
                 canvas.height = viewport.height;
@@ -84,7 +85,6 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS'], function(React, _, Q, $, 
 
         },
         componentDidMount: function() {
-            var refs = this.refs;
             this.renderPage(this.props.page);
         },
         render: function() {
