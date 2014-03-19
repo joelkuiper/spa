@@ -1,3 +1,5 @@
+'use strict';
+
 define(['react', 'underscore','Q', 'jQuery', 'PDFJS'], function(React, _, Q, $, PDFJS) {
     PDFJS.workerSrc = 'static/scripts/vendor/pdf.worker.js';
 

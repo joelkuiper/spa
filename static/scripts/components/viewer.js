@@ -1,3 +1,5 @@
+'use strict';
+
 define(['react', 'jsx!components/sidebar', 'jsx!components/display'], function(React, Sidebar, Display) {
     // from http://stackoverflow.com/questions/12092633/pdf-js-rendering-a-pdf-file-using-a-base64-file-source-instead-of-url
     var BASE64_MARKER = ';base64,';
