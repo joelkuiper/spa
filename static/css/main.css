@@ -14,6 +14,7 @@ html {
     float: left;
     width: 65%;
     height: 100%;
+    margin: 1em;
 }
 
 #side {
@@ -33,15 +34,7 @@ html {
     padding-bottom: 1em;
 }
 
-#bias td {
-    padding: 0.5em;
-}
-
-#pdfContainer {
-    margin: 1em;
-}
-
-#pdfContainer .page {
+.page {
     border-bottom: 1px solid #ddd;
     margin: 1em;
 }

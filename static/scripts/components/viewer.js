@@ -36,11 +36,9 @@ define(['react', 'jsx!components/sidebar', 'jsx!components/display'], function(R
         render: function() {
             return (
                 <div>
-                    <div id="main">
-                        <Display pdfData={this.state.pdfData} />
-                    </div>
+                    <Display pdfData={this.state.pdfData} />
                     <div id="side">
-                        <form enctype="multipart/form-data" onSubmit={this.handleLoadPdf}>
+                    <form enctype="multipart/form-data" onSubmit={this.handleLoadPdf}>
                             <input name="file" type="file" ref="file" />
                             <input type="submit" className="pure-button" value="Upload" />
                         </form>
