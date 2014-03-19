@@ -1,6 +1,4 @@
-/* -*- Mode: Java; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
 'use strict';
-
 require.config({
     urlArgs: "ts="+new Date().getTime(), // disable caching - remove in production
     baseUrl: '/static/scripts',
