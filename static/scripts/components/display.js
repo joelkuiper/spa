@@ -30,10 +30,6 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS'], function(React, _, Q, $, 
             var pageWidthScale = (container.clientWidth + PADDING_AND_MARGIN) / page.view[3];
             var viewport = page.getViewport(pageWidthScale);
 
-            $(container)
-                .css("height", viewport.height + "px")
-                .css("width", viewport.width + "px");
-
             //Checks scaling on the context if we are on a HiDPI display
             var outputScale = getOutputScale(context);
             context._scaleX = outputScale.sx;
@@ -69,6 +65,7 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS'], function(React, _, Q, $, 
             });
 
             textLayerBuilder.setTextContent(textContent);
+
             var renderContext = {
                 canvasContext: context,
                 viewport: viewport,
