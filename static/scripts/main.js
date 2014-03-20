@@ -14,7 +14,7 @@ require.config({
     },
     shim: {
         'jQuery': { exports : 'jQuery' },
-        'PDFJS': { 'exports': 'PDFJS', deps: ['vendor/pdf.worker', 'vendor/ui_utils', 'vendor/text_layer_builder'] }
+        'PDFJS': { 'exports': 'PDFJS', deps: ['vendor/pdf.worker', 'vendor/ui_utils', 'helpers/text_layer_builder'] }
     }
 });
 

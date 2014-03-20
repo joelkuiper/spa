@@ -382,4 +382,3 @@ var TextLayerBuilder = function textLayerBuilder(options) {
     this.renderMatches(this.matches);
   };
 };
-

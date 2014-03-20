@@ -16,7 +16,10 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS'], function(React, _, Q, $, 
         shouldComponentUpdate: function(nextProps) {
             return this.props.fingerprint !== nextProps.fingerprint;
         },
-        renderPage: function(page) {
+        renderPage: function(pageObj) {
+            var page = pageObj.raw;
+            var textContent = pageObj.textContent;
+
             var PADDING_AND_MARGIN = 175;
 
             var canvas = this.refs.canvas.getDOMNode();
@@ -60,27 +63,25 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS'], function(React, _, Q, $, 
                 .css("width", canvas.width + "px")
                 .offset({top: containerOffset.top, left: containerOffset.left});
 
-            page.getTextContent().then(function (textContent) {
-                var textLayerBuilder = new TextLayerBuilder({
-                    textLayerDiv: textLayerDiv,
-                    pageIndex: page.pageIndex
-                });
-
-                textLayerBuilder.setTextContent(textContent);
-                var renderContext = {
-                    canvasContext: context,
-                    viewport: viewport,
-                    textLayer: textLayerBuilder
-                };
-                page.render(renderContext);
+            var textLayerBuilder = new TextLayerBuilder({
+                textLayerDiv: textLayerDiv,
+                pageIndex: page.pageIndex
             });
+
+            textLayerBuilder.setTextContent(textContent);
+            var renderContext = {
+                canvasContext: context,
+                viewport: viewport,
+                textLayer: textLayerBuilder
+            };
+            page.render(renderContext);
 
         },
         componentDidMount: function() {
             this.renderPage(this.props.page);
         },
         render: function() {
-            var pageIndex = this.props.page.pageInfo.pageIndex;
+            var pageIndex = this.props.page.raw.pageInfo.pageIndex;
             return (
               <div ref="container" id={"pageContainer-" + pageIndex} className="page">
                   <canvas ref="canvas"></canvas>
@@ -98,15 +99,23 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS'], function(React, _, Q, $, 
             var pdfData = nextProps.pdfData;
             if(pdfData.length > 0) {
                 var pdf = PDFJS.getDocument(pdfData).then(function(pdf) {
+
                     var pages = _.map(_.range(1, pdf.numPages + 1), function(pageNr) {
                         return pdf.getPage(pageNr);
                     });
-                    Q.all(pages).then(function(pages) {
-                        self.setState({document: {info: pdf.pdfInfo, pages: pages}});
+
+                    Q.all(_.invoke(pages, "then", function(page) {
+                        return page.getTextContent().then(function(textContent) {
+                            return {
+                                raw: page,
+                                textContent: textContent
+                            };
+                        });
+                    })).then(function(pages) {
+                        self.setState({document: {info: pdf.pdfInfo, pages: pages }});
                     });
                 });
             }
-
         },
         render: function() {
             var fingerprint = this.state.document.info.fingerprint;
