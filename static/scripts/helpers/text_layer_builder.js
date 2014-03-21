@@ -1,4 +1,4 @@
-/* -*- Mode: Javascript; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
+/* -*- tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2; js2-basic-offset: 2; -*- */
 /* Copyright 2012 Mozilla Foundation
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,9 +17,6 @@
 
 'use strict';
 
-var FIND_SCROLL_OFFSET_TOP = -50;
-var FIND_SCROLL_OFFSET_LEFT = -400;
-
 /**
  * TextLayerBuilder provides text-selection
  * functionality for the PDF. It does this
@@ -30,16 +27,9 @@ var FIND_SCROLL_OFFSET_LEFT = -400;
  * text that is being searched for.
  */
 var TextLayerBuilder = function textLayerBuilder(options) {
-  var textLayerFrag = document.createDocumentFragment();
-
-  this.textLayerDiv = options.textLayerDiv;
   this.layoutDone = false;
   this.divContentDone = false;
-  this.pageIdx = options.pageIndex;
   this.matches = [];
-  this.lastScrollSource = options.lastScrollSource;
-  this.viewport = options.viewport;
-  this.isViewerInPresentationMode = options.isViewerInPresentationMode;
 
   if(typeof PDFFindController === 'undefined') {
       window.PDFFindController = null;
@@ -59,91 +49,67 @@ var TextLayerBuilder = function textLayerBuilder(options) {
     this.insertDivContent();
   };
 
-
-  this._setupRenderLayoutTimer = function textLayerSetupRenderLayoutTimer() {
-    // Schedule renderLayout() if user has been scrolling, otherwise
-    // run it right away
-    var RENDER_DELAY = 200; // in ms
-    var self = this;
-    var lastScroll = this.lastScrollSource === null ? 0 : this.lastScrollSource.lastScroll;
-
-    if (Date.now() - lastScroll > RENDER_DELAY) {
-      // Render right away
-      this.renderLayer();
-    } else {
-      // Schedule
-      if (this.renderTimer) clearTimeout(this.renderTimer);
-      this.renderTimer = setTimeout(function() {
-        self.setupRenderLayoutTimer();
-      }, RENDER_DELAY);
-    }
+  this.setupRenderLayoutTimer = function textLayerSetupRenderLayoutTimer() {
+    this.renderLayer();
   };
 
-
-  this.setupRenderLayoutTimer = function textLayerSetupRenderLayoutTimer() {
-    // We're doing the rendering in React so we don't actually care here
-    this.renderLayer();
-  }
-
   this.renderLayer = function textLayerBuilderRenderLayer() {
-    window.textDivs = this.textDivs;
-    var self = this;
     var textDivs = this.textDivs;
-    var bidiTexts = this.textContent;
-    var textLayerDiv = this.textLayerDiv;
     var canvas = document.createElement('canvas');
     var ctx = canvas.getContext('2d');
 
     // No point in rendering so many divs as it'd make the browser unusable
     // even after the divs are rendered
     var MAX_TEXT_DIVS_TO_RENDER = 100000;
-    if (textDivs.length > MAX_TEXT_DIVS_TO_RENDER)
-      return;
+    if (textDivs.length > MAX_TEXT_DIVS_TO_RENDER) return;
 
     for (var i = 0, ii = textDivs.length; i < ii; i++) {
       var textDiv = textDivs[i];
-      if ('isWhitespace' in textDiv.dataset) {
-        continue;
-      }
 
       ctx.font = textDiv.style.fontSize + ' ' + textDiv.style.fontFamily;
       var width = ctx.measureText(textDiv.textContent).width;
 
-      if (width > 0) {
-        textLayerFrag.appendChild(textDiv);
-        var textScale = textDiv.dataset.canvasWidth / width;
-        var rotation = textDiv.dataset.angle;
-        var transform = 'scale(' + textScale + ', 1)';
-        transform = 'rotate(' + rotation + 'deg) ' + transform;
-        CustomStyle.setProp('transform' , textDiv, transform);
-        CustomStyle.setProp('transformOrigin' , textDiv, '0% 0%');
+      var textScale = textDiv.canvasWidth / width;
+      var rotation = textDiv.angle;
+      var transform = 'scale(' + textScale + ', 1)';
+      transform = 'rotate(' + rotation + 'deg) ' + transform;
+      textDiv.style.transform = transform;
+      textDiv.style.transformOrigin = '0% 0%';
+
+      if (width <= 0) {
+        textDiv.isWhitespace = true;
       }
     }
-    textLayerDiv.appendChild(textLayerFrag);
+
     this.renderingDone = true;
-    this.updateMatches();
   };
 
+  this.getRenderedElements = function() {
+    return this.textDivs;
+  };
 
   this.appendText = function textLayerBuilderAppendText(geom) {
-    var textDiv = document.createElement('div');
-
     // vScale and hScale already contain the scaling to pixel units
     var fontHeight = geom.fontSize * Math.abs(geom.vScale);
-    textDiv.dataset.canvasWidth = geom.canvasWidth * Math.abs(geom.hScale);
-    textDiv.dataset.fontName = geom.fontName;
-    textDiv.dataset.angle = geom.angle * (180 / Math.PI);
-
-    textDiv.style.fontSize = fontHeight + 'px';
-    textDiv.style.fontFamily = geom.fontFamily;
     var fontAscent = geom.ascent ? geom.ascent * fontHeight :
-      geom.descent ? (1 + geom.descent) * fontHeight : fontHeight;
-    textDiv.style.left = (geom.x + (fontAscent * Math.sin(geom.angle))) + 'px';
-    textDiv.style.top = (geom.y - (fontAscent * Math.cos(geom.angle))) + 'px';
+          geom.descent ? (1 + geom.descent) * fontHeight : fontHeight;
+
+    var style = {
+      fontSize: fontHeight + "px",
+      fontFamily: geom.fontFamily,
+      left:  (geom.x + (fontAscent * Math.sin(geom.angle))) + 'px',
+      top:  (geom.y - (fontAscent * Math.cos(geom.angle))) + 'px'
+    };
+
+    var textElement = {
+      canvasWidth:  geom.canvasWidth * Math.abs(geom.hScale),
+      fontName: geom.fontName,
+      angle:  geom.angle * (180 / Math.PI),
+      style: style
+    };
 
     // The content of the div is set in the `setTextContent` function.
-
-    this.textDivs.push(textDiv);
+    this.textDivs.push(textElement);
   };
 
   this.insertDivContent = function textLayerUpdateTextContent() {
@@ -161,7 +127,7 @@ var TextLayerBuilder = function textLayerBuilder(options) {
       var bidiText = bidiTexts[i];
       var textDiv = textDivs[i];
       if (!/\S/.test(bidiText.str)) {
-        textDiv.dataset.isWhitespace = true;
+        textDiv.isWhitespace = true;
         continue;
       }
 
@@ -192,10 +158,10 @@ var TextLayerBuilder = function textLayerBuilder(options) {
   this.renderMatches = function textLayerBuilder_renderMatches(matches) {
     // NOT IMPLEMENTED
     return;
-  }
+  };
 
   this.updateMatches = function textLayerUpdateMatches() {
     // NOT IMPLEMENTED
     return;
-  } ;
+  };
 };
