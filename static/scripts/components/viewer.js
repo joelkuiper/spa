@@ -49,16 +49,14 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS', 'helpers/annotator'], func
         canvas.height = viewport.height * outputScale.sy;
         canvas.width = viewport.width * outputScale.sx;
         var cssScale = 'scale(' + (1 / outputScale.sx) + ', ' + (1 / outputScale.sy) + ')';
-        $(canvas)
-          .css("transform", cssScale)
-          .css("transformOrigin", "0% 0%");
+        CustomStyle.setProp('transform', canvas, cssScale);
+        CustomStyle.setProp('transformOrigin', canvas, '0% 0%');
 
         context.scale(outputScale.sx, outputScale.sy);
 
         // textLayerDiv
-        $(textLayerDiv)
-          .css("transform", cssScale)
-          .css("transformOrigin", "0% 0%");
+        CustomStyle.setProp('transform', textLayerDiv, cssScale);
+        CustomStyle.setProp('transformOrigin', textLayerDiv, '0% 0%');
       } else {
         canvas.height = viewport.height;
         canvas.width = viewport.width;

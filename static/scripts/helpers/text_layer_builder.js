@@ -75,8 +75,9 @@ var TextLayerBuilder = function textLayerBuilder(options) {
       var rotation = textDiv.angle;
       var transform = 'scale(' + textScale + ', 1)';
       transform = 'rotate(' + rotation + 'deg) ' + transform;
-      textDiv.style.transform = transform;
-      textDiv.style.transformOrigin = '0% 0%';
+
+      CustomStyle.setProp('transform', textDiv, transform);
+      CustomStyle.setProp('transformOrigin', textDiv, "0% 0%");
 
       if (width <= 0) {
         textDiv.isWhitespace = true;
