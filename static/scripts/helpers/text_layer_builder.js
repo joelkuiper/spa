@@ -50,6 +50,8 @@ var TextLayerBuilder = function textLayerBuilder(options) {
   };
 
   this.setupRenderLayoutTimer = function textLayerSetupRenderLayoutTimer() {
+    // Rendering is done in React, so we don't care here.
+    // Original implementation delayed painting if the user was scrolling
     this.renderLayer();
   };
 

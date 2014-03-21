@@ -6,7 +6,7 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS'], function(React, _, Q, $, 
   PDFJS.workerSrc = 'static/scripts/vendor/pdf.worker.js';
   var TextLayer = React.createClass({
     render: function() {
-      var textNodes = this.props.textContent.map(function (o) {
+      var textNodes = this.props.content.map(function (o) {
         return (
           <div style={o.style}
                dir={o.dir}
@@ -26,19 +26,13 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS'], function(React, _, Q, $, 
     shouldRepaint: function(other) {
       return other.fingerprint !== this.props.fingerprint;
     },
-    getInitialState: function() {
-      return {textContent: []};
-    },
-    componentWillUpdate: function(nextProps) {
-      if(this.shouldRepaint(nextProps)) {
-        // Canvas does not get umnounted, so need to manually clear it for repaint
+    componentDidUpdate: function(prevProps) {
+      if(this.shouldRepaint(prevProps)) {
+        // <canvas> may not be unmounted, so need to manually clear it for repaint
         var canvas = this.refs.canvas.getDOMNode();
         var context = canvas.getContext("2d");
         context.clearRect(0,0, canvas.width, canvas.height);
-      }
-    },
-    componentDidUpdate: function(prevProps) {
-      if(this.shouldRepaint(prevProps)) {
+
         this.renderPage(this.props.page);
       }
     },
@@ -46,6 +40,7 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS'], function(React, _, Q, $, 
       var self = this;
       var page = pageObj.raw;
       var textContent = pageObj.textContent;
+      var pageIndex = page.pageInfo.pageIndex;
 
       var PADDING_AND_MARGIN = 175;
 
@@ -103,7 +98,7 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS'], function(React, _, Q, $, 
       var completeCallback = pageRendering.internalRenderTask.callback;
       pageRendering.internalRenderTask.callback = function (error) {
         completeCallback.call(this, error);
-        self.setState({textContent: textLayerBuilder.getRenderedElements()});
+        self.props.appState.document.content.insertAt(pageIndex, [textLayerBuilder.getRenderedElements()]);
       };
     },
     componentDidMount: function() {
@@ -111,10 +106,11 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS'], function(React, _, Q, $, 
     },
     render: function() {
       var pageIndex = this.props.page.raw.pageInfo.pageIndex;
+      var content = this.props.appState.document.content.getValue()[pageIndex] || [];
       return (
           <div ref="container" id={"pageContainer-" + pageIndex} className="page">
             <canvas ref="canvas"></canvas>
-            <TextLayer ref="textLayer" textContent={this.state.textContent} />
+             <TextLayer ref="textLayer" content={content} />
           </div>);
     }
   });
