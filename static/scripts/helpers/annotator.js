@@ -5,7 +5,6 @@
 define(['jQuery', 'underscore', 'Q'], function($, _, Q) {
 
   var Annotator = {
-
     annotate: function(document) {
       var deferred = Q.defer();
       var contents = _.pluck(document.pages, "content");
@@ -17,11 +16,10 @@ define(['jQuery', 'underscore', 'Q'], function($, _, Q) {
         dataType: 'json',
         async: true,
         success: function(result) {
-          console.log(result);
-          return deferred.resolve(result);
+          deferred.resolve(result);
         }
       });
-      return deferred;
+      return deferred.promise;
     }
   };
 

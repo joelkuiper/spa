@@ -39,14 +39,12 @@ define(['react', 'jsx!components/sidebar', 'jsx!components/viewer'], function(Re
           <div>
             <Viewer pdfData={this.props.pdfData} appState={this.props.appState} />
             <div id="side">
-              {this.props.appState.status.getValue()} <br />
-              <form enctype="multipart/form-data" onSubmit={this.handleLoadPdf}>
-              <input name="file" type="file" ref="file" />
-              <input type="submit" className="pure-button" value="Upload" />
-            </form>
-              <Sidebar />
+                <form enctype="multipart/form-data" onSubmit={this.handleLoadPdf}>
+                <input name="file" type="file" ref="file" />
+                <input type="submit" className="pure-button" value="Upload" />
+              </form>
+              <Sidebar appState={this.props.appState} />
             </div>
-
           </div>
       );
     }

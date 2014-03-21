@@ -34,6 +34,10 @@ html {
     padding-bottom: 1em;
 }
 
+#sidebar {
+    overflow: auto;
+}
+
 .page {
     border-bottom: 1px solid #ddd;
     margin: 1em;

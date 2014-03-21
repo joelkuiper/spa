@@ -121,7 +121,9 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS', 'helpers/annotator'], func
       return  {info: {}, pages: []};
     },
     fetchAnnotations: function(document) {
-      Annotator.annotate(document);
+      var self = this;
+      Annotator.annotate(document)
+        .then(function(results) { self.props.appState.results.set(results); });
     },
     componentWillReceiveProps: function(nextProps) {
       var self = this;
