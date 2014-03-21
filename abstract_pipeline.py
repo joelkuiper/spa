@@ -1,5 +1,3 @@
-# I had to apply this patch: https://code.google.com/p/banyan/issues/detail?id=5
-from banyan import *
 from abc import ABCMeta, abstractmethod
 import pdb
 import logging
@@ -7,6 +5,39 @@ import pprint
 
 pp = pprint.PrettyPrinter(indent=2)
 log = logging.getLogger(__name__)
+
+class OverlappingIntervals():
+    """
+    to duplicate the minimal function needed of an interval-tree
+    maintains a list of start, end tuples
+    and calculates overlaps
+    """
+    def __init__(self, intervals):
+        """
+        takes intervals = list of (start, end) tuples and sorts them
+        """
+        self.intervals = sorted(intervals)
+
+    def _is_overlapping(self, i1, i2):
+        return i2[0] < i1[1] and i1[0] < i2[1]
+
+
+    def overlap(self, bounds):
+        """
+        bounds = (start, end) tuple
+        returns all overlapping bounds
+        """
+        # TODO - we don't really need to iterate through *all* of these, since it's a sorted list
+        # we can stop early once no overlaps possible
+        #
+        # Either this or don't bother sorting and keep this bit! (IM)
+        return [interval for interval in self.intervals if self._is_overlapping(interval, bounds)]
+
+    def overlap_indices(self, bounds):
+        """
+        return the 0 indexed positions of overlapping bounds
+        """
+        return [index for index, interval in enumerate(self.intervals) if self._is_overlapping(interval, bounds)]
 
 class Pipeline(object):
     __metaclass__ = ABCMeta
@@ -34,13 +65,12 @@ class Pipeline(object):
                     # note that this +=1 aligns both for spaces added later between nodes *and* pages
                     # (since the ' '.join(nodes) does not leave a trailing space, but we add one anyway)
 
-                interval_tree = SortedSet(ranges, key_type = (int, int), updator = OverlappingIntervalsUpdator)
+                intervals = OverlappingIntervals(ranges)
                 page_str = " ".join(textNodes)
 
                 parsed.append({"str": page_str,
                                "length": total,
-                               "ranges": ranges,
-                               "intervals": interval_tree})
+                               "intervals": intervals})
             else:
                 log.debug("Attempted to parse empty page:" + str(idx))
                 continue
@@ -69,7 +99,7 @@ class Pipeline(object):
             offset = total_length[page_nr]
 
             bound = (sentence_bound[0] - offset, sentence_bound[1] - offset)
-            nodes = [page["ranges"].index(x) for x in page["intervals"].overlap(bound)]
+            nodes = page["intervals"].overlap_indices(bound)
 
             annotations.append({
                 "page": page_nr,
