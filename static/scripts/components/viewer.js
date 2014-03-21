@@ -2,11 +2,13 @@
 
 'use strict';
 
-define(['react', 'underscore','Q', 'jQuery', 'PDFJS'], function(React, _, Q, $, PDFJS) {
+define(['react', 'underscore','Q', 'jQuery', 'PDFJS', 'helpers/annotator'], function(React, _, Q, $, PDFJS, Annotator) {
   PDFJS.workerSrc = 'static/scripts/vendor/pdf.worker.js';
+
   var TextLayer = React.createClass({
     render: function() {
       var textNodes = this.props.content.map(function (o) {
+        if(o.isWhitespace) { return null; }
         return (
           <div style={o.style}
                dir={o.dir}
@@ -16,31 +18,16 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS'], function(React, _, Q, $, 
             {o.textContent}
           </div>
         );
-
       });
       return <div className="textLayer">{textNodes}</div>;
     }
   });
 
   var Page = React.createClass({
-    shouldRepaint: function(other) {
-      return other.fingerprint !== this.props.fingerprint;
-    },
-    componentDidUpdate: function(prevProps) {
-      if(this.shouldRepaint(prevProps)) {
-        // <canvas> may not be unmounted, so need to manually clear it for repaint
-        var canvas = this.refs.canvas.getDOMNode();
-        var context = canvas.getContext("2d");
-        context.clearRect(0,0, canvas.width, canvas.height);
-
-        this.renderPage(this.props.page);
-      }
-    },
     renderPage: function(pageObj) {
       var self = this;
       var page = pageObj.raw;
-      var textContent = pageObj.textContent;
-      var pageIndex = page.pageInfo.pageIndex;
+      var content = pageObj.content;
 
       var PADDING_AND_MARGIN = 175;
 
@@ -85,7 +72,7 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS'], function(React, _, Q, $, 
 
       var textLayerBuilder = new TextLayerBuilder();
 
-      textLayerBuilder.setTextContent(textContent);
+      textLayerBuilder.setTextContent(content);
 
       var renderContext = {
         canvasContext: context,
@@ -98,27 +85,43 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS'], function(React, _, Q, $, 
       var completeCallback = pageRendering.internalRenderTask.callback;
       pageRendering.internalRenderTask.callback = function (error) {
         completeCallback.call(this, error);
-        self.props.appState.document.content.insertAt(pageIndex, [textLayerBuilder.getRenderedElements()]);
+        self.setState({content: textLayerBuilder.getRenderedElements()});
       };
+    },
+    shouldRepaint: function(other) {
+      return other.fingerprint !== this.props.fingerprint;
+    },
+    getInitialState: function() {
+      return {content: []};
+    },
+    componentDidUpdate: function(prevProps) {
+      if(this.shouldRepaint(prevProps)) {
+        // <canvas> may not be unmounted, so need to manually clear it for repaint
+        var canvas = this.refs.canvas.getDOMNode();
+        var context = canvas.getContext("2d");
+        context.clearRect(0,0, canvas.width, canvas.height);
+        this.renderPage(this.props.page);
+      }
     },
     componentDidMount: function() {
       this.renderPage(this.props.page);
     },
     render: function() {
       var pageIndex = this.props.page.raw.pageInfo.pageIndex;
-      var content = this.props.appState.document.content.getValue()[pageIndex] || [];
       return (
           <div ref="container" id={"pageContainer-" + pageIndex} className="page">
             <canvas ref="canvas"></canvas>
-             <TextLayer ref="textLayer" content={content} />
+            <TextLayer ref="textLayer" content={this.state.content} />
           </div>);
     }
   });
 
-
   var Display = React.createClass({
     getInitialState: function()  {
-      return {document: {info: {}, pages: []}};
+      return  {info: {}, pages: []};
+    },
+    fetchAnnotations: function(document) {
+      Annotator.annotate(document);
     },
     componentWillReceiveProps: function(nextProps) {
       var self = this;
@@ -131,22 +134,24 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS'], function(React, _, Q, $, 
           });
 
           Q.all(_.invoke(pages, "then", function(page) {
-            return page.getTextContent().then(function(textContent) {
+            return page.getTextContent().then(function(content) {
               return {
                 raw: page,
-                textContent: textContent
+                content: content
               };
             });
           })).then(function(pages) {
-            self.setState({document: {info: pdf.pdfInfo, pages: pages }});
+            var document = {info: pdf.pdfInfo, pages: pages };
+            self.setState(document);
+            self.fetchAnnotations(document);
           });
         });
       }
     },
     render: function() {
       var self = this;
-      var fingerprint = this.state.document.info.fingerprint;
-      var pages = this.state.document.pages.map(function (page) {
+      var fingerprint = this.state.info.fingerprint;
+      var pages = this.state.pages.map(function (page) {
         return <Page page={page} fingerprint={fingerprint} appState={self.props.appState} />;
       });
 

@@ -24,8 +24,8 @@ require.config({
 
 require(['react', 'cortex', 'jsx!components/app'], function (React, Cortex, App) {
   var appComponent,
-      appData = { status: "ready",
-                  document: { content: [] }};
+      appData = { status: "READY",
+                  results: {}};
   var appCortex = new Cortex(appData, function(updatedApp) {
     appComponent.setProps({appState: appCortex});
   });
