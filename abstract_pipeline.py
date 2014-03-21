@@ -1,10 +1,22 @@
 from abc import ABCMeta, abstractmethod
-import pdb
 import logging
-import pprint
+from functools import wraps
+import time
 
-pp = pprint.PrettyPrinter(indent=2)
 log = logging.getLogger(__name__)
+
+def timethis(func):
+    '''
+    Decorator that reports the execution time.
+    '''
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        start = time.time()
+        result = func(*args, **kwargs)
+        end = time.time()
+        log.debug("call to {} took {}".format(func.__name__, end-start))
+        return result
+    return wrapper
 
 class OverlappingIntervals():
     """
@@ -46,7 +58,7 @@ class Pipeline(object):
 
     def __preprocess(self, pages):
         # we need to do two things, create a single string for each page
-        # and establish a interval-tree to figure out the original nodes
+        # and establish a method to figure out the original nodes
         parsed = []
 
         for idx, page in enumerate(pages):
@@ -101,14 +113,13 @@ class Pipeline(object):
 
                 a["page"] = page_nr
                 a["nodes"] = nodes
-
-
         return predictions
 
     @abstractmethod
     def predict(self):
         pass
 
+    @timethis
     def run(self, input):
         parsed_pages = self.__preprocess(input)
 
