@@ -56,10 +56,14 @@ class RiskOfBiasPipeline(Pipeline):
         sent_text = [full_text[start:end] for start, end in sent_indices]
         sent_text_dict = dict(zip(sent_indices, sent_text))
 
+        output = []
+
         sent_preds_by_domain = [] # will rejig this later to make a list of dicts
         doc_preds = {}
 
         for test_domain, doc_model, doc_vec, sent_model, sent_vec in zip(CORE_DOMAINS, self.doc_models, self.doc_vecs, self.sent_models, self.sent_vecs):
+
+            domain_row = {"name": test_domain}
 
             ####
             ## PART ONE - get the predicted sentences with risk of bias information
@@ -76,6 +80,10 @@ class RiskOfBiasPipeline(Pipeline):
 
             # for internal feature generation, get the sentences which are predicted 1
             positive_sents = [sent for sent, pred in zip(sent_text, pred_sents) if pred==1]
+            positive_spans = [span for span, pred in zip(sent_indices, pred_sents) if pred==1]
+
+
+            domain_row["annotations"] = [{"span": span, "sentence": sent, "label": 1} for span, sent in zip(positive_spans, positive_sents)]
 
             # make a single string per doc
             summary_text = " ".join(positive_sents)
@@ -93,16 +101,13 @@ class RiskOfBiasPipeline(Pipeline):
 
             # change the -1s to 0s for now (TODO: improve on this)
             # done because the viewer has three classes, and we're only predicting two here
-            doc_preds[test_domain] = 1 if doc_model.predict(X_doc)[0] == 1 else 0
+            domain_row["document"] = 1 if doc_model.predict(X_doc)[0] == 1 else 0
+
+            output.append(domain_row)
+
+        return output
 
 
-        # rejig to correct output format
-        # {(13, 33): {'Domain 1': 1, 'Domain 2': -1, 'Domain 3': -1},
-        #  (27, 77): {'Domain 1': 1, 'Domain 2': 0, 'Domain 3': 1}}
-        sent_preds_values = [{domain: rating for domain, rating in zip(CORE_DOMAINS, sent_ratings)} for sent_ratings in zip(*sent_preds_by_domain)]
 
-        # make a dict; filter only rows with at least one positive prediction
-        sent_preds = dict([row for row in zip(sent_indices, sent_preds_values) if (1 in row[1].values())])
 
-        #pdb.set_trace()
-        return doc_preds, sent_preds, sent_text_dict
+
