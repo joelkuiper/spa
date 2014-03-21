@@ -86,27 +86,24 @@ class Pipeline(object):
 
         return map(accumulate, [0] + page_lengths)
 
-    def __postprocess_annotations(self, parsed_input, predictions):
+    def __postprocess(self, parsed_input, predictions):
         # get the page lengths, and the page offsets in the whole doc string
         page_lengths = [page["length"] for page in parsed_input]
         total_length = self.get_page_offsets(page_lengths)
+        for p in predictions:
+            for a in p["annotations"]:
+                page_nr = next((i for i, v in enumerate(total_length) if v > a["span"][0])) - 1
+                page = parsed_input[page_nr]
+                offset = total_length[page_nr]
 
-        # Now we need to get /back/ to the page and node indexes
-        annotations = []
-        for sentence_bound, labels in predictions.iteritems():
-            page_nr = next((i for i, v in enumerate(total_length) if v > sentence_bound[0])) - 1
-            page = parsed_input[page_nr]
-            offset = total_length[page_nr]
+                bound = (a["span"][0] - offset, a["span"][1] - offset)
+                nodes = page["intervals"].overlap_indices(bound)
 
-            bound = (sentence_bound[0] - offset, sentence_bound[1] - offset)
-            nodes = page["intervals"].overlap_indices(bound)
+                a["page"] = page_nr
+                a["nodes"] = nodes
 
-            annotations.append({
-                "page": page_nr,
-                "nodes": nodes,
-                "labels": labels})
 
-        return annotations
+        return predictions
 
     @abstractmethod
     def predict(self):
@@ -117,11 +114,6 @@ class Pipeline(object):
 
         # get the predictions
         full_text = ' '.join(page["str"] for page in parsed_pages)
+        prediction = self.__postprocess(parsed_pages, self.predict(full_text))
 
-        document_predictions, sentence_predictions, sentences = self.predict(full_text)
-        annotations = self.__postprocess_annotations(parsed_pages, sentence_predictions)
-
-        return {
-            "title": self.pipeline_title,
-            "document": document_predictions,
-            "annotations": annotations}
+        return { "result": prediction }

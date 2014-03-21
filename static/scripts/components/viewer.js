@@ -25,11 +25,12 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS', 'helpers/annotator'], func
 
   var Page = React.createClass({
     renderPage: function(pageObj) {
+      var PADDING_AND_MARGIN = 175;
+
       var self = this;
       var page = pageObj.raw;
       var content = pageObj.content;
 
-      var PADDING_AND_MARGIN = 175;
 
       var canvas = this.refs.canvas.getDOMNode();
       var container = this.refs.container.getDOMNode();

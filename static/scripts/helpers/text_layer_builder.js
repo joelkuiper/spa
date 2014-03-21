@@ -29,7 +29,6 @@
 var TextLayerBuilder = function textLayerBuilder(options) {
   this.layoutDone = false;
   this.divContentDone = false;
-  this.matches = [];
 
   if(typeof PDFFindController === 'undefined') {
       window.PDFFindController = null;
