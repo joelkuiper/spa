@@ -3,7 +3,9 @@ from banyan import *
 from abc import ABCMeta, abstractmethod
 import pdb
 import logging
+import pprint
 
+pp = pprint.PrettyPrinter(indent=2)
 log = logging.getLogger(__name__)
 
 class Pipeline(object):
@@ -75,6 +77,10 @@ class Pipeline(object):
                 "labels": labels})
 
         return annotations
+
+    @abstractmethod
+    def predict(self):
+        pass
 
     def run(self, input):
         parsed_pages = self.__preprocess(input)
