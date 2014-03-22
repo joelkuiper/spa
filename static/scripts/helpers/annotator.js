@@ -5,7 +5,7 @@
 define(['jQuery', 'underscore', 'Q'], function($, _, Q) {
 
   var Annotator = {
-    annotate: function(document) {
+    annotate: _.memoize(function(document) {
       var deferred = Q.defer();
       var contents = _.pluck(document.pages, "content");
       $.ajax({
@@ -21,7 +21,9 @@ define(['jQuery', 'underscore', 'Q'], function($, _, Q) {
         }
       });
       return deferred.promise;
-    }
+    }, function(document) {
+      return document.info.fingerprint;
+    })
   };
 
   return Annotator;

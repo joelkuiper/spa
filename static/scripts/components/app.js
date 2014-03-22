@@ -2,7 +2,7 @@
 
 'use strict';
 
-define(['react', 'jsx!components/results', 'jsx!components/viewer'], function(React, Results, Viewer) {
+define(['react', 'jsx!components/results', 'jsx!components/viewer', 'PDFJS'], function(React, Results, Viewer, PDFJS) {
   // from http://stackoverflow.com/questions/12092633/pdf-js-rendering-a-pdf-file-using-a-base64-file-source-instead-of-url
   var BASE64_MARKER = ';base64,';
   function convertDataURIToBinary(dataURI) {
@@ -19,14 +19,18 @@ define(['react', 'jsx!components/results', 'jsx!components/viewer'], function(Re
   }
 
   var App = React.createClass({
-    handleLoadPdf: function() {
+    loadPdf: function() {
       var self = this;
       var file = this.refs.file.getDOMNode().files[0];
       var pdfType = /application\/(x-)?pdf|text\/pdf/;
       if (file.type.match(pdfType)) {
         var reader = new FileReader();
         reader.onload = function(e) {
-          self.setProps({pdfData: convertDataURIToBinary(reader.result)});
+          var pdfData =  convertDataURIToBinary(reader.result);
+
+          PDFJS.getDocument(pdfData).then(function(pdf) {
+            self.setProps({pdf:pdf});
+          });
         };
         reader.readAsDataURL(file);
       } else {
@@ -37,9 +41,9 @@ define(['react', 'jsx!components/results', 'jsx!components/viewer'], function(Re
     render: function() {
       return (
           <div>
-            <Viewer pdfData={this.props.pdfData} appState={this.props.appState} />
+            <Viewer pdf={this.props.pdf} appState={this.props.appState} />
             <div id="side">
-                <form enctype="multipart/form-data" onSubmit={this.handleLoadPdf}>
+                <form enctype="multipart/form-data" onSubmit={this.loadPdf}>
                 <input name="file" type="file" ref="file" />
                 <input type="submit" className="pure-button" value="Upload" />
               </form>

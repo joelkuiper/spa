@@ -2,7 +2,7 @@
 
 'use strict';
 
-define(['react', 'underscore','Q', 'jQuery', 'PDFJS', 'helpers/annotator'], function(React, _, Q, $, PDFJS, Annotator) {
+define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(React, _, Q, $, Annotator) {
   PDFJS.workerSrc = 'static/scripts/vendor/pdf.worker.js';
 
   var toClassName = function(str) {
@@ -17,9 +17,9 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS', 'helpers/annotator'], func
         return _.flatten(_.pluck(_.filter(d, function(dd) { return dd.page == pageIndex; }), "nodes"));
       });
       return _.object(classes, nodesForPage);
-    }, function(results, pageIndex, fingerprint) {
+    }, function(results, pageIndex, key) {
       // hashFunction
-      return 31 * (pageIndex + 1) * parseInt(fingerprint, 16) * results.timeStamp;
+      return pageIndex + key + results.timeStamp;
     }),
     render: function() {
       var results = this.props.appState.results.getValue();
@@ -160,28 +160,23 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS', 'helpers/annotator'], func
     },
     componentWillReceiveProps: function(nextProps) {
       var self = this;
-      var pdfData = nextProps.pdfData;
-      if(pdfData.length > 0) {
-        var pdf = PDFJS.getDocument(pdfData).then(function(pdf) {
+      var pdf = nextProps.pdf;
+      var pages = _.map(_.range(1, pdf.numPages + 1), function(pageNr) {
+        return pdf.getPage(pageNr);
+      });
 
-          var pages = _.map(_.range(1, pdf.numPages + 1), function(pageNr) {
-            return pdf.getPage(pageNr);
-          });
-
-          Q.all(_.invoke(pages, "then", function(page) {
-            return page.getTextContent().then(function(content) {
-              return {
-                raw: page,
-                content: content
-              };
-            });
-          })).then(function(pages) {
-            var document = {info: pdf.pdfInfo, pages: pages };
-            self.setState(document);
-            self.fetchAnnotations(document);
-          });
+      Q.all(_.invoke(pages, "then", function(page) {
+        return page.getTextContent().then(function(content) {
+          return {
+            raw: page,
+            content: content
+          };
         });
-      }
+      })).then(function(pages) {
+        var document = {info: pdf.pdfInfo, pages: pages };
+        self.setState(document);
+        self.fetchAnnotations(document);
+      });
     },
     render: function() {
       var self = this;
