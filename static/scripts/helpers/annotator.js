@@ -16,6 +16,7 @@ define(['jQuery', 'underscore', 'Q'], function($, _, Q) {
         dataType: 'json',
         async: true,
         success: function(result) {
+          result.timeStamp = Math.round(+new Date()/1000);
           deferred.resolve(result);
         }
       });

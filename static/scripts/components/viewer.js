@@ -6,15 +6,34 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS', 'helpers/annotator'], func
   PDFJS.workerSrc = 'static/scripts/vendor/pdf.worker.js';
 
   var TextLayer = React.createClass({
+    getNodeAnnotations: _.memoize(function(results, pageIndex, fingerprint) {
+      var classes = _.pluck(results.result, "name");
+      var annotations = _.pluck(results.result, "annotations");
+      var nodesForPage = _.map(annotations, function(d) {
+        return _.flatten(_.pluck(_.filter(d, function(dd) { return dd.page == pageIndex; }), "nodes"));
+      });
+      return _.object(classes, nodesForPage);
+    }, function(results, pageIndex, fingerprint) {
+      // hashFunction
+      return 31 * (pageIndex + 1) * parseInt(fingerprint, 16) * results.timeStamp;
+    }),
     render: function() {
-      var textNodes = this.props.content.map(function (o) {
+      var results = this.props.appState.results.getValue();
+      var pageIndex = this.props.pageIndex;
+      console.log(pageIndex);
+      var fingerprint = this.props.fingerprint;
+      var annotations = this.getNodeAnnotations(results, pageIndex, fingerprint);
+
+      var textNodes = this.props.content.map(function (o,i) {
         if(o.isWhitespace) { return null; }
+        var isAnnotated = _.filter(annotations, function(a) { return  _.contains(a, i); }).length > 0;
         return (
-          <div style={o.style}
-               dir={o.dir}
-               data-angle={o.angle}
-               data-canvas-width={o.canvasWidth}
-               data-font-name={o.fontName}>
+            <div style={o.style}
+                 dir={o.dir}
+                 className={isAnnotated ? "annotated" : ""}
+                 data-angle={o.angle}
+                 data-canvas-width={o.canvasWidth}
+                 data-font-name={o.fontName}>
             {o.textContent}
           </div>
         );
@@ -29,7 +48,6 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS', 'helpers/annotator'], func
       var self = this;
       var page = pageObj.raw;
       var content = pageObj.content;
-
 
       var canvas = this.refs.canvas.getDOMNode();
       var container = this.refs.container.getDOMNode();
@@ -110,10 +128,12 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS', 'helpers/annotator'], func
     },
     render: function() {
       var pageIndex = this.props.page.raw.pageInfo.pageIndex;
+      console.log("a", pageIndex);
+      var fingerprint = this.props.fingerprint;
       return (
-          <div ref="container" id={"pageContainer-" + pageIndex} className="page">
+          <div ref="container" className="page">
             <canvas ref="canvas"></canvas>
-            <TextLayer ref="textLayer" content={this.state.content} />
+            <TextLayer ref="textLayer" pageIndex={pageIndex} fingerprint={fingerprint} content={this.state.content} appState={this.props.appState} />
           </div>);
     }
   });

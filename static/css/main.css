@@ -107,3 +107,9 @@ a {
     white-space: pre;
     cursor: text;
 }
+.annotated {
+    margin: -1px;
+    padding: 1px;
+    border-bottom: 1px solid rgba(255, 255, 051, 1.0);
+    background-color: rgba(255, 255, 051, 0.1);
+}
