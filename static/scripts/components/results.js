@@ -12,7 +12,7 @@ define(['underscore', 'react'], function(_, React) {
       return(<div className="block">
                <h4><a>{result.name}</a></h4>
                <div className="content">
-                 <div className="document"><span>Overall Assesment</span> {result.document}</div>
+                 <div className="document"><span className="head">overall assesment: </span>{result.document}</div>
                  <ul>{annotations}</ul>
                </div>
              </div>);

@@ -5,8 +5,12 @@
 define(['react', 'underscore','Q', 'jQuery', 'PDFJS', 'helpers/annotator'], function(React, _, Q, $, PDFJS, Annotator) {
   PDFJS.workerSrc = 'static/scripts/vendor/pdf.worker.js';
 
+  var toClassName = function(str) {
+    return str ? str.replace(/ /g, "-").toLowerCase() : null;
+  };
+
   var TextLayer = React.createClass({
-    getNodeAnnotations: _.memoize(function(results, pageIndex, fingerprint) {
+    getNodeAnnotations: _.memoize(function(results, pageIndex, key) {
       var classes = _.pluck(results.result, "name");
       var annotations = _.pluck(results.result, "annotations");
       var nodesForPage = _.map(annotations, function(d) {
@@ -20,17 +24,23 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS', 'helpers/annotator'], func
     render: function() {
       var results = this.props.appState.results.getValue();
       var pageIndex = this.props.pageIndex;
-      console.log(pageIndex);
-      var fingerprint = this.props.fingerprint;
-      var annotations = this.getNodeAnnotations(results, pageIndex, fingerprint);
+      var key = this.props.key;
+      var annotations = this.getNodeAnnotations(results, pageIndex, key);
+
+      var cx = React.addons.classSet;
 
       var textNodes = this.props.content.map(function (o,i) {
         if(o.isWhitespace) { return null; }
-        var isAnnotated = _.filter(annotations, function(a) { return  _.contains(a, i); }).length > 0;
+        var classes = _.map(_.filter(_.map(_.pairs(annotations), function(a) {
+          return  _.contains(a[1], i) ? a[0] : null; }), _.isString), toClassName);
+
+        var activeClasses = _.object(_.map(classes, function(c) { return [c, true]; }));
+
         return (
             <div style={o.style}
                  dir={o.dir}
-                 className={isAnnotated ? "annotated" : ""}
+                 key={key + i}
+                 className={cx(activeClasses)}
                  data-angle={o.angle}
                  data-canvas-width={o.canvasWidth}
                  data-font-name={o.fontName}>
@@ -54,12 +64,11 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS', 'helpers/annotator'], func
       var textLayerDiv = this.refs.textLayer.getDOMNode();
       var context = canvas.getContext("2d");
 
-      var SCROLLBAR_PADDING = 10;
+      var SCROLLBAR_PADDING = 0;
       var viewport = page.getViewport(1.0);
 
       var pageWidthScale = (container.clientWidth - SCROLLBAR_PADDING) / viewport.width;
       viewport = page.getViewport(pageWidthScale);
-
 
       //Checks scaling on the context if we are on a HiDPI display
       var outputScale = getOutputScale(context);
@@ -128,12 +137,14 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS', 'helpers/annotator'], func
     },
     render: function() {
       var pageIndex = this.props.page.raw.pageInfo.pageIndex;
-      console.log("a", pageIndex);
-      var fingerprint = this.props.fingerprint;
       return (
           <div ref="container" className="page">
             <canvas ref="canvas"></canvas>
-            <TextLayer ref="textLayer" pageIndex={pageIndex} fingerprint={fingerprint} content={this.state.content} appState={this.props.appState} />
+            <TextLayer ref="textLayer"
+                       pageIndex={pageIndex}
+                       key={this.props.key}
+                       content={this.state.content}
+                       appState={this.props.appState} />
           </div>);
     }
   });
@@ -176,7 +187,8 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS', 'helpers/annotator'], func
       var self = this;
       var fingerprint = this.state.info.fingerprint;
       var pages = this.state.pages.map(function (page) {
-        return <Page page={page} fingerprint={fingerprint} appState={self.props.appState} />;
+        var key = fingerprint + page.raw.pageInfo.pageIndex;
+        return <Page page={page} key={key} appState={self.props.appState} />;
       });
 
       return <div id="main">{pages}</div>;

@@ -57,6 +57,11 @@ a {
     margin: 1em 1em 2em 1em;
 }
 
+span.head {
+    font-weight: bold;
+    font-variant:small-caps;
+}
+
 .block h4 {
     margin: 0;
     padding: 0;
