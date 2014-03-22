@@ -25,7 +25,6 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS', 'helpers/annotator'], func
 
   var Page = React.createClass({
     renderPage: function(pageObj) {
-      var PADDING_AND_MARGIN = 175;
 
       var self = this;
       var page = pageObj.raw;
@@ -37,8 +36,12 @@ define(['react', 'underscore','Q', 'jQuery', 'PDFJS', 'helpers/annotator'], func
       var textLayerDiv = this.refs.textLayer.getDOMNode();
       var context = canvas.getContext("2d");
 
-      var pageWidthScale = (container.clientWidth + PADDING_AND_MARGIN) / page.view[3];
-      var viewport = page.getViewport(pageWidthScale);
+      var SCROLLBAR_PADDING = 10;
+      var viewport = page.getViewport(1.0);
+
+      var pageWidthScale = (container.clientWidth - SCROLLBAR_PADDING) / viewport.width;
+      viewport = page.getViewport(pageWidthScale);
+
 
       //Checks scaling on the context if we are on a HiDPI display
       var outputScale = getOutputScale(context);

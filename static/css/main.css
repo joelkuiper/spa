@@ -1,5 +1,13 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+
 html {
     color: rgba(0,0,0,0.5);
+}
+a {
+    -moz-transition: background-color 100ms linear, color 100ms linear, opacity 100ms linear;
+    -o-transition: background-color 100ms linear, color 100ms linear, opacity 100ms linear;
+    -webkit-transition: background-color 100ms linear, color 100ms linear, opacity 100ms linear;
+    transition: background-color 100ms linear, color 100ms linear, opacity 100ms linear;
 }
 
 #wrapper {
@@ -12,35 +20,69 @@ html {
 
 #main {
     float: left;
-    width: 65%;
+    width: 60%;
     height: 100%;
-    margin: 1em;
+    margin: 0 auto;
 }
 
 #side {
     background-color: white;
     position: fixed;
     border-left: 1px solid #ddd;
-    padding: 1em;
+    padding: 0.5em;
     top: 0;
-    left: 65%;
-    width: 35%;
+    left: 60%;
+    width: 40%;
     height: 100%;
 }
 
 #side form {
     border-bottom: 1px solid #ddd;
     width: 90%;
-    padding-bottom: 1em;
+    padding-bottom: 0.5em;
 }
 
 #sidebar {
     overflow: auto;
+    height: 90%;
+    width: 98%;
 }
 
 .page {
     border-bottom: 1px solid #ddd;
-    margin: 1em;
+    margin-bottom: 1em;
+}
+
+.block {
+    margin: 1em 1em 2em 1em;
+}
+
+.block h4 {
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.block h4 a {
+    font-family: 'Montserrat', 'Source Sans Pro', sans-serif;
+    display: block;
+    font-weight: 400;
+    min-height: 40px;
+    line-height: 21px;
+    font-size: 16px;
+    padding: 10px 20px;
+    color: #444;
+    background: rgba(0,0,0,0.1);
+}
+
+.block h4 a:hover {
+    background: rgba(0,0,0,0.15);
+}
+
+.block .content {
+    padding: 10px 20px;
+    border: solid 1px #ddd;
+    border-top: none;
 }
 
 /* This stuff is important! Otherwise when you select the text, the text in the divs will show up! */
@@ -64,28 +106,4 @@ html {
     line-height: 1;
     white-space: pre;
     cursor: text;
-}
-
-.textLayer .highlight {
-    margin: -1px;
-    padding: 1px;
-
-    background-color: rgba(180, 0, 170, 0.2);
-    border-radius: 4px;
-}
-
-.textLayer .highlight.begin {
-    border-radius: 4px 0px 0px 4px;
-}
-
-.textLayer .highlight.end {
-    border-radius: 0px 4px 4px 0px;
-}
-
-.textLayer .highlight.middle {
-    border-radius: 0px;
-}
-
-.textLayer .highlight.selected {
-    background-color: rgba(0, 100, 0, 0.2);
 }

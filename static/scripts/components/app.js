@@ -2,7 +2,7 @@
 
 'use strict';
 
-define(['react', 'jsx!components/sidebar', 'jsx!components/viewer'], function(React, Sidebar, Viewer) {
+define(['react', 'jsx!components/results', 'jsx!components/viewer'], function(React, Results, Viewer) {
   // from http://stackoverflow.com/questions/12092633/pdf-js-rendering-a-pdf-file-using-a-base64-file-source-instead-of-url
   var BASE64_MARKER = ';base64,';
   function convertDataURIToBinary(dataURI) {
@@ -43,7 +43,7 @@ define(['react', 'jsx!components/sidebar', 'jsx!components/viewer'], function(Re
                 <input name="file" type="file" ref="file" />
                 <input type="submit" className="pure-button" value="Upload" />
               </form>
-              <Sidebar appState={this.props.appState} />
+              <Results appState={this.props.appState} />
             </div>
           </div>
       );
