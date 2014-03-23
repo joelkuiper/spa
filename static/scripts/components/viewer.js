@@ -3,47 +3,43 @@
 'use strict';
 
 define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(React, _, Q, $, Annotator) {
-  PDFJS.workerSrc = 'static/scripts/vendor/pdf.worker.js';
-
-  var toClassName = function(str) {
-    return str ? str.replace(/ /g, "-").toLowerCase() : null;
-  };
-
   var TextLayer = React.createClass({
     getNodeAnnotations: _.memoize(function(results, pageIndex, key) {
-      var classes = _.pluck(results.result, "name");
+      var ids = _.pluck(results.result, "id");
       var annotations = _.pluck(results.result, "annotations");
       var nodesForPage = _.map(annotations, function(d) {
         return _.flatten(_.pluck(_.filter(d, function(dd) { return dd.page == pageIndex; }), "nodes"));
       });
-      return _.object(classes, nodesForPage);
-    }, function(results, pageIndex, key) {
-      // hashFunction
+      return _.object(ids, nodesForPage);
+    }, function(results, pageIndex, key) { // hashFunction
       return pageIndex + key + results.id;
     }),
     render: function() {
+      var self = this;
       var results = this.props.appState.results.getValue();
       var pageIndex = this.props.pageIndex;
       var key = this.props.key;
       var annotations = this.getNodeAnnotations(results, pageIndex, key);
 
-
       var textNodes = this.props.content.map(function (o,i) {
         if(o.isWhitespace) { return null; }
-        var classes = _.map(_.filter(_.map(_.pairs(annotations), function(a) {
-          return  _.contains(a[1], i) ? a[0] : null; }), _.isString), toClassName);
-
+        var classes = _.filter(_.map(_.pairs(annotations), function(a) {
+          return  _.contains(a[1], i) ? a[0] : null; }), _.isString);
 
         var cx = React.addons.classSet;
-        var activeClasses = cx(_.object(_.map(classes, function(c) {
-          return [c, true];
-        })));
+        var activeClasses = _.object(_.map(classes, function(c) {
+          var result = self.props.appState.results.result.find(function(el) {
+            return el.id.val() == c;
+          });
+          return [c + "_annotation", result.active.val()];
+        }));
+        if(activeClasses.length > 0) { activeClasses.annotated = true; }
 
         return (
             <div style={o.style}
                  dir={o.dir}
                  key={key + i}
-                 className={activeClasses}
+                 className={cx(activeClasses)}
                  data-angle={o.angle}
                  data-canvas-width={o.canvasWidth}
                  data-font-name={o.fontName}>

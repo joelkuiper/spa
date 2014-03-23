@@ -30,7 +30,7 @@ define(['react', 'jsx!components/results', 'jsx!components/viewer', 'PDFJS'], fu
         var reader = new FileReader();
         reader.onload = function(e) {
           var pdfData =  convertDataURIToBinary(reader.result);
-
+          PDFJS.workerSrc = 'static/scripts/vendor/pdf.worker.js';
           PDFJS.getDocument(pdfData).then(function(pdf) {
             self.setState({pdf:pdf});
           });
@@ -47,9 +47,9 @@ define(['react', 'jsx!components/results', 'jsx!components/viewer', 'PDFJS'], fu
             <Viewer pdf={this.state.pdf} appState={this.props.appState} />
             <div id="side">
                 <form enctype="multipart/form-data" onSubmit={this.loadPdf}>
-                <input name="file" type="file" ref="file" />
-                <input type="submit" className="pure-button" value="Upload" />
-              </form>
+                  <input name="file" type="file" ref="file" />
+                  <input type="submit" className="pure-button" value="Upload" />
+                </form>
               <Results appState={this.props.appState} />
             </div>
           </div>

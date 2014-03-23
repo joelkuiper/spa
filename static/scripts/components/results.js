@@ -3,17 +3,23 @@
 'use strict';
 
 define(['underscore', 'react'], function(_, React) {
+
   var Block = React.createClass({
-    activateClass: function(e) {
-      console.log(this.props.result.name);
+    toggleActivate: function(e) {
+      var clicked = this.props.result.name;
+      var result = this.props.appState.results.result.find(function(el) {
+        return el.name.val() == clicked;
+      });
+      var isActive = !result.active.val();
+      result.add("active", isActive);
     },
     render: function() {
       var result = this.props.result;
-      var annotations = _.map(result.annotations, function(annotation) {
+      var annotations = result.annotations.map(function(annotation) {
         return (<li>{annotation.sentence}</li>);
       });
       return(<div className="block">
-               <h4><a onClick={this.activateClass} klass={result.name}>{result.name}</a></h4>
+               <h4><a onClick={this.toggleActivate} className={result.active ? result.id + "_header" : ""}>{result.name}</a></h4>
                <div className="content">
                  <div className="document"><span className="head">overall assesment: </span>{result.document}</div>
                  <ul>{annotations}</ul>
@@ -26,7 +32,7 @@ define(['underscore', 'react'], function(_, React) {
     render: function() {
       var results = this.props.appState.results.getValue().result;
       var self = this;
-      var blocks = results && results.map(function(result) {
+      var blocks = results && results.map(function(result, idx) {
         return (<Block result={result} appState={self.props.appState} />);
       });
       return(

@@ -5,6 +5,7 @@ require.config({
   baseUrl: '/static/scripts',
   paths: {
     'jQuery': ['//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min', 'vendor/jquery'],
+    'jQuery.injectCSS': ['vendor/jquery.injectCSS'],
     'underscore': ['//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min', 'vendor/underscore'],
     'Q': ['//cdnjs.cloudflare.com/ajax/libs/q.js/1.0.0/q.min', 'vendor/q'],
     'react': ['//cdnjs.cloudflare.com/ajax/libs/react/0.10.0/react-with-addons', 'vendor/react'],
@@ -17,6 +18,7 @@ require.config({
   shim: {
     'cortex': { exports: 'Cortex' },
     'jQuery': { exports : 'jQuery' },
+    'jQuery.injectCSS': { deps: ['jQuery'] },
     'PDFJS': { 'exports': 'PDFJS', deps: ['vendor/pdf.worker', 'vendor/ui_utils', 'helpers/text_layer_builder'] }
   }
 });
