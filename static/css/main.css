@@ -1,7 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Montserrat);
 
 html {
-    color: rgba(0,0,0,0.5);
+    color: #777;
 }
 a {
     -moz-transition: background-color 40 linear, color 40 linear, opacity 40 linear;
