@@ -5,7 +5,7 @@
 define(['underscore', 'react'], function(_, React) {
 
   var Block = React.createClass({
-    levels: ['positive', 'unknown', 'negative'],
+    levels: ['negative', 'unknown', 'positive'],
     toggleActivate: function(e) {
       var clicked = this.props.result.name;
       var result = this.props.appState.results.result.find(function(el) {
