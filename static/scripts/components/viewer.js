@@ -128,10 +128,6 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
     },
     componentDidUpdate: function(prevProps) {
       if(this.shouldRepaint(prevProps)) {
-        // <canvas> may not be unmounted, so need to manually clear it for repaint
-        var canvas = this.refs.canvas.getDOMNode();
-        var context = canvas.getContext("2d");
-        context.clearRect(0,0, canvas.width, canvas.height);
         this.renderPage(this.props.page);
       }
     },
@@ -140,12 +136,13 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
     },
     render: function() {
       var pageIndex = this.props.page.raw.pageInfo.pageIndex;
+      var key = this.props.key;
       return (
           <div ref="container" className="page">
-            <canvas ref="canvas"></canvas>
+            <canvas key={"canvas_" + key} ref="canvas"></canvas>
             <TextLayer ref="textLayer"
                        pageIndex={pageIndex}
-                       key={this.props.key}
+                       key={key}
                        content={this.state.content}
                        appState={this.props.appState} />
           </div>);

@@ -19,6 +19,9 @@ define(['react', 'jsx!components/results', 'jsx!components/viewer', 'PDFJS'], fu
   }
 
   var App = React.createClass({
+    getInitialState: function() {
+      return {};
+    },
     loadPdf: function() {
       var self = this;
       var file = this.refs.file.getDOMNode().files[0];
@@ -29,7 +32,7 @@ define(['react', 'jsx!components/results', 'jsx!components/viewer', 'PDFJS'], fu
           var pdfData =  convertDataURIToBinary(reader.result);
 
           PDFJS.getDocument(pdfData).then(function(pdf) {
-            self.setProps({pdf:pdf});
+            self.setState({pdf:pdf});
           });
         };
         reader.readAsDataURL(file);
@@ -41,7 +44,7 @@ define(['react', 'jsx!components/results', 'jsx!components/viewer', 'PDFJS'], fu
     render: function() {
       return (
           <div>
-            <Viewer pdf={this.props.pdf} appState={this.props.appState} />
+            <Viewer pdf={this.state.pdf} appState={this.props.appState} />
             <div id="side">
                 <form enctype="multipart/form-data" onSubmit={this.loadPdf}>
                 <input name="file" type="file" ref="file" />
