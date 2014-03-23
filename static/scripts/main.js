@@ -19,7 +19,7 @@ require.config({
     'cortex': { exports: 'Cortex' },
     'jQuery': { exports : 'jQuery' },
     'jQuery.injectCSS': { deps: ['jQuery'] },
-    'PDFJS': { 'exports': 'PDFJS', deps: ['vendor/pdf.worker', 'vendor/ui_utils', 'helpers/text_layer_builder'] }
+    'PDFJS': { 'exports': 'PDFJS', deps: ['vendor/ui_utils', 'helpers/text_layer_builder'] }
   }
 });
 
