@@ -21,6 +21,7 @@ define(['jQuery','underscore', 'Q', 'jQuery.injectCSS'], function($, _, Q) {
          [166,118,29],
          [102,102,102]];
 
+
   function randomId(size, prefix) {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -50,7 +51,20 @@ define(['jQuery','underscore', 'Q', 'jQuery.injectCSS'], function($, _, Q) {
   }
 
   var Annotator = {
+    _postProcess: function(data) {
+      data = _.clone(data);
+      data.id = randomId(8);
+      _.each(data.result, function(result, idx) {
+        var id = toClassName(result.name);
+        result.active = idx == 0 ? true : false;
+        result.id = id;
+        injectStyles(id, colors[idx % colors.length]);
+      });
+      console.log(data);
+      return data;
+    },
     annotate: _.memoize(function(document) {
+      var self = this;
       var deferred = Q.defer();
       var contents = _.pluck(document.pages, "content");
       $.ajax({
@@ -61,16 +75,8 @@ define(['jQuery','underscore', 'Q', 'jQuery.injectCSS'], function($, _, Q) {
         dataType: 'json',
         async: true,
         success: function(data) {
-          data.id = randomId(8);
-          _.each(data.result, function(result, idx) {
-            var id = toClassName(result.name);
-            result.active = idx == 0 ? true : false;
-            result.id = id;
-            injectStyles(id, colors[idx % colors.length]);
-          });
-          deferred.resolve(data);
-        }
-      });
+          deferred.resolve(self._postProcess(data));
+        }});
       return deferred.promise;
     }, function(document) {
       return document.info.fingerprint;
