@@ -63,7 +63,8 @@ define(['underscore', 'react'], function(_, React) {
       var results = this.props.appState.results.getValue().result;
       var self = this;
       var blocks = results && results.map(function(result, idx) {
-        return (<Block key={result.id} result={result} appState={self.props.appState} />);
+        var key = results.id + result.id;
+        return (<Block key={key} result={result} appState={self.props.appState} />);
       });
       return(
           <div id="sidebar">
