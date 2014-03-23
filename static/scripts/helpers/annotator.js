@@ -64,7 +64,7 @@ define(['jQuery','underscore', 'Q', 'jQuery.injectCSS'], function($, _, Q) {
           data.id = randomId(8);
           _.each(data.result, function(result, idx) {
             var id = toClassName(result.name);
-            result.active = true;
+            result.active = idx == 0 ? true : false;
             result.id = id;
             injectStyles(id, colors[idx % colors.length]);
           });
