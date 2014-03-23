@@ -5,6 +5,7 @@
 define(['underscore', 'react'], function(_, React) {
 
   var Block = React.createClass({
+    levels: ['positive', 'unknown', 'negative'],
     toggleActivate: function(e) {
       var clicked = this.props.result.name;
       var result = this.props.appState.results.result.find(function(el) {
@@ -21,7 +22,7 @@ define(['underscore', 'react'], function(_, React) {
       return(<div className="block">
                <h4><a onClick={this.toggleActivate} className={result.active ? result.id + "_header" : ""}>{result.name}</a></h4>
                <div className="content">
-                 <div className="document"><span className="head">overall assesment: </span>{result.document}</div>
+                 <div className="document"><span className="head">overall assesment: </span>{this.levels[result.document + 1]}</div>
                  <ul>{annotations}</ul>
                </div>
              </div>);
