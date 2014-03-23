@@ -4,6 +4,16 @@
 
 define(['jQuery', 'underscore', 'Q'], function($, _, Q) {
 
+  function randomId(size, prefix) {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for(var i = 0; i < size; i++ ) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return prefix ? prefix + text : text;
+  }
+
   var Annotator = {
     annotate: _.memoize(function(document) {
       var deferred = Q.defer();
@@ -16,7 +26,7 @@ define(['jQuery', 'underscore', 'Q'], function($, _, Q) {
         dataType: 'json',
         async: true,
         success: function(result) {
-          result.timeStamp = Math.round(+new Date()/1000);
+          result.id = randomId(8);
           deferred.resolve(result);
         }
       });

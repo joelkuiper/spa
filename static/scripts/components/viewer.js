@@ -19,7 +19,7 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
       return _.object(classes, nodesForPage);
     }, function(results, pageIndex, key) {
       // hashFunction
-      return pageIndex + key + results.timeStamp;
+      return pageIndex + key + results.id;
     }),
     render: function() {
       var results = this.props.appState.results.getValue();
@@ -27,20 +27,23 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
       var key = this.props.key;
       var annotations = this.getNodeAnnotations(results, pageIndex, key);
 
-      var cx = React.addons.classSet;
 
       var textNodes = this.props.content.map(function (o,i) {
         if(o.isWhitespace) { return null; }
         var classes = _.map(_.filter(_.map(_.pairs(annotations), function(a) {
           return  _.contains(a[1], i) ? a[0] : null; }), _.isString), toClassName);
 
-        var activeClasses = _.object(_.map(classes, function(c) { return [c, true]; }));
+
+        var cx = React.addons.classSet;
+        var activeClasses = cx(_.object(_.map(classes, function(c) {
+          return [c, true];
+        })));
 
         return (
             <div style={o.style}
                  dir={o.dir}
                  key={key + i}
-                 className={cx(activeClasses)}
+                 className={activeClasses}
                  data-angle={o.angle}
                  data-canvas-width={o.canvasWidth}
                  data-font-name={o.fontName}>
@@ -174,8 +177,8 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
         });
       })).then(function(pages) {
         var document = {info: pdf.pdfInfo, pages: pages };
-        self.setState(document);
         self.fetchAnnotations(document);
+        self.setState(document);
       });
     },
     render: function() {

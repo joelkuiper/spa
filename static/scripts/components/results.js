@@ -4,13 +4,16 @@
 
 define(['underscore', 'react'], function(_, React) {
   var Block = React.createClass({
+    activateClass: function(e) {
+      console.log(this.props.result.name);
+    },
     render: function() {
       var result = this.props.result;
       var annotations = _.map(result.annotations, function(annotation) {
         return (<li>{annotation.sentence}</li>);
       });
       return(<div className="block">
-               <h4><a>{result.name}</a></h4>
+               <h4><a onClick={this.activateClass} klass={result.name}>{result.name}</a></h4>
                <div className="content">
                  <div className="document"><span className="head">overall assesment: </span>{result.document}</div>
                  <ul>{annotations}</ul>
@@ -22,8 +25,9 @@ define(['underscore', 'react'], function(_, React) {
   var Results = React.createClass({
     render: function() {
       var results = this.props.appState.results.getValue().result;
-      var blocks = _.map(results, function(result) {
-        return (<Block result={result} />);
+      var self = this;
+      var blocks = results && results.map(function(result) {
+        return (<Block result={result} appState={self.props.appState} />);
       });
       return(
           <div id="sidebar">
