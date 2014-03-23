@@ -2,7 +2,7 @@
 
 'use strict';
 
-define(['underscore', 'react'], function(_, React) {
+define(['jQuery', 'underscore', 'react'], function($, _, React) {
 
   var succinct = function(str, options){
     // kindly from https://github.com/micjamking/Succinct
@@ -10,7 +10,8 @@ define(['underscore', 'react'], function(_, React) {
       size: 240,
       omission: '...',
       ignore: true
-    }, options = $.extend(defaults, options);
+    };
+    options = $.extend(defaults, options);
 
     var textDefault,
         textTruncated,
@@ -51,7 +52,9 @@ define(['underscore', 'react'], function(_, React) {
       return(<div className="block">
                <h4><a onClick={this.toggleActivate} className={result.active ? result.id + "_header" : ""}>{result.name}</a></h4>
                <div className="content">
-                 <div className="document"><span className="head">overall assesment: </span>{this.levels[result.document + 1]}</div>
+                 <div className="document">
+                   <span className="head">overall assesment: </span>{this.levels[result.document + 1]}
+                 </div>
                  <ul>{annotations}</ul>
                </div>
              </div>);
