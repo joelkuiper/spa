@@ -66,10 +66,9 @@ define(['jQuery','underscore', 'Q', 'jQuery.injectCSS'], function($, _, Q) {
             var id = toClassName(result.name);
             result.active = true;
             result.id = id;
-            injectStyles(id, colors[idx]);
+            injectStyles(id, colors[idx % colors.length]);
           });
           deferred.resolve(data);
-          console.log(data);
         }
       });
       return deferred.promise;
