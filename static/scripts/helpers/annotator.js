@@ -21,7 +21,6 @@ define(['jQuery','underscore', 'Q', 'jQuery.injectCSS'], function($, _, Q) {
          [166,118,29],
          [102,102,102]];
 
-
   function randomId(size, prefix) {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -40,7 +39,7 @@ define(['jQuery','underscore', 'Q', 'jQuery.injectCSS'], function($, _, Q) {
     var styles = {};
     var colorStr = color.join(",");
     styles["." + id + "_header"] = {
-      "background-color": "rgb(" + colorStr + ") !important",
+      "background-color": "rgb(" + colorStr + ") !important", // YOLO
       "color": "white !important"
     };
     styles["." + id + "_annotation"] = {
@@ -60,7 +59,6 @@ define(['jQuery','underscore', 'Q', 'jQuery.injectCSS'], function($, _, Q) {
         result.id = id;
         injectStyles(id, colors[idx % colors.length]);
       });
-      console.log(data);
       return data;
     },
     annotate: _.memoize(function(document) {
