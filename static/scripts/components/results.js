@@ -8,7 +8,7 @@ define(['jQuery', 'underscore', 'react'], function($, _, React) {
     // kindly from https://github.com/micjamking/Succinct
     var defaults = {
       size: 240,
-      omission: '...',
+      omission: '…',
       ignore: true
     };
     options = $.extend(defaults, options);
@@ -70,7 +70,7 @@ define(['jQuery', 'underscore', 'react'], function($, _, React) {
         return (<Block key={key} result={result} />);
       });
       return(
-          <div id="sidebar">
+          <div>
             {blocks}
           </div>);
     }
