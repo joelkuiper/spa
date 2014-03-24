@@ -13,13 +13,13 @@ require.config({
     'text': "vendor/text",
     'jsx': "vendor/jsx",
     'cortex': 'vendor/cortex',
-    'PDFJS': 'vendor/pdf'
+    'PDFJS': 'vendor/pdfjs/pdf'
   },
   shim: {
     'cortex': { exports: 'Cortex' },
     'jQuery': { exports : 'jQuery' },
     'jQuery.injectCSS': { deps: ['jQuery'] },
-    'PDFJS': { 'exports': 'PDFJS', deps: ['vendor/ui_utils', 'helpers/text_layer_builder'] }
+    'PDFJS': { 'exports': 'PDFJS', deps: ['vendor/pdfjs/compatibility', 'vendor/pdfjs/ui_utils', 'helpers/text_layer_builder'] }
   }
 });
 

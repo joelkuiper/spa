@@ -30,7 +30,7 @@ define(['react', 'jsx!components/results', 'jsx!components/viewer', 'PDFJS'], fu
         var reader = new FileReader();
         reader.onload = function(e) {
           var pdfData =  convertDataURIToBinary(reader.result);
-          PDFJS.workerSrc = 'static/scripts/vendor/pdf.worker.js';
+          PDFJS.workerSrc = 'static/scripts/vendor/pdfjs/pdf.worker.js';
           PDFJS.getDocument(pdfData).then(function(pdf) {
             self.setState({pdf:pdf});
           });
