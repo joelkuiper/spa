@@ -69,10 +69,7 @@ define(['jQuery', 'underscore', 'react'], function($, _, React) {
         var key = results.id + result.id;
         return (<Block key={key} result={result} />);
       });
-      return(
-          <div>
-            {blocks}
-          </div>);
+      return(<div>{blocks}</div>);
     }
   });
 
