@@ -46,8 +46,8 @@ define(['jQuery', 'underscore', 'react'], function($, _, React) {
     },
     render: function() {
       var result = this.props.result;
-      var annotations = result.annotations.map(function(annotation) {
-        return (<li>{succinct(annotation.sentence, 180)}</li>);
+      var annotations = result.annotations.map(function(annotation, idx) {
+        return (<li key={idx}>{succinct(annotation.sentence, 180)}</li>);
       });
       return(<div className="block">
                <h4><a onClick={this.toggleActivate} className={result.active ? result.id + "_header" : ""}>{result.name}</a></h4>
