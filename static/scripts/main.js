@@ -10,8 +10,8 @@ require.config({
     'Q': ['//cdnjs.cloudflare.com/ajax/libs/q.js/1.0.0/q.min', 'vendor/q'],
     'react': ['//cdnjs.cloudflare.com/ajax/libs/react/0.10.0/react-with-addons.min', 'vendor/react'],
     'JSXTransformer': ['vendor/JSXTransformer'],
-    'text': "vendor/text",
-    'jsx': "vendor/jsx",
+    'text': "text",
+    'jsx': "jsx",
     'cortex': 'vendor/cortex',
     'PDFJS': 'vendor/pdfjs/pdf'
   },
