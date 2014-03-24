@@ -22,11 +22,11 @@ html {
     color: #777;
 }
 
-a {
-    -moz-transition: background-color 20 linear, color 20 linear, opacity 20 linear;
-    -o-transition: background-color 20 linear, color 20 linear, opacity 20 linear;
-    -webkit-transition: background-color 20 linear, color 20 linear, opacity 20 linear;
-    transition: background-color 20 linear, color 20 linear, opacity 20 linear;
+h4, a, .annotated {
+    -moz-transition: background-color 0.05s linear, color 0.05s linear, opacity 0.05s linear;
+    -o-transition: background-color 0.05s linear, color 0.05s linear, opacity 0.05s linear;
+    -webkit-transition: background-color 0.05s linear, color 0.05s linear, opacity 0.05s linear;
+    transition: background-color 0.05s linear, color 0.05s linear, opacity 0.05s linear;
 }
 
 .viwwer-container {
