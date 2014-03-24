@@ -7,8 +7,10 @@
 
 /* apply a natural box layout model to all elements */
 *, *:before, *:after {
-  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
- }
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
 
 html, body {
     padding: 0;
@@ -19,11 +21,12 @@ html, body {
 html {
     color: #777;
 }
+
 a {
-    -moz-transition: background-color 40 linear, color 40 linear, opacity 40 linear;
-    -o-transition: background-color 40 linear, color 40 linear, opacity 40 linear;
-    -webkit-transition: background-color 40 linear, color 40 linear, opacity 40 linear;
-    transition: background-color 40 linear, color 40 linear, opacity 40 linear;
+    -moz-transition: background-color 20 linear, color 20 linear, opacity 20 linear;
+    -o-transition: background-color 20 linear, color 20 linear, opacity 20 linear;
+    -webkit-transition: background-color 20 linear, color 20 linear, opacity 20 linear;
+    transition: background-color 20 linear, color 20 linear, opacity 20 linear;
 }
 
 #main {
@@ -33,14 +36,13 @@ a {
     overflow-y: scroll;
     left: 0;
     top: 0;
-    right: -30px;
     bottom: 0;
     padding-right: 15px;
 }
 
 #side {
     background-color: white;
-    position: fixed;
+    position: absolute;
     border-left: 1px solid #ddd;
     padding: 0.5em;
     top: 0;
@@ -105,7 +107,6 @@ span.head {
     border-top: none;
 }
 
-/* This stuff is important! Otherwise when you select the text, the text in the divs will show up! */
 ::selection { background:rgba(0,0,255,0.3); }
 ::-moz-selection { background:rgba(0,0,255,0.3); }
 
@@ -127,6 +128,7 @@ span.head {
     white-space: pre;
     cursor: text;
 }
+
 .annotated {
     margin: -1px;
     padding: 1px;
