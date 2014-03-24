@@ -29,16 +29,24 @@ a {
     transition: background-color 20 linear, color 20 linear, opacity 20 linear;
 }
 
-#main-container {
+.viwwer-container {
     overflow: hidden;
 }
-#main {
+
+.scrollbar {
+    position: absolute;
+    background-color: red;
+    width: 40px;
+    height: 100%;
+}
+
+.viewer {
     position: absolute;
     width: 60%;
     height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
-    left: 0;
+    left: 40px;
 }
 
 #side {
@@ -47,9 +55,9 @@ a {
     background-color: white;
     padding: 0.5em;
     top: 0;
-    left: calc(60% - 30px);
+    left: calc(60% - 15px);
     z-index: 100;
-    width: calc(40% + 30px);
+    width: calc(40% + 15px);
     height: 100%;
     overflow: auto;
 }
@@ -68,6 +76,7 @@ a {
 .block {
     margin: 1em 1em 2em 1em;
 }
+
 
 span.head {
     font-weight: bold;

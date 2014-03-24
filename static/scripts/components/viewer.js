@@ -20,19 +20,22 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
       var key = this.props.key;
       var annotations = this.getNodeAnnotations(results, pageIndex, key);
 
+      var cx = React.addons.classSet;
       var textNodes = this.props.content.map(function (o,i) {
         if(o.isWhitespace) { return null; }
         var classes = _.filter(_.map(_.pairs(annotations), function(a) {
           return  _.contains(a[1], i) ? a[0] : null; }), _.isString);
 
-        var cx = React.addons.classSet;
         var activeClasses = _.object(_.map(classes, function(c) {
           var result = window.appState.results.result.find(function(el) {
             return el.id.val() == c;
           });
           return [c + "_annotation", result.active.val()];
         }));
-        if(activeClasses.length > 0) { activeClasses.annotated = true; }
+
+        if(activeClasses.length > 0) {
+          activeClasses.annotated = true;
+        }
 
         return (
             <div style={o.style}
@@ -138,8 +141,32 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
             <TextLayer ref="textLayer"
                        pageIndex={pageIndex}
                        key={key}
+                       callback={this.props.callback}
                        content={this.state.content} />
           </div>);
+    }
+  });
+
+  var Scrollbar = React.createClass({
+    componentWillUpdate: function() {
+     var el = this.getDOMNode();
+     var scrollbarHeight = el.clientHeight;
+     var $container = $(el.parentNode).find(".scrollable");
+     var nodes = $container.find(".textLayer div");
+     var totalHeight = _.reduce(nodes.map(function(idx, node) { return node.clientHeight; }),
+                               function(memo, num) { return memo + num; }, 0);
+     console.log(totalHeight);
+    },
+    componentWillUnmount: function() {
+      $(this.getDOMNode().parentNode).find(".scrollable").off("scroll");
+    },
+    componentDidMount: function() {
+      $(this.getDOMNode().parentNode)
+        .find(".scrollable").on("scroll", function(e) {
+        });
+    },
+    render: function() {
+      return <div className="scrollbar" />;
     }
   });
 
@@ -149,7 +176,9 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
     },
     fetchAnnotations: function(document) {
       Annotator.annotate(document)
-        .then(function(results) { window.appState.results.set(results); });
+        .then(function(results) {
+          window.appState.results.set(results);
+        });
     },
     componentWillReceiveProps: function(nextProps) {
       var self = this;
@@ -173,12 +202,15 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
     },
     render: function() {
       var fingerprint = this.state.info.fingerprint;
-      var pages = this.state.pages.map(function (page) {
+      var pages = this.state.pages.map(function (page, idx) {
         var key = fingerprint + page.raw.pageInfo.pageIndex;
         return <Page page={page} key={key} />;
       });
 
-      return(<div id="main-container"><div id="main">{pages}</div></div>);
+      return(<div className="viewer-container">
+               <Scrollbar />
+               <div className="viewer scrollable">{pages}</div>
+             </div>);
     }
   });
 
