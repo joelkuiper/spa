@@ -178,7 +178,7 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
         return <Page page={page} key={key} />;
       });
 
-      return <div id="main">{pages}</div>;
+      return(<div id="main-container"><div id="main">{pages}</div></div>);
     }
   });
 

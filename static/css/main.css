@@ -29,25 +29,27 @@ a {
     transition: background-color 20 linear, color 20 linear, opacity 20 linear;
 }
 
+#main-container {
+    overflow: hidden;
+}
 #main {
+    position: absolute;
     width: 60%;
     height: 100%;
-    position: absolute;
     overflow-y: scroll;
+    overflow-x: hidden;
     left: 0;
-    top: 0;
-    bottom: 0;
-    padding-right: 15px;
 }
 
 #side {
-    background-color: white;
     position: absolute;
     border-left: 1px solid #ddd;
+    background-color: white;
     padding: 0.5em;
     top: 0;
-    left: 60%;
-    width: 40%;
+    left: calc(60% - 30px);
+    z-index: 100;
+    width: calc(40% + 30px);
     height: 100%;
     overflow: auto;
 }
