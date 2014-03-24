@@ -38,7 +38,7 @@ define(['jQuery', 'underscore', 'react'], function($, _, React) {
     levels: ['negative', 'unknown', 'positive'],
     toggleActivate: function(e) {
       var clicked = this.props.result.name;
-      var result = this.props.appState.results.result.find(function(el) {
+      var result = window.appState.results.result.find(function(el) {
         return el.name.val() == clicked;
       });
       var isActive = !result.active.val();
@@ -63,11 +63,11 @@ define(['jQuery', 'underscore', 'react'], function($, _, React) {
 
   var Results = React.createClass({
     render: function() {
-      var results = this.props.appState.results.getValue().result;
+      var results = window.appState.results.getValue().result;
       var self = this;
       var blocks = results && results.map(function(result, idx) {
         var key = results.id + result.id;
-        return (<Block key={key} result={result} appState={self.props.appState} />);
+        return (<Block key={key} result={result} />);
       });
       return(
           <div id="sidebar">

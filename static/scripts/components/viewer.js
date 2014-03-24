@@ -15,8 +15,7 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
       return pageIndex + key + results.id;
     }),
     render: function() {
-      var self = this;
-      var results = this.props.appState.results.getValue();
+      var results = window.appState.results.getValue();
       var pageIndex = this.props.pageIndex;
       var key = this.props.key;
       var annotations = this.getNodeAnnotations(results, pageIndex, key);
@@ -28,7 +27,7 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
 
         var cx = React.addons.classSet;
         var activeClasses = _.object(_.map(classes, function(c) {
-          var result = self.props.appState.results.result.find(function(el) {
+          var result = window.appState.results.result.find(function(el) {
             return el.id.val() == c;
           });
           return [c + "_annotation", result.active.val()];
@@ -139,8 +138,7 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
             <TextLayer ref="textLayer"
                        pageIndex={pageIndex}
                        key={key}
-                       content={this.state.content}
-                       appState={this.props.appState} />
+                       content={this.state.content} />
           </div>);
     }
   });
@@ -150,9 +148,8 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
       return  {info: {}, pages: []};
     },
     fetchAnnotations: function(document) {
-      var self = this;
       Annotator.annotate(document)
-        .then(function(results) { self.props.appState.results.set(results); });
+        .then(function(results) { window.appState.results.set(results); });
     },
     componentWillReceiveProps: function(nextProps) {
       var self = this;
@@ -175,11 +172,10 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
       });
     },
     render: function() {
-      var self = this;
       var fingerprint = this.state.info.fingerprint;
       var pages = this.state.pages.map(function (page) {
         var key = fingerprint + page.raw.pageInfo.pageIndex;
-        return <Page page={page} key={key} appState={self.props.appState} />;
+        return <Page page={page} key={key} />;
       });
 
       return <div id="main">{pages}</div>;

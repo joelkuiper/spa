@@ -44,13 +44,13 @@ define(['react', 'jsx!components/results', 'jsx!components/viewer', 'PDFJS'], fu
     render: function() {
       return (
           <div>
-            <Viewer pdf={this.state.pdf} appState={this.props.appState} />
+            <Viewer pdf={this.state.pdf} />
             <div id="side">
                 <form enctype="multipart/form-data" onSubmit={this.loadPdf}>
                   <input name="file" type="file" ref="file" />
                   <input type="submit" className="pure-button" value="Upload" />
                 </form>
-              <Results appState={this.props.appState} />
+              <Results />
             </div>
           </div>
       );

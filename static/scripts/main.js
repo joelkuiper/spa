@@ -27,12 +27,12 @@ require(['react', 'cortex', 'jsx!components/app'], function (React, Cortex, App)
   var appComponent,
       appData = { status: "READY",
                   results: {}};
-  var appCortex = new Cortex(appData, function(updatedApp) {
-    appComponent.setProps({appState: appCortex});
+  window.appState = new Cortex(appData, function(updatedApp) {
+    appComponent.setProps({});
   });
 
   appComponent = React.renderComponent(
-    App({appState: appCortex}),
+    App(),
     document.getElementById('app')
   );
 });
