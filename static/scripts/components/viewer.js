@@ -1,4 +1,4 @@
-/* -*- tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2; js2-basic-offset: 2; -*- */
+/* -*- tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2; js-indent-level: 2; -*- */
 
 'use strict';
 
@@ -6,6 +6,9 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
   var OUTPUT_SCALE = getOutputScale(document.createElement("canvas").getContext("2d"));
 
   var TextLayer = React.createClass({
+    componentDidUpdate: function() {
+      console.log(this.props.pageIndex, this.getDOMNode().childNodes.length);
+    },
     getNodeAnnotations: _.memoize(function(results, pageIndex, key) {
       var ids = _.pluck(results.result, "id");
       var annotations = _.pluck(results.result, "annotations");
@@ -39,7 +42,6 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
         if(activeClasses.length > 0) {
           activeClasses.annotated = true;
         }
-
         return (
             <div style={o.style}
                  dir={o.dir}
