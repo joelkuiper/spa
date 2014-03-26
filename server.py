@@ -1,21 +1,15 @@
 from flask import Flask, request, jsonify
 from pipeline import RiskOfBiasPipeline
-import pprint
 import json
-import pickle
 import logging
-import pdb
-
 
 DEBUG_MODE = True
 
-logging.basicConfig(level= (logging.DEBUG if DEBUG_MODE else logging.INFO))
+logging.basicConfig(level=(logging.DEBUG if DEBUG_MODE else logging.INFO))
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 pipeline = RiskOfBiasPipeline()
-
-pp = pprint.PrettyPrinter(indent=4)
 
 @app.route('/')
 def root():
