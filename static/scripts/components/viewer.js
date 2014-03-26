@@ -152,17 +152,13 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
       var self = this;
       var pdf = nextProps.pdf;
       if(this.state.info.fingerprint !== nextProps.pdf.pdfInfo.fingerprint) {
-        window.appState.isRendering.set(true);
         var pages = _.map(_.range(1, pdf.numPages + 1), function(pageNr) {
           return pdf.getPage(pageNr);
         });
 
         Q.all(_.invoke(pages, "then", function(page) {
           return page.getTextContent().then(function(content) {
-            return {
-              raw: page,
-              content: content
-            };
+            return {raw: page, content: content};
           });
         })).then(function(pages) {
           var document = {info: pdf.pdfInfo, pages: pages };
