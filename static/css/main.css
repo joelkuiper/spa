@@ -33,21 +33,21 @@ h4, a, .annotated {
     overflow: hidden;
 }
 
-.scrollbar {
+/* .scrollbar {
     position: absolute;
     background-color: red;
     width: 40px;
     height: 100%;
-}
+} */
 
 .viewer {
     position: absolute;
-    padding-right: 30px;
     width: 60%;
     height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
-    /* left: 40px; */
+    /* left: 40px;
+       padding-right: 30px; */
 }
 
 #side {
