@@ -10,8 +10,6 @@ require.config({
     'Q': 'vendor/q',
     'react': 'vendor/react',
     'JSXTransformer': 'vendor/JSXTransformer',
-    'text': "text",
-    'jsx': "jsx",
     'cortex': 'vendor/cortex',
     'PDFJS': 'vendor/pdfjs/pdf'
   },
