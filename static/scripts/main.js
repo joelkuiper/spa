@@ -25,7 +25,7 @@ require.config({
 
 require(['react', 'cortex', 'jsx!components/app'], function (React, Cortex, App) {
   var appComponent,
-      appData = { status: "READY",
+      appData = { isRendering: false,
                   results: {}};
   window.appState = new Cortex(appData, function(updatedApp) {
     appComponent.setProps({});

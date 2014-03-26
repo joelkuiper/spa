@@ -9,9 +9,9 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
     getNodeAnnotations: _.memoize(function(results, pageIndex, key) {
       var ids = _.pluck(results.result, "id");
       var annotations = _.pluck(results.result, "annotations");
-      var nodesForPage = _.map(annotations, function(a) {
-        return _.flatten(_.pluck(_.filter(a, function(aa) {
-          return aa.page == pageIndex; }), "nodes"));
+      var nodesForPage = _.map(annotations, function(o) {
+        return _.flatten(_.pluck(_.filter(o, function(oo) {
+          return oo.page == pageIndex; }), "nodes"));
       });
       return _.object(ids, nodesForPage);
     }, function(results, pageIndex, key) { // hashFunction
@@ -58,7 +58,7 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
 
 
   var Page = React.createClass({
-    renderPage: function(page) {
+    drawPage: function(page) {
       var self = this;
       var content = page.content;
       page = page.raw;
@@ -118,11 +118,11 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
     },
     componentDidUpdate: function(prevProps) {
       if(this.shouldRepaint(prevProps)) {
-        this.renderPage(this.props.page);
+        this.drawPage(this.props.page);
       }
     },
     componentDidMount: function() {
-      this.renderPage(this.props.page);
+      this.drawPage(this.props.page);
     },
     render: function() {
       var pageIndex = this.props.page.raw.pageInfo.pageIndex;
@@ -133,38 +133,14 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
             <TextLayer ref="textLayer"
                        pageIndex={pageIndex}
                        key={key}
-                       callback={this.props.callback}
                        content={this.state.content} />
           </div>);
     }
   });
 
-  var Scrollbar = React.createClass({
-    componentWillUpdate: function() {
-     var el = this.getDOMNode();
-     var scrollbarHeight = el.clientHeight;
-     var $container = $(el.parentNode).find(".scrollable");
-     var nodes = $container.find(".textLayer div");
-     var totalHeight = _.reduce(nodes.map(function(idx, node) { return node.clientHeight; }),
-                               function(memo, num) { return memo + num; }, 0);
-     console.log(totalHeight);
-    },
-    componentWillUnmount: function() {
-      $(this.getDOMNode().parentNode).find(".scrollable").off("scroll");
-    },
-    componentDidMount: function() {
-      $(this.getDOMNode().parentNode)
-        .find(".scrollable").on("scroll", function(e) {
-        });
-    },
-    render: function() {
-      return <div className="scrollbar" />;
-    }
-  });
-
   var Display = React.createClass({
     getInitialState: function()  {
-      return  {info: {}, pages: []};
+      return  {info: {}, pages: [] };
     },
     fetchAnnotations: function(document) {
       Annotator.annotate(document)
@@ -175,33 +151,38 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
     componentWillReceiveProps: function(nextProps) {
       var self = this;
       var pdf = nextProps.pdf;
-      var pages = _.map(_.range(1, pdf.numPages + 1), function(pageNr) {
-        return pdf.getPage(pageNr);
-      });
-
-      Q.all(_.invoke(pages, "then", function(page) {
-        return page.getTextContent().then(function(content) {
-          return {
-            raw: page,
-            content: content
-          };
+      if(this.state.info.fingerprint !== nextProps.pdf.pdfInfo.fingerprint) {
+        window.appState.isRendering.set(true);
+        var pages = _.map(_.range(1, pdf.numPages + 1), function(pageNr) {
+          return pdf.getPage(pageNr);
         });
-      })).then(function(pages) {
-        var document = {info: pdf.pdfInfo, pages: pages };
-        self.fetchAnnotations(document);
-        self.setState(document);
-      });
+
+        Q.all(_.invoke(pages, "then", function(page) {
+          return page.getTextContent().then(function(content) {
+            return {
+              raw: page,
+              content: content
+            };
+          });
+        })).then(function(pages) {
+          var document = {info: pdf.pdfInfo, pages: pages };
+          self.fetchAnnotations(document);
+          self.setState(document);
+        });
+      }
     },
     render: function() {
+      var self = this;
       var fingerprint = this.state.info.fingerprint;
+
       var pages = this.state.pages.map(function (page, idx) {
         var key = fingerprint + page.raw.pageInfo.pageIndex;
         return <Page page={page} key={key} />;
       });
-
       return(<div className="viewer-container">
-               <Scrollbar />
-               <div className="viewer scrollable">{pages}</div>
+               <div className="viewer">
+                 {pages}
+               </div>
              </div>);
     }
   });
