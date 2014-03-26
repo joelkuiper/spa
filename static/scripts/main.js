@@ -4,12 +4,12 @@
 require.config({
   baseUrl: '/static/scripts',
   paths: {
-    'jQuery': ['//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min', 'vendor/jquery'],
-    'jQuery.injectCSS': ['vendor/jquery.injectCSS'],
-    'underscore': ['//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min', 'vendor/underscore'],
-    'Q': ['//cdnjs.cloudflare.com/ajax/libs/q.js/1.0.0/q.min', 'vendor/q'],
-    'react': ['//cdnjs.cloudflare.com/ajax/libs/react/0.10.0/react-with-addons.min', 'vendor/react'],
-    'JSXTransformer': ['vendor/JSXTransformer'],
+    'jQuery': 'vendor/jquery',
+    'jQuery.injectCSS': 'vendor/jquery.injectCSS',
+    'underscore': 'vendor/underscore',
+    'Q': 'vendor/q',
+    'react': 'vendor/react',
+    'JSXTransformer': 'vendor/JSXTransformer',
     'text': "text",
     'jsx': "jsx",
     'cortex': 'vendor/cortex',
