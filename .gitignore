@@ -65,3 +65,6 @@ log4.txt
 
 
 pmids.txt
+
+static/build
+static/build/**
