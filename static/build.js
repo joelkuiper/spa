@@ -8,8 +8,6 @@
     // add `optimize=none` to skip script optimization (useful during debugging).
 
     mainConfigFile: "./scripts/main.js",
-    preserveLicenseCsmments: false,
-
     onBuildWrite: function (moduleName, path, singleContents) {
         return singleContents.replace(/jsx!/g, '');
     },
