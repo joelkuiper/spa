@@ -6,9 +6,6 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
   var OUTPUT_SCALE = getOutputScale(document.createElement("canvas").getContext("2d"));
 
   var TextLayer = React.createClass({
-    componentDidUpdate: function() {
-      console.log(this.props.pageIndex, this.getDOMNode().childNodes.length);
-    },
     getNodeAnnotations: _.memoize(function(results, pageIndex, key) {
       var ids = _.pluck(results.result, "id");
       var annotations = _.pluck(results.result, "annotations");
