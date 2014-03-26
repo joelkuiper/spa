@@ -27,22 +27,18 @@ define(['JSXTransformer', 'text'], function (JSXTransformer, text) {
 
   var buildMap = {};
 
-
   var jsx = {
-    version: '0.1.0',
+    version: '0.1.1',
 
     load: function (name, req, onLoadNative, config) {
       var onLoad = function(content) {
         try {
-          if (-1 === content.indexOf('React.DOM')) {
+          if (-1 === content.indexOf('@jsx React.DOM')) {
             content = "/** @jsx React.DOM */\n" + content;
           }
-          content = JSXTransformer.transformCode(content, name);
-
+          content = JSXTransformer.transform(content).code;
         } catch (err) {
-          err.message += ' File: ' + name + '.js: ';
           onLoadNative.error(err);
-          throw err;
         }
 
         if (config.isBuild) {
@@ -52,17 +48,13 @@ define(['JSXTransformer', 'text'], function (JSXTransformer, text) {
         onLoadNative.fromText(content);
       };
 
-      onLoad.error = function(err) {
-        onLoadNative.error(err);
-      };
-
       text.load(name + '.js', req, onLoad, config);
     },
 
     write: function (pluginName, moduleName, write) {
       if (buildMap.hasOwnProperty(moduleName)) {
-        var text = buildMap[moduleName];
-        write.asModule(moduleName, text);
+        var content = buildMap[moduleName];
+        write.asModule(moduleName, content);
       }
     }
   };
