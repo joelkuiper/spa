@@ -3,12 +3,15 @@
 'use strict';
 
 define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(React, _, Q, $, Annotator) {
+  var OUTPUT_SCALE = getOutputScale(document.createElement("canvas").getContext("2d"));
+
   var TextLayer = React.createClass({
     getNodeAnnotations: _.memoize(function(results, pageIndex, key) {
       var ids = _.pluck(results.result, "id");
       var annotations = _.pluck(results.result, "annotations");
-      var nodesForPage = _.map(annotations, function(d) {
-        return _.flatten(_.pluck(_.filter(d, function(dd) { return dd.page == pageIndex; }), "nodes"));
+      var nodesForPage = _.map(annotations, function(a) {
+        return _.flatten(_.pluck(_.filter(a, function(aa) {
+          return aa.page == pageIndex; }), "nodes"));
       });
       return _.object(ids, nodesForPage);
     }, function(results, pageIndex, key) { // hashFunction
@@ -53,59 +56,48 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
     }
   });
 
-  var Page = React.createClass({
-    renderPage: function(pageObj) {
 
+  var Page = React.createClass({
+    renderPage: function(page) {
       var self = this;
-      var page = pageObj.raw;
-      var content = pageObj.content;
+      var content = page.content;
+      page = page.raw;
+
+      var container = this.getDOMNode();
 
       var canvas = this.refs.canvas.getDOMNode();
-      var container = this.refs.container.getDOMNode();
       var textLayerDiv = this.refs.textLayer.getDOMNode();
-      var context = canvas.getContext("2d");
+      var ctx = canvas.getContext("2d");
 
       var SCROLLBAR_PADDING = 0;
       var viewport = page.getViewport(1.0);
-
       var pageWidthScale = (container.clientWidth - SCROLLBAR_PADDING) / viewport.width;
       viewport = page.getViewport(pageWidthScale);
 
-      //Checks scaling on the context if we are on a HiDPI display
-      var outputScale = getOutputScale(context);
-      context._scaleX = outputScale.sx;
-      context._scaleY = outputScale.sy;
+      canvas.width = (Math.floor(viewport.width) * OUTPUT_SCALE.sx) | 0;
+      canvas.height = (Math.floor(viewport.height) * OUTPUT_SCALE.sy) | 0;
+      canvas.style.width = Math.floor(viewport.width) + 'px';
+      canvas.style.height = Math.floor(viewport.height) + 'px';
+      // Add the viewport so it's known what it was originally drawn with.
+      canvas._viewport = viewport;
 
-      if (outputScale.scaled) {
-        // scale up canvas (since the -transform reduces overall dimensions and not just the contents)
-        canvas.height = viewport.height * outputScale.sy;
-        canvas.width = viewport.width * outputScale.sx;
-        var cssScale = 'scale(' + (1 / outputScale.sx) + ', ' + (1 / outputScale.sy) + ')';
-        CustomStyle.setProp('transform', canvas, cssScale);
-        CustomStyle.setProp('transformOrigin', canvas, '0% 0%');
+      textLayerDiv.style.width = canvas.width + 'px';
+      textLayerDiv.style.height = canvas.height + 'px';
 
-        context.scale(outputScale.sx, outputScale.sy);
-
-        // textLayerDiv
-        CustomStyle.setProp('transform', textLayerDiv, cssScale);
-        CustomStyle.setProp('transformOrigin', textLayerDiv, '0% 0%');
-      } else {
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
+      ctx._scaleX = OUTPUT_SCALE.sx;
+      ctx._scaleY = OUTPUT_SCALE.sy;
+      if (OUTPUT_SCALE.scaled) {
+        ctx.scale(OUTPUT_SCALE.sx, OUTPUT_SCALE.sy);
+        var cssScale = 'scale(' + (1 / OUTPUT_SCALE.sx) + ', ' + (1 / OUTPUT_SCALE.sy) + ')';
+        CustomStyle.setProp('transform' , textLayerDiv, cssScale);
+        CustomStyle.setProp('transformOrigin' , textLayerDiv, '0% 0%');
       }
 
-      var containerOffset = $(container).offset();
-      $(textLayerDiv)
-        .css("height", canvas.height + "px")
-        .css("width", canvas.width + "px")
-        .offset({top: containerOffset.top, left: containerOffset.left});
-
       var textLayerBuilder = new TextLayerBuilder();
-
       textLayerBuilder.setTextContent(content);
 
       var renderContext = {
-        canvasContext: context,
+        canvasContext: ctx,
         viewport: viewport,
         textLayer: textLayerBuilder
       };
@@ -113,7 +105,7 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
       // from http://stackoverflow.com/questions/12693207/how-to-know-if-pdf-js-has-finished-rendering
       var pageRendering = page.render(renderContext);
       var completeCallback = pageRendering.internalRenderTask.callback;
-      pageRendering.internalRenderTask.callback = function (error) {
+      pageRendering.internalRenderTask.callback = function(error) {
         completeCallback.call(this, error);
         self.setState({content: textLayerBuilder.getRenderedElements()});
       };
@@ -136,7 +128,7 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
       var pageIndex = this.props.page.raw.pageInfo.pageIndex;
       var key = this.props.key;
       return (
-          <div ref="container" className="page">
+          <div className="page">
             <canvas key={"canvas_" + key} ref="canvas"></canvas>
             <TextLayer ref="textLayer"
                        pageIndex={pageIndex}
