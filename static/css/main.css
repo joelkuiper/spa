@@ -28,6 +28,11 @@ h4, a, .annotated {
     -webkit-transition: background-color 0.05s linear, color 0.05s linear, opacity 0.05s linear;
     transition: background-color 0.05s linear, color 0.05s linear, opacity 0.05s linear;
 }
+
+.viewer-container {
+    overflow: hidden;
+}
+
 /* .scrollbar {
     position: absolute;
     background-color: red;

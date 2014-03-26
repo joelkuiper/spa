@@ -73,25 +73,23 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
       var pageWidthScale = (container.clientWidth - SCROLLBAR_PADDING) / viewport.width;
       viewport = page.getViewport(pageWidthScale);
 
-      //Checks scaling on the ctx if we are on a HiDPI display
-      var outputScale = getOutputScale(ctx);
+      canvas.width = (Math.floor(viewport.width) * OUTPUT_SCALE.sx) | 0;
+      canvas.height = (Math.floor(viewport.height) * OUTPUT_SCALE.sy) | 0;
+      canvas.style.width = Math.floor(viewport.width) + 'px';
+      canvas.style.height = Math.floor(viewport.height) + 'px';
+      // Add the viewport so it's known what it was originally drawn with.
+      canvas._viewport = viewport;
 
-      if (outputScale.scaled) {
-        // scale up canvas (since the -transform reduces overall dimensions and not just the contents)
-        canvas.width = (Math.floor(viewport.width) * outputScale.sx) | 0;
-        canvas.height = (Math.floor(viewport.height) * outputScale.sy) | 0;
-        var cssScale = 'scale(' + (1 / outputScale.sx) + ', ' + (1 / outputScale.sy) + ')';
-        CustomStyle.setProp('transform', canvas, cssScale);
-        CustomStyle.setProp('transformOrigin', canvas, '0% 0%');
+      textLayerDiv.style.width = canvas.width + 'px';
+      textLayerDiv.style.height = canvas.height + 'px';
 
-        ctx.scale(outputScale.sx, outputScale.sy);
-
-        // textLayerDiv
-        CustomStyle.setProp('transform', textLayerDiv, cssScale);
-        CustomStyle.setProp('transformOrigin', textLayerDiv, '0% 0%');
-      } else {
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
+      ctx._scaleX = OUTPUT_SCALE.sx;
+      ctx._scaleY = OUTPUT_SCALE.sy;
+      if (OUTPUT_SCALE.scaled) {
+        ctx.scale(OUTPUT_SCALE.sx, OUTPUT_SCALE.sy);
+        var cssScale = 'scale(' + (1 / OUTPUT_SCALE.sx) + ', ' + (1 / OUTPUT_SCALE.sy) + ')';
+        CustomStyle.setProp('transform' , textLayerDiv, cssScale);
+        CustomStyle.setProp('transformOrigin' , textLayerDiv, '0% 0%');
       }
 
       var textLayerBuilder = new TextLayerBuilder();
