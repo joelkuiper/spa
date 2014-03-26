@@ -1,1 +1,413 @@
-!function t(e,r,i){function s(_,o){if(!r[_]){if(!e[_]){var p="function"==typeof require&&require;if(!o&&p)return p(_,!0);if(n)return n(_,!0);throw new Error("Cannot find module '"+_+"'")}var u=r[_]={exports:{}};e[_][0].call(u.exports,function(t){var r=e[_][1][t];return s(r?r:t)},u,u.exports,t,e,r,i)}return r[_].exports}for(var n="function"==typeof require&&require,_=0;_<i.length;_++)s(i[_]);return s}({1:[function(t,e){var r=function(t,e){for(var r=0,i=e.length;i>r;r++)for(var s in e[r])t.prototype[s]=e[r][s]};e.exports=function(t,e){function i(t,e,r){this.__eventId=r,this.__value=t,this.__path=e||[],this.__wrap()}return i.prototype.set=function(t,r){e.publish("update"+this.__eventId,{value:t,path:this.__path,forceUpdate:r})},i.prototype.getValue=function(){return this.__value},i.prototype.val=i.prototype.getValue,i.prototype.getPath=function(){return this.__path},i.prototype.getKey=function(){return this.__path[this.__path.length-1]},i.prototype.forEach=function(t){if(this.__isObject())for(var e in this.__wrappers)t(e,this.__wrappers[e],this.__wrappers);else this.__isArray()&&this.__wrappers.forEach(t)},i.prototype.remove=function(){e.publish("remove"+this.__eventId,{path:this.__path})},i.prototype.__wrap=function(){var t;if(this.__cleanup(),this.__isObject()){this.__wrappers={};for(var e in this.__value)t=this.__path.slice(),t.push(e),this.__wrappers[e]=new i(this.__value[e],t,this.__eventId),this[e]=this.__wrappers[e]}else if(this.__isArray()){this.__wrappers=[];for(var r=0,s=this.__value.length;s>r;r++)t=this.__path.slice(),t.push(r),this.__wrappers[r]=new i(this.__value[r],t,this.__eventId),this[r]=this.__wrappers[r]}},i.prototype.__cleanup=function(){if(this.__wrappers){if(this.__isObject())for(var t in this.__wrappers)delete this[t];else if(this.__isArray())for(var e=0,r=this.__wrappers.length;r>e;e++)delete this[e];delete this.__wrappers}},i.prototype.__forceUpdate=function(){this.set(this.__value,!0)},i.prototype.__isObject=function(){return this.__value&&this.__value.constructor===Object},i.prototype.__isArray=function(){return this.__value&&this.__value.constructor===Array},r(i,t),i}},{}],2:[function(t,e){var r=t("./pubsub"),i=t("./wrappers/array"),s=t("./wrappers/hash"),n=t("./data_wrapper")([i,s],r),_={}.hasOwnProperty,o=function(t,e){function r(){this.constructor=t}for(var i in e)_.call(e,i)&&(t[i]=e[i]);return r.prototype=e.prototype,t.prototype=new r,t.__super__=e.prototype,t},p=function(t,e){function r(t,e){this.__value=t,this.__path=[],this.__callback=e,this.__subscribe(),this.__wrap()}return o(r,t),r.prototype.update=function(t,e,r){return r||this.__shouldUpdate(t,e)?(this.__setValue(t,e),this.__rewrap(e),this.__callback?this.__callback(this):void 0):!1},r.prototype.__subscribe=function(){this.__eventId=e.subscribeToCortex(function(t,e){this.update(e.value,e.path,e.forceUpdate)}.bind(this),function(t,e){this.__remove(e.path)}.bind(this))},r.prototype.__remove=function(t){if(t.length){var e=t.slice(0,t.length-1),r=this.__subValue(e),i=t[t.length-1],s=r[i];return r.constructor===Object?delete r[i]:r.constructor===Array&&r.splice(i,1),this.update(r,e,!0),s}delete this.__wrappers,delete this.__value},r.prototype.__rewrap=function(t){for(var e=t.slice(0,t.length-1),r=this,i=0,s=e.length;s>i;i++)r=r[e[i]];r.__wrap()},r.prototype.__setValue=function(t,e){if(e.length>1){var r=this.__subValue(e.slice(0,e.length-1));r[e[e.length-1]]=t}else 1===e.length?this.__value[e[0]]=t:this.__value=t},r.prototype.__subValue=function(t){for(var e=this.__value,r=0,i=t.length;i>r;r++)e=e[t[r]];return e},r.prototype.__shouldUpdate=function(t,e){for(var r=this.__value,i=0,s=e.length;s>i;i++)r=r[e[i]];return this.__isDifferent(r,t)},r.prototype.__isDifferent=function(t,e){if(t&&t.constructor===Object){if(!e||e.constructor!==Object||this.__isDifferent(Object.keys(t).sort(),Object.keys(e).sort()))return!0;for(var r in t)if(this.__isDifferent(t[r],e[r]))return!0}else{if(!t||t.constructor!==Array)return t!==e;if(!e||e.constructor!==Array||t.length!==e.length)return!0;for(var i=0,s=t.length;s>i;i++)if(this.__isDifferent(t[i],e[i]))return!0}},r}(n,r);"undefined"!=typeof window&&null!==window&&(window.Cortex=p),e.exports=p},{"./data_wrapper":1,"./pubsub":3,"./wrappers/array":4,"./wrappers/hash":5}],3:[function(t,e){var r=function(){function t(){this.uid=-1,this.topics={}}return t.prototype.subscribe=function(t,e){this.topics.hasOwnProperty(t)||(this.topics[t]=[]),this.topics[t].push({callback:e})},t.prototype.publish=function(t,e){if(!this.topics.hasOwnProperty(t))return!1;var r=this.topics[t],i=function(){for(var i=0,s=r.length;s>i;i++)r[i].callback(t,e)};return i(),!0},t.prototype.subscribeToCortex=function(t,e){return this.uid+=1,this.subscribe("update"+this.uid,t),this.subscribe("remove"+this.uid,e),this.uid},t.prototype.unsubscribeFromCortex=function(t){delete this.topics["update"+t],delete this.topics["remove"+t]},t}();e.exports=new r},{}],4:[function(t,e){var r={count:function(){return this.__value.length},map:function(t){return this.__wrappers.map(t)},find:function(t){for(var e=0,r=this.__wrappers.length;r>e;e++)if(t(this.__wrappers[e],e,this.__wrappers))return this.__wrappers[e];return null},findIndex:function(t){for(var e=0,r=this.__wrappers.length;r>e;e++)if(t(this.__wrappers[e],e,this.__wrappers))return e;return-1},push:function(t){var e=this.__value.push(t);return this.__forceUpdate(),e},pop:function(){var t=this.__value.pop();return this.__forceUpdate(),t},insertAt:function(t,e){var r=[t,0].concat(e);Array.prototype.splice.apply(this.__value,r),this.__forceUpdate()},removeAt:function(t,e){(isNaN(e)||0>=e)&&(e=1);var r=this.__value.splice(t,e);return this.__forceUpdate(),r}};e.exports=r},{}],5:[function(t,e){var r={keys:function(){return Object.keys(this.__value)},values:function(){var t,e=[];for(t in this.__value)e.push(this.__value[t]);return e},hasKey:function(t){return null!=this.__value[t]},"delete":function(t){var e=this.__value[t];return delete this.__value[t],this.__forceUpdate(),e},add:function(t,e){return this.__value[t]=e,this.__forceUpdate(),e}};e.exports=r},{}]},{},[2]);
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+var __include = function(klass, mixins) {
+  for(var i=0,ii=mixins.length;i<ii;i++) {
+    for(var methodName in mixins[i]) {
+      klass.prototype[methodName] = mixins[i][methodName];
+    }
+  }
+};
+
+module.exports = function(_mixins, _cortexPubSub) {
+  function DataWrapper(value, path, eventId) {
+    this.__eventId = eventId;
+    this.__value = value;
+    this.__path = path || [];
+    this.__wrap();
+  }
+
+  DataWrapper.prototype.set = function(value, forceUpdate) {
+    _cortexPubSub.publish("update" + this.__eventId, {value: value, path: this.__path, forceUpdate: forceUpdate});
+  };
+
+  DataWrapper.prototype.getValue = function() {
+    return this.__value;
+  };
+
+  // Short alias for getValue
+  DataWrapper.prototype.val = DataWrapper.prototype.getValue;
+
+  DataWrapper.prototype.getPath = function() {
+    return this.__path;
+  };
+
+  DataWrapper.prototype.getKey = function() {
+    return this.__path[this.__path.length - 1];
+  };
+
+  DataWrapper.prototype.forEach = function(callback) {
+    if(this.__isObject()) {
+      for(var key in this.__wrappers) {
+        callback(key, this.__wrappers[key], this.__wrappers);
+      }
+    } else if(this.__isArray()) {
+      this.__wrappers.forEach(callback);
+    }
+  };
+
+  DataWrapper.prototype.remove = function() {
+    _cortexPubSub.publish("remove" + this.__eventId, {path: this.__path});
+  };
+
+  // Recursively wrap data if @value is a hash or an array.
+  // Otherwise there's no need to further wrap primitive or other class instances
+  DataWrapper.prototype.__wrap = function() {
+    var path;
+    this.__cleanup();
+
+    if(this.__isObject()) {
+      this.__wrappers = {};
+      for(var key in this.__value) {
+        path = this.__path.slice();
+        path.push(key);
+        this.__wrappers[key] = new DataWrapper(this.__value[key], path, this.__eventId);
+        this[key] = this.__wrappers[key];
+      }
+    } else if (this.__isArray()) {
+      this.__wrappers = [];
+      for(var index = 0, ii = this.__value.length;index < ii; index++) {
+        path = this.__path.slice();
+        path.push(index);
+        this.__wrappers[index] = new DataWrapper(this.__value[index], path, this.__eventId);
+        this[index] = this.__wrappers[index];
+      }
+    }
+  };
+
+  DataWrapper.prototype.__cleanup = function() {
+    if(this.__wrappers) {
+      if(this.__isObject()) {
+        for(var key in this.__wrappers) {
+          delete this[key];
+        }
+      } else if(this.__isArray()) {
+        for(var i=0,ii=this.__wrappers.length;i<ii;i++) {
+          delete this[i];
+        }
+      }
+      delete this.__wrappers;
+    }
+  };
+
+  DataWrapper.prototype.__forceUpdate = function() {
+    this.set(this.__value, true);
+  };
+
+  DataWrapper.prototype.__isObject = function() {
+    return this.__value && this.__value.constructor === Object;
+  };
+
+  DataWrapper.prototype.__isArray = function() {
+    return this.__value && this.__value.constructor === Array;
+  };
+
+  __include(DataWrapper, _mixins);
+
+  return DataWrapper;
+};
+
+},{}],2:[function(require,module,exports){
+var cortexPubSub = require("./pubsub"),
+ArrayWrapper = require("./wrappers/array"),
+HashWrapper = require("./wrappers/hash"),
+DataWrapper = require("./data_wrapper")([ArrayWrapper, HashWrapper], cortexPubSub),
+__hasProp = {}.hasOwnProperty,
+__extends = function(child, parent) {
+  for (var key in parent) {
+    if (__hasProp.call(parent, key))
+      child[key] = parent[key];
+  }
+  function ctor() {
+    this.constructor = child;
+  }
+  ctor.prototype = parent.prototype;
+  child.prototype = new ctor();
+  child.__super__ = parent.prototype;
+  return child;
+},
+
+Cortex = (function(_super, _cortexPubSub) {
+  function Cortex(value, callback) {
+    this.__value = value;
+    this.__path = [];
+    this.__callback = callback;
+    this.__subscribe();
+    this.__wrap();
+  }
+
+  __extends(Cortex, _super);
+
+  Cortex.prototype.update = function(newValue, path, forceUpdate) {
+    if(!forceUpdate && !this.__shouldUpdate(newValue, path)) {
+      return false;
+    }
+
+    this.__setValue(newValue, path);
+    this.__rewrap(path);
+
+    if(this.__callback) {
+      return this.__callback(this);
+    }
+  };
+
+  Cortex.prototype.__subscribe = function() {
+    this.__eventId = _cortexPubSub.subscribeToCortex((function(topic, data) {
+      this.update(data.value, data.path, data.forceUpdate);
+    }).bind(this), (function(topic, data) {
+      this.__remove(data.path);
+    }).bind(this));
+  };
+
+  Cortex.prototype.__remove = function(path) {
+    if(path.length) {
+      var subPath = path.slice(0, path.length -1),
+          subValue = this.__subValue(subPath),
+          key = path[path.length - 1],
+          removed = subValue[key];
+      if(subValue.constructor === Object) {
+        delete subValue[key];
+      } else if(subValue.constructor === Array) {
+        subValue.splice(key, 1);
+      }
+      this.update(subValue, subPath, true);
+      return removed;
+    } else {
+      delete this.__wrappers;
+      delete this.__value;
+    }
+  };
+
+  // Re-wrap starting at the parent of the subtree of target node.
+  Cortex.prototype.__rewrap = function(path) {
+    var subPath = path.slice(0, path.length - 1),
+        subWrapper = this;
+    for(var i=0, ii = subPath.length;i<ii;i++) {
+      subWrapper = subWrapper[subPath[i]];
+    }
+    subWrapper.__wrap();
+  };
+
+  Cortex.prototype.__setValue = function(newValue, path) {
+    /*
+      When saving an object to a variable it's pass by reference, but when doing so for a primitive value
+      it's pass by value. We avoid this pass by value problem by only setting subValue when path length is greater
+      than 2 (meaning it can't never be a primitive). When path length is 0 or 1 we set the value directly.
+    */
+    if(path.length > 1) {
+      var subValue = this.__subValue(path.slice(0, path.length - 1));
+      subValue[path[path.length-1]] = newValue;
+    } else if(path.length === 1) {
+      this.__value[path[0]] = newValue;
+    } else {
+      this.__value = newValue;
+    }
+  };
+
+  Cortex.prototype.__subValue = function(path) {
+    var subValue = this.__value;
+    for(var i=0, ii = path.length;i<ii;i++) {
+      subValue = subValue[path[i]];
+    }
+    return subValue;
+  };
+
+  // Check whether newValue is different, if not then return false to bypass rewrap and running callback.
+  Cortex.prototype.__shouldUpdate = function(newValue, path) {
+    var oldValue = this.__value;
+    for(var i=0, ii=path.length;i<ii;i++) {
+      oldValue = oldValue[path[i]];
+    }
+    return this.__isDifferent(oldValue, newValue);
+  };
+
+  // Recursively performs comparison b/w old and new data
+  Cortex.prototype.__isDifferent = function(oldValue, newValue) {
+    if(oldValue && oldValue.constructor === Object) {
+      if(!newValue || newValue.constructor !== Object ||
+          this.__isDifferent(Object.keys(oldValue).sort(), Object.keys(newValue).sort())) {
+        return true;
+      }
+      for(var key in oldValue) {
+        if(this.__isDifferent(oldValue[key], newValue[key])) {
+          return true;
+        }
+      }
+    } else if(oldValue && oldValue.constructor === Array) {
+      if(!newValue || newValue.constructor !== Array || oldValue.length !== newValue.length) {
+        return true;
+      }
+      for(var i=0, ii=oldValue.length;i<ii;i++) {
+        if(this.__isDifferent(oldValue[i], newValue[i])) {
+          return true;
+        }
+      }
+    } else {
+      return oldValue !== newValue;
+    }
+  };
+
+  return Cortex;
+})(DataWrapper, cortexPubSub);
+
+if(typeof window !== "undefined" && window !== null) {
+  window.Cortex = Cortex;
+}
+
+module.exports = Cortex;
+
+},{"./data_wrapper":1,"./pubsub":3,"./wrappers/array":4,"./wrappers/hash":5}],3:[function(require,module,exports){
+var PubSub = (function() {
+  function PubSub() {
+    this.uid = -1;
+    this.topics = {};
+  }
+
+  PubSub.prototype.subscribe = function(topic, callback) {
+    if(!this.topics.hasOwnProperty(topic)) {
+      this.topics[topic] = [];
+    }
+    this.topics[topic].push({callback: callback});
+  };
+
+
+  PubSub.prototype.publish = function(topic, data) {
+    if(!this.topics.hasOwnProperty(topic)) {
+      return false;
+    }
+
+    var subscribers = this.topics[topic];
+    var notify = function() {
+      for(var i=0, ii=subscribers.length;i < ii;i++) {
+        subscribers[i].callback(topic, data);
+      }
+    };
+
+    notify();
+
+    return true;
+  };
+
+  // Add both update and remove subscriptions with 1 call.
+  // Return the unique id so each cortex can handle its own event id.
+  PubSub.prototype.subscribeToCortex = function(updateCallback, removeCallback) {
+    this.uid += 1;
+    this.subscribe("update" + this.uid, updateCallback);
+    this.subscribe("remove" + this.uid, removeCallback);
+    return this.uid;
+  };
+
+  PubSub.prototype.unsubscribeFromCortex = function(topicId) {
+    delete this.topics["update" + topicId];
+    delete this.topics["remove" + topicId];
+  };
+
+  return PubSub;
+})();
+
+module.exports = new PubSub();
+
+},{}],4:[function(require,module,exports){
+var ArrayWrapper = {
+  count: function() {
+    return this.__value.length;
+  },
+
+  map: function(callback) {
+    return this.__wrappers.map(callback);
+  },
+
+  find: function(callback) {
+    for(var index = 0, length = this.__wrappers.length;index < length;index++) {
+      if(callback(this.__wrappers[index], index, this.__wrappers)) {
+        return this.__wrappers[index];
+      }
+    }
+    return null;
+  },
+
+  findIndex: function(callback) {
+    for(var index = 0, length = this.__wrappers.length;index < length;index++) {
+      if(callback(this.__wrappers[index], index, this.__wrappers)) {
+        return index;
+      }
+    }
+    return -1;
+  },
+
+  push: function(value) {
+    var length = this.__value.push(value);
+    this.__forceUpdate();
+    return length;
+  },
+
+  pop: function() {
+    var last = this.__value.pop();
+    this.__forceUpdate();
+    return last;
+  },
+
+  unshift: function(value) {
+    var length = this.__value.unshift(value);
+    this.__forceUpdate();
+    return length;
+  },
+
+  shift: function() {
+    var last = this.__value.shift();
+    this.__forceUpdate();
+    return last;
+  },
+
+  insertAt: function(index, value) {
+    var args = [index, 0].concat(value);
+    Array.prototype.splice.apply(this.__value, args);
+    this.__forceUpdate();
+  },
+
+  removeAt: function(index, howMany) {
+    if(isNaN(howMany) || howMany <= 0) {
+      howMany = 1;
+    }
+    var removed = this.__value.splice(index, howMany);
+    this.__forceUpdate();
+    return removed;
+  }
+};
+
+module.exports = ArrayWrapper;
+
+},{}],5:[function(require,module,exports){
+var HashWrapper = {
+  keys: function() {
+    return Object.keys(this.__value);
+  },
+
+  values: function() {
+    var key,
+        values = [];
+    for (key in this.__value) {
+      values.push(this.__value[key]);
+    }
+    return values;
+  },
+
+  hasKey: function(key) {
+    return this.__value[key] != null;
+  },
+
+  delete: function(key) {
+    var removed = this.__value[key];
+    delete this.__value[key];
+    this.__forceUpdate();
+    return removed;
+  },
+
+  add: function(key, value) {
+    this.__value[key] = value;
+    this.__forceUpdate();
+    return value;
+  }
+};
+
+module.exports = HashWrapper;
+
+},{}]},{},[2])
