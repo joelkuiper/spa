@@ -1,9 +1,10 @@
-/* -*- tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2; js-indent-level: 2; -*- */
+/* -*- mode: js2; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2; js2-basic-offset: 2 -*- */
 
 'use strict';
 
 define(['react', 'jsx!components/results', 'jsx!components/viewer', 'PDFJS'], function(React, Results, Viewer, PDFJS) {
   PDFJS.workerSrc = 'static/scripts/vendor/pdfjs/pdf.worker.js';
+
 
   // from http://stackoverflow.com/questions/12092633/pdf-js-rendering-a-pdf-file-using-a-base64-file-source-instead-of-url
   var BASE64_MARKER = ';base64,';
