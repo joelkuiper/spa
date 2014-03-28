@@ -3,7 +3,6 @@
 'use strict';
 
 define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(React, _, Q, $, Annotator) {
-  var OUTPUT_SCALE = getOutputScale(document.createElement("canvas").getContext("2d"));
 
   var TextLayer = React.createClass({
     getNodeAnnotations: _.memoize(function(results, pageIndex, key) {
@@ -73,8 +72,11 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
       var pageWidthScale = (container.clientWidth - SCROLLBAR_PADDING) / viewport.width;
       viewport = page.getViewport(pageWidthScale);
 
-      canvas.width = (Math.floor(viewport.width) * OUTPUT_SCALE.sx) | 0;
-      canvas.height = (Math.floor(viewport.height) * OUTPUT_SCALE.sy) | 0;
+
+      var outputScale = getOutputScale(ctx);
+
+      canvas.width = (Math.floor(viewport.width) * outputScale.sx) | 0;
+      canvas.height = (Math.floor(viewport.height) * outputScale.sy) | 0;
       canvas.style.width = Math.floor(viewport.width) + 'px';
       canvas.style.height = Math.floor(viewport.height) + 'px';
       // Add the viewport so it's known what it was originally drawn with.
@@ -83,11 +85,11 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
       textLayerDiv.style.width = canvas.width + 'px';
       textLayerDiv.style.height = canvas.height + 'px';
 
-      ctx._scaleX = OUTPUT_SCALE.sx;
-      ctx._scaleY = OUTPUT_SCALE.sy;
-      if (OUTPUT_SCALE.scaled) {
-        ctx.scale(OUTPUT_SCALE.sx, OUTPUT_SCALE.sy);
-        var cssScale = 'scale(' + (1 / OUTPUT_SCALE.sx) + ', ' + (1 / OUTPUT_SCALE.sy) + ')';
+      ctx._scaleX = outputScale.sx;
+      ctx._scaleY = outputScale.sy;
+      if (outputScale.scaled) {
+        ctx.scale(outputScale.sx, outputScale.sy);
+        var cssScale = 'scale(' + (1 / outputScale.sx) + ', ' + (1 / outputScale.sy) + ')';
         CustomStyle.setProp('transform' , textLayerDiv, cssScale);
         CustomStyle.setProp('transformOrigin' , textLayerDiv, '0% 0%');
       }
@@ -131,7 +133,7 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
             <canvas key={"canvas_" + key} ref="canvas"></canvas>
             <TextLayer ref="textLayer"
                        pageIndex={pageIndex}
-                       key={key}
+                       key={"textLayer_" + key}
                        content={this.state.content} />
           </div>);
     }
@@ -139,7 +141,7 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
 
   var Display = React.createClass({
     getInitialState: function()  {
-      return  {info: {}, pages: [] };
+      return  {info: {}, pages: []};
     },
     fetchAnnotations: function(document) {
       Annotator.annotate(document)
