@@ -3,6 +3,9 @@
 'use strict';
 require.config({
   baseUrl: '/static/scripts',
+  jsx: {
+    fileExtension: '.jsx'
+  },
   paths: {
     'jQuery': 'vendor/jquery',
     'jQuery.injectCSS': 'vendor/jquery.injectCSS',
