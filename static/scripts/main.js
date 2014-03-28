@@ -16,6 +16,7 @@ require.config({
   shim: {
     'cortex': { exports: 'Cortex' },
     'jQuery': { exports : 'jQuery' },
+    'underscore': { exports : '_' },
     'jQuery.injectCSS': { deps: ['jQuery'] },
     'PDFJS': { 'exports': 'PDFJS', deps: ['vendor/pdfjs/compatibility', 'vendor/pdfjs/ui_utils', 'helpers/text_layer_builder'] }
   }
