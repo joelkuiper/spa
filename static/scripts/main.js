@@ -14,6 +14,7 @@ require.config({
     'react': 'vendor/react',
     'JSXTransformer': 'vendor/JSXTransformer',
     'cortex': 'vendor/cortex',
+    'backbone': 'vendor/backbone',
     'PDFJS': 'vendor/pdfjs/pdf'
   },
   shim: {
@@ -21,7 +22,12 @@ require.config({
     'jQuery': { exports : 'jQuery' },
     'underscore': { exports : '_' },
     'jQuery.injectCSS': { deps: ['jQuery'] },
-    'PDFJS': { 'exports': 'PDFJS', deps: ['vendor/pdfjs/compatibility', 'vendor/pdfjs/ui_utils', 'helpers/text_layer_builder'] }
+    "backbone": {
+      deps: ["jquery", "underscore"],
+      exports: "Backbone" },
+    'PDFJS': {
+      exports: 'PDFJS',
+      deps: ['vendor/pdfjs/compatibility', 'vendor/pdfjs/ui_utils', 'helpers/text_layer_builder'] }
   }
 });
 
