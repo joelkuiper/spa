@@ -3,12 +3,21 @@ define(['react', 'underscore','Q', 'jQuery'], function(React, _, Q, $) {
   'use strict';
 
   var TextLayer = React.createClass({
+    componentDidUpdate: function(prevProps, prevState) {
+      var appState = this.props.appState;
+      var children = this.getDOMNode().childNodes;
+      if(children.length > 0) {
+        var textDivs = appState.get("minimap");
+        textDivs[this.props.pageIndex] = children;
+        appState.trigger("update:minimap");
+      }
+    },
     getNodeAnnotations: function(results, pageIndex, key) {
       var ids = results.pluck("id");
       var annotations = results.pluck("annotations");
       var nodesForPage = _.map(annotations, function(o) {
         return _.flatten(_.pluck(_.filter(o, function(oo) {
-          return oo.page == pageIndex; }), "nodes"));
+          return oo.page === pageIndex; }), "nodes"));
       });
       return _.object(ids, nodesForPage);
     },
@@ -26,7 +35,7 @@ define(['react', 'underscore','Q', 'jQuery'], function(React, _, Q, $) {
 
         var activeClasses = _.object(_.map(classes, function(c) {
           var result = results.find(function(el) {
-            return el.id == c;
+            return el.id === c;
           });
           return [c + "_annotation", result.get("active")];
         }));
@@ -34,6 +43,7 @@ define(['react', 'underscore','Q', 'jQuery'], function(React, _, Q, $) {
         if(activeClasses.length > 0) {
           activeClasses.annotated = true;
         }
+
         return (
             <div style={o.style}
                  dir={o.dir}
@@ -68,21 +78,16 @@ define(['react', 'underscore','Q', 'jQuery'], function(React, _, Q, $) {
       var pageWidthScale = (container.clientWidth - SCROLLBAR_PADDING) / viewport.width;
       viewport = page.getViewport(pageWidthScale);
 
-
       var outputScale = getOutputScale(ctx);
 
       canvas.width = (Math.floor(viewport.width) * outputScale.sx) | 0;
       canvas.height = (Math.floor(viewport.height) * outputScale.sy) | 0;
       canvas.style.width = Math.floor(viewport.width) + 'px';
       canvas.style.height = Math.floor(viewport.height) + 'px';
-      // Add the viewport so it's known what it was originally drawn with.
-      canvas._viewport = viewport;
 
       textLayerDiv.style.width = canvas.width + 'px';
       textLayerDiv.style.height = canvas.height + 'px';
 
-      ctx._scaleX = outputScale.sx;
-      ctx._scaleY = outputScale.sy;
       if (outputScale.scaled) {
         ctx.scale(outputScale.sx, outputScale.sy);
         var cssScale = 'scale(' + (1 / outputScale.sx) + ', ' + (1 / outputScale.sy) + ')';
@@ -130,6 +135,7 @@ define(['react', 'underscore','Q', 'jQuery'], function(React, _, Q, $) {
             <TextLayer ref="textLayer"
                        pageIndex={pageIndex}
                        key={"textLayer_" + key}
+                       appState={this.props.appState}
                        results={this.props.results}
                        content={this.state.content} />
           </div>);
@@ -162,7 +168,10 @@ define(['react', 'underscore','Q', 'jQuery'], function(React, _, Q, $) {
       var fingerprint = this.state.info.fingerprint;
       var pages = this.state.pages.map(function (page, idx) {
         var key = fingerprint + page.raw.pageInfo.pageIndex;
-        return <Page page={page} results={self.props.results} key={key} />;
+        return <Page page={page}
+                     results={self.props.results}
+                     appState={self.props.appState}
+                     key={key} />;
       });
       return(<div className="viewer-container">
                <div className="viewer">{pages}</div>

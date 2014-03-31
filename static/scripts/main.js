@@ -35,17 +35,19 @@ define(function (require) {
   var ResultsState = require("models/results");
 
   var appState = new AppState();
+  window.appState = appState;
+
   var resultsState = new ResultsState();
 
   var FileLoader = require("jsx!components/fileLoader");
   React.renderComponent(
-    FileLoader({model: appState}),
+    FileLoader({model: appState, mimeType: /application\/(x-)?pdf|text\/pdf/}),
     document.getElementById("file-loader")
   );
 
   var Viewer = require("jsx!components/viewer");
   var viewer = React.renderComponent(
-    Viewer({pdf: {}, results: resultsState}),
+    Viewer({pdf: {}, results: resultsState, appState: appState }),
     document.getElementById("viewer")
   );
 
@@ -63,5 +65,17 @@ define(function (require) {
     viewer.forceUpdate();
     results.forceUpdate();
   });
+
+  var Minimap = require("jsx!components/minimap");
+  var minimap = React.renderComponent(
+    Minimap({state: appState}),
+    document.getElementById("minimap")
+  );
+
+  appState.on("update:minimap", function(e) {
+    minimap.forceUpdate();
+  });
+
+
 
 });
