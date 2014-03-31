@@ -1,6 +1,6 @@
 /* -*- tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2; js-indent-level: 2; -*- */
-
 'use strict';
+
 require.config({
   baseUrl: '/static/scripts',
   jsx: {
@@ -13,17 +13,15 @@ require.config({
     'Q': 'vendor/q',
     'react': 'vendor/react',
     'JSXTransformer': 'vendor/JSXTransformer',
-    'cortex': 'vendor/cortex',
     'backbone': 'vendor/backbone',
     'PDFJS': 'vendor/pdfjs/pdf'
   },
   shim: {
-    'cortex': { exports: 'Cortex' },
     'jQuery': { exports : 'jQuery' },
     'underscore': { exports : '_' },
     'jQuery.injectCSS': { deps: ['jQuery'] },
     "backbone": {
-      deps: ["jquery", "underscore"],
+      deps: ["jQuery", "underscore"],
       exports: "Backbone" },
     'PDFJS': {
       exports: 'PDFJS',
