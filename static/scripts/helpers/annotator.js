@@ -58,7 +58,7 @@ define(['jQuery','underscore', 'Q', 'jQuery.injectCSS'], function($, _, Q) {
       });
       return data;
     },
-    annotate: _.memoize(function(document) {
+    annotate: function(document) {
       var self = this;
       var deferred = Q.defer();
       var contents = _.pluck(document.pages, "content");
@@ -73,9 +73,7 @@ define(['jQuery','underscore', 'Q', 'jQuery.injectCSS'], function($, _, Q) {
           deferred.resolve(self._postProcess(data.result));
         }});
       return deferred.promise;
-    }, function(document) {
-      return document.info.fingerprint;
-    })
+    }
   };
 
   return Annotator;
