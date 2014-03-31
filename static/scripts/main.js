@@ -53,7 +53,7 @@ define(function (require) {
     viewer.setProps({pdf: pdf});
   });
 
-  var Results = require("jsx!components/Results");
+  var Results = require("jsx!components/results");
   var results = React.renderComponent(
     Results({results: resultsState}),
     document.getElementById("results")
