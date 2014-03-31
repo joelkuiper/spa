@@ -29,15 +29,39 @@ require.config({
   }
 });
 
-require(['react', 'cortex', 'jsx!components/app'], function (React, Cortex, App) {
-  var appComponent,
-      appData = {results: {}};
-  window.appState = new Cortex(appData, function(updatedApp) {
-    appComponent.setProps({});
+define(function (require) {
+  var React = require("react");
+  var AppState = require("models/appState");
+  var ResultsState = require("models/results");
+
+  var appState = new AppState();
+  var resultsState = new ResultsState();
+
+  var FileLoader = require("jsx!components/fileLoader");
+  React.renderComponent(
+    FileLoader({model: appState}),
+    document.getElementById("file-loader")
+  );
+
+  var Viewer = require("jsx!components/viewer");
+  var viewer = React.renderComponent(
+    Viewer({pdf: {}, results: resultsState}),
+    document.getElementById("viewer")
+  );
+
+  appState.on("change:pdf", function(e, pdf) {
+    viewer.setProps({pdf: pdf});
   });
 
-  appComponent = React.renderComponent(
-    App(),
-    document.getElementById('app')
+  var Results = require("jsx!components/Results");
+  var results = React.renderComponent(
+    Results({results: resultsState}),
+    document.getElementById("results")
   );
+
+  resultsState.on("all", function(e, obj) {
+    viewer.forceUpdate();
+    results.forceUpdate();
+  });
+
 });

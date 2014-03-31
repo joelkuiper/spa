@@ -52,8 +52,7 @@ define(['jQuery','underscore', 'Q', 'jQuery.injectCSS'], function($, _, Q) {
   var Annotator = {
     _postProcess: function(data) {
       data = _.clone(data);
-      data.id = randomId(8);
-      _.each(data.result, function(result, idx) {
+      _.each(data, function(result, idx) {
         var id = toClassName(result.name);
         result.active = idx == 0 ? true : false;
         result.id = id;
@@ -73,7 +72,7 @@ define(['jQuery','underscore', 'Q', 'jQuery.injectCSS'], function($, _, Q) {
         dataType: 'json',
         async: true,
         success: function(data) {
-          deferred.resolve(self._postProcess(data));
+          deferred.resolve(self._postProcess(data.result));
         }});
       return deferred.promise;
     }, function(document) {

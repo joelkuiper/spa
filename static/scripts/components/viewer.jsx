@@ -2,22 +2,20 @@
 
 'use strict';
 
-define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(React, _, Q, $, Annotator) {
+define(['react', 'underscore','Q', 'jQuery'], function(React, _, Q, $) {
 
   var TextLayer = React.createClass({
-    getNodeAnnotations: _.memoize(function(results, pageIndex, key) {
-      var ids = _.pluck(results.result, "id");
-      var annotations = _.pluck(results.result, "annotations");
+    getNodeAnnotations: function(results, pageIndex, key) {
+      var ids = results.pluck("id");
+      var annotations = results.pluck("annotations");
       var nodesForPage = _.map(annotations, function(o) {
         return _.flatten(_.pluck(_.filter(o, function(oo) {
           return oo.page == pageIndex; }), "nodes"));
       });
       return _.object(ids, nodesForPage);
-    }, function(results, pageIndex, key) { // hashFunction
-      return pageIndex + key + results.id;
-    }),
+    },
     render: function() {
-      var results = window.appState.results.getValue();
+      var results = this.props.results;
       var pageIndex = this.props.pageIndex;
       var key = this.props.key;
       var annotations = this.getNodeAnnotations(results, pageIndex, key);
@@ -29,10 +27,10 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
           return  _.contains(a[1], i) ? a[0] : null; }), _.isString);
 
         var activeClasses = _.object(_.map(classes, function(c) {
-          var result = window.appState.results.result.find(function(el) {
-            return el.id.val() == c;
+          var result = results.find(function(el) {
+            return el.id == c;
           });
-          return [c + "_annotation", result.active.val()];
+          return [c + "_annotation", result.get("active")];
         }));
 
         if(activeClasses.length > 0) {
@@ -134,6 +132,7 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
             <TextLayer ref="textLayer"
                        pageIndex={pageIndex}
                        key={"textLayer_" + key}
+                       results={this.props.results}
                        content={this.state.content} />
           </div>);
     }
@@ -143,43 +142,32 @@ define(['react', 'underscore','Q', 'jQuery', 'helpers/annotator'], function(Reac
     getInitialState: function()  {
       return  {info: {}, pages: []};
     },
-    fetchAnnotations: function(document) {
-      Annotator.annotate(document)
-        .then(function(results) {
-          window.appState.results.set(results);
-        });
-    },
     componentWillReceiveProps: function(nextProps) {
       var self = this;
       var pdf = nextProps.pdf;
-      if(this.state.info.fingerprint !== nextProps.pdf.pdfInfo.fingerprint) {
-        var pages = _.map(_.range(1, pdf.numPages + 1), function(pageNr) {
-          return pdf.getPage(pageNr);
-        });
+      var pages = _.map(_.range(1, pdf.numPages + 1), function(pageNr) {
+        return pdf.getPage(pageNr);
+      });
 
-        Q.all(_.invoke(pages, "then", function(page) {
-          return page.getTextContent().then(function(content) {
-            return {raw: page, content: content};
-          });
-        })).then(function(pages) {
-          var document = {info: pdf.pdfInfo, pages: pages };
-          self.fetchAnnotations(document);
-          self.setState(document);
+      Q.all(_.invoke(pages, "then", function(page) {
+        return page.getTextContent().then(function(content) {
+          return {raw: page, content: content};
         });
-      }
+      })).then(function(pages) {
+        var document = {info: pdf.pdfInfo, pages: pages };
+        self.setState(document);
+        self.props.results.fetch(document);
+      });
     },
     render: function() {
       var self = this;
       var fingerprint = this.state.info.fingerprint;
-
       var pages = this.state.pages.map(function (page, idx) {
         var key = fingerprint + page.raw.pageInfo.pageIndex;
-        return <Page page={page} key={key} />;
+        return <Page page={page} results={self.props.results} key={key} />;
       });
       return(<div className="viewer-container">
-               <div className="viewer">
-                 {pages}
-               </div>
+               <div className="viewer">{pages}</div>
              </div>);
     }
   });
