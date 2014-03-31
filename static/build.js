@@ -15,7 +15,7 @@
     modules: [
         {
             name: "main",
-            exclude: ["jsx", "PDFJS", "react"]
+            exclude: ["jsx", "PDFJS"]
         }
     ]
 })
