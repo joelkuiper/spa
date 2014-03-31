@@ -19,16 +19,6 @@ define(['jQuery','underscore', 'Q', 'jQuery.injectCSS'], function($, _, Q) {
          [166,118,29],
          [102,102,102]];
 
-  function randomId(size, prefix) {
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-    for(var i = 0; i < size; i++ ) {
-      text += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
-    return prefix ? prefix + text : text;
-  }
-
   function toClassName(str) {
     return str ? str.replace(/ /g, "-").toLowerCase() : null;
   };
