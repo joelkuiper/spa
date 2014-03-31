@@ -1,8 +1,6 @@
 /* -*- mode: js2; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2; js2-basic-offset: 2 -*- */
-
-'use strict';
-
 define(['react', 'underscore','Q', 'jQuery'], function(React, _, Q, $) {
+  'use strict';
 
   var TextLayer = React.createClass({
     getNodeAnnotations: function(results, pageIndex, key) {

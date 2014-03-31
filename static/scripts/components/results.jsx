@@ -1,7 +1,7 @@
 /* -*- tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2; js-indent-level: 2 -*- */
-'use strict';
-
 define(['jQuery', 'underscore', 'react'], function($, _, React) {
+  'use strict';
+
   var succinct = function(str, options){
     // kindly from https://github.com/micjamking/Succinct
     var defaults = {

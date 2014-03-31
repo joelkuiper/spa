@@ -1,7 +1,7 @@
 /* -*- tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2; js-indent-level: 2; -*- */
-'use strict';
-
 define(['backbone', 'helpers/annotator'], function(Backbone, Annotator) {
+  'use strict';
+
   var Result = Backbone.Model.extend({
     defaults: {
       id: "",
