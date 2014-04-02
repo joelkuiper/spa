@@ -32,7 +32,7 @@ define(['jQuery','underscore', 'Q', 'jQuery.injectCSS'], function($, _, Q) {
     };
     styles["." + id + "_annotation"] = {
       "border-bottom" : "1px solid rgb(" + colorStr + ")",
-      "background-color": "rgba(" + colorStr + ", 0.1)"
+      "background-color": "rgb(" + colorStr + ")"
     };
     $.injectCSS(styles);
   }

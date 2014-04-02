@@ -35,8 +35,6 @@ define(function (require) {
   var ResultsState = require("models/results");
 
   var appState = new AppState();
-  window.appState = appState;
-
   var resultsState = new ResultsState();
 
   var FileLoader = require("jsx!components/fileLoader");
@@ -68,7 +66,7 @@ define(function (require) {
 
   var Minimap = require("jsx!components/minimap");
   var minimap = React.renderComponent(
-    Minimap({state: appState}),
+    Minimap({model: appState, id: "viewer"}),
     document.getElementById("minimap")
   );
 

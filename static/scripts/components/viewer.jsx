@@ -40,12 +40,12 @@ define(['react', 'underscore','Q', 'jQuery'], function(React, _, Q, $) {
           return [c + "_annotation", result.get("active")];
         }));
 
-        if(activeClasses.length > 0) {
+        if(!_.isEmpty(activeClasses)) {
           activeClasses.annotated = true;
         }
 
         return (
-            <div style={o.style}
+            <span style={o.style}
                  dir={o.dir}
                  key={key + i}
                  className={cx(activeClasses)}
@@ -53,7 +53,7 @@ define(['react', 'underscore','Q', 'jQuery'], function(React, _, Q, $) {
                  data-canvas-width={o.canvasWidth}
                  data-font-name={o.fontName}>
             {o.textContent}
-          </div>
+          </span>
         );
       });
       return <div className="textLayer">{textNodes}</div>;
@@ -87,6 +87,12 @@ define(['react', 'underscore','Q', 'jQuery'], function(React, _, Q, $) {
 
       textLayerDiv.style.width = canvas.width + 'px';
       textLayerDiv.style.height = canvas.height + 'px';
+
+      // Add the viewport so it's known what it was originally drawn with.
+      canvas._viewport = viewport;
+
+      ctx._scaleX = outputScale.sx;
+      ctx._scaleY = outputScale.sy;
 
       if (outputScale.scaled) {
         ctx.scale(outputScale.sx, outputScale.sy);

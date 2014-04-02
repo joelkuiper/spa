@@ -28,10 +28,16 @@ html {
 }
 
 .minimap {
-    position: absolute;
-    background-color: red;
     width: 40px;
+    position: absolute;
     height: 100%;
+}
+
+.minimap-node {
+    position: relative;
+    opacity: 1 !important;
+    background-color: rgba(0,0,0,0.2);
+    border: none !important;
 }
 
 .viewer {
@@ -130,7 +136,7 @@ span.head {
     overflow: hidden;
 }
 
-.textLayer > div {
+.textLayer > span {
     color: transparent;
     position: absolute;
     line-height: 1;
@@ -139,6 +145,7 @@ span.head {
 }
 
 .annotated {
+    opacity: 0.1;
     margin: -1px;
     padding: 1px;
 }
