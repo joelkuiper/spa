@@ -4,18 +4,52 @@ define(['react', 'underscore', 'jQuery'], function(React, _, $) {
   'use strict';
   var VisibleArea = React.createClass({
     getInitialState: function() {
-      return {offset: $(this.props.target).scrollTop() / this.props.factor};
+      return {
+        mouseDown: false,
+        offset: $(this.props.target).scrollTop() / this.props.factor
+      };
     },
     componentWillUnmount: function() {
       $(this.props.target).off("scroll");
+      $(this.getDOMNode().parentNode).off("mouseup mousedown mousemove");
     },
     componentDidMount: function() {
       var self = this;
       var $target =  $(this.props.target);
-      $target.on("scroll", function(e) {
+      var scrollTo = function(e, offset) {
+        var y = e.pageY;
+        var scroll = (y - offset) * self.props.factor;
+        $target.scrollTop(scroll);
+      };
+      $target.on("scroll", function() {
         self.setState({offset: $target.scrollTop() / self.props.factor});
-
       });
+      // FIXME THIS SHOULD NOT BE DONE HERE
+      $(this.getDOMNode().parentNode)
+        .on("mouseup", function(e) {
+          self.setState({mouseDown: false});
+        })
+        .on("mousemove", function(e) {
+          if(self.state.mouseDown) {
+            console.log("mouseMove");
+            var offset =  e.pageY - $(self.getDOMNode()).position().top;
+            self.setState({offset: e.pageY - (self.props.height / 2) });
+            scrollTo(e, offset);
+          }
+        })
+        .on("mousedown", function(e) {
+          self.setState({mouseDown: true});
+          var y = e.pageY;
+
+          if (e.target !== self.getDOMNode()) {
+            // Jump to mousedown position
+            var offset = (self.props.height / 2);
+            self.setState({offset: e.pageY - offset});
+            scrollTo(e, offset);
+          }
+          return false;
+
+        });
     },
     render: function() {
       var style = { height: this.props.height,
@@ -100,7 +134,7 @@ define(['react', 'underscore', 'jQuery'], function(React, _, $) {
             "top": Math.floor(segment.position) + "px",
             "height": Math.floor(segment.height) + "px"
           };
-          return(<div className={"text-segment " + segment.className} style={style} />);
+          return(<div key={idx} className={"text-segment " + segment.className} style={style} />);
         });
         var key = fingerprint + idx;
         return <div className="minimap-node" key={key} style={style}>{textSegments}</div>;
