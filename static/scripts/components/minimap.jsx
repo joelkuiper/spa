@@ -31,9 +31,8 @@ define(['react', 'underscore', 'jQuery'], function(React, _, $) {
         })
         .on("mousemove", function(e) {
           if(self.state.mouseDown) {
-            console.log("mouseMove");
-            var offset =  e.pageY - $(self.getDOMNode()).position().top;
-            self.setState({offset: e.pageY - (self.props.height / 2) });
+            var offset = (self.props.height / 2);
+            self.setState({offset: e.pageY -  offset});
             scrollTo(e, offset);
           }
         })
@@ -41,12 +40,10 @@ define(['react', 'underscore', 'jQuery'], function(React, _, $) {
           self.setState({mouseDown: true});
           var y = e.pageY;
 
-          if (e.target !== self.getDOMNode()) {
-            // Jump to mousedown position
-            var offset = (self.props.height / 2);
-            self.setState({offset: e.pageY - offset});
-            scrollTo(e, offset);
-          }
+          // Jump to mousedown position
+          var offset = (self.props.height / 2);
+          self.setState({offset: e.pageY - offset});
+          scrollTo(e, offset);
           return false;
 
         });
