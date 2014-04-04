@@ -66,7 +66,7 @@ define(function (require) {
 
   var Minimap = require("jsx!components/minimap");
   var minimap = React.renderComponent(
-    Minimap({model: appState, id: "viewer"}),
+    Minimap({model: appState, target: "#viewer .viewer"}),
     document.getElementById("minimap")
   );
 

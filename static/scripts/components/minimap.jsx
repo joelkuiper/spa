@@ -2,6 +2,27 @@
 
 define(['react', 'underscore', 'jQuery'], function(React, _, $) {
   'use strict';
+  var VisibleArea = React.createClass({
+    getInitialState: function() {
+      return {offset: $(this.props.target).scrollTop() / this.props.factor};
+    },
+    componentWillUnmount: function() {
+      $(this.props.target).off("scroll");
+    },
+    componentDidMount: function() {
+      var self = this;
+      var $target =  $(this.props.target);
+      $target.on("scroll", function(e) {
+        self.setState({offset: $target.scrollTop() / self.props.factor});
+
+      });
+    },
+    render: function() {
+      var style = { height: this.props.height,
+                    top: this.state.offset };
+      return(<div className="visible-area" style={style}></div>);
+    }
+  });
 
   var Minimap = React.createClass({
     componentDidMount: function() {
@@ -82,11 +103,13 @@ define(['react', 'underscore', 'jQuery'], function(React, _, $) {
           return(<div className={"text-segment " + segment.className} style={style} />);
         });
         var key = fingerprint + idx;
-        console.log(fingerprint, idx, key, "key");
         return <div className="minimap-node" key={key} style={style}>{textSegments}</div>;
       });
 
-      return(<div className="minimap">{pageElements}</div>);
+      return(<div className="minimap">
+             <VisibleArea height={this.state.panelHeight / factor} target={this.props.target} factor={factor} />
+             {pageElements}
+             </div>);
     }
   });
 
