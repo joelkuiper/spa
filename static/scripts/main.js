@@ -31,6 +31,7 @@ require.config({
 
 define(function (require) {
   var React = require("react");
+  var _ = require("underscore");
   var AppState = require("models/appState");
   var ResultsState = require("models/results");
 
@@ -70,9 +71,9 @@ define(function (require) {
     document.getElementById("minimap")
   );
 
-  appState.on("update:minimap", function(e) {
+  appState.on("update:minimap", _.debounce(function(e, obj) {
     minimap.forceUpdate();
-  });
+  }), 100, true);
 
 
 

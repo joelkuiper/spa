@@ -58,7 +58,8 @@ html {
     background-color: #d9d9d9;
 }
 
-.minimap .visible-area:hover {
+.minimap .visible-area:hover,
+.minimap .visible-area:active {
     opacity: 0.5;
     cursor: pointer;
 }

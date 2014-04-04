@@ -99,15 +99,11 @@ define(['react', 'underscore', 'jQuery'], function(React, _, $) {
       var self = this;
       var model = this.props.model;
       var pdfInfo = model.get("pdf").pdfInfo;
-      if(!pdfInfo)  { return <div className="minimap" />; }
+      if(!pdfInfo)  { return <div className="minimap no-pdf" />; }
 
       var fingerprint = pdfInfo.fingerprint;
       var numPages =  pdfInfo.numPages;
       var nodesPerPage = model.get("minimap");
-
-      var textLayersAreDone = numPages === _.filter(nodesPerPage, _.isObject).length;
-      // Check if we're done
-      if(!textLayersAreDone) { return <div className="minimap" />; }
 
       var pages = [];
       for(var i = 0; i < nodesPerPage.length; i++) {
