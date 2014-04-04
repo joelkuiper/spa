@@ -28,15 +28,25 @@ html {
 }
 
 .minimap {
-    width: 40px;
+    width: 30px;
+    margin: 0 5px 0 5px;
     position: absolute;
     height: 100%;
 }
 
 .minimap-node {
     position: relative;
+    border: 1px solid rgba(0,0,0,0.1);
+    background-color: rgba(0,0,0,0.05);
+    margin-bottom: 1px;
+}
+
+.text-segment {
     opacity: 1 !important;
-    background-color: rgba(0,0,0,0.2);
+    position: absolute;
+    right: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.1);
     border: none !important;
 }
 
