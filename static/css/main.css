@@ -58,11 +58,17 @@ html {
     background-color: #d9d9d9;
 }
 
+.minimap:hover,
+.minimap:active {
+    cursor: pointer;
+}
+
 .minimap .visible-area:hover,
 .minimap .visible-area:active {
     opacity: 0.5;
     cursor: pointer;
 }
+
 .minimap .visible-area {
     background-color: #000;
     z-index: 2;
@@ -125,6 +131,16 @@ span.head {
     user-select: none;
 }
 
+canvas {
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+
+    /* Rules below not implemented in browsers yet */
+    -o-user-select: none;
+    user-select: none;
+}
+
 .block h4 a {
     font-family: 'Montserrat', 'Source Sans Pro', sans-serif;
     display: block;
@@ -134,7 +150,7 @@ span.head {
     font-size: 16px;
     padding: 10px 20px;
     color: #444;
-    background: rgba(0,0,0,0.1);
+    background: #d9d9d9;
 }
 
 .block h4 a:hover {
@@ -169,7 +185,7 @@ span.head {
     cursor: text;
 }
 
-.annotated {
+.page .annotated {
     opacity: 0.1;
     margin: -1px;
     padding: 1px;
