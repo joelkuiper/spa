@@ -19,16 +19,6 @@ define(['jQuery','underscore', 'Q', 'jQuery.injectCSS'], function($, _, Q) {
          [166,118,29],
          [102,102,102]];
 
-  function randomId(size, prefix) {
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-    for(var i = 0; i < size; i++ ) {
-      text += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
-    return prefix ? prefix + text : text;
-  }
-
   function toClassName(str) {
     return str ? str.replace(/ /g, "-").toLowerCase() : null;
   };
@@ -41,8 +31,7 @@ define(['jQuery','underscore', 'Q', 'jQuery.injectCSS'], function($, _, Q) {
       "color": "white !important"
     };
     styles["." + id + "_annotation"] = {
-      "border-bottom" : "1px solid rgb(" + colorStr + ")",
-      "background-color": "rgba(" + colorStr + ", 0.1)"
+      "background-color": "rgb(" + colorStr + ")"
     };
     $.injectCSS(styles);
   }
@@ -58,7 +47,7 @@ define(['jQuery','underscore', 'Q', 'jQuery.injectCSS'], function($, _, Q) {
       });
       return data;
     },
-    annotate: _.memoize(function(document) {
+    annotate: function(document) {
       var self = this;
       var deferred = Q.defer();
       var contents = _.pluck(document.pages, "content");
@@ -73,9 +62,7 @@ define(['jQuery','underscore', 'Q', 'jQuery.injectCSS'], function($, _, Q) {
           deferred.resolve(self._postProcess(data.result));
         }});
       return deferred.promise;
-    }, function(document) {
-      return document.info.fingerprint;
-    })
+    }
   };
 
   return Annotator;

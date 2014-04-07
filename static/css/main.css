@@ -23,23 +23,9 @@ html {
     color: #777;
 }
 
-h4, a, .annotated {
-    -moz-transition: background-color 0.05s linear, color 0.05s linear, opacity 0.05s linear;
-    -o-transition: background-color 0.05s linear, color 0.05s linear, opacity 0.05s linear;
-    -webkit-transition: background-color 0.05s linear, color 0.05s linear, opacity 0.05s linear;
-    transition: background-color 0.05s linear, color 0.05s linear, opacity 0.05s linear;
-}
-
 .viewer-container {
     overflow: hidden;
 }
-
-/* .scrollbar {
-    position: absolute;
-    background-color: red;
-    width: 40px;
-    height: 100%;
-} */
 
 .viewer {
     position: absolute;
@@ -47,9 +33,57 @@ h4, a, .annotated {
     height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
-    /* left: 40px;
-       padding-right: 30px; */
+    left: 40px;
+    padding-right: 30px;
 }
+
+.minimap {
+   position: absolute;
+   height: 100%;
+   margin: 0 5px 0 5px;
+}
+
+.minimap-node {
+    width: 30px;
+    position: relative;
+    background-color: #f2f2f2;
+    margin-bottom: 1px;
+}
+
+.text-segment {
+    opacity: 1 !important;
+    position: absolute;
+    right: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.06);
+}
+.minimap:hover,
+.minimap:active {
+    cursor: pointer;
+}
+
+.minimap:hover .visible-area,
+.minimap:active .visible-area {
+    opacity: 0.3;
+    cursor: pointer;
+}
+.minimap .visible-area:hover,
+.minimap .visible-area:active {
+    opacity: 0.4;
+    cursor: pointer;
+}
+
+.minimap .visible-area {
+    background-color: #000;
+    z-index: 2;
+    margin-left: -5px;
+    opacity: 0.2;
+    width: 40px;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
 
 #side {
     position: absolute;
@@ -57,10 +91,8 @@ h4, a, .annotated {
     background-color: white;
     padding: 0.5em;
     top: 0;
-    /* left: calc(60% - 15px);
-    width: calc(40% + 15px); */
-    left: 65%;
-    width: 35%;
+    left: calc(65% - 15px);
+    width: calc(35% + 15px);
     z-index: 100;
     height: 100%;
     overflow: auto;
@@ -103,6 +135,16 @@ span.head {
     user-select: none;
 }
 
+canvas {
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+
+    /* Rules below not implemented in browsers yet */
+    -o-user-select: none;
+    user-select: none;
+}
+
 .block h4 a {
     font-family: 'Montserrat', 'Source Sans Pro', sans-serif;
     display: block;
@@ -112,7 +154,7 @@ span.head {
     font-size: 16px;
     padding: 10px 20px;
     color: #444;
-    background: rgba(0,0,0,0.1);
+    background: #d9d9d9;
 }
 
 .block h4 a:hover {
@@ -139,7 +181,7 @@ span.head {
     overflow: hidden;
 }
 
-.textLayer > div {
+.textLayer > span {
     color: transparent;
     position: absolute;
     line-height: 1;
@@ -147,7 +189,8 @@ span.head {
     cursor: text;
 }
 
-.annotated {
+.page .annotated {
+    opacity: 0.1;
     margin: -1px;
     padding: 1px;
 }
