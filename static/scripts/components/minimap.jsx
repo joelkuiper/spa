@@ -11,7 +11,8 @@ define(['react', 'underscore', 'jQuery'], function(React, _, $) {
     },
     componentWillUnmount: function() {
       $(this.props.target).off("scroll");
-      $(this.getDOMNode().parentNode).off("mouseup mousedown mousemove");
+      $(this.getDOMNode().parentNode).off("mousedown mousemove");
+      $(window).off("mouseup");
     },
     componentDidMount: function() {
       var self = this;
@@ -24,11 +25,12 @@ define(['react', 'underscore', 'jQuery'], function(React, _, $) {
       $target.on("scroll", function() {
         self.setState({offset: $target.scrollTop() / self.props.factor});
       });
-      // FIXME THIS SHOULD NOT BE DONE HERE
+
+      $(window).on("mouseup", function(e) {
+        self.setState({mouseDown: false});
+      });
+
       $(this.getDOMNode().parentNode)
-        .on("mouseup", function(e) {
-          self.setState({mouseDown: false});
-        })
         .on("mousemove", function(e) {
           if(self.state.mouseDown) {
             var offset = (self.props.height / 2);
