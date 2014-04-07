@@ -55,7 +55,7 @@ html {
     position: absolute;
     right: 0;
     left: 0;
-    background-color: rgba(0,0,0,0.1);
+    background-color: #d9d9d9;
 }
 
 .minimap:hover,
