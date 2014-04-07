@@ -11,6 +11,7 @@ define(['react', 'underscore', 'jQuery'], function(React, _, $) {
     },
     componentWillUnmount: function() {
       $(this.props.target).off("scroll");
+      $(window).off("mouseup");
       $(this.getDOMNode().parentNode).off("mouseup mousedown mousemove");
     },
     componentDidMount: function() {
@@ -24,11 +25,14 @@ define(['react', 'underscore', 'jQuery'], function(React, _, $) {
       $target.on("scroll", function() {
         self.setState({offset: $target.scrollTop() / self.props.factor});
       });
-      // FIXME THIS SHOULD NOT BE DONE HERE
+
+      // Needs to be attached to the window
+      // users can start dragging on the scrollbar, but stop anywhere else
+      $(window).on("mouseup", function(e) {
+        self.setState({mouseDown: false});
+      });
+
       $(this.getDOMNode().parentNode)
-        .on("mouseup", function(e) {
-          self.setState({mouseDown: false});
-        })
         .on("mousemove", function(e) {
           if(self.state.mouseDown) {
             var offset = (self.props.height / 2);
@@ -124,8 +128,8 @@ define(['react', 'underscore', 'jQuery'], function(React, _, $) {
         var textNodes = self.projectTextNodes(page.textNodes, factor);
         var textSegments = textNodes.map(function(segment, idx) {
           var style = {
-            "top": Math.ceil(segment.position) + "px",
-            "height": Math.ceil(segment.height) + "px"
+            "top": Math.floor(segment.position + "px"),
+            "height": Math.ceil(segment.height + "px")
           };
           return(<div key={idx} className={"text-segment " + segment.className} style={style} />);
         });
