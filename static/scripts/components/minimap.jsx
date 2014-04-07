@@ -124,8 +124,8 @@ define(['react', 'underscore', 'jQuery'], function(React, _, $) {
         var textNodes = self.projectTextNodes(page.textNodes, factor);
         var textSegments = textNodes.map(function(segment, idx) {
           var style = {
-            "top": Math.floor(segment.position) + "px",
-            "height": Math.floor(segment.height) + "px"
+            "top": Math.ceil(segment.position) + "px",
+            "height": Math.ceil(segment.height) + "px"
           };
           return(<div key={idx} className={"text-segment " + segment.className} style={style} />);
         });
