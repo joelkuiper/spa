@@ -23,7 +23,17 @@ define(['react', 'underscore','Q', 'jQuery'], function(React, _, Q, $) {
         }));
       });
       var result = _.object(ids, nodesForPage);
-      return result;
+      // We have the annotations in {domain_0: [nodes], domain_1: [nodes]} format
+      // However we would like {node_index: [nodes], node_index: [nodes]}
+      var nodes = _.flatten(_.map(_.pairs(result), function(kv) {
+        return _.map(kv[1], function(n) {
+          return _.extend(n, {type: kv[0]}); });
+      }));
+      var nodesPerIndex = _.reduce(nodes, function(memo, node) {
+        memo[node.index] = _.union(memo[node.index] || [], node);
+        return memo;
+      }, {});
+      return nodesPerIndex;
     },
     render: function() {
       var results = this.props.results;
@@ -31,35 +41,45 @@ define(['react', 'underscore','Q', 'jQuery'], function(React, _, Q, $) {
       var key = this.props.key;
       var annotations = this.getNodeAnnotations(results, pageIndex);
 
-      var cx = React.addons.classSet;
       var textNodes = this.props.content.map(function (o,i) {
         if(o.isWhitespace) { return null; }
-        var classes = _.filter(_.map(_.pairs(annotations), function(a) {
-          return  _.contains(_.pluck(a[1], "index"), i) ? a[0] : null;
-        }), _.isString);
-
-        var activeClasses = _.object(_.map(classes, function(c) {
+        var annotation = _.find(annotations[i], function(c) {
           var result = results.find(function(el) {
-            return el.id === c;
+            return el.id == c.type;
           });
-          return [c + "_annotation", result.get("active")];
-        }));
+          return result.get("active");
+        });
 
-        if(!_.isEmpty(activeClasses)) {
-          activeClasses.annotated = true;
+        if(annotation) {
+          var className = annotation.type + "_annotation "
+            , text = o.textContent
+            , left = annotation.range[0] - annotation.interval[0]
+            , right = text.length + (annotation.range[1] - annotation.interval[1])
+            , pre = text.slice(0, left)
+            , content = text.slice(left, right)
+            , post = text.slice(right, text.length);
+          return (
+              <div style={o.style}
+                   dir={o.dir}
+                   key={key + i}
+                   className={className}
+                   data-canvas-width={o.canvasWidth}
+                   data-font-name={o.fontName}>
+              {pre}<span className={className + " annotated"}>{content}</span>{post}
+            </div>
+          );
+
+        } else {
+          return (
+              <div style={o.style}
+                   dir={o.dir}
+                   key={key + i}
+                   data-canvas-width={o.canvasWidth}
+                   data-font-name={o.fontName}>
+              {o.textContent}
+            </div>
+          );
         }
-
-        return (
-            <span style={o.style}
-                 dir={o.dir}
-                 key={key + i}
-                 className={cx(activeClasses)}
-                 data-angle={o.angle}
-                 data-canvas-width={o.canvasWidth}
-                 data-font-name={o.fontName}>
-            {o.textContent}
-          </span>
-        );
       });
       return <div className="textLayer">{textNodes}</div>;
     }

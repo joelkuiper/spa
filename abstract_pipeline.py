@@ -114,8 +114,8 @@ class Pipeline(object):
                                 node["range"] = bound
                             elif j == 0:
                                 node["range"] = (bound[0], node["interval"][1])
-                            elif j == len(nodes):
-                                node["range"] = (interval[0], bound[1])
+                            elif j == len(nodes) - 1:
+                                node["range"] = (node["interval"][0], bound[1])
                             else:
                                 node["range"] = node["interval"]
 

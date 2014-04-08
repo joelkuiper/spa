@@ -181,15 +181,16 @@ canvas {
     overflow: hidden;
 }
 
-.textLayer > span {
+.textLayer > div {
     color: transparent;
     position: absolute;
     line-height: 1;
     white-space: pre;
     cursor: text;
+    background-color: transparent !important;
 }
 
-.page .annotated {
+.textLayer > div span.annotated {
     opacity: 0.1;
     margin: -1px;
     padding: 1px;
