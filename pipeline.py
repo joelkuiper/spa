@@ -8,7 +8,6 @@
 
 from abstract_pipeline import Pipeline
 import pdb
-from indexnumbers import swap_num
 
 # custom tokenizers based on NLTK
 from tokenizers import word_tokenizer, sent_tokenizer
@@ -26,82 +25,9 @@ logger = logging.getLogger(__name__)
 import pprint
 pp = pprint.PrettyPrinter(indent=2)
 
-####
-# bcw -- imports for sample size prediction
-import sample_size_pipeline
-
-
-#from tokenizer import tag_words
 
 CORE_DOMAINS = ["Random sequence generation", "Allocation concealment", "Blinding of participants and personnel",
                 "Blinding of outcome assessment", "Incomplete outcome data", "Selective reporting"]
-
-
-class SampleSizePipeline(Pipeline):
-    """
-    @TODO 
-    """
-    pipeline_title = "sample size"
-    def __init__(self):
-        logger.info("loading sample size model")
-        self.vectorizer, self.clf = self.load_sample_size_model_and_vect(
-                                    'models/sample_size/sample_size_vectorizer_ft.pickle',
-                                    'models/sample_size/sample_size_predictor_ft.pickle')
-        logger.info("loaded sample size model & vocab")
-
-
-    def load_sample_size_model_and_vect(self, vect_path, model_path):
-        model, vect = None, None
-        with open(model_path, 'rb') as model_f:
-            model = pickle.load(model_f)
-
-        with open(vect_path, 'rb') as vect_f:
-            vect = pickle.load(vect_f)
-
-        return vect, model
-
-    @staticmethod
-    def integer_filter(w):
-        return w['num'] == True
-
-    def predict(self, full_text):
-        ss_pipeline = sample_size_pipeline.bilearnPipeline(full_text)
-        ss_pipeline.generate_features()
-        features = ss_pipeline.get_features(filter=SampleSizePipeline.integer_filter, flatten=True)
-        X = self.vectorizer.transform(features)
-        preds = self.clf.decision_function(X)
-        sl_words = ss_pipeline.get_words(filter=SampleSizePipeline.integer_filter, flatten=True)
-        predicted_i = preds.argmax()
-        predicted = sl_words[predicted_i]
-        print "predicted sample size: %s" % predicted
-
-        '''
-        So this is kind of hacky. The deal is that we need to 
-        get the spans for the predicted sample size. To this
-        end, I rely on the span_tokenizer (below), but then I need
-        to match up the predicted token (sample size) with these
-        spans. 
-        '''
-        word_tok = word_tokenizer.span_tokenize(full_text)
-        for span in word_tok:
-            start, end = span
-            cur_word = swap_num(full_text[start:end])
-            if predicted == cur_word:
-                print "sample size predictor -- matched %s for prediction %s" % (
-                        cur_word, predicted)
-                matched_span = span
-                break
-        else:
-            # then we failed to match the prediction token?!
-            # @TODO handle better?
-            print "ahhhh failed to match sample size prediction"
-            matched_span = []
-
-        
-        ss_row = {"name": "sample_size"}
-        ss_row["annotations"] = [{"span": matched_span,  "sample_size": predicted, "label": 1}]
-        
-        return [ss_row]
 
 
 class RiskOfBiasPipeline(Pipeline):
@@ -129,7 +55,7 @@ class RiskOfBiasPipeline(Pipeline):
         # then the strings (for internal use only)
         sent_text = [full_text[start:end] for start, end in sent_indices]
         sent_text_dict = dict(zip(sent_indices, sent_text))
-        
+
         output = []
 
         sent_preds_by_domain = [] # will rejig this later to make a list of dicts
