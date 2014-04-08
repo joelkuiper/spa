@@ -37,18 +37,24 @@ define(['react', 'underscore','Q', 'jQuery'], function(React, _, Q, $) {
         , key = this.props.key
         , annotations = this.getNodeAnnotations(results, pageIndex);
 
-      var textNodes = this.props.content.map(function (o,i) {
-        if(o.isWhitespace) { return null; }
-        var annotation = _.find(annotations[i], function(c) {
+      var getAnnotation = function(annotations) {
+        return _.find(annotations, function(c) {
           var result = results.find(function(el) {
-            return el.id == c.type;
+            return el.id === c.type;
           });
           return result.get("active");
         });
+      };
+
+      var textNodes = this.props.content.map(function (o,i) {
+        if(o.isWhitespace) { return null; }
+        var nextAnnotation = getAnnotation(annotations[i + 1]);
+        var annotation = getAnnotation(annotations[i]);
 
         if(annotation) {
           var className = annotation.type + "_annotation "
             , text = o.textContent
+            , postClassName = nextAnnotation ? nextAnnotation.type + "_annotation annotated" : ""
             , left = annotation.range[0] - annotation.interval[0]
             , right = text.length + (annotation.range[1] - annotation.interval[1])
             , pre = text.slice(0, left)
@@ -61,7 +67,9 @@ define(['react', 'underscore','Q', 'jQuery'], function(React, _, Q, $) {
                    className={className}
                    data-canvas-width={o.canvasWidth}
                    data-font-name={o.fontName}>
-              {pre}<span className={className + " annotated"}>{content}</span>{post}
+                {pre}
+                <span className={className + " annotated"}>{content}</span>
+                <span className={postClassName}>{post}</span>
             </div>
           );
 
