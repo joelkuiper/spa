@@ -20,7 +20,6 @@ def timethis(func):
 
 class OverlappingIntervals():
     """
-    to duplicate the minimal function needed of an interval-tree
     maintains a list of start, end tuples
     and calculates overlaps
     """
@@ -33,23 +32,18 @@ class OverlappingIntervals():
     def _is_overlapping(self, i1, i2):
         return i2[0] < i1[1] and i1[0] < i2[1]
 
-
     def overlap(self, bounds):
         """
         bounds = (start, end) tuple
         returns all overlapping bounds
         """
-        # TODO - we don't really need to iterate through *all* of these, since it's a sorted list
-        # we can stop early once no overlaps possible
-        #
-        # Either this or don't bother sorting and keep this bit! (IM)
         return [interval for interval in self.intervals if self._is_overlapping(interval, bounds)]
 
     def overlap_indices(self, bounds):
         """
-        return the 0 indexed positions of overlapping bounds
+        return the 0 indexed positions and bounds of overlapping bounds
         """
-        return [index for index, interval in enumerate(self.intervals) if self._is_overlapping(interval, bounds)]
+        return [{"index": index, "interval": interval} for index, interval in enumerate(self.intervals) if self._is_overlapping(interval, bounds)]
 
 class Pipeline(object):
     __metaclass__ = ABCMeta
@@ -98,21 +92,35 @@ class Pipeline(object):
 
         return map(accumulate, [0] + page_lengths)
 
-    def __postprocess(self, parsed_input, predictions):
+    def __postprocess(self, pages, predictions):
         # get the page lengths, and the page offsets in the whole doc string
-        page_lengths = [page["length"] for page in parsed_input]
-        total_length = self.get_page_offsets(page_lengths)
+        # page index is 0 based, page number 1
+        page_lengths = [page["length"] for page in pages]
         for p in predictions:
-            for a in p["annotations"]:
-                page_nr = next((i for i, v in enumerate(total_length) if v > a["span"][0])) - 1
-                page = parsed_input[page_nr]
-                offset = total_length[page_nr]
+            for annotation in p["annotations"]:
+                annotation["nodes"] = []
+                offsets = self.get_page_offsets(page_lengths)
+                for i, curr_offset in enumerate(offsets):
+                    span = annotation["span"]
+                    next_offset = offsets[i + 1] if (len(offsets) > i + 1) else offsets[i]
+                    if span[0] < next_offset and curr_offset < span[1]:
+                        log.debug("annotation [{}] on page [{}]".format(annotation["span"], i))
+                        # Get the nodes for this page
+                        bound = (annotation["span"][0] - curr_offset, annotation["span"][1] - curr_offset)
+                        nodes = pages[i]["intervals"].overlap_indices(bound)
+                        for j, node in enumerate(nodes):
+                            node["pageIndex"] = i
+                            if len(nodes) == 1:
+                                node["range"] = bound
+                            elif j == 0:
+                                node["range"] = (bound[0], node["interval"][1])
+                            elif j == len(nodes):
+                                node["range"] = (interval[0], bound[1])
+                            else:
+                                node["range"] = node["interval"]
 
-                bound = (a["span"][0] - offset, a["span"][1] - offset)
-                nodes = page["intervals"].overlap_indices(bound)
-
-                a["page"] = page_nr
-                a["nodes"] = nodes
+                        annotation["nodes"].extend(nodes)
+                annotation.pop("span", None)
         return predictions
 
     @abstractmethod
