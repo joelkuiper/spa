@@ -21,8 +21,7 @@ define(['react'], function(React) {
     loadFile: function() {
       var self = this;
       var file = this.refs.file.getDOMNode().files[0];
-      var mimeType = /application\/(x-)?pdf|text\/pdf/;
-      if (file.type.match(mimeType)) {
+      if (file.type.match(this.props.mimeType)) {
         var reader = new FileReader();
         reader.onload = function(e) {
           var data =  convertDataURIToBinary(reader.result);

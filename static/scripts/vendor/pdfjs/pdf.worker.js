@@ -21,8 +21,8 @@ if (typeof PDFJS === 'undefined') {
   (typeof window !== 'undefined' ? window : this).PDFJS = {};
 }
 
-PDFJS.version = '0.8.1295';
-PDFJS.build = '42679e1';
+PDFJS.version = '0.8.1378';
+PDFJS.build = '608c6ce';
 
 (function pdfjsWrapper() {
   // Use strict in our context only - users might not want it
@@ -182,7 +182,7 @@ var OPS = PDFJS.OPS = {
   paintInlineImageXObjectGroup: 87,
   paintImageXObjectRepeat: 88,
   paintImageMaskXObjectRepeat: 89,
-  paintSolidColorImageMask: 90,
+  paintSolidColorImageMask: 90
 };
 
 // A notice for devs. These are good for things that are helpful to devs, such
@@ -423,22 +423,118 @@ var XRefParseException = (function XRefParseExceptionClosure() {
 
 
 function bytesToString(bytes) {
-  var strBuf = [];
   var length = bytes.length;
-  for (var n = 0; n < length; ++n) {
-    strBuf.push(String.fromCharCode(bytes[n]));
+  var MAX_ARGUMENT_COUNT = 8192;
+  if (length < MAX_ARGUMENT_COUNT) {
+    return String.fromCharCode.apply(null, bytes);
+  }
+  var strBuf = [];
+  for (var i = 0; i < length; i += MAX_ARGUMENT_COUNT) {
+    var chunkEnd = Math.min(i + MAX_ARGUMENT_COUNT, length);
+    var chunk = bytes.subarray(i, chunkEnd);
+    strBuf.push(String.fromCharCode.apply(null, chunk));
   }
   return strBuf.join('');
+}
+
+function stringToArray(str) {
+  var length = str.length;
+  var array = [];
+  for (var i = 0; i < length; ++i) {
+    array[i] = str.charCodeAt(i);
+  }
+  return array;
 }
 
 function stringToBytes(str) {
   var length = str.length;
   var bytes = new Uint8Array(length);
-  for (var n = 0; n < length; ++n) {
-    bytes[n] = str.charCodeAt(n) & 0xFF;
+  for (var i = 0; i < length; ++i) {
+    bytes[i] = str.charCodeAt(i) & 0xFF;
   }
   return bytes;
 }
+
+function string32(value) {
+  return String.fromCharCode((value >> 24) & 0xff, (value >> 16) & 0xff,
+                             (value >> 8) & 0xff, value & 0xff);
+}
+
+// Lazy test the endianness of the platform
+// NOTE: This will be 'true' for simulated TypedArrays
+function isLittleEndian() {
+  var buffer8 = new Uint8Array(2);
+  buffer8[0] = 1;
+  var buffer16 = new Uint16Array(buffer8.buffer);
+  return (buffer16[0] === 1);
+}
+
+Object.defineProperty(PDFJS, 'isLittleEndian', {
+  configurable: true,
+  get: function PDFJS_isLittleEndian() {
+    return shadow(PDFJS, 'isLittleEndian', isLittleEndian());
+  }
+});
+
+//#if !(FIREFOX || MOZCENTRAL || B2G || CHROME)
+//// Lazy test if the userAgant support CanvasTypedArrays
+function hasCanvasTypedArrays() {
+  var canvas = document.createElement('canvas');
+  canvas.width = canvas.height = 1;
+  var ctx = canvas.getContext('2d');
+  var imageData = ctx.createImageData(1, 1);
+  return (typeof imageData.data.buffer !== 'undefined');
+}
+
+Object.defineProperty(PDFJS, 'hasCanvasTypedArrays', {
+  configurable: true,
+  get: function PDFJS_hasCanvasTypedArrays() {
+    return shadow(PDFJS, 'hasCanvasTypedArrays', hasCanvasTypedArrays());
+  }
+});
+
+var Uint32ArrayView = (function Uint32ArrayViewClosure() {
+
+  function Uint32ArrayView(buffer) {
+    this.buffer = buffer;
+    this.byteLength = buffer.length;
+    this.length = (this.byteLength >> 2);
+    ensureUint32ArrayViewProps(this.length);
+  }
+  Uint32ArrayView.prototype = Object.create(null);
+
+  var uint32ArrayViewSetters = 0;
+  function createUint32ArrayProp(index) {
+    return {
+      get: function () {
+        var buffer = this.buffer, offset = index << 2;
+        return (buffer[offset] | (buffer[offset + 1] << 8) |
+          (buffer[offset + 2] << 16) | (buffer[offset + 3] << 24)) >>> 0;
+      },
+      set: function (value) {
+        var buffer = this.buffer, offset = index << 2;
+        buffer[offset] = value & 255;
+        buffer[offset + 1] = (value >> 8) & 255;
+        buffer[offset + 2] = (value >> 16) & 255;
+        buffer[offset + 3] = (value >>> 24) & 255;
+      }
+    };
+  }
+
+  function ensureUint32ArrayViewProps(length) {
+    while (uint32ArrayViewSetters < length) {
+      Object.defineProperty(Uint32ArrayView.prototype,
+        uint32ArrayViewSetters,
+        createUint32ArrayProp(uint32ArrayViewSetters));
+      uint32ArrayViewSetters++;
+    }
+  }
+
+  return Uint32ArrayView;
+})();
+//#else
+//PDFJS.hasCanvasTypedArrays = true;
+//#endif
 
 var IDENTITY_MATRIX = [1, 0, 0, 1, 0, 0];
 
@@ -3039,7 +3135,7 @@ var Annotation = (function AnnotationClosure() {
     var data = this.data = {};
 
     data.subtype = dict.get('Subtype').name;
-    var rect = dict.get('Rect');
+    var rect = dict.get('Rect') || [0, 0, 0, 0];
     data.rect = Util.normalizeRect(rect);
     data.annotationFlags = dict.get('F');
 
@@ -3337,7 +3433,7 @@ var WidgetAnnotation = (function WidgetAnnotationClosure() {
     var fieldType = Util.getInheritableProperty(dict, 'FT');
     data.fieldType = isName(fieldType) ? fieldType.name : '';
     data.fieldFlags = Util.getInheritableProperty(dict, 'Ff') || 0;
-    this.fieldResources = Util.getInheritableProperty(dict, 'DR') || new Dict();
+    this.fieldResources = Util.getInheritableProperty(dict, 'DR') || Dict.empty;
 
     // Building the full field name by collecting the field and
     // its ancestors 'T' data and joining them using '.'.
@@ -4786,7 +4882,7 @@ var Page = (function PageClosure() {
       // present, but can be empty. Some document omit it still. In this case
       // return an empty dictionary:
       if (value === undefined) {
-        value = new Dict();
+        value = Dict.empty;
       }
       return shadow(this, 'resources', value);
     },
@@ -5301,11 +5397,30 @@ var Dict = (function DictClosure() {
     return nonSerializable; // creating closure on some variable
   };
 
+  var GETALL_DICTIONARY_TYPES_WHITELIST = {
+    'Background': true,
+    'ExtGState': true,
+    'Halftone': true,
+    'Layout': true,
+    'Mask': true,
+    'Pagination': true,
+    'Printing': true
+  };
+
+  function isRecursionAllowedFor(dict) {
+    if (!isName(dict.Type)) {
+      return true;
+    }
+    var dictType = dict.Type.name;
+    return GETALL_DICTIONARY_TYPES_WHITELIST[dictType] === true;
+  }
+
   // xref is optional
   function Dict(xref) {
     // Map should only be used internally, use functions below to access.
     this.map = Object.create(null);
     this.xref = xref;
+    this.objId = null;
     this.__nonSerializable__ = nonSerializable; // disable cloning of the Dict
   }
 
@@ -5369,10 +5484,51 @@ var Dict = (function DictClosure() {
 
     // creates new map and dereferences all Refs
     getAll: function Dict_getAll() {
-      var all = {};
+      var all = Object.create(null);
+      var queue = null;
       for (var key in this.map) {
         var obj = this.get(key);
-        all[key] = (obj instanceof Dict ? obj.getAll() : obj);
+        if (obj instanceof Dict) {
+          if (isRecursionAllowedFor(obj)) {
+            (queue || (queue = [])).push({target: all, key: key, obj: obj});
+          } else {
+            all[key] = this.getRaw(key);
+          }
+        } else {
+          all[key] = obj;
+        }
+      }
+      if (!queue) {
+        return all;
+      }
+
+      // trying to take cyclic references into the account
+      var processed = Object.create(null);
+      while (queue.length > 0) {
+        var item = queue.shift();
+        var itemObj = item.obj;
+        var objId = itemObj.objId;
+        if (objId && objId in processed) {
+          item.target[item.key] = processed[objId];
+          continue;
+        }
+        var dereferenced = Object.create(null);
+        for (var key in itemObj.map) {
+          var obj = itemObj.get(key);
+          if (obj instanceof Dict) {
+            if (isRecursionAllowedFor(obj)) {
+              queue.push({target: dereferenced, key: key, obj: obj});
+            } else {
+              dereferenced[key] = itemObj.getRaw(key);
+            }
+          } else {
+            dereferenced[key] = obj;
+          }
+        }
+        if (objId) {
+          processed[objId] = dereferenced;
+        }
+        item.target[item.key] = dereferenced;
       }
       return all;
     },
@@ -5391,6 +5547,8 @@ var Dict = (function DictClosure() {
       }
     }
   };
+
+  Dict.empty = new Dict(null);
 
   return Dict;
 })();
@@ -6300,10 +6458,15 @@ var XRef = (function XRefClosure() {
       }
 
       if (xrefEntry.uncompressed) {
-        return this.fetchUncompressed(ref, xrefEntry, suppressEncryption);
+        xrefEntry = this.fetchUncompressed(ref, xrefEntry, suppressEncryption);
       } else {
-        return this.fetchCompressed(xrefEntry, suppressEncryption);
+        xrefEntry = this.fetchCompressed(xrefEntry, suppressEncryption);
       }
+
+      if (isDict(xrefEntry)) {
+        xrefEntry.objId = 'R' + ref.num + '.' + ref.gen;
+      }
+      return xrefEntry;
     },
 
     fetchUncompressed: function XRef_fetchUncompressed(ref, xrefEntry,
@@ -14990,6 +15153,38 @@ Shadings.Mesh = (function MeshClosure() {
     mesh.bounds = [minX, minY, maxX, maxY];
   }
 
+  function packData(mesh) {
+    var i, ii, j, jj;
+
+    var coords = mesh.coords;
+    var coordsPacked = new Float32Array(coords.length * 2);
+    for (i = 0, j = 0, ii = coords.length; i < ii; i++) {
+      var xy = coords[i];
+      coordsPacked[j++] = xy[0];
+      coordsPacked[j++] = xy[1];
+    }
+    mesh.coords = coordsPacked;
+
+    var colors = mesh.colors;
+    var colorsPacked = new Uint8Array(colors.length * 3);
+    for (i = 0, j = 0, ii = colors.length; i < ii; i++) {
+      var c = colors[i];
+      colorsPacked[j++] = c[0];
+      colorsPacked[j++] = c[1];
+      colorsPacked[j++] = c[2];
+    }
+    mesh.colors = colorsPacked;
+
+    var figures = mesh.figures;
+    for (i = 0, ii = figures.length; i < ii; i++) {
+      var figure = figures[i], ps = figure.coords, cs = figure.colors;
+      for (j = 0, jj = ps.length; j < jj; j++) {
+        ps[j] *= 2;
+        cs[j] *= 3;
+      }
+    }
+  }
+
   function Mesh(stream, matrix, xref, res) {
     assert(isStream(stream), 'Mesh data is not a stream');
     var dict = stream.dict;
@@ -15077,35 +15272,14 @@ Shadings.Mesh = (function MeshClosure() {
     }
     // calculate bounds
     updateBounds(this);
+
+    packData(this);
   }
 
   Mesh.prototype = {
     getIR: function Mesh_getIR() {
-      var type = this.shadingType;
-      var i, ii, j;
-      var coords = this.coords;
-      var coordsPacked = new Float32Array(coords.length * 2);
-      for (i = 0, j = 0, ii = coords.length; i < ii; i++) {
-        var xy = coords[i];
-        coordsPacked[j++] = xy[0];
-        coordsPacked[j++] = xy[1];
-      }
-      var colors = this.colors;
-      var colorsPacked = new Uint8Array(colors.length * 3);
-      for (i = 0, j = 0, ii = colors.length; i < ii; i++) {
-        var c = colors[i];
-        colorsPacked[j++] = c[0];
-        colorsPacked[j++] = c[1];
-        colorsPacked[j++] = c[2];
-      }
-      var figures = this.figures;
-      var bbox = this.bbox;
-      var bounds = this.bounds;
-      var matrix = this.matrix;
-      var background = this.background;
-
-      return ['Mesh', type, coordsPacked, colorsPacked, figures, bounds,
-        matrix, bbox, background];
+      return ['Mesh', this.shadingType, this.coords, this.colors, this.figures,
+        this.bounds, this.matrix, this.bbox, this.background];
     }
   };
 
@@ -15163,6 +15337,11 @@ var PartialEvaluator = (function PartialEvaluatorClosure() {
         return false;
       }
 
+      var processed = Object.create(null);
+      if (resources.objId) {
+        processed[resources.objId] = true;
+      }
+
       var nodes = [resources];
       while (nodes.length) {
         var node = nodes.shift();
@@ -15190,10 +15369,13 @@ var PartialEvaluator = (function PartialEvaluatorClosure() {
             continue;
           }
           var xResources = xObject.dict.get('Resources');
-          // Only add the resource if it's different from the current one,
-          // otherwise we can get stuck in an infinite loop.
-          if (isDict(xResources) && xResources !== node) {
+          // Checking objId to detect an infinite loop.
+          if (isDict(xResources) &&
+              (!xResources.objId || !processed[xResources.objId])) {
             nodes.push(xResources);
+            if (xResources.objId) {
+              processed[xResources.objId] = true;
+            }
           }
         }
       }
@@ -15581,9 +15763,9 @@ var PartialEvaluator = (function PartialEvaluatorClosure() {
 
       operatorList = (operatorList || new OperatorList());
 
-      resources = (resources || new Dict());
-      var xobjs = (resources.get('XObject') || new Dict());
-      var patterns = (resources.get('Pattern') || new Dict());
+      resources = (resources || Dict.empty);
+      var xobjs = (resources.get('XObject') || Dict.empty);
+      var patterns = (resources.get('Pattern') || Dict.empty);
       var preprocessor = new EvaluatorPreprocessor(stream, xref);
       if (evaluatorState) {
         preprocessor.setState(evaluatorState);
@@ -15774,7 +15956,7 @@ var PartialEvaluator = (function PartialEvaluatorClosure() {
         return self.loadFont(fontName, fontRef, xref, resources, null);
       }
 
-      resources = (xref.fetchIfRef(resources) || new Dict());
+      resources = (xref.fetchIfRef(resources) || Dict.empty);
       // The xobj is parsed iff it's needed, e.g. if there is a `DO` cmd.
       var xobjs = null;
       var xobjsCache = {};
@@ -15868,7 +16050,7 @@ var PartialEvaluator = (function PartialEvaluatorClosure() {
             }
 
             if (!xobjs) {
-              xobjs = (resources.get('XObject') || new Dict());
+              xobjs = (resources.get('XObject') || Dict.empty);
             }
 
             var name = args[0].name;
@@ -16262,7 +16444,7 @@ var PartialEvaluator = (function PartialEvaluatorClosure() {
         if (type.name == 'Type3') {
           // FontDescriptor is only required for Type3 fonts when the document
           // is a tagged pdf. Create a barbebones one to get by.
-          descriptor = new Dict();
+          descriptor = new Dict(null);
           descriptor.set('FontName', Name.get(type.name));
         } else {
           // Before PDF 1.5 if the font was one of the base 14 fonts, having a
@@ -17452,7 +17634,7 @@ var nonStdFontMap = {
   'MS-PMincho': 'MS PMincho',
   'MS-PMincho-Bold': 'MS PMincho-Bold',
   'MS-PMincho-BoldItalic': 'MS PMincho-BoldItalic',
-  'MS-PMincho-Italic': 'MS PMincho-Italic',
+  'MS-PMincho-Italic': 'MS PMincho-Italic'
 };
 
 var serifFonts = {
@@ -19408,22 +19590,6 @@ var Font = (function FontClosure() {
     this.loading = true;
   }
 
-  function stringToArray(str) {
-    var array = [];
-    for (var i = 0, ii = str.length; i < ii; ++i) {
-      array[i] = str.charCodeAt(i);
-    }
-    return array;
-  }
-
-  function arrayToString(arr) {
-    var strBuf = [];
-    for (var i = 0, ii = arr.length; i < ii; ++i) {
-      strBuf.push(String.fromCharCode(arr[i]));
-    }
-    return strBuf.join('');
-  }
-
   function int16(b0, b1) {
     return (b0 << 8) + b1;
   }
@@ -19448,22 +19614,13 @@ var Font = (function FontClosure() {
   }
 
   function string16(value) {
-    return (String.fromCharCode((value >> 8) & 0xff) +
-            String.fromCharCode(value & 0xff));
+    return String.fromCharCode((value >> 8) & 0xff, value & 0xff);
   }
 
   function safeString16(value) {
     // clamp value to the 16-bit int range
     value = (value > 0x7FFF ? 0x7FFF : (value < -0x8000 ? -0x8000 : value));
-    return (String.fromCharCode((value >> 8) & 0xff) +
-            String.fromCharCode(value & 0xff));
-  }
-
-  function string32(value) {
-    return (String.fromCharCode((value >> 24) & 0xff) +
-            String.fromCharCode((value >> 16) & 0xff) +
-            String.fromCharCode((value >> 8) & 0xff) +
-            String.fromCharCode(value & 0xff));
+    return String.fromCharCode((value >> 8) & 0xff, value & 0xff);
   }
 
   function createOpenTypeHeader(sfnt, file, numTables) {
@@ -19973,11 +20130,7 @@ var Font = (function FontClosure() {
 
     checkAndRepair: function Font_checkAndRepair(name, font, properties) {
       function readTableEntry(file) {
-        var tag = file.getBytes(4);
-        tag = String.fromCharCode(tag[0]) +
-              String.fromCharCode(tag[1]) +
-              String.fromCharCode(tag[2]) +
-              String.fromCharCode(tag[3]);
+        var tag = bytesToString(file.getBytes(4));
 
         var checksum = file.getUint32();
         var offset = file.getUint32();
@@ -20007,7 +20160,7 @@ var Font = (function FontClosure() {
 
       function readOpenTypeHeader(ttf) {
         return {
-          version: arrayToString(ttf.getBytes(4)),
+          version: bytesToString(ttf.getBytes(4)),
           numTables: ttf.getUint16(),
           searchRange: ttf.getUint16(),
           entrySelector: ttf.getUint16(),
@@ -21115,7 +21268,7 @@ var Font = (function FontClosure() {
       for (var i = 0; i < numTables; i++) {
         var table = tables[tablesNames[i]];
         var tableData = table.data;
-        ttf.file += arrayToString(tableData);
+        ttf.file += bytesToString(new Uint8Array(tableData));
 
         // 4-byte aligned data
         while (ttf.file.length & 3) {
@@ -21275,7 +21428,7 @@ var Font = (function FontClosure() {
       }
       for (var field in fields) {
         var table = fields[field];
-        otf.file += arrayToString(table);
+        otf.file += bytesToString(new Uint8Array(table));
       }
 
       return stringToArray(otf.file);
@@ -21373,7 +21526,7 @@ var Font = (function FontClosure() {
       // The viewer's choice, just use an identity map.
       var toUnicode = [];
       var firstChar = properties.firstChar, lastChar = properties.lastChar;
-      for (var i = firstChar, ii = lastChar; i <= ii; i++) {
+      for (var i = firstChar; i <= lastChar; i++) {
         toUnicode[i] = String.fromCharCode(i);
       }
       map.isIdentity = true;
@@ -22917,7 +23070,7 @@ var CFFParser = (function CFFParserClosure() {
           }
           data[j] = c;
         }
-        names.push(String.fromCharCode.apply(null, data));
+        names.push(bytesToString(data));
       }
       return names;
     },
@@ -22925,7 +23078,7 @@ var CFFParser = (function CFFParserClosure() {
       var strings = new CFFStrings();
       for (var i = 0, ii = index.count; i < ii; ++i) {
         var data = index.get(i);
-        strings.add(String.fromCharCode.apply(null, data));
+        strings.add(bytesToString(data));
       }
       return strings;
     },
@@ -23593,13 +23746,6 @@ var CFFOffsetTracker = (function CFFOffsetTrackerClosure() {
 
 // Takes a CFF and converts it to the binary representation.
 var CFFCompiler = (function CFFCompilerClosure() {
-  function stringToArray(str) {
-    var array = [];
-    for (var i = 0, ii = str.length; i < ii; ++i) {
-      array[i] = str.charCodeAt(i);
-    }
-    return array;
-  }
   function CFFCompiler(cff) {
     this.cff = cff;
   }
@@ -24680,7 +24826,7 @@ var FontRendererFactory = (function FontRendererFactoryClosure() {
       var cmap, glyf, loca, cff, indexToLocFormat, unitsPerEm;
       var numTables = getUshort(data, 4);
       for (var i = 0, p = 12; i < numTables; i++, p += 16) {
-        var tag = String.fromCharCode.apply(null, data.subarray(p, p + 4));
+        var tag = bytesToString(data.subarray(p, p + 4));
         var offset = getLong(data, p + 8);
         var length = getLong(data, p + 12);
         switch (tag) {
@@ -28958,16 +29104,23 @@ var PDFImage = (function PDFImageClosure() {
   }
   function PDFImage(xref, res, image, inline, smask, mask, isMask) {
     this.image = image;
-    if (image.getParams) {
-      // JPX/JPEG2000 streams directly contain bits per component
-      // and color space mode information.
-      warn('get params from actual stream');
-      // var bits = ...
-      // var colorspace = ...
+    var dict = image.dict;
+    if (dict.has('Filter')) {
+      var filter = dict.get('Filter').name;
+      if (filter === 'JPXDecode') {
+        info('get image params from JPX stream');
+        var jpxImage = new JpxImage();
+        jpxImage.parseImageProperties(image.stream);
+        image.stream.reset();
+        image.bitsPerComponent = jpxImage.bitsPerComponent;
+        image.numComps = jpxImage.componentsCount;
+      } else if (filter === 'JBIG2Decode') {
+        image.bitsPerComponent = 1;
+        image.numComps = 1;
+      }
     }
     // TODO cache rendered images?
 
-    var dict = image.dict;
     this.width = dict.get('Width', 'W');
     this.height = dict.get('Height', 'H');
 
@@ -28996,8 +29149,19 @@ var PDFImage = (function PDFImageClosure() {
     if (!this.imageMask) {
       var colorSpace = dict.get('ColorSpace', 'CS');
       if (!colorSpace) {
-        warn('JPX images (which do not require color spaces)');
-        colorSpace = Name.get('DeviceRGB');
+        info('JPX images (which do not require color spaces)');
+        switch (image.numComps) {
+          case 1:
+            colorSpace = Name.get('DeviceGray');
+            break;
+          case 3:
+            colorSpace = Name.get('DeviceRGB');
+            break;
+          default:
+            // TODO: Find out how four color channels are handled. CMYK? Alpha?
+            error('JPX images with ' + this.numComps +
+                  ' color components not supported.');
+        }
       }
       this.colorSpace = ColorSpace.parse(colorSpace, xref, res);
       this.numComps = this.colorSpace.numComps;
@@ -32540,7 +32704,7 @@ var Parser = (function ParserClosure() {
       var stream = lexer.stream;
 
       // parse dictionary
-      var dict = new Dict();
+      var dict = new Dict(null);
       while (!isCmd(this.buf1, 'ID') && !isEOF(this.buf1)) {
         if (!isName(this.buf1)) {
           error('Dictionary key must be a name object');
@@ -35206,7 +35370,7 @@ var CCITTFaxStream = (function CCITTFaxStreamClosure() {
     this.str = str;
     this.dict = str.dict;
 
-    params = params || new Dict();
+    params = params || Dict.empty;
 
     this.encoding = params.get('K') || 0;
     this.eoline = params.get('EndOfLine') || false;
@@ -36517,10 +36681,6 @@ var JpxImage = (function JpxImageClosure() {
     'HL': 1,
     'HH': 2
   };
-  var TransformType = {
-    IRREVERSIBLE: 0,
-    REVERSIBLE: 1
-  };
   function JpxImage() {
     this.failOnCorruptedImage = false;
   }
@@ -36590,6 +36750,39 @@ var JpxImage = (function JpxImageClosure() {
         }
         if (jumpDataLength) {
           position += dataLength;
+        }
+      }
+    },
+    parseImageProperties: function JpxImage_parseImageProperties(stream) {
+      try {
+        var newByte = stream.getByte();
+        while (newByte >= 0) {
+          var oldByte = newByte;
+          newByte = stream.getByte();
+          var code = (oldByte << 8) | newByte;
+          // Image and tile size (SIZ)
+          if (code == 0xFF51) {
+            stream.skip(4);
+            var Xsiz = stream.getUint32(); // Byte 4 
+            var Ysiz = stream.getUint32(); // Byte 8
+            var XOsiz = stream.getUint32(); // Byte 12
+            var YOsiz = stream.getUint32(); // Byte 16
+            stream.skip(16);
+            var Csiz = stream.getUint16(); // Byte 36
+            this.width = Xsiz - XOsiz;
+            this.height = Ysiz - YOsiz;
+            this.componentsCount = Csiz;
+            // Results are always returned as UInt8Arrays 
+            this.bitsPerComponent = 8;
+            return;
+          }
+        }
+        throw 'No size marker found in JPX stream';
+      } catch (e) {
+        if (this.failOnCorruptedImage) {
+          error('JPX error: ' + e);
+        } else {
+          warn('JPX error: ' + e + '. Trying to recover');
         }
       }
     },
@@ -36761,7 +36954,7 @@ var JpxImage = (function JpxImageClosure() {
               cod.verticalyStripe = !!(blockStyle & 8);
               cod.predictableTermination = !!(blockStyle & 16);
               cod.segmentationSymbolUsed = !!(blockStyle & 32);
-              cod.transformation = data[j++];
+              cod.reversibleTransformation = data[j++];
               if (cod.entropyCoderWithCustomPrecincts) {
                 var precinctsSizes = [];
                 while (j < length + position) {
@@ -36824,6 +37017,8 @@ var JpxImage = (function JpxImageClosure() {
               length = readUint16(data, position);
               // skipping content
               break;
+            case 0xFF53: // Coding style component (COC)
+              throw 'Codestream code 0xFF53 (COC) is not implemented';
             default:
               throw 'Unknown codestream code: ' + code.toString(16);
           }
@@ -37369,7 +37564,7 @@ var JpxImage = (function JpxImageClosure() {
     return position;
   }
   function copyCoefficients(coefficients, x0, y0, width, height,
-                            delta, mb, codeblocks, transformation,
+                            delta, mb, codeblocks, reversible,
                             segmentationSymbolUsed) {
     for (var i = 0, ii = codeblocks.length; i < ii; ++i) {
       var codeblock = codeblocks[i];
@@ -37425,16 +37620,22 @@ var JpxImage = (function JpxImageClosure() {
 
       var offset = (codeblock.tbx0_ - x0) + (codeblock.tby0_ - y0) * width;
       var n, nb, correction, position = 0;
-      var irreversible = (transformation === TransformType.IRREVERSIBLE);
+      var irreversible = !reversible;
       var sign = bitModel.coefficentsSign;
       var magnitude = bitModel.coefficentsMagnitude;
       var bitsDecoded = bitModel.bitsDecoded;
+      var magnitudeCorrection = reversible ? 0 : 0.5;
       for (var j = 0; j < blockHeight; j++) {
         for (var k = 0; k < blockWidth; k++) {
-          n = (sign[position] ? -1 : 1) * magnitude[position];
-          nb = bitsDecoded[position];
-          correction = (irreversible || mb > nb) ? 1 << (mb - nb) : 1;
-          coefficients[offset++] = n * correction * delta;
+          var mag = magnitude[position];
+          if (mag !== 0) {
+            n = sign[position] ? -(mag + magnitudeCorrection) :
+                                  (mag + magnitudeCorrection);
+            nb = bitsDecoded[position];
+            correction = (irreversible || mb > nb) ? 1 << (mb - nb) : 1;
+            coefficients[offset] = n * correction * delta;
+          }
+          offset++;
           position++;
         }
         offset += width - blockWidth;
@@ -37450,16 +37651,15 @@ var JpxImage = (function JpxImageClosure() {
     var spqcds = quantizationParameters.SPqcds;
     var scalarExpounded = quantizationParameters.scalarExpounded;
     var guardBits = quantizationParameters.guardBits;
-    var transformation = codingStyleParameters.transformation;
     var segmentationSymbolUsed = codingStyleParameters.segmentationSymbolUsed;
     var precision = context.components[c].precision;
 
-    var transformation = codingStyleParameters.transformation;
-    var transform = (transformation === TransformType.IRREVERSIBLE ?
-                     new IrreversibleTransform() : new ReversibleTransform());
+    var reversible = codingStyleParameters.reversibleTransformation;
+    var transform = (reversible ? new ReversibleTransform() :
+                                  new IrreversibleTransform());
 
     var subbandCoefficients = [];
-    var k = 0, b = 0;
+    var b = 0;
     for (var i = 0; i <= decompositionLevelsCount; i++) {
       var resolution = component.resolutions[i];
 
@@ -37480,13 +37680,13 @@ var JpxImage = (function JpxImageClosure() {
         var gainLog2 = SubbandsGainLog2[subband.type];
 
         // calulate quantization coefficient (Section E.1.1.1)
-        var delta = (transformation === TransformType.IRREVERSIBLE ?
-          Math.pow(2, precision + gainLog2 - epsilon) * (1 + mu / 2048) : 1);
+        var delta = (reversible ? 1 :
+          Math.pow(2, precision + gainLog2 - epsilon) * (1 + mu / 2048));
         var mb = (guardBits + epsilon - 1);
 
         var coefficients = new Float32Array(width * height);
         copyCoefficients(coefficients, subband.tbx0, subband.tby0,
-          width, height, delta, mb, subband.codeblocks, transformation,
+          width, height, delta, mb, subband.codeblocks, reversible,
           segmentationSymbolUsed);
 
         subbandCoefficients.push({
@@ -37525,8 +37725,7 @@ var JpxImage = (function JpxImageClosure() {
       // Section G.2.2 Inverse multi component transform
       if (tile.codingStyleDefaultParameters.multipleComponentTransform) {
         var component0 = tile.components[0];
-        var transformation = component0.codingStyleParameters.transformation;
-        if (transformation === TransformType.IRREVERSIBLE) {
+        if (!component0.codingStyleParameters.reversibleTransformation) {
           // inverse irreversible multiple component transform
           var y0items = result[0].items;
           var y1items = result[1].items;
@@ -38119,26 +38318,26 @@ var JpxImage = (function JpxImageClosure() {
       var items = new Float32Array(width * height);
       var i, j, k, l;
 
-      for (i = 0; i < llHeight; i++) {
-        var k = i * llWidth, l = i * 2 * width;
+      for (i = 0, k = 0; i < llHeight; i++) {
+        l = i * 2 * width;
         for (var j = 0; j < llWidth; j++, k++, l += 2) {
           items[l] = llItems[k];
         }
       }
-      for (i = 0; i < hlHeight; i++) {
-        k = i * hlWidth; l = i * 2 * width + 1;
+      for (i = 0, k = 0; i < hlHeight; i++) {
+        l = i * 2 * width + 1;
         for (j = 0; j < hlWidth; j++, k++, l += 2) {
           items[l] = hlItems[k];
         }
       }
-      for (i = 0; i < lhHeight; i++) {
-        k = i * lhWidth; l = (i * 2 + 1) * width;
+      for (i = 0, k = 0; i < lhHeight; i++) {
+        l = (i * 2 + 1) * width;
         for (j = 0; j < lhWidth; j++, k++, l += 2) {
           items[l] = lhItems[k];
         }
       }
-      for (i = 0; i < hhHeight; i++) {
-        k = i * hhWidth; l = (i * 2 + 1) * width + 1;
+      for (i = 0, k = 0; i < hhHeight; i++) {
+        l = (i * 2 + 1) * width + 1;
         for (j = 0; j < hhWidth; j++, k++, l += 2) {
           items[l] = hhItems[k];
         }
@@ -38741,16 +38940,28 @@ var Jbig2Image = (function Jbig2ImageClosure() {
           // 6.5.8.2 Refinement/aggregate-coded symbol bitmap
           var numberOfInstances = decodeInteger(contextCache, 'IAAI', decoder);
           if (numberOfInstances > 1) {
-            error('JBIG2 error: number of instances > 1 is not supported');
-          }
-          var symbolId = decodeIAID(contextCache, decoder, symbolCodeLength);
-          var rdx = decodeInteger(contextCache, 'IARDX', decoder); // 6.4.11.3
-          var rdy = decodeInteger(contextCache, 'IARDY', decoder); // 6.4.11.4
-          var symbol = (symbolId < symbols.length ? symbols[symbolId] :
-                        newSymbols[symbolId - symbols.length]);
-          bitmap = decodeRefinement(currentWidth, currentHeight,
+            bitmap = decodeTextRegion(huffman, refinement,
+                                      currentWidth, currentHeight, 0,
+                                      numberOfInstances, 1, //strip size
+                                      symbols.concat(newSymbols),
+                                      symbolCodeLength,
+                                      0, //transposed
+                                      0, //ds offset
+                                      1, //top left 7.4.3.1.1
+                                      0, //OR operator
+                                      huffmanTables,
+                                      refinementTemplateIndex, refinementAt,
+                                      decodingContext);
+          } else {
+            var symbolId = decodeIAID(contextCache, decoder, symbolCodeLength);
+            var rdx = decodeInteger(contextCache, 'IARDX', decoder); // 6.4.11.3
+            var rdy = decodeInteger(contextCache, 'IARDY', decoder); // 6.4.11.4
+            var symbol = (symbolId < symbols.length ? symbols[symbolId] :
+                          newSymbols[symbolId - symbols.length]);
+            bitmap = decodeRefinement(currentWidth, currentHeight,
             refinementTemplateIndex, symbol, rdx, rdy, false, refinementAt,
             decodingContext);
+          }
         } else {
           // 6.5.8.1 Direct-coded symbol bitmap
           bitmap = decodeBitmap(false, currentWidth, currentHeight,
@@ -40820,7 +41031,7 @@ var JpegImage = (function jpegImage() {
     function decodeBaseline(component, offset) {
       var t = decodeHuffman(component.huffmanTableDC);
       var diff = t === 0 ? 0 : receiveAndExtend(t);
-      component.blocks[offset] = (component.pred += diff);
+      component.blockData[offset] = (component.pred += diff);
       var k = 1;
       while (k < 64) {
         var rs = decodeHuffman(component.huffmanTableAC);
@@ -40833,7 +41044,7 @@ var JpegImage = (function jpegImage() {
         }
         k += r;
         var z = dctZigZag[k];
-        component.blocks[offset + z] = receiveAndExtend(s);
+        component.blockData[offset + z] = receiveAndExtend(s);
         k++;
       }
     }
@@ -40841,11 +41052,11 @@ var JpegImage = (function jpegImage() {
     function decodeDCFirst(component, offset) {
       var t = decodeHuffman(component.huffmanTableDC);
       var diff = t === 0 ? 0 : (receiveAndExtend(t) << successive);
-      component.blocks[offset] = (component.pred += diff);
+      component.blockData[offset] = (component.pred += diff);
     }
 
     function decodeDCSuccessive(component, offset) {
-      component.blocks[offset] |= readBit() << successive;
+      component.blockData[offset] |= readBit() << successive;
     }
 
     var eobrun = 0;
@@ -40868,7 +41079,7 @@ var JpegImage = (function jpegImage() {
         }
         k += r;
         var z = dctZigZag[k];
-        component.blocks[offset + z] = receiveAndExtend(s) * (1 << successive);
+        component.blockData[offset + z] = receiveAndExtend(s) * (1 << successive);
         k++;
       }
     }
@@ -40899,8 +41110,8 @@ var JpegImage = (function jpegImage() {
           continue;
         case 1: // skipping r zero items
         case 2:
-          if (component.blocks[offset + z]) {
-            component.blocks[offset + z] += (readBit() << successive);
+          if (component.blockData[offset + z]) {
+            component.blockData[offset + z] += (readBit() << successive);
           } else {
             r--;
             if (r === 0)
@@ -40908,16 +41119,16 @@ var JpegImage = (function jpegImage() {
           }
           break;
         case 3: // set value for a zero item
-          if (component.blocks[offset + z]) {
-            component.blocks[offset + z] += (readBit() << successive);
+          if (component.blockData[offset + z]) {
+            component.blockData[offset + z] += (readBit() << successive);
           } else {
-            component.blocks[offset + z] = successiveACNextValue << successive;
+            component.blockData[offset + z] = successiveACNextValue << successive;
             successiveACState = 0;
           }
           break;
         case 4: // eob
-          if (component.blocks[offset + z]) {
-            component.blocks[offset + z] += (readBit() << successive);
+          if (component.blockData[offset + z]) {
+            component.blockData[offset + z] += (readBit() << successive);
           }
           break;
         }
@@ -41027,8 +41238,9 @@ var JpegImage = (function jpegImage() {
     var i;
 
     // dequant
-    for (i = 0; i < 64; i++)
-      p[i] = component.blocks[blockBufferOffset + i] * qt[i];
+    for (i = 0; i < 64; i++) {
+      p[i] = component.blockData[blockBufferOffset + i] * qt[i];
+    }
 
     // inverse DCT on rows
     for (i = 0; i < 8; ++i) {
@@ -41170,7 +41382,8 @@ var JpegImage = (function jpegImage() {
 
     // convert to 8-bit integers
     for (i = 0; i < 64; ++i) {
-      p[i] = clampTo8bit((p[i] + 2056) >> 4);
+      var index = blockBufferOffset + i;
+      component.blockData[index] = clampTo8bitInt((p[i] + 2056) >> 4);
     }
   }
 
@@ -41179,33 +41392,24 @@ var JpegImage = (function jpegImage() {
     var blocksPerLine = component.blocksPerLine;
     var blocksPerColumn = component.blocksPerColumn;
     var samplesPerLine = blocksPerLine << 3;
-    var R = new Int16Array(64);
+    var computationBuffer = new Int32Array(64);
 
     var i, j, ll = 0;
     for (var blockRow = 0; blockRow < blocksPerColumn; blockRow++) {
-      var scanLine = blockRow << 3;
-      for (i = 0; i < 8; i++) {
-        lines[ll++] = new Uint8Array(samplesPerLine);
-      }
       for (var blockCol = 0; blockCol < blocksPerLine; blockCol++) {
-
-        quantizeAndInverse(component,
-                           getBlockBufferOffset(component, blockRow, blockCol),
-                           R);
-        var offset = 0, sample = blockCol << 3;
-        for (j = 0; j < 8; j++) {
-          var line = lines[scanLine + j];
-          for (i = 0; i < 8; i++) {
-            line[sample + i] = R[offset++];
-          }
-        }
+        var offset = getBlockBufferOffset(component, blockRow, blockCol)
+        quantizeAndInverse(component, offset, computationBuffer);
       }
     }
-    return lines;
+    return component.blockData;
   }
 
-  function clampTo8bit(a) {
+  function clampTo8bitInt(a) {
     return a <= 0 ? 0 : a >= 255 ? 255 : a | 0;
+  }
+
+  function clamp0to255(a) {
+    return a <= 0 ? 0 : a >= 255 ? 255 : a;
   }
 
   constructor.prototype = {
@@ -41250,11 +41454,9 @@ var JpegImage = (function jpegImage() {
 
           var blocksBufferSize = 64 * blocksPerColumnForMcu
                                     * (blocksPerLineForMcu + 1);
-          var blocks = new Int16Array(blocksBufferSize);
-
+          component.blockData = new Int16Array(blocksBufferSize);
           component.blocksPerLine = blocksPerLine;
           component.blocksPerColumn = blocksPerColumn;
-          component.blocks = blocks;
         }
         frame.mcusPerLine = mcusPerLine;
         frame.mcusPerColumn = mcusPerColumn;
@@ -41448,16 +41650,19 @@ var JpegImage = (function jpegImage() {
       for (var i = 0; i < frame.components.length; i++) {
         var component = frame.components[i];
         this.components.push({
-          lines: buildComponentData(frame, component),
+          output: buildComponentData(frame, component),
           scaleX: component.h / frame.maxH,
-          scaleY: component.v / frame.maxV
+          scaleY: component.v / frame.maxV,
+          blocksPerLine: component.blocksPerLine,
+          blocksPerColumn: component.blocksPerColumn
         });
       }
     },
+
     getData: function getData(width, height) {
       var scaleX = this.width / width, scaleY = this.height / height;
 
-      var component, componentLine, componentScaleX, componentScaleY;
+      var component, componentScaleX, componentScaleY;
       var x, y, i;
       var offset = 0;
       var Y, Cb, Cr, K, C, M, Ye, R, G, B;
@@ -41465,17 +41670,49 @@ var JpegImage = (function jpegImage() {
       var numComponents = this.components.length;
       var dataLength = width * height * numComponents;
       var data = new Uint8Array(dataLength);
+      var componentLine;
+
+      // lineData is reused for all components. Assume first component is
+      // the biggest
+      var lineData = new Uint8Array((this.components[0].blocksPerLine << 3) *
+                                    this.components[0].blocksPerColumn * 8);
 
       // First construct image data ...
       for (i = 0; i < numComponents; i++) {
         component = this.components[i];
+        var blocksPerLine = component.blocksPerLine;
+        var blocksPerColumn = component.blocksPerColumn;
+        var samplesPerLine = blocksPerLine << 3;
+
+        var j, k, ll = 0;
+        var lineOffset = 0;
+        for (var blockRow = 0; blockRow < blocksPerColumn; blockRow++) {
+          var scanLine = blockRow << 3;
+          for (var blockCol = 0; blockCol < blocksPerLine; blockCol++) {
+            var bufferOffset = getBlockBufferOffset(component, blockRow, blockCol);
+            var offset = 0, sample = blockCol << 3;
+            for (j = 0; j < 8; j++) {
+              var lineOffset = (scanLine + j) * samplesPerLine;
+              for (k = 0; k < 8; k++) {
+                lineData[lineOffset + sample + k] =
+                  component.output[bufferOffset + offset++];
+              }
+            }
+          }
+        }
+
         componentScaleX = component.scaleX * scaleX;
         componentScaleY = component.scaleY * scaleY;
         offset = i;
+
+        var cx, cy;
+        var index;
         for (y = 0; y < height; y++) {
-          componentLine = component.lines[0 | (y * componentScaleY)];
           for (x = 0; x < width; x++) {
-            data[offset] = componentLine[0 | (x * componentScaleX)];
+            cy = 0 | (y * componentScaleY);
+            cx = 0 | (x * componentScaleX);
+            index = cy * samplesPerLine + cx;
+            data[offset] = lineData[index];
             offset += numComponents;
           }
         }
@@ -41501,9 +41738,9 @@ var JpegImage = (function jpegImage() {
               Cb = data[i + 1];
               Cr = data[i + 2];
 
-              R = clampTo8bit(Y + 1.402 * (Cr - 128));
-              G = clampTo8bit(Y - 0.3441363 * (Cb - 128) - 0.71413636 * (Cr - 128));
-              B = clampTo8bit(Y + 1.772 * (Cb - 128));
+              R = clamp0to255(Y + 1.402 * (Cr - 128));
+              G = clamp0to255(Y - 0.3441363 * (Cb - 128) - 0.71413636 * (Cr - 128));
+              B = clamp0to255(Y + 1.772 * (Cb - 128));
 
               data[i    ] = R;
               data[i + 1] = G;
@@ -41526,9 +41763,9 @@ var JpegImage = (function jpegImage() {
               Cb = data[i + 1];
               Cr = data[i + 2];
 
-              C = 255 - clampTo8bit(Y + 1.402 * (Cr - 128));
-              M = 255 - clampTo8bit(Y - 0.3441363 * (Cb - 128) - 0.71413636 * (Cr - 128));
-              Ye = 255 - clampTo8bit(Y + 1.772 * (Cb - 128));
+              C = 255 - clamp0to255(Y + 1.402 * (Cr - 128));
+              M = 255 - clamp0to255(Y - 0.3441363 * (Cb - 128) - 0.71413636 * (Cr - 128));
+              Ye = 255 - clamp0to255(Y + 1.772 * (Cb - 128));
 
               data[i    ] = C;
               data[i + 1] = M;
@@ -41579,9 +41816,9 @@ var JpegImage = (function jpegImage() {
             Y = data[i++];
             K = data[i++];
 
-            R = 255 - clampTo8bit(C * (1 - K / 255) + K);
-            G = 255 - clampTo8bit(M * (1 - K / 255) + K);
-            B = 255 - clampTo8bit(Y * (1 - K / 255) + K);
+            R = 255 - clamp0to255(C * (1 - K / 255) + K);
+            G = 255 - clamp0to255(M * (1 - K / 255) + K);
+            B = 255 - clamp0to255(Y * (1 - K / 255) + K);
 
             imageDataArray[j++] = R;
             imageDataArray[j++] = G;
