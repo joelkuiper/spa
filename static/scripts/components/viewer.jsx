@@ -16,7 +16,6 @@ define(['react', 'underscore','Q', 'jQuery'], function(React, _, Q, $) {
       // We would like {node_index: [nodes], node_index: [nodes]}
       // With the nodes having a specific type
       // filtered per page
-
       var acc = {};
       results.each(function(result) {
         var id = result.get("id");
