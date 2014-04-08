@@ -13,33 +13,30 @@ define(['react', 'underscore','Q', 'jQuery'], function(React, _, Q, $) {
       }
     },
     getNodeAnnotations: function(results, pageIndex) {
-      var ids = results.pluck("id");
-      var annotations = results.pluck("annotations");
-      var nodesForPage = _.map(annotations, function(annotation) {
-        return _.flatten(_.map(annotation, function(out) {
-          return _.filter(out.nodes, function(node) {
-            return node.pageIndex === pageIndex;
+      // We would like {node_index: [nodes], node_index: [nodes]}
+      // With the nodes having a specific type
+      // filtered per page
+
+      var acc = {};
+      results.each(function(result) {
+        var id = result.get("id");
+        var annotations = result.get("annotations");
+        _.each(annotations, function(annotation) {
+          _.each(annotation.nodes, function(node) {
+            if(node.pageIndex === pageIndex) {
+              node["type"] = id;
+              acc[node.index] = _.union(acc[node.index] || [], node);
+            }
           });
-        }));
+        });
       });
-      var result = _.object(ids, nodesForPage);
-      // We have the annotations in {domain_0: [nodes], domain_1: [nodes]} format
-      // However we would like {node_index: [nodes], node_index: [nodes]}
-      var nodes = _.flatten(_.map(_.pairs(result), function(kv) {
-        return _.map(kv[1], function(n) {
-          return _.extend(n, {type: kv[0]}); });
-      }));
-      var nodesPerIndex = _.reduce(nodes, function(memo, node) {
-        memo[node.index] = _.union(memo[node.index] || [], node);
-        return memo;
-      }, {});
-      return nodesPerIndex;
+      return acc;
     },
     render: function() {
-      var results = this.props.results;
-      var pageIndex = this.props.pageIndex;
-      var key = this.props.key;
-      var annotations = this.getNodeAnnotations(results, pageIndex);
+      var results = this.props.results
+        , pageIndex = this.props.pageIndex
+        , key = this.props.key
+        , annotations = this.getNodeAnnotations(results, pageIndex);
 
       var textNodes = this.props.content.map(function (o,i) {
         if(o.isWhitespace) { return null; }

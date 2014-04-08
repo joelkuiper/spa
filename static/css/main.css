@@ -46,7 +46,7 @@ html {
 .minimap-node {
     width: 30px;
     position: relative;
-    background-color: #f2f2f2;
+    background-color: #e5e5e5;
     margin-bottom: 1px;
 }
 
@@ -83,7 +83,6 @@ html {
     left: 0;
     right: 0;
 }
-
 
 #side {
     position: absolute;
@@ -129,8 +128,6 @@ span.head {
     -webkit-user-select: none; /* Chrome/Safari */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+ */
-
-    /* Rules below not implemented in browsers yet */
     -o-user-select: none;
     user-select: none;
 }
@@ -139,8 +136,6 @@ canvas {
     -webkit-user-select: none; /* Chrome/Safari */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+ */
-
-    /* Rules below not implemented in browsers yet */
     -o-user-select: none;
     user-select: none;
 }
@@ -154,11 +149,14 @@ canvas {
     font-size: 16px;
     padding: 10px 20px;
     color: #444;
-    background: #d9d9d9;
+    background-color: #e5e5e5;
 }
 
 .block h4 a:hover {
-    background: rgba(0,0,0,0.15);
+    background-color: #d9d9d9;
+   -moz-box-shadow:    inset 0 0 10px rgba(0,0,0,0.1);
+   -webkit-box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+   box-shadow:         inset 0 0 10px rgba(0,0,0,0.1);
 }
 
 .block .content {
@@ -166,10 +164,6 @@ canvas {
     border: solid 1px #ddd;
     border-top: none;
 }
-
-::selection { background:rgba(0,0,255,0.3); }
-::-moz-selection { background:rgba(0,0,255,0.3); }
-
 .textLayer {
     position: absolute;
     left: 0;
@@ -191,7 +185,20 @@ canvas {
 }
 
 .textLayer > div span.annotated {
-    opacity: 0.1;
+    opacity: 0.2;
     margin: -1px;
     padding: 1px;
+}
+
+::selection {
+    background-color: rgba(0,0,255,0.2);
+}
+::-moz-selection {
+    background-color: rgba(0,0,255,0.2);
+}
+.annotated::selection {
+    background-color: rgba(0,0,255,1);
+}
+.annotated::-moz-selection {
+    background-color: rgba(0,0,255,1);
 }
