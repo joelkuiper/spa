@@ -54,6 +54,7 @@ define(['react', 'underscore','Q', 'jQuery'], function(React, _, Q, $) {
               });
 
         if(!_.isEmpty(activeAnnotations)) {
+          var nodeClassName = "";
           var spans = activeAnnotations.map(function(ann, i) {
             var previous = activeAnnotations[i - 1];
 
@@ -62,21 +63,21 @@ define(['react', 'underscore','Q', 'jQuery'], function(React, _, Q, $) {
             }
             var next = activeAnnotations[i + 1];
 
-            var className = ann.type + "_annotation annotated"
+            var className = ann.type + "_annotation"
               , text = o.textContent
               , start = previous ? text.length + (previous.range[1] - previous.interval[1]) : 0
               , left = ann.range[0] - ann.interval[0]
               , right = text.length + (ann.range[1] - ann.interval[1])
               , end = next ?  right : text.length;
+
+            nodeClassName = nodeClassName + " " + className;
+
             return(<div style={{display: "inline"}}>
                     <span className="pre">{text.slice(start, left)}</span>
-                    <span className={className}>{text.slice(left, right)}</span>
+                    <span className={className + " annotated"}>{text.slice(left, right)}</span>
                     <span className="post">{text.slice(right, end)}</span>
                    </div>);
           });
-          var nodeClassName = _.map(activeAnnotations, function(ann) {
-            return ann.type + "_annotation";
-          }).join(" ");
           return(
               <div style={o.style}
                    dir={o.dir}
