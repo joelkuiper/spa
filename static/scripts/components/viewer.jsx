@@ -37,7 +37,7 @@ define(['react', 'underscore','Q', 'jQuery'], function(React, _, Q, $) {
         , key = this.props.key
         , annotations = this.getNodeAnnotations(results, pageIndex);
 
-      var getAnnotation = function(annotations) {
+      var getActiveAnnotations = function(annotations) {
         return _.filter(annotations, function(c) {
           var result = results.find(function(el) {
             return el.id === c.type;
@@ -48,26 +48,41 @@ define(['react', 'underscore','Q', 'jQuery'], function(React, _, Q, $) {
 
       var textNodes = this.props.content.map(function (o,i) {
         if(o.isWhitespace) { return null; }
-        var annotation = getAnnotation(annotations[i])[0];
+        var activeAnnotations = // sorted by range offset
+              _.sortBy(getActiveAnnotations(annotations[i]), function(ann) {
+                return ann.range[0];
+              });
 
-        if(annotation) {
-          var className = annotation.type + "_annotation "
-            , text = o.textContent
-            , left = annotation.range[0] - annotation.interval[0]
-            , right = text.length + (annotation.range[1] - annotation.interval[1]);
-          return (
+        if(!_.isEmpty(activeAnnotations)) {
+          var spans = activeAnnotations.map(function(ann, i) {
+            var previous = activeAnnotations[i - 1];
+            var next = activeAnnotations[i + 1];
+
+            var className = ann.type + "_annotation annotated"
+              , text = o.textContent
+              , left = ann.range[0] - ann.interval[0]
+              , right = text.length + (ann.range[1] - ann.interval[1])
+              , pre = !previous ? text.slice(0, left) : ""
+              , content = text.slice(left, right)
+              , post = !next ? text.slice(right, text.length) : "";
+            return(<span>
+                     <span className="pre">{pre}</span>
+                     <span className={className}>{content}</span>
+                     <span className="post">{post}</span>
+                   </span>);
+          });
+          var nodeClassName = _.map(activeAnnotations, function(ann) {
+            return ann.type + "_annotation";
+          }).join(" ");
+          return(
               <div style={o.style}
                    dir={o.dir}
+                   className={nodeClassName}
                    key={key + i}
-                   className={className}
                    data-canvas-width={o.canvasWidth}
                    data-font-name={o.fontName}>
-                {text.slice(0, left)}
-                <span className={className + " annotated"}>{text.slice(left, right)}</span>
-                {text.slice(right, text.length)}
-            </div>
-          );
-
+              {spans}
+            </div>);
         } else {
           return (
               <div style={o.style}
