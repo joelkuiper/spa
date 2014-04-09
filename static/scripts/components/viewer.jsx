@@ -38,7 +38,7 @@ define(['react', 'underscore','Q', 'jQuery'], function(React, _, Q, $) {
         , annotations = this.getNodeAnnotations(results, pageIndex);
 
       var getAnnotation = function(annotations) {
-        return _.find(annotations, function(c) {
+        return _.filter(annotations, function(c) {
           var result = results.find(function(el) {
             return el.id === c.type;
           });
@@ -48,18 +48,13 @@ define(['react', 'underscore','Q', 'jQuery'], function(React, _, Q, $) {
 
       var textNodes = this.props.content.map(function (o,i) {
         if(o.isWhitespace) { return null; }
-        var nextAnnotation = getAnnotation(annotations[i + 1]);
-        var annotation = getAnnotation(annotations[i]);
+        var annotation = getAnnotation(annotations[i])[0];
 
         if(annotation) {
           var className = annotation.type + "_annotation "
             , text = o.textContent
-            , postClassName = nextAnnotation ? nextAnnotation.type + "_annotation annotated" : ""
             , left = annotation.range[0] - annotation.interval[0]
-            , right = text.length + (annotation.range[1] - annotation.interval[1])
-            , pre = text.slice(0, left)
-            , content = text.slice(left, right)
-            , post = text.slice(right, text.length);
+            , right = text.length + (annotation.range[1] - annotation.interval[1]);
           return (
               <div style={o.style}
                    dir={o.dir}
@@ -67,9 +62,9 @@ define(['react', 'underscore','Q', 'jQuery'], function(React, _, Q, $) {
                    className={className}
                    data-canvas-width={o.canvasWidth}
                    data-font-name={o.fontName}>
-                {pre}
-                <span className={className + " annotated"}>{content}</span>
-                <span className={postClassName}>{post}</span>
+                {text.slice(0, left)}
+                <span className={className + " annotated"}>{text.slice(left, right)}</span>
+                {text.slice(right, text.length)}
             </div>
           );
 
