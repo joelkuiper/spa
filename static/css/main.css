@@ -10,8 +10,8 @@ html, body {
     padding: 0;
     margin: 0;
     overflow: hidden;
-    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
     font: 100%/1.618 sans-serif;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
 
 html {
