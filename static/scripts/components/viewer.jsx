@@ -37,8 +37,8 @@ define(['react', 'underscore','Q', 'jQuery'], function(React, _, Q, $) {
         , key = this.props.key
         , annotations = this.getNodeAnnotations(results, pageIndex);
 
-      var getAnnotation = function(annotations) {
-        return _.find(annotations, function(c) {
+      var getActiveAnnotations = function(annotations) {
+        return _.filter(annotations, function(c) {
           var result = results.find(function(el) {
             return el.id === c.type;
           });
@@ -48,31 +48,45 @@ define(['react', 'underscore','Q', 'jQuery'], function(React, _, Q, $) {
 
       var textNodes = this.props.content.map(function (o,i) {
         if(o.isWhitespace) { return null; }
-        var nextAnnotation = getAnnotation(annotations[i + 1]);
-        var annotation = getAnnotation(annotations[i]);
+        var activeAnnotations = // sorted by range offset
+              _.sortBy(getActiveAnnotations(annotations[i]), function(ann) {
+                return ann.range[0];
+              });
 
-        if(annotation) {
-          var className = annotation.type + "_annotation "
-            , text = o.textContent
-            , postClassName = nextAnnotation ? nextAnnotation.type + "_annotation annotated" : ""
-            , left = annotation.range[0] - annotation.interval[0]
-            , right = text.length + (annotation.range[1] - annotation.interval[1])
-            , pre = text.slice(0, left)
-            , content = text.slice(left, right)
-            , post = text.slice(right, text.length);
-          return (
+        if(!_.isEmpty(activeAnnotations)) {
+          var nodeClassName = "";
+          var spans = activeAnnotations.map(function(ann, i) {
+            var previous = activeAnnotations[i - 1];
+
+            if(previous && previous.range[0] >= ann.range[0] && previous.range[1] >= ann.range[1]) {
+              return "";
+            }
+            var next = activeAnnotations[i + 1];
+
+            var className = ann.type + "_annotation"
+              , text = o.textContent
+              , start = previous ? text.length + (previous.range[1] - previous.interval[1]) : 0
+              , left = ann.range[0] - ann.interval[0]
+              , right = text.length + (ann.range[1] - ann.interval[1])
+              , end = next ?  right : text.length;
+
+            nodeClassName = nodeClassName + " " + className;
+
+            return(<div style={{display: "inline"}}>
+                    <span className="pre">{text.slice(start, left)}</span>
+                    <span className={className + " annotated"}>{text.slice(left, right)}</span>
+                    <span className="post">{text.slice(right, end)}</span>
+                   </div>);
+          });
+          return(
               <div style={o.style}
                    dir={o.dir}
+                   className={nodeClassName}
                    key={key + i}
-                   className={className}
                    data-canvas-width={o.canvasWidth}
                    data-font-name={o.fontName}>
-                {pre}
-                <span className={className + " annotated"}>{content}</span>
-                <span className={postClassName}>{post}</span>
-            </div>
-          );
-
+              {spans}
+            </div>);
         } else {
           return (
               <div style={o.style}
