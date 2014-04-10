@@ -69,6 +69,10 @@ var TextLayerBuilder = function textLayerBuilder(options) {
 
       ctx.font = textDiv.style.fontSize + ' ' + textDiv.style.fontFamily;
       var width = ctx.measureText(textDiv.textContent).width;
+      if (width <= 0) {
+        textDiv.isWhitespace = true;
+        continue;
+      }
 
       var textScale = textDiv.canvasWidth / width;
       var rotation = textDiv.angle;
@@ -78,9 +82,7 @@ var TextLayerBuilder = function textLayerBuilder(options) {
       CustomStyle.setProp('transform', textDiv, transform);
       CustomStyle.setProp('transformOrigin', textDiv, "0% 0%");
 
-      if (width <= 0) {
-        textDiv.isWhitespace = true;
-      }
+
     }
 
     this.renderingDone = true;
