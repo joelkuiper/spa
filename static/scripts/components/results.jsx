@@ -51,7 +51,7 @@ define(['jQuery', 'underscore', 'react'], function($, _, React) {
 
       var overall = "";
       var document = result.get("document");
-      if(!_.isUndefined(document)) {
+      if(!_.isNull(document)) {
         overall =
           <span><span className="head">overall assesment: </span>{this.levels[document + 1]}</span>;
       }

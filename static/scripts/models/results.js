@@ -5,7 +5,7 @@ define(['backbone', 'helpers/annotator'], function(Backbone, Annotator) {
   var Result = Backbone.Model.extend({
     defaults: {
       id: "",
-      document: 0,
+      document: null,
       name: "",
       active: false,
       annotations: []
