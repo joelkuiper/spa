@@ -110,6 +110,7 @@ define(['react', 'underscore', 'jQuery'], function(React, _, $) {
       var pages = [];
       for(var i = 0; i < nodesPerPage.length; i++) {
         var textNodes = nodesPerPage[i];
+        if(!textNodes) continue;
         var $firstNode = $(textNodes[0]);
         var $page = $firstNode.closest(".page");
         pages.push({

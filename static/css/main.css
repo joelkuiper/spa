@@ -159,6 +159,10 @@ canvas {
     border-top: none;
 }
 
+.block ul {
+    list-style-type: none;
+}
+
 .textLayer {
     position: absolute;
     left: 0;

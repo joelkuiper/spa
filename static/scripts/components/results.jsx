@@ -42,13 +42,25 @@ define(['jQuery', 'underscore', 'react'], function($, _, React) {
     render: function() {
       var result = this.props.result;
       var annotations = result.get("annotations").map(function(annotation, idx) {
-        return (<li key={idx}>{succinct(annotation.sentence, 180)}</li>);
+        if(annotation.sentence) {
+          return (<li key={idx}>{succinct(annotation.sentence, 180)}</li>);
+        } else {
+          return "";
+        }
       });
+
+      var overall = "";
+      var document = result.get("document");
+      if(!_.isUndefined(document)) {
+        overall =
+          <span><span className="head">overall assesment: </span>{this.levels[document + 1]}</span>;
+      }
+
       return(<div className="block">
                <h4><a onClick={this.toggleActivate} className={result.get("active") ? result.id + "_header" : ""}>{result.get("name")}</a></h4>
                <div className="content">
                  <div className="document">
-                   <span className="head">overall assesment: </span>{this.levels[result.get("document") + 1]}
+                   {overall}
                  </div>
                  <ul>{annotations}</ul>
                </div>

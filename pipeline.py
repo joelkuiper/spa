@@ -31,23 +31,17 @@ pp = pprint.PrettyPrinter(indent=2)
 import sample_size_pipeline
 
 
-#from tokenizer import tag_words
-
-CORE_DOMAINS = ["Random sequence generation", "Allocation concealment", "Blinding of participants and personnel",
-                "Blinding of outcome assessment", "Incomplete outcome data", "Selective reporting"]
-
-
 class SampleSizePipeline(Pipeline):
     """
-    @TODO 
+    @TODO
     """
-    pipeline_title = "sample size"
+    pipeline_title = "Sample Size"
     def __init__(self):
-        logger.info("loading sample size model")
+        logger.info("%s: loading models" % (self.pipeline_title))
         self.vectorizer, self.clf = self.load_sample_size_model_and_vect(
                                     'models/sample_size/sample_size_vectorizer_ft.pickle',
                                     'models/sample_size/sample_size_predictor_ft.pickle')
-        logger.info("loaded sample size model & vocab")
+        logger.info("%s: done loading models" % (self.pipeline_title))
 
 
     def load_sample_size_model_and_vect(self, vect_path, model_path):
@@ -76,31 +70,31 @@ class SampleSizePipeline(Pipeline):
         print "predicted sample size: %s" % predicted
 
         '''
-        So this is kind of hacky. The deal is that we need to 
+        So this is kind of hacky. The deal is that we need to
         get the spans for the predicted sample size. To this
         end, I rely on the span_tokenizer (below), but then I need
         to match up the predicted token (sample size) with these
-        spans. 
+        spans.
         '''
         word_tok = word_tokenizer.span_tokenize(full_text)
         for span in word_tok:
             start, end = span
             cur_word = swap_num(full_text[start:end])
             if predicted == cur_word:
-                print "sample size predictor -- matched %s for prediction %s" % (
-                        cur_word, predicted)
+                logger.debug("sample size predictor -- matched %s for prediction %s" % (
+                        cur_word, predicted))
                 matched_span = span
                 break
         else:
             # then we failed to match the prediction token?!
             # @TODO handle better?
-            print "ahhhh failed to match sample size prediction"
+            logger.warn("ahhhh failed to match sample size prediction")
             matched_span = []
 
-        
-        ss_row = {"name": "sample_size"}
-        ss_row["annotations"] = [{"span": matched_span,  "sample_size": predicted, "label": 1}]
-        
+
+        ss_row = {"name": "Sample Size"}
+        ss_row["annotations"] = [{"span": matched_span,  "sentence": predicted, "label": 1}]
+
         return [ss_row]
 
 
@@ -110,10 +104,14 @@ class RiskOfBiasPipeline(Pipeline):
     """
     pipeline_title = "Risk of Bias"
 
+    #from tokenizer import tag_words
+    CORE_DOMAINS = ["Random sequence generation", "Allocation concealment", "Blinding of participants and personnel",
+                    "Blinding of outcome assessment", "Incomplete outcome data", "Selective reporting"]
+
     def __init__(self):
-        logger.info("loading models")
+        logger.info("%s: loading models" % (self.pipeline_title))
         self.doc_models, self.doc_vecs, self.sent_models, self.sent_vecs = self.load_models('models/quality_models.pck')
-        logger.info("done loading models")
+        logger.info("%s: done loading models" % (self.pipeline_title))
 
     def load_models(self, filename):
         with open(filename, 'rb') as f:
@@ -129,13 +127,13 @@ class RiskOfBiasPipeline(Pipeline):
         # then the strings (for internal use only)
         sent_text = [full_text[start:end] for start, end in sent_indices]
         sent_text_dict = dict(zip(sent_indices, sent_text))
-        
+
         output = []
 
         sent_preds_by_domain = [] # will rejig this later to make a list of dicts
         doc_preds = {}
 
-        for test_domain, doc_model, doc_vec, sent_model, sent_vec in zip(CORE_DOMAINS, self.doc_models, self.doc_vecs, self.sent_models, self.sent_vecs):
+        for test_domain, doc_model, doc_vec, sent_model, sent_vec in zip(self.CORE_DOMAINS, self.doc_models, self.doc_vecs, self.sent_models, self.sent_vecs):
 
             domain_row = {"name": test_domain}
 
@@ -180,8 +178,3 @@ class RiskOfBiasPipeline(Pipeline):
             output.append(domain_row)
 
         return output
-
-
-
-
-
