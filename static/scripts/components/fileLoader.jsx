@@ -37,7 +37,7 @@ define(['react'], function(React) {
       return(
          <form enctype="multipart/form-data" onSubmit={this.loadFile}>
            <input name="file" type="file" ref="file" />
-           <input type="submit" className="pure-button" value="Upload" />
+           <input type="submit" className="button secondary small" value="Upload" />
          </form>);
     }
   });

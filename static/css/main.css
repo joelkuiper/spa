@@ -1,21 +1,7 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans|Montserrat);
-/* apply a natural box layout model to all elements */
-*, *:before, *:after {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
 
 html, body {
-    padding: 0;
-    margin: 0;
     overflow: hidden;
-    font: 100%/1.618 sans-serif;
-    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-}
-
-html {
-    color: #777;
 }
 
 .viewer-container {
@@ -112,6 +98,7 @@ html {
 
 span.head {
     font-weight: bold;
+    margin-bottom: 2em;
 }
 
 .block h4 {
@@ -137,30 +124,32 @@ canvas {
     font-family: 'Montserrat', 'Source Sans Pro', sans-serif;
     display: block;
     font-weight: 400;
-    min-height: 60px;
+    min-height: 80px;
     line-height: 21px;
     font-size: 16px;
     padding: 10px 20px;
     color: #444;
     background-color: #e5e5e5;
+    transition: all 300ms ease-out 0s;
+    -webkit-transition: all 300ms ease-out 0s;
+    -moz-transition: all 300ms ease-out 0s;
 }
 
 .block h4 a:hover {
     background-color: #d9d9d9;
-   -moz-box-shadow:    inset 0 0 10px rgba(0,0,0,0.1);
-   -webkit-box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
-   box-shadow:         inset 0 0 10px rgba(0,0,0,0.1);
+   -moz-box-shadow:    inset 0 0 10px rgba(0,0,0,0.2);
+   -webkit-box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+   box-shadow:         inset 0 0 10px rgba(0,0,0,0.2);
 }
 
 .block .content {
-    font-size: 11pt;
     padding: 10px 20px;
     border: solid 1px #ddd;
     border-top: none;
 }
 
 .block ul {
-    list-style-type: none;
+    margin-top: 1em;
 }
 
 .textLayer {
@@ -170,7 +159,6 @@ canvas {
     right: 0;
     bottom: 0;
     color: #000;
-    font-family: sans-serif;
     overflow: hidden;
 }
 
