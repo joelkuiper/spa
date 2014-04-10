@@ -1,0 +1,10109 @@
+ccopy_reg
+_reconstructor
+p1
+(csklearn.feature_extraction.dict_vectorizer
+DictVectorizer
+p2
+c__builtin__
+object
+p3
+NtRp4
+(dp5
+S'vocabulary_'
+p6
+(dp7
+S'right window MI|-None-'
+p8
+I1784
+sS'right window re-rejections|NNS'
+p9
+I2328
+sS'left window sufentanil|NNP'
+p10
+I1263
+sS'right window .81|-None-'
+p11
+I1567
+sS'left window III|NNP'
+p12
+I353
+sS'left window smokers|NNS'
+p13
+I1224
+sS'left window disulfiram|NN'
+p14
+I709
+sS'right window over|IN'
+p15
+I2262
+sS'left window prednisone/day|NN'
+p16
+I1091
+sS'right window drugs|NNS'
+p17
+I2001
+sS'right window [|-None-'
+p18
+I1822
+sS'right window gentamicin|-None-'
+p19
+I2062
+sS'left window 189|-NONE-'
+p20
+I130
+sS'left window probenecid|JJ'
+p21
+I1107
+sS'left window apple|NN'
+p22
+I499
+sS'right window mild|NN'
+p23
+I2193
+sS'left window such|JJ'
+p24
+I1262
+sS'left window ranged|VBN'
+p25
+I1135
+sS'left window every|DT'
+p26
+I764
+sS'right window rectal|NN'
+p27
+I2336
+sS'left window across|IN'
+p28
+I453
+sS'left window doses|NNS'
+p29
+I715
+sS'left window .44|CD'
+p30
+I53
+sS'right window additionally|RB'
+p31
+I1831
+sS'right window end|NN'
+p32
+I2018
+sS'left window acids|NNS'
+p33
+I451
+sS'left window initial|JJ'
+p34
+I876
+sS'left window OKT3|-None-'
+p35
+I383
+sS'left window asymptomatic|JJ'
+p36
+I510
+sS'right window usage|NN'
+p37
+I2474
+sS'right window foods|NNS'
+p38
+I2050
+sS'left window .71|-None-'
+p39
+I75
+sS'right window children|NNS'
+p40
+I1925
+sS'left window quetiapine|NN'
+p41
+I1128
+sS'left window 731|-None-'
+p42
+I231
+sS'left window Metformin|NNP'
+p43
+I374
+sS'right window ordinal|JJ'
+p44
+I2255
+sS'left window .25|CD'
+p45
+I39
+sS'left window .11|-None-'
+p46
+I27
+sS'right window lower|JJR'
+p47
+I2148
+sS'right window .1%|-None-'
+p48
+I1446
+sS'left window Only|RB'
+p49
+I385
+sS'right window period|NN'
+p50
+I2279
+sS'left window tampons|NNS'
+p51
+I1277
+sS'right window .91|CD'
+p52
+I1579
+sS'right window .0%|-None-'
+p53
+I1407
+sS'left window .41|-None-'
+p54
+I51
+sS'left window .1-19|-NONE-'
+p55
+I25
+sS'right window 51|CD'
+p56
+I1688
+sS'right window diarrhoea|-None-'
+p57
+I1981
+sS'right window visual|JJ'
+p58
+I2485
+sS'right window measures|NNS'
+p59
+I2160
+sS'left window activity|NN'
+p60
+I455
+sS'left window least|JJS'
+p61
+I919
+sS'left window ointment|NN'
+p62
+I1034
+sS'right window 1|LS'
+p63
+I1628
+sS'right window darkening|VBG'
+p64
+I1970
+sS'left window bands|NNS'
+p65
+I521
+sS'right window %|NN'
+p66
+I1394
+sS'left window placebo-controlled|VBN'
+p67
+I1076
+sS'right window 89|CD'
+p68
+I1720
+sS'left window 0|-NONE-'
+p69
+I95
+sS'left window alone|RB'
+p70
+I473
+sS'right window ephedrine|NN'
+p71
+I2022
+sS'left window Sharp|JJ'
+p72
+I411
+sS'left window a|DT'
+p73
+I519
+sS'right window whilst|-None-'
+p74
+I2504
+sS'left window 150|CD'
+p75
+I119
+sS'left window ovulatory|NN'
+p76
+I1053
+sS'left window ticlopidine|NN'
+p77
+I1307
+sS'left window Topical|JJ'
+p78
+I428
+sS'left window tonsillectomy|NN'
+p79
+I1316
+sS'right window 24-hour|PRP$'
+p80
+I1639
+sS'left window described|VBN'
+p81
+I681
+sS'right window +29%|-None-'
+p82
+I1402
+sS'left window microg|-None-'
+p83
+I975
+sS'right window intravenous|JJ'
+p84
+I2120
+sS'left window acetaminophen|WRB'
+p85
+I447
+sS'right window .52|CD'
+p86
+I1523
+sS'left window .2%|-None-'
+p87
+I34
+sS'left window 1|LS'
+p88
+I136
+sS'left window end|NN'
+p89
+I745
+sS'left window intent|NN'
+p90
+I883
+sS'right window recordings|NNS'
+p91
+I2333
+sS'left window clinically|RB'
+p92
+I592
+sS'left window cefazolin|NNP'
+p93
+I568
+sS'left window TAC-MMF|-None-'
+p94
+I415
+sS'right window .0005|CD'
+p95
+I1411
+sS'left window I|PRP'
+p96
+I363
+sS'left window SE|-None-'
+p97
+I407
+sS'right window 3|LS'
+p98
+I1667
+sS'right window compare|VBP'
+p99
+I1944
+sS'left window 18|CD'
+p100
+I131
+sS'right window hyaluronan|-None-'
+p101
+I2089
+sS'right window as|IN'
+p102
+I1879
+sS'right window vehicle|NN'
+p103
+I2478
+sS'right window higher|JJR'
+p104
+I2083
+sS'right window female|JJ'
+p105
+I2043
+sS'right window because|IN'
+p106
+I1887
+sS'left window streptococci|-None-'
+p107
+I1245
+sS'right window .06-1|-None-'
+p108
+I1438
+sS'left window its|PRP$'
+p109
+I901
+sS'right window .015|-None-'
+p110
+I1422
+sS'right window erythromycin-treated|VBN'
+p111
+I2029
+sS'left window weekly|JJ'
+p112
+I1366
+sS'right window gestational|JJ'
+p113
+I2063
+sS'left window completed|VBD'
+p114
+I609
+sS'left window were|VBD'
+p115
+I1370
+sS'left window beclomethasone|CD'
+p116
+I526
+sS'left window responding|VBG'
+p117
+I1177
+sS'left window 15|CD'
+p118
+I122
+sS'left window vitamin|NNP'
+p119
+I1358
+sS'right window diabetes|NN'
+p120
+I1979
+sS'right window cervical|JJ'
+p121
+I1922
+sS'right window obese|JJ'
+p122
+I2240
+sS'left window .55|CD'
+p123
+I61
+sS'left window insertion|NN'
+p124
+I878
+sS'left window .09|CD'
+p125
+I22
+sS'left window ovulation|NN'
+p126
+I1052
+sS'left window 55|CD'
+p127
+I211
+sS'right window evacuation|NN'
+p128
+I2031
+sS'right window sessions|NNS'
+p129
+I2378
+sS'right window different|JJ'
+p130
+I1987
+sS'right window did|VBD'
+p131
+I1983
+sS'left window glycopyrrolate|NN'
+p132
+I819
+sS'left window transport|NN'
+p133
+I1322
+sS'left window wash-out|IN'
+p134
+I1363
+sS'left window rating|NN'
+p135
+I1142
+sS'left window events|NNS'
+p136
+I763
+sS'left window centre|-None-'
+p137
+I576
+sS'right window hand|NN'
+p138
+I2076
+sS'right window years|NNS'
+p139
+I2513
+sS'right window saline|NN'
+p140
+I2363
+sS'right window .5-16|-NONE-'
+p141
+I1516
+sS'left window shunts|NNS'
+p142
+I1211
+sS'right window much|JJ'
+p143
+I2215
+sS'right window brucellosis|NN'
+p144
+I1901
+sS'left window anesthesia|NNP'
+p145
+I491
+sS'left window surgery|NN'
+p146
+I1269
+sS'left window labor|NN'
+p147
+I909
+sS'left window hypertension|NN'
+p148
+I847
+sS'right window .0006|-None-'
+p149
+I1412
+sS'left window SCT|-None-'
+p150
+I405
+sS'left window receiving|VBG'
+p151
+I1147
+sS'left window study|NN'
+p152
+I1250
+sS'left window bitherapy|NN'
+p153
+I537
+sS'right window intravenously|RB'
+p154
+I2119
+sS'right window .10-2|-None-'
+p155
+I1449
+sS'left window HDL|-None-'
+p156
+I349
+sS'left window nisoldipine|NN'
+p157
+I1019
+sS'right window relative|JJ'
+p158
+I2349
+sS'left window EPO|-None-'
+p159
+I330
+sS'left window versus|CC'
+p160
+I1356
+sS'left window thus|RB'
+p161
+I1306
+sS'right window capsules|NNS'
+p162
+I1910
+sS'right window =|-None-'
+p163
+I1732
+sS'right window .2-|-None-'
+p164
+I1471
+sS'right window tretinoin-treated|VBN'
+p165
+I2456
+sS'right window 147|-NONE-'
+p166
+I1612
+sS'right window .152|-NONE-'
+p167
+I1459
+sS'left window headaches|NNS'
+p168
+I830
+sS'left window CEE|-None-'
+p169
+I301
+sS'left window colic|JJ'
+p170
+I598
+sS'right window enalapril|NNP'
+p171
+I2015
+sS'left window expiratory|NN'
+p172
+I769
+sS'right window Wiley-Liss|JJ'
+p173
+I1819
+sS'left window composed|VBN'
+p174
+I614
+sS'right window olanzapine|NN'
+p175
+I2244
+sS'right window enrolled|VBN'
+p176
+I2020
+sS'left window minus|CC'
+p177
+I980
+sS'right window infected|VBN'
+p178
+I2106
+sS'left window P|-None-'
+p179
+I398
+sS'right window most|JJS'
+p180
+I2211
+sS'left window positive|JJ'
+p181
+I1085
+sS'right window .25|CD'
+p182
+I1479
+sS'left window 199|-NONE-'
+p183
+I133
+sS'right window occurred|VBD'
+p184
+I2241
+sS'right window elective|JJ'
+p185
+I2013
+sS'right window centers|NNS'
+p186
+I1921
+sS'left window erythromycin-treated|VBN'
+p187
+I756
+sS'left window thrombocytopenia|NNP'
+p188
+I1300
+sS'right window bupivacaine|NN'
+p189
+I1902
+sS'right window lower|RBR'
+p190
+I2149
+sS'left window RLS|-None-'
+p191
+I400
+sS'right window parallel|JJ'
+p192
+I2270
+sS'left window moist|NN'
+p193
+I987
+sS'left window given|VBN'
+p194
+I816
+sS'left window rate|NN'
+p195
+I1141
+sS'right window intact|NN'
+p196
+I2113
+sS'left window scale|NN'
+p197
+I1194
+sS'left window TAC|-None-'
+p198
+I416
+sS'left window diastolic|JJ'
+p199
+I691
+sS'right window after|IN'
+p200
+I1842
+sS'left window symptom|NN'
+p201
+I1273
+sS'left window orally|RB'
+p202
+I1041
+sS'left window stabilizer|-None-'
+p203
+I1233
+sS'right window 41|CD'
+p204
+I1674
+sS'right window citrate/HMG|-None-'
+p205
+I1931
+sS'right window fibrate|NN'
+p206
+I2044
+sS'left window spironolactone|CD'
+p207
+I1231
+sS'left window subgroup|NN'
+p208
+I1255
+sS'right window previously|RB'
+p209
+I2308
+sS'right window 90|CD'
+p210
+I1723
+sS'left window 6-week|NN'
+p211
+I216
+sS'right window 52%|-None-'
+p212
+I1689
+sS'right window .17|CD'
+p213
+I1462
+sS'left window developed|VBD'
+p214
+I683
+sS'left window 3|CD'
+p215
+I178
+sS'left window enoxaparin|-None-'
+p216
+I746
+sS'left window demonstrated|VBN'
+p217
+I678
+sS'left window Copyright|NN'
+p218
+I315
+sS'left window continue|VB'
+p219
+I632
+sS'right window 17/145|-NONE-'
+p220
+I1621
+sS'left window 60%|-None-'
+p221
+I217
+sS'left window done|VBN'
+p222
+I712
+sS'left window 10/53|-None-'
+p223
+I99
+sS'right window lightening|VBG'
+p224
+I2144
+sS'left window 149|CD'
+p225
+I117
+sS'left window 44|CD'
+p226
+I189
+sS'left window shock|NN'
+p227
+I1208
+sS'right window 80|CD'
+p228
+I1715
+sS'left window massage|NN'
+p229
+I944
+sS'left window 50|CD'
+p230
+I203
+sS'right window study|NN'
+p231
+I2405
+sS'right window .71%|-None-'
+p232
+I1551
+sS'left window A|NNP'
+p233
+I288
+sS'left window affirmed|VBN'
+p234
+I463
+sS'left window effective|JJ'
+p235
+I734
+sS'left window SD|-None-'
+p236
+I406
+sS'left window equine|NN'
+p237
+I755
+sS'left window 5-FU|-None-'
+p238
+I199
+sS'right window investigate|VB'
+p239
+I2121
+sS'left window observed|VBD'
+p240
+I1029
+sS'right window 19|CD'
+p241
+I1626
+sS'right window duration|NN'
+p242
+I2003
+sS'left window randomised|VBN'
+p243
+I1132
+sS'right window .6%|-None-'
+p244
+I1533
+sS'right window recovery|NN'
+p245
+I2334
+sS'left window conjugated|VBN'
+p246
+I623
+sS'right window be|VB'
+p247
+I1891
+sS'left window lidocaine|NN'
+p248
+I927
+sS'left window 10%|-None-'
+p249
+I98
+sS'right window agreed|VBD'
+p250
+I1847
+sS'left window which|WDT'
+p251
+I1374
+sS'right window weight|NN'
+p252
+I2494
+sS'left window infection|NN'
+p253
+I869
+sS'left window dexamethasone|CD'
+p254
+I684
+sS'left window placebo|-None-'
+p255
+I1077
+sS'right window .45|CD'
+p256
+I1509
+sS'left window tonsillar|JJ'
+p257
+I1315
+sS'right window we|PRP'
+p258
+I2499
+sS'right window which|WDT'
+p259
+I2502
+sS'right window nauseated|VBN'
+p260
+I2221
+sS'right window .12%|-None-'
+p261
+I1452
+sS'left window prevalence|NN'
+p262
+I1102
+sS'left window 2|CD'
+p263
+I157
+sS'left window between|IN'
+p264
+I532
+sS'right window binding|VBG'
+p265
+I1893
+sS'right window 9|CD'
+p266
+I1728
+sS'right window preparations|NNS'
+p267
+I2304
+sS'right window 21|CD'
+p268
+I1633
+sS'left window 9|CD'
+p269
+I256
+sS'left window antispasmodic|-None-'
+p270
+I495
+sS'right window albuterol|NN'
+p271
+I1848
+sS'left window .4|-None-'
+p272
+I55
+sS'left window alpha|-None-'
+p273
+I475
+sS'right window every|DT'
+p274
+I2035
+sS'left window survival|NN'
+p275
+I1270
+sS'right window Study|NN'
+p276
+I1808
+sS'left window amoxicillin|NNP'
+p277
+I486
+sS'right window older|JJR'
+p278
+I2245
+sS'right window complete|VB'
+p279
+I1947
+sS'left window LDL|-None-'
+p280
+I367
+sS'right window completed|VBD'
+p281
+I1945
+sS'left window creatinine|NN'
+p282
+I644
+sS'left window .3%|-None-'
+p283
+I45
+sS'right window completed|VBN'
+p284
+I1946
+sS'right window 57|CD'
+p285
+I1693
+sS'right window portal|NN'
+p286
+I2292
+sS'left window Foley|NNP'
+p287
+I337
+sS'left window circumcision|NN'
+p288
+I584
+sS'left window .8%|-None-'
+p289
+I82
+sS'left window Placebo|-None-'
+p290
+I397
+sS'left window volunteers|NNS'
+p291
+I1360
+sS'left window 72|CD'
+p292
+I230
+sS'left window multiple|NNS'
+p293
+I1005
+sS'left window card|NN'
+p294
+I560
+sS'left window decreased|VBN'
+p295
+I667
+sS'left window simvastatin-cholestyramine|NN'
+p296
+I1219
+sS'left window 40/64|-None-'
+p297
+I180
+sS'right window evaluable|JJ'
+p298
+I2032
+sS'left window whereas|NNS'
+p299
+I1372
+sS'right window whereas|NNS'
+p300
+I2501
+sS'left window radiographic|JJ'
+p301
+I1130
+sS'right window continuing|VBG'
+p302
+I1953
+sS'right window .0469|-None-'
+p303
+I1429
+sS'left window 53-70%|-None-'
+p304
+I206
+sS'left window deliver|VB'
+p305
+I676
+sS'left window etanercept|IN'
+p306
+I760
+sS'left window min|NNP'
+p307
+I981
+sS'right window .044|-None-'
+p308
+I1428
+sS'left window less|RBR'
+p309
+I924
+sS'right window vitamin|NNP'
+p310
+I2486
+sS'left window .74|CD'
+p311
+I77
+sS'left window .26|CD'
+p312
+I40
+sS'left window once|RB'
+p313
+I1037
+sS'left window applied|VBD'
+p314
+I500
+sS'right window receive|VB'
+p315
+I2331
+sS'right window A|DT'
+p316
+I1739
+sS'right window adults|NNS'
+p317
+I1839
+sS'left window 34|CD'
+p318
+I169
+sS'right window each|DT'
+p319
+I2006
+sS'left window disulfiram-naltrexone|CD'
+p320
+I708
+sS'right window operation|NN'
+p321
+I2253
+sS'left window .9%|-None-'
+p322
+I88
+sS'left window ceftriaxone-placebo|-None-'
+p323
+I572
+sS'right window primary|JJ'
+p324
+I2309
+sS'right window 125/330|-None-'
+p325
+I1608
+sS'left window 21%|-None-'
+p326
+I141
+sS'left window gentamicin/doxycycline|NN'
+p327
+I813
+sS'right window postoperative|JJ'
+p328
+I2295
+sS'left window disappeared|VBN'
+p329
+I703
+sS'left window Pio|-None-'
+p330
+I396
+sS'left window 122/246|-NONE-'
+p331
+I110
+sS'left window .80|CD'
+p332
+I83
+sS'right window receiving|VBG'
+p333
+I2332
+sS'left window g/L|-None-'
+p334
+I807
+sS'right window went|VBD'
+p335
+I2496
+sS'right window rejection|NN'
+p336
+I2347
+sS'left window analogue|VBP'
+p337
+I488
+sS'left window rTMS|-None-'
+p338
+I1129
+sS'right window SCT|-None-'
+p339
+I1803
+sS'right window analysed|VBN'
+p340
+I1859
+sS'right window CD2+|-None-'
+p341
+I1743
+sS'left window total|JJ'
+p342
+I1317
+sS'left window selected|VBN'
+p343
+I1202
+sS'right window SO|-None-'
+p344
+I1806
+sS'right window available|JJ'
+p345
+I1883
+sS'left window cough|IN'
+p346
+I639
+sS'right window PCOS|-None-'
+p347
+I1797
+sS'left window oral|JJ'
+p348
+I1042
+sS'left window joint|JJ'
+p349
+I904
+sS'right window 00|-None-'
+p350
+I1598
+sS'right window their|PRP$'
+p351
+I2430
+sS'left window 35|CD'
+p352
+I171
+sS'right window g/L|-None-'
+p353
+I2057
+sS'left window .47|CD'
+p354
+I54
+sS'left window spasmolytics|NNS'
+p355
+I1227
+sS'right window healthcare|VBP'
+p356
+I2081
+sS'left window The|DT'
+p357
+I424
+sS'left window NIC|-None-'
+p358
+I379
+sS'right window analysis|NN'
+p359
+I1860
+sS'right window in|IN'
+p360
+I2123
+sS'right window score|NN'
+p361
+I2370
+sS'right window follow|VB'
+p362
+I2049
+sS'left window into|IN'
+p363
+I887
+sS'left window seconds|NNS'
+p364
+I1199
+sS'left window data|NNS'
+p365
+I661
+sS'left window .75|CD'
+p366
+I78
+sS'right window follow-up|JJ'
+p367
+I2046
+sS'right window point|NN'
+p368
+I2291
+sS'right window .26|CD'
+p369
+I1481
+sS'right window indomethacin|-None-'
+p370
+I2103
+sS'left window diarrhea|-None-'
+p371
+I689
+sS'right window normal|JJ'
+p372
+I2235
+sS'right window 69|CD'
+p373
+I1703
+sS'right window care|NN'
+p374
+I1912
+sS'left window negative|JJ'
+p375
+I1015
+sS'right window all|DT'
+p376
+I1850
+sS'right window 679|-None-'
+p377
+I1700
+sS'right window .56|CD'
+p378
+I1527
+sS'left window osteoarthritic|JJ'
+p379
+I1044
+sS'left window hospital|NN'
+p380
+I838
+sS'left window indication|NN'
+p381
+I864
+sS'right window risperidone|CD'
+p382
+I2361
+sS'right window by|IN'
+p383
+I1905
+sS'right window alone|RB'
+p384
+I1851
+sS'left window 25%|-None-'
+p385
+I147
+sS'left window elevations|NNS'
+p386
+I739
+sS'right window undrained|VBN'
+p387
+I2466
+sS'left window stiffness|NN'
+p388
+I1241
+sS'left window ectopic|NNP'
+p389
+I733
+sS'left window drop|NN'
+p390
+I724
+sS'right window dose|VBD'
+p391
+I1993
+sS'right window OKT3|-None-'
+p392
+I1795
+sS'right window mmol/L|-None-'
+p393
+I2200
+sS'right window The|DT'
+p394
+I1812
+sS'right window inpatients|NNS'
+p395
+I2112
+sS'left window hours|NNS'
+p396
+I840
+sS'left window analgesia|NNP'
+p397
+I487
+sS'left window UH|-None-'
+p398
+I434
+sS'right window months|NNS'
+p399
+I2206
+sS'right window 9%|-None-'
+p400
+I1722
+sS'left window relative|JJ'
+p401
+I1160
+sS'left window changes|NNS'
+p402
+I577
+sS'left window only|RB'
+p403
+I1039
+sS'right window 12|CD'
+p404
+I1609
+sS'left window gentamicin|-None-'
+p405
+I814
+sS'left window during|IN'
+p406
+I729
+sS'right window greater|JJR'
+p407
+I2069
+sS'left window concentration|NN'
+p408
+I618
+sS'left window 78|CD'
+p409
+I237
+sS'right window acetaminophen|WRB'
+p410
+I1826
+sS'left window preference|NN'
+p411
+I1093
+sS'left window bronchiolitis|-None-'
+p412
+I545
+sS'right window 122/246|-NONE-'
+p413
+I1607
+sS'left window baclofen|NNP'
+p414
+I520
+sS'right window matched|VBD'
+p415
+I2156
+sS'right window cholesterol|NN'
+p416
+I1927
+sS'right window outcome|DT'
+p417
+I2258
+sS'left window clobetasol|-None-'
+p418
+I594
+sS'right window .5%|-None-'
+p419
+I1514
+sS'right window hospitals|NNS'
+p420
+I2084
+sS'left window methacholine|NN'
+p421
+I958
+sS'right window .m-2|-None-'
+p422
+I1592
+sS'right window .61-2|-None-'
+p423
+I1537
+sS'left window adverse|JJ'
+p424
+I462
+sS'right window equally|RB'
+p425
+I2026
+sS'right window median|JJ'
+p426
+I2161
+sS'left window then|RB'
+p427
+I1289
+sS'left window motion|NN'
+p428
+I1000
+sS'left window intramuscularly|RB'
+p429
+I888
+sS'left window due|JJ'
+p430
+I727
+sS'right window cases|NNS'
+p431
+I1913
+sS'right window discontinuation|NN'
+p432
+I1989
+sS'left window Cough|IN'
+p433
+I316
+sS'right window .012|-None-'
+p434
+I1421
+sS'left window in|RP'
+p435
+I895
+sS'left window .32|CD'
+p436
+I46
+sS'right window SD|-None-'
+p437
+I1804
+sS'right window 4/46|-None-'
+p438
+I1669
+sS'right window .57|CD'
+p439
+I1528
+sS'right window gestation|NN'
+p440
+I2064
+sS'right window 88%|-None-'
+p441
+I1719
+sS'left window defervescence|NN'
+p442
+I670
+sS'right window .99|CD'
+p443
+I1587
+sS'right window ;|:'
+p444
+I1730
+sS'left window titrated|VBN'
+p445
+I1312
+sS'left window salbutomol|-None-'
+p446
+I1188
+sS'right window escitalopram|NN'
+p447
+I2030
+sS'left window receive|VB'
+p448
+I1146
+sS'left window divided|VBN'
+p449
+I710
+sS'right window regarding|VBG'
+p450
+I2341
+sS'left window 82|-None-'
+p451
+I245
+sS'right window difference|NN'
+p452
+I1986
+sS'left window studied|VBN'
+p453
+I1247
+sS'right window von|NNP'
+p454
+I2488
+sS'right window used|VBN'
+p455
+I2475
+sS'right window .89|-None-'
+p456
+I1574
+sS'left window whom|WP'
+p457
+I1376
+sS'left window IU/kg|-None-'
+p458
+I357
+sS'left window stimulation|NN'
+p459
+I1242
+sS'right window Medical|NNP'
+p460
+I1786
+sS'left window 250|CD'
+p461
+I148
+sS'left window second|JJ'
+p462
+I1200
+sS'left window mothers|NNS'
+p463
+I999
+sS'right window 48|CD'
+p464
+I1682
+sS'right window DTIC|-None-'
+p465
+I1754
+sS'right window a|DT'
+p466
+I1885
+sS'right window 52|CD'
+p467
+I1690
+sS'right window then|RB'
+p468
+I2431
+sS'left window diclofenac|-None-'
+p469
+I693
+sS'left window calcium|NN'
+p470
+I554
+sS'right window Disorder|NN'
+p471
+I1755
+sS'right window continuous-infusion|NN'
+p472
+I1954
+sS'left window maintained|VBN'
+p473
+I939
+sS'left window mometasone|CD'
+p474
+I988
+sS'right window Hamilton|NNP'
+p475
+I1768
+sS'left window palsy|-None-'
+p476
+I1060
+sS'left window out|RP'
+p477
+I1048
+sS'left window spinal|JJ'
+p478
+I1229
+sS'right window .32|CD'
+p479
+I1492
+sS'right window p<0|-None-'
+p480
+I2265
+sS'left window pulmonary|JJ'
+p481
+I1125
+sS'left window bronchopneumonia|NNP'
+p482
+I546
+sS'left window microg/kg|-None-'
+p483
+I972
+sS'right window 23|CD'
+p484
+I1638
+sS'left window 10|CD'
+p485
+I102
+sS'left window .16|CD'
+p486
+I30
+sS'right window ceftizoxime|NN'
+p487
+I1918
+sS'left window ranging|VBG'
+p488
+I1136
+sS'left window ACD|-None-'
+p489
+I268
+sS'right window randomised|VBN'
+p490
+I2322
+sS'right window TAC-MMF|-None-'
+p491
+I1810
+sS'right window nm|-None-'
+p492
+I2232
+sS'right window 6|CD'
+p493
+I1704
+sS'left window PD20|-None-'
+p494
+I388
+sS'right window 42|CD'
+p495
+I1675
+sS'left window subdivided|VBD'
+p496
+I1254
+sS'right window pregnant|JJ'
+p497
+I2301
+sS'left window starting|VBG'
+p498
+I1237
+sS'left window grade|NN'
+p499
+I821
+sS'right window 79%|-None-'
+p500
+I1712
+sS'left window failures|NNS'
+p501
+I772
+sS'left window caused|VBD'
+p502
+I565
+sS'right window equal|JJ'
+p503
+I2027
+sS'right window pramipexole|NN'
+p504
+I2296
+sS'right window gamma-linolenic|JJ'
+p505
+I2060
+sS'right window is|VBZ'
+p506
+I2128
+sS'right window living|NN'
+p507
+I2146
+sS'left window probes|VBZ'
+p508
+I1108
+sS'left window requiring|VBG'
+p509
+I1171
+sS'right window .3+/-62|-NONE-'
+p510
+I1490
+sS'right window laminaria|NNP'
+p511
+I2136
+sS'left window spine|NN'
+p512
+I1230
+sS'right window cohorts|NNS'
+p513
+I1939
+sS'left window Bishop|JJ'
+p514
+I293
+sS'right window .43|CD'
+p515
+I1507
+sS'right window tretinoin|VB'
+p516
+I2457
+sS'right window .6|-None-'
+p517
+I1546
+sS'left window Medical|JJ'
+p518
+I373
+sS'right window active-drug|NN'
+p519
+I1827
+sS'left window d|-None-'
+p520
+I730
+sS'left window leakage|NN'
+p521
+I918
+sS'left window mid-treatment|NN'
+p522
+I977
+sS'right window within|IN'
+p523
+I2507
+sS'left window basis|NN'
+p524
+I525
+sS'right window assessments|NNS'
+p525
+I1876
+sS'left window endpoints|NNS'
+p526
+I743
+sS'left window mval/day|NN'
+p527
+I1007
+sS'right window intervention|NN'
+p528
+I2118
+sS'left window pregnancy|NN'
+p529
+I1097
+sS'si[0]'
+p530
+I2517
+sS'right window .27|-None-'
+p531
+I1482
+sS'left window iv|-None-'
+p532
+I903
+sS'left window psychologic|NNP'
+p533
+I1124
+sS'left window utilization|NN'
+p534
+I1348
+sS'right window chemotherapy|NN'
+p535
+I1923
+sS'right window body|NN'
+p536
+I1895
+sS'left window with|IN'
+p537
+I1381
+sS'right window Hz|-None-'
+p538
+I1770
+sS'left window combined|VBN'
+p539
+I602
+sS'left window rates|NNS'
+p540
+I1140
+sS'right window daily|JJ'
+p541
+I1967
+sS'left window died|VBD'
+p542
+I694
+sS'left window Of|IN'
+p543
+I384
+sS'left window pain|NN'
+p544
+I1058
+sS'right window .85|CD'
+p545
+I1571
+sS'left window galantamine|NN'
+p546
+I810
+sS'right window 16%|-None-'
+p547
+I1617
+sS'right window ventilator-dependent|NN'
+p548
+I2480
+sS'left window unit|NN'
+p549
+I1341
+sS'left window manner|NN'
+p550
+I943
+sS'left window psoriasis|NN'
+p551
+I1123
+sS'right window DPNB|-None-'
+p552
+I1752
+sS'right window <|-None-'
+p553
+I1731
+sS'right window spasticity|NN'
+p554
+I2394
+sS'right window .15|CD'
+p555
+I1460
+sS'right window 49|CD'
+p556
+I1683
+sS'right window eradication|NN'
+p557
+I2028
+sS'left window face|NN'
+p558
+I771
+sS'left window ranitidine|NN'
+p559
+I1137
+sS'right window .8-10|-NONE-'
+p560
+I1564
+sS'left window tests|NNS'
+p561
+I1282
+sS'right window respectively|RB'
+p562
+I2356
+sS'right window 200|CD'
+p563
+I1631
+sS'right window urinary|JJ'
+p564
+I2471
+sS'left window AUC|-None-'
+p565
+I278
+sS'right window .26-2|-None-'
+p566
+I1480
+sS'left window improved|VBN'
+p567
+I855
+sS'left window blood|NN'
+p568
+I540
+sS'right window month|NN'
+p569
+I2207
+sS'left window up|RP'
+p570
+I1345
+sS'right window stimulation|NN'
+p571
+I2400
+sS'left window number|NN'
+p572
+I1026
+sS'left window IONV|-None-'
+p573
+I355
+sS'right window 63%|-None-'
+p574
+I1697
+sS'left window consecutive|JJ'
+p575
+I624
+sS'left window After|IN'
+p576
+I280
+sS'right window N-acetyl-L-cysteine|NN'
+p577
+I1790
+sS'right window ambulatory|NN'
+p578
+I1854
+sS'left window CGI-I|-None-'
+p579
+I304
+sS'left window evaluate|NN'
+p580
+I762
+sS'left window 330|-None-'
+p581
+I167
+sS'left window dialysate|NN'
+p582
+I687
+sS'left window prophylactic|JJ'
+p583
+I1116
+sS'right window negative|JJ'
+p584
+I2224
+sS'left window comparison|NN'
+p585
+I607
+sS'right window reported|VBD'
+p586
+I2353
+sS'right window mm|-None-'
+p587
+I2202
+sS'left window CsA|-None-'
+p588
+I318
+sS'right window weekly|JJ'
+p589
+I2491
+sS'left window t|-None-'
+p590
+I1336
+sS'left window 47|CD'
+p591
+I193
+sS'right window questionnaires|NNS'
+p592
+I2318
+sS'left window nadroparin|-None-'
+p593
+I1010
+sS'left window type|NN'
+p594
+I1335
+sS'right window clinical|JJ'
+p595
+I1935
+sS'right window .34|CD'
+p596
+I1493
+sS'right window 66%|-None-'
+p597
+I1699
+sS'right window ages|NNS'
+p598
+I1845
+sS'left window documented|VBN'
+p599
+I711
+sS'left window citrate|NN'
+p600
+I588
+sS'left window superficial|JJ'
+p601
+I1266
+sS'left window dosages|NNS'
+p602
+I713
+sS'left window melasma|-None-'
+p603
+I955
+sS'right window unadjusted|VBN'
+p604
+I2463
+sS'right window mucositis|-None-'
+p605
+I2216
+sS'numrank[0]'
+p606
+I1392
+sS'right window menopausal|NN'
+p607
+I2166
+sS'left window nausea|-None-'
+p608
+I1012
+sS'right window 39%|-None-'
+p609
+I1665
+sS'left window misoprostol|NNP'
+p610
+I982
+sS'left window rifampin|VB'
+p611
+I1181
+sS'right window micturition|NN'
+p612
+I2192
+sS'right window T|-None-'
+p613
+I1814
+sS'left window them|PRP'
+p614
+I1288
+sS'left window protocol|-None-'
+p615
+I1122
+sS'left window danazol|-None-'
+p616
+I660
+sS'right window .77|-None-'
+p617
+I1557
+sS'left window Over|IN'
+p618
+I387
+sS'left window In|IN'
+p619
+I362
+sS'right window phosphate|NN'
+p620
+I2283
+sS'right window g|-None-'
+p621
+I2072
+sS'left window .69|-None-'
+p622
+I70
+sS'left window ]|-None-'
+p623
+I442
+sS'right window .97+/-2|-None-'
+p624
+I1583
+sS'left window recruited|VBN'
+p625
+I1151
+sS'right window .61-1|-None-'
+p626
+I1536
+sS'left window scales|NNS'
+p627
+I1193
+sS'right window 95%|-None-'
+p628
+I1726
+sS'left window 8|CD'
+p629
+I249
+sS'left window 600|CD'
+p630
+I218
+sS'right window but|CC'
+p631
+I1904
+sS'right window g/day|NN'
+p632
+I2059
+sS'left window there|EX'
+p633
+I1293
+sS'left window vecuronium|NN'
+p634
+I1352
+sS'right window therapy|NN'
+p635
+I2432
+sS'right window less|JJR'
+p636
+I2142
+sS'left window from|IN'
+p637
+I803
+sS'right window .96|-None-'
+p638
+I1582
+sS'left window 73|CD'
+p639
+I232
+sS'right window biopsy|-None-'
+p640
+I1894
+sS'right window ticlopidine|NN'
+p641
+I2440
+sS'left window continuing|VBG'
+p642
+I633
+sS'left window solution|NN'
+p643
+I1226
+sS'left window g|-None-'
+p644
+I826
+sS'right window timed|VBN'
+p645
+I2442
+sS'left window subclass|NN'
+p646
+I1252
+sS'left window transplantation|NN'
+p647
+I1321
+sS'left window using|VBG'
+p648
+I1347
+sS'right window double-blind|NN'
+p649
+I1996
+sS'right window 151|-NONE-'
+p650
+I1615
+sS'right window .94|CD'
+p651
+I1580
+sS'right window 3|CD'
+p652
+I1666
+sS'right window surgical|JJ'
+p653
+I2416
+sS'right window .051|-None-'
+p654
+I1435
+sS'right window .08|CD'
+p655
+I1442
+sS'left window lightening|VBG'
+p656
+I928
+sS'left window measurements|NNS'
+p657
+I951
+sS'left window types|NNS'
+p658
+I1334
+sS'right window EPA|-None-'
+p659
+I1757
+sS'right window combination|NN'
+p660
+I1941
+sS'right window .12|CD'
+p661
+I1455
+sS'left window found|VBN'
+p662
+I799
+sS'left window fluticasone|CD'
+p663
+I789
+sS'left window 517|-None-'
+p664
+I204
+sS'right window .05%|-None-'
+p665
+I1434
+sS'left window .07|CD'
+p666
+I19
+sS'right window plus|NN'
+p667
+I2289
+sS'left window neostigmine|NN'
+p668
+I1016
+sS'left window 66%|-None-'
+p669
+I224
+sS'left window competing|VBG'
+p670
+I608
+sS'left window NAG/creatinine|NN'
+p671
+I377
+sS'left window ;|:'
+p672
+I258
+sS'left window depression|NN'
+p673
+I679
+sS'right window assess|VB'
+p674
+I1877
+sS'left window ondansetron|NNP'
+p675
+I1038
+sS'right window .41|-None-'
+p676
+I1505
+sS'left window propionate|NN'
+p677
+I1117
+sS'left window ages|NNS'
+p678
+I466
+sS'right window throughout|IN'
+p679
+I2439
+sS'left window reduced|VBN'
+p680
+I1153
+sS'right window tabulated|VBN'
+p681
+I2421
+sS'right window bronchodilator|NN'
+p682
+I1899
+sS'left window CBT|-None-'
+p683
+I300
+sS'right window MgSO4|-None-'
+p684
+I1788
+sS'right window produces|VBZ'
+p685
+I2311
+sS'right window .03|CD'
+p686
+I1427
+sS'left window cyclophosphamide|NN'
+p687
+I655
+sS'left window morning|NN'
+p688
+I995
+sS'right window .i|-None-'
+p689
+I1591
+sS'left window .2-|-None-'
+p690
+I36
+sS'right window acute|JJ'
+p691
+I1830
+sS'left window LV|-None-'
+p692
+I368
+sS'left window underwent|VBD'
+p693
+I1338
+sS'right window .19|CD'
+p694
+I1464
+sS'right window treatment|NN'
+p695
+I2455
+sS'right window .min-1|NN'
+p696
+I1593
+sS'left window ALL|NN'
+p697
+I272
+sS'left window following|JJ'
+p698
+I794
+sS'right window status|NN'
+p699
+I2398
+sS'left window 5%|-None-'
+p700
+I198
+sS'left window suppression|NN'
+p701
+I1268
+sS'left window arms|NNS'
+p702
+I504
+sS'right window women|NNS'
+p703
+I2510
+sS'right window CEE|-None-'
+p704
+I1744
+sS'right window .|.'
+p705
+I1595
+sS'left window alfa-2b|-None-'
+p706
+I468
+sS'left window lasting|JJ'
+p707
+I914
+sS'left window Among|IN'
+p708
+I283
+sS'left window continued|VBD'
+p709
+I631
+sS'left window fatty|RB'
+p710
+I775
+sS'left window 11%|-None-'
+p711
+I103
+sS'right window born|VBN'
+p712
+I1896
+sS'left window target|NN'
+p713
+I1278
+sS'left window short-term|JJ'
+p714
+I1209
+sS'right window dropped|VBD'
+p715
+I1999
+sS'left window C-peptide|NN'
+p716
+I298
+sS'left window 53|CD'
+p717
+I208
+sS'left window FP|-None-'
+p718
+I334
+sS'left window enrolled|VBN'
+p719
+I748
+sS'right window Leucovorin|-None-'
+p720
+I1781
+sS'left window 151|-NONE-'
+p721
+I120
+sS'right window hypercholesterolemic|JJ'
+p722
+I2091
+sS'right window SCI|NNP'
+p723
+I1802
+sS'right window 100|CD'
+p724
+I1602
+sS'right window hour|NN'
+p725
+I2086
+sS'right window those|DT'
+p726
+I2437
+sS'right window per|IN'
+p727
+I2281
+sS'left window saline|NN'
+p728
+I1189
+sS'left window 22|CD'
+p729
+I143
+sS'left window 2-Gy|-None-'
+p730
+I138
+sS'left window ventilatory|NN'
+p731
+I1355
+sS'right window analyzed|VBN'
+p732
+I1861
+sS'right window repeated|VBN'
+p733
+I2352
+sS'right window men|NNS'
+p734
+I2168
+sS'right window 30%|-None-'
+p735
+I1651
+sS'right window administered|VBN'
+p736
+I1834
+sS'left window leukotriene|NN'
+p737
+I925
+sS'right window triglycerides|NNS'
+p738
+I2460
+sS'right window (|-None-'
+p739
+I1398
+sS'left window 60|CD'
+p740
+I219
+sS'right window starting|VBG'
+p741
+I2396
+sS'left window colonic|JJ'
+p742
+I599
+sS'left window micrograms/ml|-None-'
+p743
+I974
+sS'left window plus|NN'
+p744
+I1082
+sS'left window Data|NNP'
+p745
+I324
+sS'left window azathioprine|NN'
+p746
+I518
+sS'right window 33|CD'
+p747
+I1659
+sS'right window twins|NNS'
+p748
+I2462
+sS'left window examinations|NNS'
+p749
+I765
+sS'right window IU|-None-'
+p750
+I1774
+sS'left window this|DT'
+p751
+I1297
+sS'left window clinical|JJ'
+p752
+I593
+sS'left window septicemia|-None-'
+p753
+I1203
+sS'right window academic|JJ'
+p754
+I1824
+sS'left window bupivacaine|NN'
+p755
+I548
+sS'left window rejection|NN'
+p756
+I1158
+sS'right window renal|JJ'
+p757
+I2351
+sS'right window sham|NNP'
+p758
+I2382
+sS'left window 80|CD'
+p759
+I243
+sS'right window :|:'
+p760
+I1729
+sS'left window mucositis|-None-'
+p761
+I1002
+sS'left window based|VBN'
+p762
+I523
+sS'right window mg/kg/24|-None-'
+p763
+I2178
+sS'right window admitted|VBD'
+p764
+I1837
+sS'left window .08-2|-None-'
+p765
+I20
+sS'right window medical|JJ'
+p766
+I2162
+sS'left window dissolved|VBN'
+p767
+I707
+sS'left window survived|VBN'
+p768
+I1271
+sS'left window B|NNP'
+p769
+I297
+sS'left window parallel|JJ'
+p770
+I1062
+sS'right window mug/g|-None-'
+p771
+I2217
+sS'left window 89|CD'
+p772
+I248
+sS'w_int[0]'
+p773
+I2518
+sS'right window ECG|-None-'
+p774
+I1756
+sS'right window having|VBG'
+p775
+I2080
+sS'left window as|IN'
+p776
+I511
+sS'left window stopped|VBD'
+p777
+I1243
+sS'left window 3|LS'
+p778
+I179
+sS'right window increase|NN'
+p779
+I2102
+sS'right window myalgia|NNP'
+p780
+I2219
+sS'right window micrograms|NNS'
+p781
+I2189
+sS'left window comprised|VBN'
+p782
+I616
+sS'right window neurotoxicity|NN'
+p783
+I2226
+sS'left window APACHE|-None-'
+p784
+I273
+sS'right window 70yrs|-None-'
+p785
+I1706
+sS'left window differences|NNS'
+p786
+I695
+sS'right window both|DT'
+p787
+I1897
+sS'right window .65|CD'
+p788
+I1541
+sS'left window 79%|-None-'
+p789
+I238
+sS'right window volunteers|NNS'
+p790
+I2487
+sS'left window regimen|NNS'
+p791
+I1156
+sS'left window mobilization|NN'
+p792
+I985
+sS'left window diclofenac-treated|VBN'
+p793
+I692
+sS'right window .4|-None-'
+p794
+I1513
+sS'left window shunt|NN'
+p795
+I1212
+sS'right window differed|VBN'
+p796
+I1985
+sS'left window TGFbeta1|-None-'
+p797
+I417
+sS'right window mo|-None-'
+p798
+I2214
+sS'left window cumulative|JJ'
+p799
+I650
+sS'right window for|IN'
+p800
+I2051
+sS'right window Massachusetts|NNP'
+p801
+I1785
+sS'right window 8|CD'
+p802
+I1721
+sS'right window .8-4|-None-'
+p803
+I1565
+sS'left window Incident|NN'
+p804
+I361
+sS'right window b|LS'
+p805
+I1906
+sS"right window 's|POS"
+p806
+I1396
+sS'left window safety|NN'
+p807
+I1186
+sS'left window identical|JJ'
+p808
+I851
+sS'right window 5%|-None-'
+p809
+I1685
+sS'left window 16%|-None-'
+p810
+I123
+sS'right window chest|NN'
+p811
+I1924
+sS'right window 43|CD'
+p812
+I1677
+sS'right window given|VBN'
+p813
+I2065
+sS'left window performed|VBN'
+p814
+I1070
+sS'right window taken|VBN'
+p815
+I2422
+sS'right window .0%-20|-NONE-'
+p816
+I1406
+sS'right window adult|NN'
+p817
+I1840
+sS'left window .52|CD'
+p818
+I58
+sS'right window test|NN'
+p819
+I2427
+sS'left window flexion|NN'
+p820
+I786
+sS'right window LOCF|-None-'
+p821
+I1780
+sS'left window 12|CD'
+p822
+I114
+sS'left window pregnancies|NNS'
+p823
+I1095
+sS'left window HIV-infected|VBN'
+p824
+I350
+sS'left window visit|NN'
+p825
+I1357
+sS'left window different|JJ'
+p826
+I698
+sS'left window volume|NN'
+p827
+I1359
+sS'left window MPA|-None-'
+p828
+I371
+sS'left window observation|NN'
+p829
+I1028
+sS'left window required|VBN'
+p830
+I1169
+sS'right window preschoolers|NNS'
+p831
+I2305
+sS'right window .54|CD'
+p832
+I1525
+sS'left window below|IN'
+p833
+I529
+sS'right window 25%|-None-'
+p834
+I1641
+sS'right window hardly|RB'
+p835
+I2077
+sS'right window .003|-None-'
+p836
+I1416
+sS'left window glucose|VBD'
+p837
+I818
+sS'right window cardiac|-None-'
+p838
+I1911
+sS'left window mL|-None-'
+p839
+I937
+sS'right window 29|CD'
+p840
+I1648
+sS'right window mval/day|NN'
+p841
+I2218
+sS'left window on|IN'
+p842
+I1040
+sS'left window II|NNP'
+p843
+I354
+sS'right window 71|CD'
+p844
+I1707
+sS'left window 41%|-None-'
+p845
+I183
+sS'left window .7%|-None-'
+p846
+I73
+sS'left window microgram/mL|-None-'
+p847
+I973
+sS'right window 36|CD'
+p848
+I1662
+sS'right window or|CC'
+p849
+I2256
+sS'right window g/dL|-None-'
+p850
+I2058
+sS'right window .5+/-21|-NONE-'
+p851
+I1515
+sS'right window .0055|-None-'
+p852
+I1417
+sS'left window 46|CD'
+p853
+I192
+sS'left window 25|CD'
+p854
+I150
+sS'left window Overall|JJ'
+p855
+I386
+sS'left window 13|CD'
+p856
+I116
+sS'>10[0]'
+p857
+I0
+sS'left window capsules|NNS'
+p858
+I556
+sS'left window .02|-None-'
+p859
+I16
+sS'left window acetate|NN'
+p860
+I448
+sS'right window CEF|-None-'
+p861
+I1745
+sS'right window at|IN'
+p862
+I1882
+sS'left window follow-up|JJ'
+p863
+I791
+sS'left window 88|CD'
+p864
+I246
+sS'left window BUP|-None-'
+p865
+I291
+sS'left window naltrexone|CD'
+p866
+I1011
+sS'left window .8|-None-'
+p867
+I87
+sS'left window Buspirone-treated|VBN'
+p868
+I295
+sS'left window hydroxide|NN'
+p869
+I845
+sS'right window .24|CD'
+p870
+I1476
+sS'right window confirmed|VBD'
+p871
+I1950
+sS'right window .0001|-None-'
+p872
+I1410
+sS'right window medicines|NNS'
+p873
+I2164
+sS'right window times|NNS'
+p874
+I2443
+sS'right window among|IN'
+p875
+I1856
+sS'left window who|WP'
+p876
+I1377
+sS'right window prior|RB'
+p877
+I2310
+sS'right window menstruation|NN'
+p878
+I2167
+sS'left window multicenter|NN'
+p879
+I1004
+sS'left window .53|CD'
+p880
+I59
+sS'left window olanzapine|NN'
+p881
+I1035
+sS'right window AP|-None-'
+p882
+I1736
+sS'right window appeared|VBD'
+p883
+I1869
+sS'right window .00|CD'
+p884
+I1420
+sS'left window gliding|VBG'
+p885
+I817
+sS'right window mean|VB'
+p886
+I2159
+sS'right window 83|CD'
+p887
+I1716
+sS'left window .0|-None-'
+p888
+I23
+sS'right window apple|NN'
+p889
+I1870
+sS'left window increase|NN'
+p890
+I862
+sS'left window program|NN'
+p891
+I1112
+sS'left window achieved|VBN'
+p892
+I449
+sS'right window investigator|NN'
+p893
+I2122
+sS'left window doxycycline|NN'
+p894
+I720
+sS'right window persisted|VBN'
+p895
+I2280
+sS'right window examine|VBP'
+p896
+I2037
+sS'left window cured|VBN'
+p897
+I652
+sS'left window that|IN'
+p898
+I1286
+sS'left window .35|CD'
+p899
+I47
+sS'left window COHORTS|-None-'
+p900
+I308
+sS'left window persisted|VBN'
+p901
+I1072
+sS'right window out|RP'
+p902
+I2261
+sS'left window test|NN'
+p903
+I1283
+sS'right window .10-1|-None-'
+p904
+I1448
+sS'left window CFPMV|-None-'
+p905
+I302
+sS'left window 45|CD'
+p906
+I190
+sS'right window colonic|JJ'
+p907
+I1940
+sS'right window presenting|VBG'
+p908
+I2307
+sS'right window .74|CD'
+p909
+I1554
+sS'right window Ltd|NNP'
+p910
+I1782
+sS'right window familial|JJ'
+p911
+I2040
+sS'left window UFH|-None-'
+p912
+I433
+sS'right window symptoms|NNS'
+p913
+I2419
+sS'right window acetaminophen-codeine|NN'
+p914
+I1825
+sS'left window we|PRP'
+p915
+I1371
+sS'right window urine-confirmed|VBN'
+p916
+I2472
+sS'left window significant|JJ'
+p917
+I1217
+sS'right window 20%|-None-'
+p918
+I1629
+sS'right window .47|CD'
+p919
+I1510
+sS'left window benefit|NN'
+p920
+I530
+sS'left window PL-n-3|NN'
+p921
+I390
+sS'right window .8%|-None-'
+p922
+I1562
+sS'left window ATG/OKT3|-None-'
+p923
+I275
+sS'right window irradiation|NN'
+p924
+I2126
+sS'right window variables|NNS'
+p925
+I2477
+sS'right window 38|CD'
+p926
+I1664
+sS'left window ceftizoxime|NN'
+p927
+I571
+sS'right window early-stage|NN'
+p928
+I2007
+sS'left window dalteparin|-None-'
+p929
+I659
+sS'left window forced|VBN'
+p930
+I795
+sS'left window assigned|VBN'
+p931
+I509
+sS'left window preterm|JJ'
+p932
+I1101
+sS'right window .25%|-None-'
+p933
+I1477
+sS'right window infection|NN'
+p934
+I2108
+sS'left window healthcare|VBP'
+p935
+I831
+sS'left window episodes|NNS'
+p936
+I753
+sS'left window painful|JJ'
+p937
+I1057
+sS'left window embolism|NN'
+p938
+I741
+sS'left window Mupirocin|-None-'
+p939
+I376
+sS'right window survival|NN'
+p940
+I2417
+sS'right window citalopram|NN'
+p941
+I1930
+sS'right window .2+/-41|-NONE-'
+p942
+I1469
+sS'left window decrease|NN'
+p943
+I668
+sS'left window 37|CD'
+p944
+I175
+sS'right window no|DT'
+p945
+I2238
+sS'left window =|-None-'
+p946
+I261
+sS'left window studies|NNS'
+p947
+I1248
+sS"left window '|POS"
+p948
+I4
+sS'left window composition|NN'
+p949
+I615
+sS'left window %|NN'
+p950
+I3
+sS'left window disorder|NN'
+p951
+I706
+sS'right window provided|VBD'
+p952
+I2316
+sS'right window doses|NNS'
+p953
+I1992
+sS'right window once|RB'
+p954
+I2248
+sS'left window not|RB'
+p955
+I1024
+sS'left window 398|-None-'
+p956
+I177
+sS'right window kg-1|-None-'
+p957
+I2134
+sS'right window nonsegmental|NN'
+p958
+I2234
+sS'right window examination|NN'
+p959
+I2036
+sS'left window indomethacin|-None-'
+p960
+I865
+sS'right window preceding|VBG'
+p961
+I2297
+sS'right window questions|NNS'
+p962
+I2319
+sS'right window 166|-NONE-'
+p963
+I1618
+sS'right window treated|VBN'
+p964
+I2453
+sS'right window treated|VBD'
+p965
+I2452
+sS'right window than|IN'
+p966
+I2428
+sS'left window Follow-up|JJ'
+p967
+I338
+sS'left window knee|NN'
+p968
+I908
+sS'left window 89%|-None-'
+p969
+I247
+sS'right window paracetamol|-None-'
+p970
+I2269
+sS'left window conclude|VB'
+p971
+I620
+sS'right window thereafter|NN'
+p972
+I2433
+sS'left window received|VBD'
+p973
+I1144
+sS'right window met|VBD'
+p974
+I2173
+sS'left window received|VBN'
+p975
+I1145
+sS'right window these|DT'
+p976
+I2435
+sS'right window mg/dl|-None-'
+p977
+I2176
+sS'left window succinylcholine|NN'
+p978
+I1261
+sS'left window amniotomy|NN'
+p979
+I483
+sS'right window just|RB'
+p980
+I2132
+sS'left window lamotrigine|NN'
+p981
+I913
+sS'left window lactate|NN'
+p982
+I910
+sS'left window BTX-A|-None-'
+p983
+I290
+sS'left window stage|NN'
+p984
+I1234
+sS'left window increased|VBN'
+p985
+I861
+sS'left window management|NN'
+p986
+I941
+sS'left window PONV|-None-'
+p987
+I391
+sS'right window term|NN'
+p988
+I2425
+sS'left window postoperatively|RB'
+p989
+I1087
+sS'right window TNS|-None-'
+p990
+I1811
+sS'left window diagnosis|NN'
+p991
+I686
+sS'right window antibiotic|JJ'
+p992
+I1864
+sS'right window 30|CD'
+p993
+I1652
+sS'left window .05|CD'
+p994
+I18
+sS'left window .95|CD'
+p995
+I89
+sS'left window reductions|NNS'
+p996
+I1154
+sS'right window Fe|NNP'
+p997
+I1761
+sS'left window each|DT'
+p998
+I731
+sS'right window metoclopramide|NN'
+p999
+I2172
+sS'left window recovery|NN'
+p1000
+I1150
+sS'right window .028|-None-'
+p1001
+I1425
+sS'left window consumed|VBN'
+p1002
+I628
+sS'left window cisplatin|NNP'
+p1003
+I585
+sS'left window to|TO'
+p1004
+I1320
+sS'right window nadolol|-None-'
+p1005
+I2220
+sS'right window .75|CD'
+p1006
+I1555
+sS'left window Each|DT'
+p1007
+I332
+sS'right window bilateral|JJ'
+p1008
+I1892
+sS'right window similar|JJ'
+p1009
+I2386
+sS'right window Foley|NNP'
+p1010
+I1762
+sS'right window laser|NN'
+p1011
+I2138
+sS'left window be|VB'
+p1012
+I534
+sS'right window iron-supplemented|VBN'
+p1013
+I2125
+sS'left window ill|JJ'
+p1014
+I852
+sS'right window while|IN'
+p1015
+I2503
+sS'left window thereafter|NN'
+p1016
+I1292
+sS'right window mg/d|-None-'
+p1017
+I2177
+sS'left window fell|VBD'
+p1018
+I777
+sS'left window 58|CD'
+p1019
+I213
+sS'left window physical|JJ'
+p1020
+I1075
+sS'left window occurring|VBG'
+p1021
+I1032
+sS'right window died|VBD'
+p1022
+I1984
+sS'left window AIEOP|-None-'
+p1023
+I271
+sS'right window FEV1|-None-'
+p1024
+I1760
+sS'right window sequences|NNS'
+p1025
+I2376
+sS'left window intravenously|RB'
+p1026
+I890
+sS'left window mins|NNS'
+p1027
+I979
+sS'left window bolus|CC'
+p1028
+I543
+sS'left window fentanyl|NN'
+p1029
+I778
+sS'left window of|IN'
+p1030
+I1033
+sS'left window improvement|NN'
+p1031
+I856
+sS'right window maximum|NN'
+p1032
+I2157
+sS'right window endogenously|RB'
+p1033
+I2017
+sS'left window titration|NN'
+p1034
+I1313
+sS'left window ACR-N|-None-'
+p1035
+I269
+sS'left window 95|CD'
+p1036
+I253
+sS'left window GA|-None-'
+p1037
+I342
+sS'left window the|DT'
+p1038
+I1296
+sS'right window consecutive|JJ'
+p1039
+I1951
+sS'left window ADA|-None-'
+p1040
+I270
+sS'left window {|-None-'
+p1041
+I1389
+sS'right window as|RB'
+p1042
+I1880
+sS'left window subjects|NNS'
+p1043
+I1257
+sS'left window fasting|VBG'
+p1044
+I774
+sS'right window unit|NN'
+p1045
+I2468
+sS'left window withdrawal|NN'
+p1046
+I1378
+sS'right window .3-fold|JJ'
+p1047
+I1491
+sS'right window .97|CD'
+p1048
+I1584
+sS'right window .29|CD'
+p1049
+I1485
+sS'right window .007|CD'
+p1050
+I1419
+sS'left window patient|NN'
+p1051
+I1067
+sS'left window .3|-None-'
+p1052
+I49
+sS'right window control|NN'
+p1053
+I1956
+sS'left window entry|NN'
+p1054
+I750
+sS'left window 160|CD'
+p1055
+I125
+sS'right window 27|CD'
+p1056
+I1645
+sS'left window abnormalities|NNS'
+p1057
+I443
+sS'right window BUP|-None-'
+p1058
+I1740
+sS'right window .80|CD'
+p1059
+I1566
+sS'right window transplant|NN'
+p1060
+I2451
+sS'right window U/kg|-None-'
+p1061
+I1815
+sS'right window min|NNP'
+p1062
+I2196
+sS'left window haemoglobin|NN'
+p1063
+I829
+sS'right window group|NN'
+p1064
+I2071
+sS'left window addressed|VBN'
+p1065
+I457
+sS'left window is|VBZ'
+p1066
+I900
+sS'left window .2%-years|NNS'
+p1067
+I33
+sS'left window remission|NN'
+p1068
+I1163
+sS'right window 41%|-None-'
+p1069
+I1673
+sS'left window thrombotic|JJ'
+p1070
+I1302
+sS'right window mg|-None-'
+p1071
+I2183
+sS'left window period|NN'
+p1072
+I1071
+sS'right window weeks|NNS'
+p1073
+I2492
+sS'left window disease|NN'
+p1074
+I705
+sS'left window while|IN'
+p1075
+I1375
+sS'right window diclofenac-treated|VBN'
+p1076
+I1982
+sS'left window POST|-None-'
+p1077
+I392
+sS'left window conception|NN'
+p1078
+I619
+sS'left window 3-minute|NNP'
+p1079
+I160
+sS'right window Gy|-None-'
+p1080
+I1765
+sS'right window 13|CD'
+p1081
+I1611
+sS'left window subsided|VBD'
+p1082
+I1258
+sS'left window fractions|NNS'
+p1083
+I800
+sS'right window days|NNS'
+p1084
+I1971
+sS'left window g/1|-None-'
+p1085
+I806
+sS'right window drops|NNS'
+p1086
+I2000
+sS'right window percent|NN'
+p1087
+I2278
+sS'right window ALL|NN'
+p1088
+I1735
+sS'left window 5|CD'
+p1089
+I215
+sS'left window inapplicable|JJ'
+p1090
+I857
+sS'right window Movement|NN'
+p1091
+I1789
+sS'left window cefazolin-probenecid|JJ'
+p1092
+I567
+sS'right window 28%|-None-'
+p1093
+I1646
+sS'right window recruited|VBN'
+p1094
+I2335
+sS'left window clozapine|NN'
+p1095
+I596
+sS'right window induction|NN'
+p1096
+I2104
+sS'left window .5%|-None-'
+p1097
+I56
+sS'left window U|-None-'
+p1098
+I436
+sS'right window .09|CD'
+p1099
+I1444
+sS'left window .72|CD'
+p1100
+I76
+sS'left window score|NN'
+p1101
+I1198
+sS'right window Wiley|NNP'
+p1102
+I1820
+sS'right window hydrochloride|NN'
+p1103
+I2090
+sS'right window .6-27|-NONE-'
+p1104
+I1534
+sS'left window 38|CD'
+p1105
+I176
+sS'left window .3%-years|NNS'
+p1106
+I44
+sS'left window DPA|-None-'
+p1107
+I320
+sS'right window 50|CD'
+p1108
+I1687
+sS'left window body-surface|NN'
+p1109
+I541
+sS'right window .B|-None-'
+p1110
+I1589
+sS'right window .11|-None-'
+p1111
+I1451
+sS'left window 625mg|-None-'
+p1112
+I221
+sS'left window postmenopausal|NN'
+p1113
+I1086
+sS'right window .5-2|-None-'
+p1114
+I1517
+sS'right window episode/24|-None-'
+p1115
+I2024
+sS'left window acetaminophen-codeine|NN'
+p1116
+I446
+sS'left window VTE|-None-'
+p1117
+I438
+sS'right window breast|JJ'
+p1118
+I1898
+sS'right window HIV-infected|VBN'
+p1119
+I1766
+sS'right window entered|VBD'
+p1120
+I2021
+sS'left window dihydroartemisinin-piperaquine|NN'
+p1121
+I700
+sS'left window +|-None-'
+p1122
+I8
+sS'left window or|CC'
+p1123
+I1043
+sS'left window appeared|VBD'
+p1124
+I498
+sS'left window 21|CD'
+p1125
+I142
+sS'left window 12/OKT3|-None-'
+p1126
+I107
+sS'right window pain|NN'
+p1127
+I2266
+sS'left window standard|JJ'
+p1128
+I1235
+sS'left window 32|CD'
+p1129
+I166
+sS'left window Group|NNP'
+p1130
+I345
+sS'left window gave|VBD'
+p1131
+I812
+sS'left window index|NN'
+p1132
+I863
+sS'left window Adr|-None-'
+p1133
+I279
+sS'left window Children|NNS'
+p1134
+I313
+sS'right window ill|JJ'
+p1135
+I2095
+sS'left window postoperative|JJ'
+p1136
+I1088
+sS'right window n|-None-'
+p1137
+I2239
+sS'left window CLO|-None-'
+p1138
+I307
+sS'left window paracetamol|-None-'
+p1139
+I1061
+sS'left window .10|CD'
+p1140
+I26
+sS'right window microg|-None-'
+p1141
+I2190
+sS'left window dipyrone|CD'
+p1142
+I702
+sS'left window VLBW|-None-'
+p1143
+I437
+sS'left window MI|-None-'
+p1144
+I370
+sS'right window nicotine|NN'
+p1145
+I2229
+sS'left window .04|CD'
+p1146
+I17
+sS'right window .42|CD'
+p1147
+I1506
+sS'left window maximum|NN'
+p1148
+I946
+sS'right window radiotherapy|NN'
+p1149
+I2321
+sS'right window depressed|VBN'
+p1150
+I1975
+sS'right window GA|-None-'
+p1151
+I1763
+sS'right window mg/m2|-None-'
+p1152
+I2181
+sS'left window g/dL|-None-'
+p1153
+I808
+sS'left window most|JJS'
+p1154
+I998
+sS'left window no|DT'
+p1155
+I1025
+sS'left window requirements|NNS'
+p1156
+I1170
+sS'right window III|NNP'
+p1157
+I1772
+sS'right window .48|CD'
+p1158
+I1511
+sS'right window mg/kg|-None-'
+p1159
+I2179
+sS'left window years|NNS'
+p1160
+I1387
+sS'right window intensity|NN'
+p1161
+I2114
+sS'left window degrees|NNS'
+p1162
+I672
+sS'left window medical|JJ'
+p1163
+I953
+sS'right window Crohn|NNP'
+p1164
+I1750
+sS'left window tested|VBN'
+p1165
+I1281
+sS'left window rash|NN'
+p1166
+I1139
+sS'left window RT|-None-'
+p1167
+I402
+sS'right window cells/mm3|-None-'
+p1168
+I1920
+sS'left window low-intensity|NN'
+p1169
+I934
+sS'left window 125/330|-None-'
+p1170
+I111
+sS'left window time-dependent|NN'
+p1171
+I1308
+sS'left window iron|NNP'
+p1172
+I897
+sS'right window more|JJR'
+p1173
+I2209
+sS'right window predicted|VBD'
+p1174
+I2298
+sS'left window septic|JJ'
+p1175
+I1204
+sS'left window varying|VBG'
+p1176
+I1351
+sS'left window reduction|NN'
+p1177
+I1155
+sS'left window 19|CD'
+p1178
+I134
+sS'left window N|-None-'
+p1179
+I382
+sS'right window .852|-None-'
+p1180
+I1569
+sS'left window DHA|-None-'
+p1181
+I319
+sS'left window through|IN'
+p1182
+I1305
+sS'right window .001|-None-'
+p1183
+I1413
+sS'right window candidates|NNS'
+p1184
+I1908
+sS'right window participants|NNS'
+p1185
+I2271
+sS'right window cisplatin|NNP'
+p1186
+I1929
+sS'left window run-in|JJ'
+p1187
+I1184
+sS'left window up|IN'
+p1188
+I1344
+sS'left window their|PRP$'
+p1189
+I1287
+sS'right window excluded|VBD'
+p1190
+I2038
+sS'right window .16|CD'
+p1191
+I1461
+sS'right window .125|CD'
+p1192
+I1454
+sS'right window thromboxane|NNP'
+p1193
+I2438
+sS'left window 29|CD'
+p1194
+I156
+sS'right window cosmetic|JJ'
+p1195
+I1959
+sS'left window rescue|NN'
+p1196
+I1172
+sS'right window CBT|-None-'
+p1197
+I1742
+sS'left window trial|NN'
+p1198
+I1329
+sS'left window PRED|JJ'
+p1199
+I393
+sS'left window 4|LS'
+p1200
+I197
+sS'right window .08-2|-None-'
+p1201
+I1441
+sS'left window 796|-None-'
+p1202
+I239
+sS'right window ipratropium|NN'
+p1203
+I2124
+sS'left window amikacin|-None-'
+p1204
+I481
+sS'left window men|NNS'
+p1205
+I956
+sS'right window .3+/-23|-NONE-'
+p1206
+I1489
+sS'left window lesions|NNS'
+p1207
+I921
+sS'left window 12/52|-None-'
+p1208
+I106
+sS'left window at|IN'
+p1209
+I513
+sS'right window minutes|NNS'
+p1210
+I2195
+sS'left window administration|NN'
+p1211
+I460
+sS'right window double-blinded|VBD'
+p1212
+I1995
+sS'left window Arm|-None-'
+p1213
+I285
+sS'right window CsA-MMF|-None-'
+p1214
+I1751
+sS'right window there|RB'
+p1215
+I2434
+sS'right window .51|-None-'
+p1216
+I1521
+sS'left window 72/151|-NONE-'
+p1217
+I229
+sS'left window seen|VBN'
+p1218
+I1201
+sS'right window protocol|-None-'
+p1219
+I2315
+sS'left window .6%|-None-'
+p1220
+I66
+sS'right window less|RBR'
+p1221
+I2143
+sS'left window healthy|JJ'
+p1222
+I832
+sS'right window DSM-IV|-None-'
+p1223
+I1753
+sS'right window Inc|NNP'
+p1224
+I1776
+sS'right window tendon|NNP'
+p1225
+I2424
+sS'right window .78-3|-None-'
+p1226
+I1558
+sS'right window .52-2|-None-'
+p1227
+I1522
+sS'left window UI|-None-'
+p1228
+I435
+sS'left window involving|VBG'
+p1229
+I893
+sS'right window before|IN'
+p1230
+I1888
+sS'right window ATG/OKT3|-None-'
+p1231
+I1738
+sS'left window ASA|-None-'
+p1232
+I274
+sS'right window total|NN'
+p1233
+I2446
+sS'left window ESM|-None-'
+p1234
+I331
+sS'left window older|JJR'
+p1235
+I1036
+sS'right window 4-arm|NN'
+p1236
+I1668
+sS'right window Compared|VBN'
+p1237
+I1748
+sS'left window 16/53|-None-'
+p1238
+I124
+sS'left window CONT|-None-'
+p1239
+I309
+sS'left window low-dose|VBD'
+p1240
+I933
+sS'left window 2|LS'
+p1241
+I158
+sS'right window removed|VBN'
+p1242
+I2350
+sS'left window CsA-MMF|-None-'
+p1243
+I317
+sS'left window efficacy|NN'
+p1244
+I737
+sS'right window to|TO'
+p1245
+I2449
+sS'left window leiomyosarcoma|NNP'
+p1246
+I920
+sS'left window IgE|-None-'
+p1247
+I360
+sS'left window Chemotherapy|NN'
+p1248
+I312
+sS'left window continuous-infusion|NN'
+p1249
+I634
+sS'right window .5|-None-'
+p1250
+I1531
+sS'left window To|TO'
+p1251
+I429
+sS'right window 79|CD'
+p1252
+I1713
+sS'right window altered|VBN'
+p1253
+I1853
+sS'left window vein|NNP'
+p1254
+I1354
+sS'right window .01|CD'
+p1255
+I1424
+sS'right window mon|JJ'
+p1256
+I2208
+sS'left window stay|VB'
+p1257
+I1240
+sS'left window 75|CD'
+p1258
+I234
+sS'right window maintenance|NN'
+p1259
+I2153
+sS'left window clear|JJ'
+p1260
+I591
+sS'left window chi|NNP'
+p1261
+I580
+sS'left window noncritically|RB'
+p1262
+I1020
+sS'right window can|MD'
+p1263
+I1909
+sS'left window all|DT'
+p1264
+I471
+sS'right window NRT|-None-'
+p1265
+I1792
+sS'left window over|IN'
+p1266
+I1050
+sS'left window 172|-NONE-'
+p1267
+I128
+sS'left window compared|VBN'
+p1268
+I605
+sS'left window .81|-None-'
+p1269
+I84
+sS'left window showed|VBD'
+p1270
+I1210
+sS'left window )|-None-'
+p1271
+I6
+sS'left window recurrent|NN'
+p1272
+I1152
+sS'right window Elsevier|NNP'
+p1273
+I1759
+sS'left window corresponding|VBG'
+p1274
+I638
+sS'right window epirubicin|-None-'
+p1275
+I2023
+sS'left window respectively|RB'
+p1276
+I1174
+sS'left window moderate|JJ'
+p1277
+I986
+sS'left window mg/dl|-None-'
+p1278
+I964
+sS'right window tds|-None-'
+p1279
+I2423
+sS'right window I-II|-None-'
+p1280
+I1771
+sS'left window Bleeding|VBG'
+p1281
+I294
+sS'right window administration|NN'
+p1282
+I1836
+sS'left window c|-None-'
+p1283
+I657
+sS'right window infections|NNS'
+p1284
+I2107
+sS'right window .7%-years|NNS'
+p1285
+I1547
+sS'left window 81|-None-'
+p1286
+I244
+sS'left window repeated|VBN'
+p1287
+I1166
+sS'left window thromboxane|NNP'
+p1288
+I1303
+sS'left window mean+/-SEM|-None-'
+p1289
+I947
+sS'left window 49%|-None-'
+p1290
+I195
+sS'left window Subanalyses|NNS'
+p1291
+I413
+sS'right window nmol/l|-None-'
+p1292
+I2231
+sS'left window CI|-None-'
+p1293
+I305
+sS'left window ceftazidime|NN'
+p1294
+I570
+sS'right window ASA|-None-'
+p1295
+I1737
+sS'left window beyond|IN'
+p1296
+I533
+sS'right window events|NNS'
+p1297
+I2034
+sS'left window strength|NN'
+p1298
+I1244
+sS'left window consisted|VBN'
+p1299
+I625
+sS'right window &|CC'
+p1300
+I1395
+sS'left window frozen|VBN'
+p1301
+I804
+sS'left window n|-None-'
+p1302
+I1027
+sS'right window significantly|RB'
+p1303
+I2385
+sS'right window from|IN'
+p1304
+I2055
+sS'left window recolonization|NN'
+p1305
+I1148
+sS'right window reductions|NNS'
+p1306
+I2338
+sS'right window .72|CD'
+p1307
+I1553
+sS'right window 33%|-None-'
+p1308
+I1658
+sS'right window were|VBD'
+p1309
+I2497
+sS'left window delivered|VBN'
+p1310
+I674
+sS'left window performance|NN'
+p1311
+I1069
+sS'right window whom|WP'
+p1312
+I2505
+sS'left window 6|CD'
+p1313
+I226
+sS'left window principle|NN'
+p1314
+I1106
+sS'left window serum|NNP'
+p1315
+I1205
+sS'right window tablets|NNS'
+p1316
+I2420
+sS'left window prednisone|CD'
+p1317
+I1092
+sS'right window under|IN'
+p1318
+I2465
+sS'left window relapse|NN'
+p1319
+I1159
+sS'left window .7|-None-'
+p1320
+I81
+sS'right window received|VBN'
+p1321
+I2330
+sS'left window followed|VBN'
+p1322
+I793
+sS'left window micronutrients|NNS'
+p1323
+I976
+sS'left window 40|CD'
+p1324
+I182
+sS'right window an|DT'
+p1325
+I1868
+sS'left window .4%|-None-'
+p1326
+I50
+sS'left window pH|-None-'
+p1327
+I1056
+sS'right window received|VBD'
+p1328
+I2329
+sS'left window followed|VBD'
+p1329
+I792
+sS'right window +/-0|-None-'
+p1330
+I1400
+sS'right window .v|-None-'
+p1331
+I1594
+sS'left window responder|NN'
+p1332
+I1176
+sS'left window antibiotic|JJ'
+p1333
+I493
+sS'left window 431|-None-'
+p1334
+I187
+sS'right window still|RB'
+p1335
+I2399
+sS'right window kg|-None-'
+p1336
+I2135
+sS'right window end of sentence'
+p1337
+I2016
+sS'right window medicating|VBG'
+p1338
+I2163
+sS'left window progression|NN'
+p1339
+I1114
+sS'left window placed|VBN'
+p1340
+I1078
+sS'right window .12+/-2|-None-'
+p1341
+I1453
+sS'right window subdivided|VBD'
+p1342
+I2408
+sS'right window .0-9|-None-'
+p1343
+I1409
+sS'right window 23%|-None-'
+p1344
+I1637
+sS'left window 50%|-None-'
+p1345
+I201
+sS'right window 46|CD'
+p1346
+I1680
+sS'right window active|JJ'
+p1347
+I1828
+sS'right window recurrent|NN'
+p1348
+I2337
+sS'left window 1200|CD'
+p1349
+I108
+sS'left window .77|-None-'
+p1350
+I79
+sS'right window hrs|-None-'
+p1351
+I2087
+sS'right window sets|NNS'
+p1352
+I2380
+sS'right window courses|NNS'
+p1353
+I1960
+sS'left window January-November|NNP'
+p1354
+I364
+sS'right window .21|CD'
+p1355
+I1473
+sS'left window equal|JJ'
+p1356
+I754
+sS'left window 233|-NONE-'
+p1357
+I144
+sS'left window [|-None-'
+p1358
+I441
+sS'left window male|JJ'
+p1359
+I940
+sS'left window .9|-None-'
+p1360
+I91
+sS'left window unchanged|JJ'
+p1361
+I1337
+sS'left window Subjects|NNS'
+p1362
+I414
+sS'left window ml|-None-'
+p1363
+I983
+sS'left window throughout|IN'
+p1364
+I1304
+sS'left window prospective|JJ'
+p1365
+I1120
+sS'right window .95|CD'
+p1366
+I1581
+sS'left window T|-None-'
+p1367
+I431
+sS'right window /164|-NONE-'
+p1368
+I1596
+sS'left window All|DT'
+p1369
+I281
+sS'right window 65|CD'
+p1370
+I1698
+sS'left window outcomes|NNP'
+p1371
+I1045
+sS'left window therapeutic|JJ'
+p1372
+I1290
+sS'left window rashes|NNS'
+p1373
+I1138
+sS'left window estrogen|NN'
+p1374
+I759
+sS'right window ratio|-None-'
+p1375
+I2327
+sS'left window cell|NN'
+p1376
+I575
+sS'right window that|IN'
+p1377
+I2429
+sS'right window 24|CD'
+p1378
+I1640
+sS'left window drug|NN'
+p1379
+I726
+sS'left window "|-None-'
+p1380
+I2
+sS'right window transplantation|NN'
+p1381
+I2450
+sS'left window esterified|VBN'
+p1382
+I758
+sS'left window propofol|-None-'
+p1383
+I1118
+sS'right window mcg/mL|-None-'
+p1384
+I2158
+sS'right window superficial|JJ'
+p1385
+I2414
+sS'left window manifestations|NNS'
+p1386
+I942
+sS'right window onwards|NNS'
+p1387
+I2251
+sS'right window HIV-uninfected|VBN'
+p1388
+I1767
+sS'left window double-blind|NN'
+p1389
+I718
+sS'right window due|JJ'
+p1390
+I2002
+sS'right window pregnancies|NNS'
+p1391
+I2300
+sS'right window )|-None-'
+p1392
+I1399
+sS'right window 95|CD'
+p1393
+I1727
+sS'right window controls|NNS'
+p1394
+I1955
+sS'left window overall|JJ'
+p1395
+I1049
+sS'right window antibody|NNP'
+p1396
+I1865
+sS'left window completion|NN'
+p1397
+I611
+sS'left window arrests|NNS'
+p1398
+I506
+sS'left window 13%|-None-'
+p1399
+I115
+sS'left window failure|NN'
+p1400
+I773
+sS'left window 20|CD'
+p1401
+I140
+sS'left window +/-|-None-'
+p1402
+I7
+sS'right window .09-2|-None-'
+p1403
+I1443
+sS'right window citrate|NN'
+p1404
+I1933
+sS'right window .1-19|-NONE-'
+p1405
+I1447
+sS'right window CPR|-None-'
+p1406
+I1747
+sS'right window hypertonic|JJ'
+p1407
+I2093
+sS'right window tests|NNS'
+p1408
+I2426
+sS'left window insulin-mediated|VBN'
+p1409
+I879
+sS'right window well|RB'
+p1410
+I2495
+sS'right window .82|CD'
+p1411
+I1568
+sS'right window PEs|-None-'
+p1412
+I1798
+sS'left window MgSO4|-None-'
+p1413
+I375
+sS'left window allows|VBZ'
+p1414
+I470
+sS'right window injection|NN'
+p1415
+I2111
+sS'left window products|NNS'
+p1416
+I1111
+sS'left window mg/kg/24|-None-'
+p1417
+I965
+sS'left window infused|VBN'
+p1418
+I871
+sS'left window nebulized|VBN'
+p1419
+I1013
+sS'left window progression-free|CD'
+p1420
+I1113
+sS'left window cream|NN'
+p1421
+I643
+sS'left window 31|CD'
+p1422
+I165
+sS'left window mean|VB'
+p1423
+I949
+sS'right window anthelminthic|JJ'
+p1424
+I1863
+sS'left window compare|VBP'
+p1425
+I606
+sS'left window subjected|VBN'
+p1426
+I1256
+sS'right window along|IN'
+p1427
+I1852
+sS'left window additional|JJ'
+p1428
+I456
+sS'right window degrees|NNS'
+p1429
+I1974
+sS'left window treatments|NNS'
+p1430
+I1325
+sS'left window crackles|NNS'
+p1431
+I642
+sS'right window outpatients|NNS'
+p1432
+I2259
+sS'left window 28|CD'
+p1433
+I154
+sS'right window .5-point|NN'
+p1434
+I1519
+sS'left window Severe|VBD'
+p1435
+I410
+sS'right window 5|CD'
+p1436
+I1695
+sS'left window .6|-None-'
+p1437
+I71
+sS'left window magnesium|NN'
+p1438
+I938
+sS"right window '|POS"
+p1439
+I1397
+sS'right window adjusted|VBN'
+p1440
+I1833
+sS'left window week|NN'
+p1441
+I1368
+sS'left window tablets|NNS'
+p1442
+I1275
+sS'left window 23|CD'
+p1443
+I145
+sS'right window 43%|-None-'
+p1444
+I1676
+sS'right window SAD|-None-'
+p1445
+I1801
+sS'left window aureus|-None-'
+p1446
+I514
+sS'right window 323|-None-'
+p1447
+I1656
+sS'left window .29|CD'
+p1448
+I42
+sS'right window effective|JJ'
+p1449
+I2010
+sS'right window later|JJ'
+p1450
+I2140
+sS'right window 22|CD'
+p1451
+I1636
+sS'right window ascites|NNS'
+p1452
+I1875
+sS'left window Groups|NNS'
+p1453
+I344
+sS'right window oxytocin|-None-'
+p1454
+I2264
+sS'right window ,|,'
+p1455
+I1404
+sS'right window included|VBD'
+p1456
+I2100
+sS'left window mg|-None-'
+p1457
+I969
+sS'right window COHORTS|-None-'
+p1458
+I1746
+sS'left window combination|NN'
+p1459
+I601
+sS'right window .9%|-None-'
+p1460
+I1576
+sS'left window under|IN'
+p1461
+I1339
+sS'right window 120|CD'
+p1462
+I1606
+sS'left window less|JJR'
+p1463
+I923
+sS'right window without|IN'
+p1464
+I2508
+sS'left window production|NN'
+p1465
+I1110
+sS'left window SIGH-SAD|-None-'
+p1466
+I408
+sS'left window erythromycin|-None-'
+p1467
+I757
+sS'left window hypercholesterolemic|JJ'
+p1468
+I846
+sS'left window that|DT'
+p1469
+I1285
+sS'right window had|VBD'
+p1470
+I2073
+sS'left window responders|NNS'
+p1471
+I1175
+sS'left window constituted|VBN'
+p1472
+I627
+sS'left window symptomatic|JJ'
+p1473
+I1272
+sS'right window combined|VBN'
+p1474
+I1942
+sS'left window simvastatin|NNP'
+p1475
+I1220
+sS'left window EORTC|-None-'
+p1476
+I328
+sS'left window laminaria|NNP'
+p1477
+I912
+sS'left window 11|CD'
+p1478
+I105
+sS'left window 28%|-None-'
+p1479
+I153
+sS'right window misoprostol|NNP'
+p1480
+I2197
+sS'left window BPD|-None-'
+p1481
+I289
+sS'left window first|RB'
+p1482
+I783
+sS'right window oxybutynin|-None-'
+p1483
+I2263
+sS'left window mg/m|-None-'
+p1484
+I968
+sS'left window 30|CD'
+p1485
+I163
+sS'right window adolescents|NNS'
+p1486
+I1838
+sS'right window anticholinergic|NNP'
+p1487
+I1866
+sS'left window later|JJ'
+p1488
+I915
+sS'right window scale|NN'
+p1489
+I2365
+sS'left window x|-None-'
+p1490
+I1386
+sS'left window .70|CD'
+p1491
+I74
+sS'right window .49|CD'
+p1492
+I1512
+sS'right window >or|-None-'
+p1493
+I1733
+sS'left window :|:'
+p1494
+I257
+sS'left window EPA|-None-'
+p1495
+I329
+sS'left window day-time|NN'
+p1496
+I662
+sS'left window 1993|CD'
+p1497
+I132
+sS'right window successfully|RB'
+p1498
+I2412
+sS'left window epidural|JJ'
+p1499
+I751
+sS'right window 11%|-None-'
+p1500
+I1604
+sS'left window features|NNS'
+p1501
+I776
+sS'left window consumption|NN'
+p1502
+I630
+sS'left window beta|NNP'
+p1503
+I531
+sS'left window .|.'
+p1504
+I92
+sS'right window desmopressin|NNP'
+p1505
+I1977
+sS'right window .77-2|-None-'
+p1506
+I1556
+sS'left window time|NN'
+p1507
+I1311
+sS'right window .6%-24|-NONE-'
+p1508
+I1532
+sS'left window although|IN'
+p1509
+I479
+sS'left window examined|VBD'
+p1510
+I766
+sS'right window 56|CD'
+p1511
+I1692
+sS'right window modalities|NNS'
+p1512
+I2203
+sS'left window sodium|NN'
+p1513
+I1225
+sS'right window isotonic|JJ'
+p1514
+I2127
+sS'left window assessed|VBN'
+p1515
+I507
+sS'left window colour|PRP$'
+p1516
+I600
+sS'right window old|JJ'
+p1517
+I2246
+sS'left window chloride|NN'
+p1518
+I581
+sS'right window has|VBZ'
+p1519
+I2078
+sS'left window preferred|VBN'
+p1520
+I1094
+sS'right window who|WP'
+p1521
+I2506
+sS'right window healthy|JJ'
+p1522
+I2082
+sS'left window prevent|VB'
+p1523
+I1103
+sS'left window slightly|RB'
+p1524
+I1223
+sS'left window above|IN'
+p1525
+I445
+sS'right window LDL|-None-'
+p1526
+I1779
+sS'left window injection|NN'
+p1527
+I877
+sS'right window newly-diagnosed|VBN'
+p1528
+I2228
+sS'right window underwent|VBD'
+p1529
+I2464
+sS'left window .12|CD'
+p1530
+I28
+sS'left window cefuroxime|NN'
+p1531
+I574
+sS'left window diameter|NN'
+p1532
+I688
+sS'left window trough|IN'
+p1533
+I1331
+sS'right window compared|VBN'
+p1534
+I1943
+sS'right window postoperatively|RB'
+p1535
+I2294
+sS'left window significantly|RB'
+p1536
+I1216
+sS'right window d|-None-'
+p1537
+I2005
+sS'right window verified|VBN'
+p1538
+I2481
+sS'left window droperidol|-None-'
+p1539
+I722
+sS'right window was|VBD'
+p1540
+I2490
+sS'left window calcitriol|-None-'
+p1541
+I553
+sS'left window dose|VBD'
+p1542
+I716
+sS'left window median|JJ'
+p1543
+I952
+sS'right window plus|CC'
+p1544
+I2288
+sS'right window 40|CD'
+p1545
+I1672
+sS'right window gel|NNP'
+p1546
+I2061
+sS'left window IRLS|-None-'
+p1547
+I356
+sS'right window mg/day|NN'
+p1548
+I2175
+sS'right window neutropenia|NNP'
+p1549
+I2227
+sS'right window toxicity|NN'
+p1550
+I2448
+sS'right window 75%|-None-'
+p1551
+I1709
+sS'left window inhaled|VBN'
+p1552
+I874
+sS'left window days|NNS'
+p1553
+I663
+sS'left window aprotinin|-None-'
+p1554
+I501
+sS'left window 125|CD'
+p1555
+I112
+sS'right window .79|CD'
+p1556
+I1560
+sS'right window lesions|NNS'
+p1557
+I2141
+sS'right window developed|VBD'
+p1558
+I1978
+sS'left window basal|NN'
+p1559
+I522
+sS'right window wet|-None-'
+p1560
+I2498
+sS'right window gm|-None-'
+p1561
+I2066
+sS'left window (|-None-'
+p1562
+I5
+sS'right window .15-1|-None-'
+p1563
+I1458
+sS'left window .2+/-41|-NONE-'
+p1564
+I35
+sS'right window "|-None-'
+p1565
+I1393
+sS'left window points|NNS'
+p1566
+I1083
+sS'left window irradiated|VBN'
+p1567
+I898
+sS'left window differ|VBP'
+p1568
+I699
+sS'left window compliance|NN'
+p1569
+I612
+sS'left window /d|-None-'
+p1570
+I94
+sS'right window .53|CD'
+p1571
+I1524
+sS'right window schizophrenic|JJ'
+p1572
+I2368
+sS'left window 7/OKT3|-None-'
+p1573
+I227
+sS'left window 354|-None-'
+p1574
+I170
+sS'left window 121|-NONE-'
+p1575
+I109
+sS'right window dosing|VBG'
+p1576
+I1994
+sS'right window subhepatic|JJ'
+p1577
+I2410
+sS'right window twice|RB'
+p1578
+I2461
+sS'left window successful|JJ'
+p1579
+I1260
+sS'left window few|JJ'
+p1580
+I779
+sS'left window 308|-None-'
+p1581
+I162
+sS'right window .M|-None-'
+p1582
+I1590
+sS'left window daily|JJ'
+p1583
+I658
+sS'right window interval|NN'
+p1584
+I2117
+sS'left window FSP|-None-'
+p1585
+I335
+sS'left window 76|CD'
+p1586
+I235
+sS'right window versus|CC'
+p1587
+I2482
+sS'left window needed|VBN'
+p1588
+I1014
+sS'left window defined|VBN'
+p1589
+I671
+sS'right window 45|CD'
+p1590
+I1679
+sS'right window agents|NNS'
+p1591
+I1844
+sS'right window 5-day|NN'
+p1592
+I1686
+sS'left window .78|CD'
+p1593
+I80
+sS'right window 85|CD'
+p1594
+I1718
+sS'right window towards|NNS'
+p1595
+I2447
+sS'left window extended|VBD'
+p1596
+I770
+sS'right window discover|RB'
+p1597
+I1991
+sS'left window thrombosis|NN'
+p1598
+I1301
+sS'right window average|JJ'
+p1599
+I1884
+sS'left window and|CC'
+p1600
+I489
+sS'left window sulfate|NN'
+p1601
+I1265
+sS'left window TNS|-None-'
+p1602
+I419
+sS'left window .85|CD'
+p1603
+I85
+sS'left window properties|NNS'
+p1604
+I1115
+sS'right window .0034|-None-'
+p1605
+I1415
+sS'left window .54|CD'
+p1606
+I60
+sS'right window septic|JJ'
+p1607
+I2375
+sS'left window both|DT'
+p1608
+I544
+sS'left window double|JJ'
+p1609
+I719
+sS'left window curative|JJ'
+p1610
+I651
+sS'left window 54|CD'
+p1611
+I209
+sS'left window final|JJ'
+p1612
+I781
+sS'right window randomly|RB'
+p1613
+I2325
+sS'right window points|NNS'
+p1614
+I2290
+sS'left window until|IN'
+p1615
+I1343
+sS'left window >/|-None-'
+p1616
+I262
+sS'left window p|-None-'
+p1617
+I1127
+sS'left window 166|-NONE-'
+p1618
+I126
+sS'left window resin|NNP'
+p1619
+I1173
+sS'left window per|IN'
+p1620
+I1073
+sS'left window 48|CD'
+p1621
+I194
+sS'right window .005|CD'
+p1622
+I1418
+sS'right window partner|NN'
+p1623
+I2273
+sS'left window retreated|VBN'
+p1624
+I1179
+sS'right window W|-None-'
+p1625
+I1821
+sS'right window microg/kg|-None-'
+p1626
+I2185
+sS'left window method|-None-'
+p1627
+I959
+sS'right window regimen|NNS'
+p1628
+I2345
+sS'left window 59|CD'
+p1629
+I214
+sS'right window mg/m2/day|NN'
+p1630
+I2180
+sS'left window nadolol|-None-'
+p1631
+I1009
+sS'right window N|-None-'
+p1632
+I1794
+sS'right window cycles|NNS'
+p1633
+I1964
+sS'left window 14|CD'
+p1634
+I118
+sS'left window mm|-None-'
+p1635
+I984
+sS'right window activities|NNS'
+p1636
+I1829
+sS'right window wound|NN'
+p1637
+I2511
+sS'left window commonest|NN'
+p1638
+I603
+sS'right window corrected|VBN'
+p1639
+I1958
+sS'right window discontinued|VBN'
+p1640
+I1990
+sS'right window .2%|-None-'
+p1641
+I1467
+sS'left window >|-None-'
+p1642
+I264
+sS'right window 2|LS'
+p1643
+I1650
+sS'left window NG|-None-'
+p1644
+I378
+sS'right window grade|NN'
+p1645
+I2067
+sS'left window methotrexate|NN'
+p1646
+I960
+sS'right window current|JJ'
+p1647
+I1963
+sS'left window infusion|NN'
+p1648
+I872
+sS'left window .62|CD'
+p1649
+I67
+sS'right window .28|CD'
+p1650
+I1484
+sS'right window .5-7|-None-'
+p1651
+I1518
+sS'left window demonstrable|JJ'
+p1652
+I677
+sS'right window urodynamically|RB'
+p1653
+I2473
+sS'left window preoperatively|RB'
+p1654
+I1098
+sS'left window hormones|NNS'
+p1655
+I837
+sS'right window ESM|-None-'
+p1656
+I1758
+sS'right window arthroscopic|NNP'
+p1657
+I1874
+sS'right window .002|-None-'
+p1658
+I1414
+sS'right window studied|VBN'
+p1659
+I2404
+sS'right window 31|CD'
+p1660
+I1655
+sS'right window .22|CD'
+p1661
+I1474
+sS'right window adverse|JJ'
+p1662
+I1841
+sS'right window .0-13|-NONE-'
+p1663
+I1408
+sS'left window .59|-None-'
+p1664
+I64
+sS'right window liver|RB'
+p1665
+I2145
+sS'right window im|-None-'
+p1666
+I2098
+sS'left window comparable|JJ'
+p1667
+I604
+sS'right window .62|CD'
+p1668
+I1540
+sS'left window 75%|-None-'
+p1669
+I233
+sS'left window measured|VBN'
+p1670
+I950
+sS'right window 16|CD'
+p1671
+I1619
+sS'right window 25|CD'
+p1672
+I1643
+sS'left window FO|-None-'
+p1673
+I333
+sS'right window regards|NNS'
+p1674
+I2342
+sS'right window required|VBN'
+p1675
+I2354
+sS'right window .9-point|NN'
+p1676
+I1578
+sS'left window hydrochloride|NN'
+p1677
+I844
+sS'left window mon|JJ'
+p1678
+I993
+sS'right window night-time|NN'
+p1679
+I2230
+sS'left window mouth|NNP'
+p1680
+I1001
+sS'left window differentiate|NN'
+p1681
+I697
+sS'right window 59|CD'
+p1682
+I1694
+sS'right window 316|-None-'
+p1683
+I1654
+sS'right window until|IN'
+p1684
+I2469
+sS'right window regular|JJ'
+p1685
+I2346
+sS'left window crying|VBG'
+p1686
+I646
+sS'left window also|RB'
+p1687
+I476
+sS'right window very|RB'
+p1688
+I2483
+sS'right window single|JJ'
+p1689
+I2388
+sS'left window techniques|NNS'
+p1690
+I1280
+sS'right window intervals|NNS'
+p1691
+I2116
+sS'right window microgram/mL|-None-'
+p1692
+I2187
+sS'right window fractions|NNS'
+p1693
+I2054
+sS'left window cases|NNS'
+p1694
+I562
+sS'right window antipsychotic|JJ'
+p1695
+I1867
+sS'left window graft|NN'
+p1696
+I822
+sS'right window .13|CD'
+p1697
+I1457
+sS'right window 250|CD'
+p1698
+I1642
+sS'right window continued|VBD'
+p1699
+I1952
+sS'right window 85%|-None-'
+p1700
+I1717
+sS'left window out|IN'
+p1701
+I1047
+sS'right window subgroups|NNS'
+p1702
+I2409
+sS'right window .049|-None-'
+p1703
+I1432
+sS'right window 94|CD'
+p1704
+I1725
+sS'left window for|IN'
+p1705
+I796
+sS'right window 1%|-None-'
+p1706
+I1600
+sS'right window infusion|NN'
+p1707
+I2109
+sS'right window when|WRB'
+p1708
+I2500
+sS'right window ondansetron|NNP'
+p1709
+I2249
+sS'left window .56|CD'
+p1710
+I62
+sS'left window 42-60%|-None-'
+p1711
+I185
+sS'left window size|NN'
+p1712
+I1222
+sS'right window administrations|NNS'
+p1713
+I1835
+sS'left window .08|CD'
+p1714
+I21
+sS'left window arm|NN'
+p1715
+I505
+sS'right window 11|CD'
+p1716
+I1605
+sS'right window intensive|JJ'
+p1717
+I2115
+sS'left window citalopram-treated|VBN'
+p1718
+I586
+sS'left window A|DT'
+p1719
+I287
+sS'right window risk|NN'
+p1720
+I2360
+sS'left window an|DT'
+p1721
+I497
+sS'right window treatments|NNS'
+p1722
+I2454
+sS'right window analog|NN'
+p1723
+I1858
+sS'left window muscles|NNS'
+p1724
+I1006
+sS'left window lavage|NN'
+p1725
+I917
+sS'left window enalapril|NNP'
+p1726
+I742
+sS'right window h|-None-'
+p1727
+I2094
+sS'left window dermatitis|-None-'
+p1728
+I680
+sS'right window 32|CD'
+p1729
+I1657
+sS'right window surgery|NN'
+p1730
+I2415
+sS'right window g/1|-None-'
+p1731
+I2056
+sS'right window 10|CD'
+p1732
+I1603
+sS'left window mug/g|-None-'
+p1733
+I1003
+sS'right window bupropion|NN'
+p1734
+I1903
+sS'left window response|NN'
+p1735
+I1178
+sS'left window From|IN'
+p1736
+I340
+sS'left window amitriptyline|NN'
+p1737
+I482
+sS'right window baseline|NN'
+p1738
+I1886
+sS'right window noncritically|RB'
+p1739
+I2233
+sS'right window L/min/m2|-None-'
+p1740
+I1778
+sS'left window women|NNS'
+p1741
+I1382
+sS'left window treated|VBD'
+p1742
+I1323
+sS'right window running|VBG'
+p1743
+I2362
+sS'right window once-weekly|RB'
+p1744
+I2247
+sS'left window treated|VBN'
+p1745
+I1324
+sS'right window compressions|NNS'
+p1746
+I1948
+sS'right window scheduled|VBN'
+p1747
+I2366
+sS'left window These|DT'
+p1748
+I422
+sS'right window .3|-None-'
+p1749
+I1501
+sS'right window long-term|JJ'
+p1750
+I2147
+sS'left window monitoring|VBG'
+p1751
+I990
+sS'left window 157|-NONE-'
+p1752
+I121
+sS'right window vs|-None-'
+p1753
+I2489
+sS'right window i|-None-'
+p1754
+I2130
+sS'left window used|VBN'
+p1755
+I1346
+sS'left window start|NN'
+p1756
+I1238
+sS'right window hr|-None-'
+p1757
+I2088
+sS'left window averaged|VBD'
+p1758
+I516
+sS'right window converted|VBN'
+p1759
+I1957
+sS'right window violations|NNS'
+p1760
+I2484
+sS'right window x|-None-'
+p1761
+I2512
+sS'left window 43|CD'
+p1762
+I188
+sS'left window Wheezing|VBG'
+p1763
+I440
+sS'left window Hz|-None-'
+p1764
+I352
+sS'left window study|VB'
+p1765
+I1251
+sS'left window primary|JJ'
+p1766
+I1105
+sS'right window analgesia|NNP'
+p1767
+I1857
+sS'right window immediately|RB'
+p1768
+I2096
+sS'left window next|JJ'
+p1769
+I1017
+sS'left window wound|NN'
+p1770
+I1384
+sS'right window only|RB'
+p1771
+I2250
+sS'left window gathered|VBN'
+p1772
+I811
+sS'right window 72/151|-NONE-'
+p1773
+I1708
+sS'right window directly|RB'
+p1774
+I1988
+sS'left window tubal|JJ'
+p1775
+I1332
+sS'right window NG|-None-'
+p1776
+I1791
+sS'right window ml|-None-'
+p1777
+I2199
+sS'left window .21|CD'
+p1778
+I38
+sS'left window aged|VBN'
+p1779
+I465
+sS'left window streptomycin|-None-'
+p1780
+I1246
+sS'left window Conclusions|NNS'
+p1781
+I314
+sS'left window toxicities|NNS'
+p1782
+I1319
+sS'left window chloroquine|NN'
+p1783
+I582
+sS'right window symmetric|JJ'
+p1784
+I2418
+sS'right window B|NNP'
+p1785
+I1741
+sS'left window carcinomas|NNP'
+p1786
+I558
+sS'left window Patients|NNS'
+p1787
+I395
+sS'right window and|CC'
+p1788
+I1862
+sS'right window ectopic|NNP'
+p1789
+I2009
+sS'left window We|PRP'
+p1790
+I439
+sS'left window 2+acute|NNP'
+p1791
+I137
+sS'left window achieve|VB'
+p1792
+I450
+sS'left window 100|CD'
+p1793
+I100
+sS'left window pressure|NN'
+p1794
+I1100
+sS'left window among|IN'
+p1795
+I485
+sS'left window IV|-None-'
+p1796
+I359
+sS'right window patients|NNS'
+p1797
+I2276
+sS'left window wrist|NN'
+p1798
+I1385
+sS'right window drained|VBN'
+p1799
+I1998
+sS'right window improvement|NN'
+p1800
+I2097
+sS'right window partners|NNS'
+p1801
+I2272
+sS'left window home|NN'
+p1802
+I836
+sS'left window pump-prime-only|RB'
+p1803
+I1126
+sS'left window body|NN'
+p1804
+I542
+sS'left window twice|RB'
+p1805
+I1333
+sS'right window pathologically|RB'
+p1806
+I2275
+sS'left window calcipotriol|-None-'
+p1807
+I552
+sS'left window investigated|VBN'
+p1808
+I891
+sS'left window 1/OKT3|-None-'
+p1809
+I97
+sS'right window .8+/-1|-None-'
+p1810
+I1563
+sS'right window placed|VBN'
+p1811
+I2287
+sS'left window randomized|VBN'
+p1812
+I1133
+sS'left window those|DT'
+p1813
+I1298
+sS'left window consume|NN'
+p1814
+I629
+sS'left window parasitemia|-None-'
+p1815
+I1063
+sS'left window At|IN'
+p1816
+I286
+sS'right window ointment|NN'
+p1817
+I2243
+sS'right window IU/kg|-None-'
+p1818
+I1773
+sS'left window ketamine|NN'
+p1819
+I906
+sS'left window Score|JJR'
+p1820
+I409
+sS'left window Analysis|NN'
+p1821
+I284
+sS'left window risk|NN'
+p1822
+I1182
+sS'left window age|NN'
+p1823
+I467
+sS'right window .4+/-0|-None-'
+p1824
+I1503
+sS'right window trial|NN'
+p1825
+I2458
+sS'left window monotherapy|NN'
+p1826
+I991
+sS'left window randomly|RB'
+p1827
+I1134
+sS'right window iv|-None-'
+p1828
+I2129
+sS'right window found|VBN'
+p1829
+I2053
+sS'left window 26|CD'
+p1830
+I151
+sS'left window U/kg|-None-'
+p1831
+I432
+sS'left window acid|JJ'
+p1832
+I452
+sS'left window fluorouracil|NN'
+p1833
+I787
+sS'right window subcutaneously|RB'
+p1834
+I2406
+sS'left window whether|IN'
+p1835
+I1373
+sS'right window second-generation|NN'
+p1836
+I2372
+sS'left window fossa|-None-'
+p1837
+I797
+sS'left window drugs|NNS'
+p1838
+I725
+sS'right window 77|CD'
+p1839
+I1711
+sS'left window washout|IN'
+p1840
+I1364
+sS'left window discharge|VB'
+p1841
+I704
+sS'left window 292|-None-'
+p1842
+I155
+sS'right window Hg|-None-'
+p1843
+I1769
+sS'right window showed|VBD'
+p1844
+I2383
+sS'left window values|NNS'
+p1845
+I1349
+sS'left window DPNB|-None-'
+p1846
+I321
+sS'left window risperidone|CD'
+p1847
+I1183
+sS'left window active|JJ'
+p1848
+I454
+sS'right window 60|CD'
+p1849
+I1696
+sS'right window 35|CD'
+p1850
+I1661
+sS'right window microgram/kg|-None-'
+p1851
+I2186
+sS'right window .017|CD'
+p1852
+I1423
+sS'right window .07|CD'
+p1853
+I1440
+sS'left window anemia|-None-'
+p1854
+I490
+sS'left window \xc2\xa9|-None-'
+p1855
+I1391
+sS'left window double-blinded|VBD'
+p1856
+I717
+sS'right window .39-1|-None-'
+p1857
+I1500
+sS'left window 27|CD'
+p1858
+I152
+sS'left window function|NN'
+p1859
+I805
+sS'left window prostaglandin|-None-'
+p1860
+I1121
+sS'left window eligible|JJ'
+p1861
+I740
+sS'right window 22/52|-None-'
+p1862
+I1634
+sS'right window .4-point|NN'
+p1863
+I1504
+sS'right window ACD|-None-'
+p1864
+I1734
+sS'left window eardrops|NNS'
+p1865
+I732
+sS'left window irradiation|NN'
+p1866
+I899
+sS'right window 15%|-None-'
+p1867
+I1614
+sS'right window following|VBG'
+p1868
+I2048
+sS'right window session|NN'
+p1869
+I2379
+sS'left window potassium|NN'
+p1870
+I1089
+sS'left window methylprednisolone|CD'
+p1871
+I961
+sS'left window controlled|JJ'
+p1872
+I636
+sS'left window gained|VBD'
+p1873
+I809
+sS'right window premature|NN'
+p1874
+I2302
+sS'left window cultured|VBN'
+p1875
+I648
+sS'left window haematoma|NNP'
+p1876
+I828
+sS'right window between|IN'
+p1877
+I1890
+sS'right window .18|CD'
+p1878
+I1463
+sS'left window likely|JJ'
+p1879
+I929
+sS'left window 377|-None-'
+p1880
+I174
+sS'right window side|NN'
+p1881
+I2384
+sS'right window inapplicable|JJ'
+p1882
+I2099
+sS'right window SE|-None-'
+p1883
+I1805
+sS'right window confidence|NN'
+p1884
+I1949
+sS'left window 5-fluorouracil|NN'
+p1885
+I200
+sS'left window amodiaquine|NN'
+p1886
+I484
+sS'right window clinically|RB'
+p1887
+I1934
+sS'div10[0]'
+p1888
+I1
+sS'left window grades|NNS'
+p1889
+I820
+sS'left window included|VBD'
+p1890
+I859
+sS'left window these|DT'
+p1891
+I1294
+sS'right window .86|-None-'
+p1892
+I1572
+sS'left window remained|VBD'
+p1893
+I1162
+sS'left window tretinoin-treated|VBN'
+p1894
+I1327
+sS'right window using|VBG'
+p1895
+I2476
+sS'right window subcutaneous|JJ'
+p1896
+I2407
+sS'right window To|TO'
+p1897
+I1813
+sS'left window D|-None-'
+p1898
+I327
+sS'left window .1%|-None-'
+p1899
+I24
+sS'right window 22/53|-None-'
+p1900
+I1635
+sS'left window count|NN'
+p1901
+I641
+sS'right window most|RBS'
+p1902
+I2212
+sS'left window Giving|VBG'
+p1903
+I343
+sS'left window efficacies|NNS'
+p1904
+I736
+sS'right window .68|CD'
+p1905
+I1544
+sS'left window high-dose|VBD'
+p1906
+I834
+sS'left window involved|VBN'
+p1907
+I892
+sS'left window morphine|NN'
+p1908
+I996
+sS'right window propofol|-None-'
+p1909
+I2312
+sS'right window .59|-None-'
+p1910
+I1530
+sS'left window CPR|-None-'
+p1911
+I310
+sS'left window 77|CD'
+p1912
+I236
+sS'right window unexplained|VBN'
+p1913
+I2467
+sS'left window alternately|RB'
+p1914
+I477
+sS'left window groups|NNS'
+p1915
+I824
+sS'right window streptomycin|-None-'
+p1916
+I2403
+sS'left window 17|CD'
+p1917
+I129
+sS'right window 199|-NONE-'
+p1918
+I1625
+sS'right window relapses|NNS'
+p1919
+I2348
+sS'left window alternative|NN'
+p1920
+I478
+sS'left window phase|VB'
+p1921
+I1074
+sS'right window .625|CD'
+p1922
+I1539
+sS'left window By|IN'
+p1923
+I296
+sS'right window .0|-None-'
+p1924
+I1445
+sS'right window sequential|JJ'
+p1925
+I2377
+sS'left window unexplained|VBN'
+p1926
+I1340
+sS'right window maintained|VBD'
+p1927
+I2152
+sS'right window have|VBP'
+p1928
+I2079
+sS'right window phosphatidylserine|NN'
+p1929
+I2284
+sS'right window found|VBD'
+p1930
+I2052
+sS'left window PGA|-None-'
+p1931
+I389
+sS'left window 3-monthly|RB'
+p1932
+I161
+sS'left window therapy|NN'
+p1933
+I1291
+sS'left window 559|-None-'
+p1934
+I210
+sS'right window cytomegalovirus|NNP'
+p1935
+I1966
+sS'right window ]|-None-'
+p1936
+I1823
+sS'left window plaque|NNP'
+p1937
+I1079
+sS'left window Mean|JJ'
+p1938
+I372
+sS'right window +/-|-None-'
+p1939
+I1401
+sS'right window during|IN'
+p1940
+I2004
+sS'left window cefotaxime|NN'
+p1941
+I569
+sS'right window mins|NNS'
+p1942
+I2194
+sS'right window .7|-None-'
+p1943
+I1561
+sS'left window insulin|NNP'
+p1944
+I880
+sS'right window .70|CD'
+p1945
+I1550
+sS'right window rTMS|-None-'
+p1946
+I2320
+sS'left window available|JJ'
+p1947
+I515
+sS'left window infertility|NN'
+p1948
+I870
+sS'right window passive|JJ'
+p1949
+I2274
+sS'left window matched|VBD'
+p1950
+I945
+sS'right window rashes|NNS'
+p1951
+I2326
+sS'left window study|JJ'
+p1952
+I1249
+sS'left window was|VBD'
+p1953
+I1365
+sS'right window .71|-None-'
+p1954
+I1552
+sS'left window regression|NN'
+p1955
+I1157
+sS'right window .50|CD'
+p1956
+I1520
+sS'left window flurbiprofen|NNP'
+p1957
+I788
+sS'right window scales|NNS'
+p1958
+I2364
+sS'left window 102|CD'
+p1959
+I101
+sS'left window citalopram|NN'
+p1960
+I587
+sS'left window cure|VB'
+p1961
+I653
+sS'left window CFP|-None-'
+p1962
+I303
+sS'left window 2001|-None-'
+p1963
+I139
+sS'left window sides|NNS'
+p1964
+I1214
+sS'left window There|EX'
+p1965
+I421
+sS'right window .60|CD'
+p1966
+I1535
+sS'left window ABSTRACT|-None-'
+p1967
+I267
+sS'left window 7|CD'
+p1968
+I241
+sS'left window 8/52|-None-'
+p1969
+I242
+sS'right window mmol/l|-None-'
+p1970
+I2201
+sS'right window flurbiprofen|NNP'
+p1971
+I2045
+sS'left window .2|-None-'
+p1972
+I43
+sS'left window allocated|VBN'
+p1973
+I469
+sS'right window 15|CD'
+p1974
+I1616
+sS'left window loss|NN'
+p1975
+I932
+sS'left window 16|CD'
+p1976
+I127
+sS'left window <|-None-'
+p1977
+I260
+sS'right window .10|CD'
+p1978
+I1450
+sS'right window .2|-None-'
+p1979
+I1486
+sS'right window total|JJ'
+p1980
+I2445
+sS'left window .65|CD'
+p1981
+I68
+sS'left window antibody|NNP'
+p1982
+I494
+sS'left window cycles|NNS'
+p1983
+I654
+sS'right window second|JJ'
+p1984
+I2374
+sS'left window mg/day|NN'
+p1985
+I963
+sS'left window carried|VBN'
+p1986
+I561
+sS'right window amniotomy|NN'
+p1987
+I1855
+sS'right window .23|CD'
+p1988
+I1475
+sS'left window lesion|NN'
+p1989
+I922
+sS'left window sulfadoxine-pyrimethamine|NN'
+p1990
+I1264
+sS'left window cefadroxil|-None-'
+p1991
+I566
+sS'left window Gy|-None-'
+p1992
+I346
+sS'left window .97|CD'
+p1993
+I90
+sS'right window .25-Gy|-None-'
+p1994
+I1478
+sS'right window .99-1|-None-'
+p1995
+I1586
+sS'left window induction|NN'
+p1996
+I866
+sS'left window p<0|-None-'
+p1997
+I1055
+sS'right window eligible|JJ'
+p1998
+I2014
+sS'right window /d|-None-'
+p1999
+I1597
+sS'left window 3%|-None-'
+p2000
+I159
+sS'left window .57|CD'
+p2001
+I63
+sS'right window cancer|NN'
+p2002
+I1907
+sS'left window death|NN'
+p2003
+I666
+sS'right window .20|CD'
+p2004
+I1472
+sS'right window preoperatively|RB'
+p2005
+I2303
+sS'left window 42|CD'
+p2006
+I186
+sS'left window cried|VBN'
+p2007
+I645
+sS'left window atorvastatin|NNP'
+p2008
+I512
+sS'left window infant|JJ'
+p2009
+I868
+sS'left window cleared|VBD'
+p2010
+I590
+sS'right window .1|-None-'
+p2011
+I1465
+sS'left window successfully|RB'
+p2012
+I1259
+sS'left window </|-None-'
+p2013
+I259
+sS'right window 1/2|-None-'
+p2014
+I1601
+sS'left window any|DT'
+p2015
+I496
+sS'left window either|DT'
+p2016
+I738
+sS'right window mellitus|NN'
+p2017
+I2165
+sS'right window mianserin|-None-'
+p2018
+I2184
+sS'left window unsaturated|VBN'
+p2019
+I1342
+sS'right window .2+/-0|-None-'
+p2020
+I1468
+sS'left window codeine|NN'
+p2021
+I597
+sS'left window 500|CD'
+p2022
+I202
+sS'left window 57|CD'
+p2023
+I212
+sS'right window arrests|NNS'
+p2024
+I1873
+sS'left window deep|VB'
+p2025
+I669
+sS'left window scale-at|-None-'
+p2026
+I1192
+sS'left window severe|JJ'
+p2027
+I1206
+sS'left window patients|NNS'
+p2028
+I1066
+sS'wi[0]'
+p2029
+I2519
+sS'left window NaCl|-None-'
+p2030
+I381
+sS'left window drained|VBN'
+p2031
+I721
+sS'left window 68%|-None-'
+p2032
+I225
+sS'left window completely|RB'
+p2033
+I610
+sS'left window 4|CD'
+p2034
+I196
+sS'left window scores|NNS'
+p2035
+I1197
+sS'right window yrs|-None-'
+p2036
+I2515
+sS'left window tretinoin|VB'
+p2037
+I1328
+sS'left window monitored|VBN'
+p2038
+I989
+sS'left window .5|-None-'
+p2039
+I65
+sS'left window radiotherapy|NN'
+p2040
+I1131
+sS'right window .13-1|-None-'
+p2041
+I1456
+sS'right window .98-1|-None-'
+p2042
+I1585
+sS'left window 254|-NONE-'
+p2043
+I149
+sS'left window metoclopramide|NN'
+p2044
+I962
+sS'left window than|IN'
+p2045
+I1284
+sS'right window applied|VBD'
+p2046
+I1871
+sS'left window normal|JJ'
+p2047
+I1022
+sS'left window confidence|NN'
+p2048
+I621
+sS'left window fixed|VBN'
+p2049
+I785
+sS'right window 7|CD'
+p2050
+I1714
+sS'right window the|DT'
+p2051
+I2436
+sS'right window metformin|NNP'
+p2052
+I2170
+sS'left window severity|NN'
+p2053
+I1207
+sS'right window methylprednisolone|CD'
+p2054
+I2171
+sS'left window Throughout|IN'
+p2055
+I426
+sS'right window regimens|NNP'
+p2056
+I2344
+sS'left window Days|VBZ'
+p2057
+I325
+sS'right window regard|VBP'
+p2058
+I2343
+sS'right window refractory|NN'
+p2059
+I2340
+sS'right window meropenem|NNP'
+p2060
+I2169
+sS'left window fresh|JJ'
+p2061
+I802
+sS'right window small|JJ'
+p2062
+I2391
+sS'right window mg/m|-None-'
+p2063
+I2182
+sS'left window samples|NNS'
+p2064
+I1190
+sS'left window imipramine|NN'
+p2065
+I853
+sS'right window 400|CD'
+p2066
+I1671
+sS'left window triglycerides|NNS'
+p2067
+I1330
+sS'right window .2-fold|JJ'
+p2068
+I1470
+sS'left window .001|-None-'
+p2069
+I14
+sS'left window along|IN'
+p2070
+I474
+sS'left window treatment|NN'
+p2071
+I1326
+sS'right window initiation|NN'
+p2072
+I2110
+sS'left window day|NN'
+p2073
+I664
+sS'left window kg|-None-'
+p2074
+I907
+sS'right window .35|CD'
+p2075
+I1495
+sS'left window levels|NNS'
+p2076
+I926
+sS'right window laparoscopic|NNP'
+p2077
+I2137
+sS'right window John|NNP'
+p2078
+I1777
+sS'left window endpoint|NN'
+p2079
+I744
+sS'left window cryotherapy|NN'
+p2080
+I647
+sS'right window 92|CD'
+p2081
+I1724
+sS'right window 37|CD'
+p2082
+I1663
+sS'left window interferon|NNP'
+p2083
+I884
+sS'left window 90|CD'
+p2084
+I250
+sS'right window 18|CD'
+p2085
+I1623
+sS'right window proportion|NN'
+p2086
+I2313
+sS'right window 4|CD'
+p2087
+I1684
+sS'left window primarily|RB'
+p2088
+I1104
+sS'left window 64|CD'
+p2089
+I223
+sS'left window .20|CD'
+p2090
+I37
+sS'left window about|IN'
+p2091
+I444
+sS'left window cytomegalovirus|NNP'
+p2092
+I656
+sS'left window interval|NN'
+p2093
+I885
+sS'left window 41|CD'
+p2094
+I184
+sS'right window dalteparin-treated|VBN'
+p2095
+I1968
+sS'right window enoxaparin|-None-'
+p2096
+I2019
+sS'right window half|DT'
+p2097
+I2075
+sS'right window mL|-None-'
+p2098
+I2150
+sS'left window plasma|-None-'
+p2099
+I1080
+sS'left window constant|JJ'
+p2100
+I626
+sS'left window .42|CD'
+p2101
+I52
+sS'left window Fixed-dose|VBD'
+p2102
+I336
+sS'left window weeks|NNS'
+p2103
+I1367
+sS'left window complications|NNS'
+p2104
+I613
+sS'left window palifermin|NNP'
+p2105
+I1059
+sS'left window vomiting|VBG'
+p2106
+I1361
+sS'right window PE|-None-'
+p2107
+I1799
+sS'left window dosage|NN'
+p2108
+I714
+sS'left window they|PRP'
+p2109
+I1295
+sS'left window weight|NN'
+p2110
+I1369
+sS'left window deaths|NNS'
+p2111
+I665
+sS'right window propranolol|-None-'
+p2112
+I2314
+sS'left window almost|RB'
+p2113
+I472
+sS'right window .55|CD'
+p2114
+I1526
+sS'right window fell|VBD'
+p2115
+I2042
+sS'right window 75|CD'
+p2116
+I1710
+sS'left window .7%-years|NNS'
+p2117
+I72
+sS'left window Response|NN'
+p2118
+I404
+sS'right window P<0|-None-'
+p2119
+I1796
+sS'left window intensity|NN'
+p2120
+I881
+sS'left window TNFsr-2|-None-'
+p2121
+I418
+sS'left window area|NN'
+p2122
+I503
+sS'right window .047|-None-'
+p2123
+I1431
+sS'left window zinc|NN'
+p2124
+I1388
+sS'left window intolerant|JJ'
+p2125
+I886
+sS'right window aged|VBN'
+p2126
+I1843
+sS'left window 114%|-None-'
+p2127
+I104
+sS'left window 33|CD'
+p2128
+I168
+sS'left window DTIC|-None-'
+p2129
+I322
+sS'right window .7%|-None-'
+p2130
+I1548
+sS'right window MAL-PDT|-None-'
+p2131
+I1783
+sS'right window .3%|-None-'
+p2132
+I1488
+sS'left window .86|-None-'
+p2133
+I86
+sS'right window start|NN'
+p2134
+I2397
+sS'left window 61|CD'
+p2135
+I220
+sS'right window additional|JJ'
+p2136
+I1832
+sS'right window randomization|NN'
+p2137
+I2323
+sS'left window Short|JJ'
+p2138
+I412
+sS'left window taken|VBN'
+p2139
+I1276
+sS'left window outcome|DT'
+p2140
+I1046
+sS'left window liquids|NNS'
+p2141
+I930
+sS'right window catheter|NN'
+p2142
+I1915
+sS'right window palifermin|NNP'
+p2143
+I2267
+sS'right window .44|CD'
+p2144
+I1508
+sS'left window single|JJ'
+p2145
+I1221
+sS'left window total|NN'
+p2146
+I1318
+sS'left window occurred|VBD'
+p2147
+I1031
+sS'left window side-effects|NNS'
+p2148
+I1213
+sS'right window .38|CD'
+p2149
+I1499
+sS'right window .04|CD'
+p2150
+I1433
+sS'right window stopped|VBD'
+p2151
+I2401
+sS'right window hyperdynamic|JJ'
+p2152
+I2092
+sS'left window 91|-None-'
+p2153
+I251
+sS'right window respect|NN'
+p2154
+I2357
+sS'left window 70|CD'
+p2155
+I228
+sS'right window seales-a|NNP'
+p2156
+I2371
+sS'right window .66|-None-'
+p2157
+I1542
+sS'right window cyclophosphamide|NN'
+p2158
+I1965
+sS'right window smokers|NNS'
+p2159
+I2392
+sS'left window enrichment|NN'
+p2160
+I747
+sS'right window haemoglobin|NN'
+p2161
+I2074
+sS'left window fibrate|NN'
+p2162
+I780
+sS'left window A1|-None-'
+p2163
+I265
+sS'left window vehicle|NN'
+p2164
+I1353
+sS'left window renal|JJ'
+p2165
+I1165
+sS'right window mouth|NNP'
+p2166
+I2213
+sS'left window This|DT'
+p2167
+I425
+sS'left window blind|JJ'
+p2168
+I538
+sS'right window .67|-None-'
+p2169
+I1543
+sS'right window U|-None-'
+p2170
+I1817
+sS'right window eyes|NNS'
+p2171
+I2039
+sS'left window meropenem|NNP'
+p2172
+I957
+sS'right window year|NN'
+p2173
+I2514
+sS'left window degree|NN'
+p2174
+I673
+sS'left window inhibitor-1|-None-'
+p2175
+I875
+sS'right window out|IN'
+p2176
+I2260
+sS'left window microangiopathy|JJ'
+p2177
+I971
+sS'left window CA|-None-'
+p2178
+I299
+sS'left window 64%|-None-'
+p2179
+I222
+sS'left window .66|-None-'
+p2180
+I69
+sS'right window physical|JJ'
+p2181
+I2285
+sS'left window myalgia|NNP'
+p2182
+I1008
+sS'right window episodes|NNS'
+p2183
+I2025
+sS'left window entered|VBD'
+p2184
+I749
+sS'right window codeine|NN'
+p2185
+I1937
+sS'left window mortality|NN'
+p2186
+I997
+sS'left window catheterization|NN'
+p2187
+I563
+sS'left window TRUNCATED|-None-'
+p2188
+I420
+sS'left window juice|NN'
+p2189
+I905
+sS'right window microm|IN'
+p2190
+I2191
+sS'right window cognitive-behavioral|JJ'
+p2191
+I1938
+sS'left window months|NNS'
+p2192
+I992
+sS'right window needed|VBN'
+p2193
+I2223
+sS'left window .17|CD'
+p2194
+I31
+sS'right window -|:'
+p2195
+I1405
+sS'left window excluding|VBG'
+p2196
+I767
+sS'right window child|NN'
+p2197
+I1926
+sS'left window ,|,'
+p2198
+I9
+sS'right window 7%|-None-'
+p2199
+I1705
+sS'right window 40%|-None-'
+p2200
+I1670
+sS'right window subjects|NNS'
+p2201
+I2411
+sS'left window infants|NNS'
+p2202
+I867
+sS'left window confirmed|VBD'
+p2203
+I622
+sS'left window found|VBD'
+p2204
+I798
+sS'left window G-CSF|-None-'
+p2205
+I341
+sS'left window spent|VBN'
+p2206
+I1228
+sS'left window lung|NN'
+p2207
+I936
+sS'right window single-agent|NN'
+p2208
+I2387
+sS'right window chronic|JJ'
+p2209
+I1928
+sS'left window /164|-NONE-'
+p2210
+I93
+sS'left window minimum|JJ'
+p2211
+I978
+sS'left window school|NN'
+p2212
+I1195
+sS'left window scored|VBN'
+p2213
+I1196
+sS'right window nostril|NNP'
+p2214
+I2236
+sS'left window administered|VBN'
+p2215
+I459
+sS'left window average|JJ'
+p2216
+I517
+sS'right window 14|CD'
+p2217
+I1613
+sS'right window 28|CD'
+p2218
+I1647
+sS'left window hourly|RB'
+p2219
+I839
+sS'right window 13%|-None-'
+p2220
+I1610
+sS'right window with|IN'
+p2221
+I2509
+sS'left window inhalation|NN'
+p2222
+I873
+sS'right window phases|NNS'
+p2223
+I2282
+sS'left window h|-None-'
+p2224
+I848
+sS'right window of|IN'
+p2225
+I2242
+sS'left window drops|NNS'
+p2226
+I723
+sS'left window change|NN'
+p2227
+I578
+sS'right window settings|NNS'
+p2228
+I2381
+sS'right window assigned|VBN'
+p2229
+I1878
+sS'right window last|JJ'
+p2230
+I2139
+sS'left window Relapse|NN'
+p2231
+I403
+sS'right window 17%|-None-'
+p2232
+I1620
+sS'left window nondiabetic|JJ'
+p2233
+I1021
+sS'left window IUI|-None-'
+p2234
+I358
+sS'right window .3%-years|NNS'
+p2235
+I1487
+sS'right window neodymium|NN'
+p2236
+I2225
+sS'left window tds|-None-'
+p2237
+I1279
+sS'left window }|-None-'
+p2238
+I1390
+sS'left window first|JJ'
+p2239
+I782
+sS'right window not|RB'
+p2240
+I2237
+sS'right window cefadroxil|-None-'
+p2241
+I1916
+sS'left window PRE|-None-'
+p2242
+I394
+sS'right window 69%|-None-'
+p2243
+I1702
+sS'left window >or|-None-'
+p2244
+I263
+sS'left window HAM-A|-None-'
+p2245
+I347
+sS'left window focal|JJ'
+p2246
+I790
+sS'right window Group|NNP'
+p2247
+I1764
+sS'left window CLD|-None-'
+p2248
+I306
+sS'left window counts|VBZ'
+p2249
+I640
+sS'left window HAM-D|-None-'
+p2250
+I348
+sS'left window 36|CD'
+p2251
+I172
+sS'right window 68%|-None-'
+p2252
+I1701
+sS'right window seconds|NNS'
+p2253
+I2373
+sS'left window .38|CD'
+p2254
+I48
+sS'right window 17|CD'
+p2255
+I1622
+sS'left window before|IN'
+p2256
+I527
+sS'left window mianserin|-None-'
+p2257
+I970
+sS'right window groups|NNS'
+p2258
+I2070
+sS'right window ml/kg|-None-'
+p2259
+I2198
+sS'left window subcutaneously|RB'
+p2260
+I1253
+sS'left window 79|CD'
+p2261
+I240
+sS'left window oxybutynin|-None-'
+p2262
+I1054
+sS'left window delivery|NN'
+p2263
+I675
+sS'right window diagnosis|NN'
+p2264
+I1980
+sS'left window epirubicin|-None-'
+p2265
+I752
+sS'right window grafts|NNS'
+p2266
+I2068
+sS'left window contrast|NN'
+p2267
+I635
+sS'left window buspirone|CD'
+p2268
+I549
+sS'left window mg/kg|-None-'
+p2269
+I966
+sS'right window week|NN'
+p2270
+I2493
+sS'right window .857|-None-'
+p2271
+I1570
+sS'right window followed|VBD'
+p2272
+I2047
+sS'left window it|PRP'
+p2273
+I902
+sS'right window randomized|VBN'
+p2274
+I2324
+sS'left window -|:'
+p2275
+I11
+sS'left window 98|CD'
+p2276
+I255
+sS'right window clomiphene|NN'
+p2277
+I1936
+sS'right window .4%|-None-'
+p2278
+I1502
+sS'left window salbutamol|-None-'
+p2279
+I1187
+sS'right window 44|CD'
+p2280
+I1678
+sS'left window LD-ACTH|-None-'
+p2281
+I366
+sS'right window deep|VB'
+p2282
+I1973
+sS'right window arms|NNS'
+p2283
+I1872
+sS'left window admission|NN'
+p2284
+I461
+sS'right window male|JJ'
+p2285
+I2155
+sS'left window similar|JJ'
+p2286
+I1218
+sS'left window start of sentence'
+p2287
+I1236
+sS'right window WORDS|NNS'
+p2288
+I1818
+sS'left window hrs|-None-'
+p2289
+I842
+sS'left window duration|NN'
+p2290
+I728
+sS'right window .69|-None-'
+p2291
+I1545
+sS'left window by|IN'
+p2292
+I551
+sS'left window Hg|-None-'
+p2293
+I351
+sS'right window reduction|NN'
+p2294
+I2339
+sS'left window recorded|VBD'
+p2295
+I1149
+sS'left window dextrose|VBD'
+p2296
+I685
+sS'right window on|IN'
+p2297
+I2252
+sS'left window thrice|NN'
+p2298
+I1299
+sS'left window hemoglobin|NN'
+p2299
+I833
+sS'left window Cancer|NNP'
+p2300
+I311
+sS'left window lactobacilli-prepared|VBN'
+p2301
+I911
+sS'right window 47|CD'
+p2302
+I1681
+sS'right window .2%-years|NNS'
+p2303
+I1466
+sS'left window .00|CD'
+p2304
+I15
+sS'left window including|VBG'
+p2305
+I860
+sS'left window 370|CD'
+p2306
+I173
+sS'right window started|VBD'
+p2307
+I2395
+sS'left window but|CC'
+p2308
+I550
+sS'left window assessing|VBG'
+p2309
+I508
+sS'left window RR|-None-'
+p2310
+I401
+sS'right window placebo|-None-'
+p2311
+I2286
+sS'left window systemic|JJ'
+p2312
+I1274
+sS'left window AT|-None-'
+p2313
+I277
+sS'left window within|IN'
+p2314
+I1379
+sS'left window time-zero|NNP'
+p2315
+I1309
+sS'left window revascularisation|NN'
+p2316
+I1180
+sS'left window more|JJR'
+p2317
+I994
+sS'left window over|RP'
+p2318
+I1051
+sS'right window presentation|NN'
+p2319
+I2306
+sS'left window ----|-None-'
+p2320
+I10
+sS'right window rise|NN'
+p2321
+I2359
+sS'left window population|NN'
+p2322
+I1084
+sS'right window cream|NN'
+p2323
+I1961
+sS'left window in|IN'
+p2324
+I894
+sS'left window baseline|NN'
+p2325
+I524
+sS'left window arc|NNP'
+p2326
+I502
+sS'right window danazol|-None-'
+p2327
+I1969
+sS'right window depression|NN'
+p2328
+I1976
+sS'right window 2|CD'
+p2329
+I1649
+sS'right window ceftriaxone-placebo|-None-'
+p2330
+I1919
+sS'right window sites|NNS'
+p2331
+I2389
+sS'left window aluminum|NNP'
+p2332
+I480
+sS'right window major|JJ'
+p2333
+I2154
+sS'left window greater|JJR'
+p2334
+I823
+sS'left window frequency|NN'
+p2335
+I801
+sS'right window spasmolytics|NNS'
+p2336
+I2393
+sS'right window efficacy|NN'
+p2337
+I2011
+sS'left window 24|CD'
+p2338
+I146
+sS'left window exercises|NNS'
+p2339
+I768
+sS'right window day|NN'
+p2340
+I1972
+sS'right window oral|JJ'
+p2341
+I2254
+sS'right window .58|CD'
+p2342
+I1529
+sS'right window reticulocyte|JJ'
+p2343
+I2358
+sS'left window presentation|NN'
+p2344
+I1099
+sS'left window noted|VBD'
+p2345
+I1023
+sS'left window birth|JJ'
+p2346
+I536
+sS'left window determined|VBN'
+p2347
+I682
+sS'left window evacuation|NN'
+p2348
+I761
+sS'left window plus|CC'
+p2349
+I1081
+sS'left window effect|NN'
+p2350
+I735
+sS'left window diarrhoea|-None-'
+p2351
+I690
+sS'left window ATG|-None-'
+p2352
+I276
+sS'left window value|NN'
+p2353
+I1350
+sS'left window concentrations|NNS'
+p2354
+I617
+sS'left window incidence|NN'
+p2355
+I858
+sS'left window difference|NN'
+p2356
+I696
+sS'right window .28-1|-None-'
+p2357
+I1483
+sS'left window 313|CD'
+p2358
+I164
+sS'right window trice|NN'
+p2359
+I2459
+sS'right window .9+/-0|-None-'
+p2360
+I1577
+sS'right window hours|NNS'
+p2361
+I2085
+sS'left window 1|CD'
+p2362
+I135
+sS'left window carbonate-treated|VBN'
+p2363
+I557
+sS'left window gestational|JJ'
+p2364
+I815
+sS'left window means|VBZ'
+p2365
+I948
+sS'right window cefotaxime|NN'
+p2366
+I1917
+sS'left window pramipexole|NN'
+p2367
+I1090
+sS'left window relief|NN'
+p2368
+I1161
+sS'right window micrograms/ml|-None-'
+p2369
+I2188
+sS'left window .28|CD'
+p2370
+I41
+sS'left window cholesterol|NN'
+p2371
+I583
+sS'left window Although|IN'
+p2372
+I282
+sS'left window beginning|NN'
+p2373
+I528
+sS'right window .37-1|-None-'
+p2374
+I1497
+sS'right window 2002|-None-'
+p2375
+I1630
+sS'left window 400|CD'
+p2376
+I181
+sS'left window without|IN'
+p2377
+I1380
+sS'right window .35-1|-None-'
+p2378
+I1494
+sS'right window +|-None-'
+p2379
+I1403
+sS'right window monotherapy|NN'
+p2380
+I2205
+sS'left window control|NN'
+p2381
+I637
+sS'right window infants|NNS'
+p2382
+I2105
+sS'right window inclusion|NN'
+p2383
+I2101
+sS'left window .0%|-None-'
+p2384
+I12
+sS'right window .02|-None-'
+p2385
+I1426
+sS'left window intention-to-treat|JJ'
+p2386
+I882
+sS'left window January|NNP'
+p2387
+I365
+sS'right window beta|NNP'
+p2388
+I1889
+sS'left window DVT|-None-'
+p2389
+I323
+sS'right window school|NN'
+p2390
+I2369
+sS'left window Following|VBG'
+p2391
+I339
+sS'right window doxycycline|NN'
+p2392
+I1997
+sS'right window IV|-None-'
+p2393
+I1775
+sS'right window bronchopneumonia|NNP'
+p2394
+I1900
+sS'left window adenoid|VB'
+p2395
+I458
+sS'left window bile|IN'
+p2396
+I535
+sS'right window took|VBD'
+p2397
+I2444
+sS'right window citrate/human|NN'
+p2398
+I1932
+sS'left window worsened|VBN'
+p2399
+I1383
+sS'left window diluted|VBN'
+p2400
+I701
+sS'left window ibuprofen|NNP'
+p2401
+I849
+sS'right window cryotherapy|NN'
+p2402
+I1962
+sS'right window successful|JJ'
+p2403
+I2413
+sS'left window removed|VBN'
+p2404
+I1164
+sS'left window children|NNS'
+p2405
+I579
+sS'right window ear|NN'
+p2406
+I2008
+sS'left window fixed-dose|VBD'
+p2407
+I784
+sS'right window resin|NNP'
+p2408
+I2355
+sS'right window either|DT'
+p2409
+I2012
+sS'left window support|NN'
+p2410
+I1267
+sS'right window 313|CD'
+p2411
+I1653
+sS'left window intraoperative|JJ'
+p2412
+I889
+sS'right window mU/l|-None-'
+p2413
+I2151
+sS'left window latter|NN'
+p2414
+I916
+sS'left window obtained|VBN'
+p2415
+I1030
+sS'left window 1/2|-None-'
+p2416
+I96
+sS'left window cultures|NNS'
+p2417
+I649
+sS'left window Leucovorin|-None-'
+p2418
+I369
+sS'left window ipratropium|NN'
+p2419
+I896
+sS'left window participants|NNS'
+p2420
+I1064
+sS'right window zinc|NN'
+p2421
+I2516
+sS'left window r|-None-'
+p2422
+I1185
+sS'right window age|NN'
+p2423
+I1846
+sS'right window .046|-None-'
+p2424
+I1430
+sS'right window .37|CD'
+p2425
+I1498
+sS'right window post-operative|JJ'
+p2426
+I2293
+sS'right window .87|CD'
+p2427
+I1573
+sS'left window hour|NN'
+p2428
+I841
+sS'right window our|PRP$'
+p2429
+I2257
+sS'left window ratio|-None-'
+p2430
+I1143
+sS'left window status|NN'
+p2431
+I1239
+sS'left window .0001|-None-'
+p2432
+I13
+sS'left window 46%|-None-'
+p2433
+I191
+sS'right window atorvastatin|NNP'
+p2434
+I1881
+sS'left window .51|-None-'
+p2435
+I57
+sS'left window They|PRP'
+p2436
+I423
+sS'right window 1998|CD'
+p2437
+I1624
+sS'right window .058|-None-'
+p2438
+I1436
+sS'right window .36|CD'
+p2439
+I1496
+sS'right window stopping|VBG'
+p2440
+I2402
+sS'left window anti-psychotic|JJ'
+p2441
+I492
+sS'right window 20|CD'
+p2442
+I1632
+sS'left window had|VBD'
+p2443
+I827
+sS'right window mg/5|-None-'
+p2444
+I2174
+sS'right window morphine|NN'
+p2445
+I2210
+sS'right window .9|-None-'
+p2446
+I1588
+sS'left window 97|-None-'
+p2447
+I254
+sS'right window p|-None-'
+p2448
+I2317
+sS'left window sputum|NN'
+p2449
+I1232
+sS'right window 34|CD'
+p2450
+I1660
+sS'left window partner|NN'
+p2451
+I1065
+sS'right window 55|CD'
+p2452
+I1691
+sS'left window 95%|-None-'
+p2453
+I252
+sS'right window 1|CD'
+p2454
+I1627
+sS'left window identical-appearing|VBG'
+p2455
+I850
+sS'left window hydrobromide|NN'
+p2456
+I843
+sS'left window RGV|-None-'
+p2457
+I399
+sS'right window UFH|-None-'
+p2458
+I1816
+sS'left window bloc|NN'
+p2459
+I539
+sS'left window reported|VBN'
+p2460
+I1168
+sS'right window time-zero|NNP'
+p2461
+I2441
+sS'left window reported|VBD'
+p2462
+I1167
+sS'left window clomiphene|NN'
+p2463
+I595
+sS'left window longer|JJR'
+p2464
+I931
+sS'left window 534|CD'
+p2465
+I207
+sS'right window joint|JJ'
+p2466
+I2131
+sS'right window .05|CD'
+p2467
+I1437
+sS'right window skinclosure|NN'
+p2468
+I2390
+sS'right window .8|-None-'
+p2469
+I1575
+sS'right window evaluated|VBD'
+p2470
+I2033
+sS'left window percent|NN'
+p2471
+I1068
+sS'left window NRT|-None-'
+p2472
+I380
+sS'left window higher|JJR'
+p2473
+I835
+sS'left window mg/m2|-None-'
+p2474
+I967
+sS'left window ceftriaxone|CD'
+p2475
+I573
+sS'left window budesonide|NN'
+p2476
+I547
+sS'right window Sweden|NNP'
+p2477
+I1809
+sS'right window up|RP'
+p2478
+I2470
+sS'left window pregnancy-induced|VBN'
+p2479
+I1096
+sS'right window .78|CD'
+p2480
+I1559
+sS'left window 52/64|-None-'
+p2481
+I205
+sS'right window 26|CD'
+p2482
+I1644
+sS'left window times|NNS'
+p2483
+I1310
+sS'right window P|-None-'
+p2484
+I1800
+sS'left window group|NN'
+p2485
+I825
+sS'right window venograms|NNS'
+p2486
+I2479
+sS'left window procedures|NNS'
+p2487
+I1109
+sS'left window clearance|NN'
+p2488
+I589
+sS'right window fasted|VBN'
+p2489
+I2041
+sS'left window During|IN'
+p2490
+I326
+sS'left window Treatment|NN'
+p2491
+I430
+sS'right window .06|CD'
+p2492
+I1439
+sS'right window Metformin|NNP'
+p2493
+I1787
+sS'right window .7+/-38|-NONE-'
+p2494
+I1549
+sS'left window tolterodine|NN'
+p2495
+I1314
+sS'left window call-arrival|NN'
+p2496
+I555
+sS'left window propranolol|-None-'
+p2497
+I1119
+sS'left window cardiac|-None-'
+p2498
+I559
+sS'right window schizophrenia|NNP'
+p2499
+I2367
+sS'right window Society|NNP'
+p2500
+I1807
+sS'right window monitored|VBN'
+p2501
+I2204
+sS'left window catheter|NN'
+p2502
+I564
+sS'left window sample|NNS'
+p2503
+I1191
+sS'left window significance|NN'
+p2504
+I1215
+sS'left window impairment|NN'
+p2505
+I854
+sS'left window Tolterodine|NN'
+p2506
+I427
+sS'right window case|NN'
+p2507
+I1914
+sS'left window A2|-None-'
+p2508
+I266
+sS'left window .15|CD'
+p2509
+I29
+sS'right window Control|NNP'
+p2510
+I1749
+sS'left window medication|NN'
+p2511
+I954
+sS'right window 0|-NONE-'
+p2512
+I1599
+sS'right window .61|CD'
+p2513
+I1538
+sS'left window niacin|-None-'
+p2514
+I1018
+sS'left window lumbosacral|JJ'
+p2515
+I935
+sS'right window prednisone/day|NN'
+p2516
+I2299
+sS'right window kept|VBN'
+p2517
+I2133
+sS'left window vs|-None-'
+p2518
+I1362
+sS'left window 128|CD'
+p2519
+I113
+sS'left window after|IN'
+p2520
+I464
+sS'right window NS|-None-'
+p2521
+I1793
+sS'right window paracentesis|NN'
+p2522
+I2268
+sS'right window allocated|VBN'
+p2523
+I1849
+sS'left window .1|-None-'
+p2524
+I32
+sS'left window BW|-None-'
+p2525
+I292
+sS'right window patient|NN'
+p2526
+I2277
+sS'right window near|IN'
+p2527
+I2222
+ssS'dtype'
+p2528
+cnumpy
+float64
+p2529
+sS'feature_names_'
+p2530
+(lp2531
+g857
+ag1888
+ag1380
+ag950
+ag948
+ag1562
+ag1271
+ag1402
+ag1122
+ag2198
+ag2320
+ag2275
+ag2384
+ag2432
+ag2069
+ag2304
+ag859
+ag1146
+ag994
+ag666
+ag765
+ag1714
+ag125
+ag888
+ag1899
+ag55
+ag1140
+ag46
+ag1530
+ag2509
+ag486
+ag2194
+ag2524
+ag1067
+ag87
+ag1564
+ag690
+ag2090
+ag1778
+ag45
+ag312
+ag2370
+ag1448
+ag1972
+ag1106
+ag283
+ag436
+ag899
+ag2254
+ag1052
+ag1326
+ag54
+ag2101
+ag30
+ag354
+ag272
+ag1097
+ag2435
+ag818
+ag880
+ag1606
+ag123
+ag1710
+ag2001
+ag1664
+ag2039
+ag1220
+ag1649
+ag1981
+ag2180
+ag622
+ag1437
+ag2117
+ag846
+ag1491
+ag39
+ag1100
+ag311
+ag366
+ag1350
+ag1593
+ag1320
+ag289
+ag332
+ag1269
+ag1603
+ag2133
+ag867
+ag322
+ag995
+ag1993
+ag1360
+ag1504
+ag2210
+ag1570
+ag69
+ag2416
+ag1809
+ag249
+ag223
+ag1793
+ag1959
+ag485
+ag711
+ag2127
+ag1478
+ag1208
+ag1126
+ag1349
+ag1575
+ag331
+ag1170
+ag1555
+ag2519
+ag822
+ag1399
+ag856
+ag225
+ag1634
+ag75
+ag721
+ag1752
+ag118
+ag810
+ag1238
+ag1055
+ag1618
+ag1976
+ag1267
+ag1917
+ag20
+ag100
+ag1497
+ag183
+ag1178
+ag2362
+ag88
+ag1791
+ag730
+ag1963
+ag1401
+ag326
+ag1125
+ag729
+ag1357
+ag1443
+ag2338
+ag385
+ag461
+ag2043
+ag854
+ag1830
+ag1858
+ag1479
+ag1433
+ag1842
+ag1194
+ag263
+ag1241
+ag2000
+ag1079
+ag1932
+ag1581
+ag1485
+ag2358
+ag1422
+ag1129
+ag581
+ag2128
+ag318
+ag1574
+ag352
+ag2251
+ag2306
+ag1880
+ag944
+ag1105
+ag956
+ag215
+ag778
+ag297
+ag2376
+ag1324
+ag845
+ag2094
+ag1711
+ag2006
+ag1334
+ag1762
+ag226
+ag906
+ag2433
+ag853
+ag591
+ag1621
+ag1290
+ag2034
+ag1200
+ag700
+ag238
+ag1885
+ag1345
+ag2022
+ag230
+ag664
+ag2481
+ag304
+ag2465
+ag717
+ag1611
+ag1934
+ag127
+ag2023
+ag1019
+ag1629
+ag1089
+ag211
+ag221
+ag630
+ag740
+ag2135
+ag1112
+ag2179
+ag2089
+ag669
+ag2032
+ag1313
+ag1573
+ag2155
+ag1217
+ag292
+ag42
+ag639
+ag1669
+ag1258
+ag1586
+ag1912
+ag409
+ag789
+ag1202
+ag2261
+ag1968
+ag1969
+ag759
+ag1286
+ag451
+ag864
+ag969
+ag772
+ag629
+ag2084
+ag2153
+ag2453
+ag1036
+ag2447
+ag2276
+ag269
+ag1494
+ag672
+ag2013
+ag1977
+ag946
+ag1616
+ag2244
+ag1642
+ag2163
+ag2508
+ag1967
+ag489
+ag1035
+ag1040
+ag1023
+ag697
+ag784
+ag1232
+ag923
+ag2352
+ag2313
+ag565
+ag1133
+ag576
+ag1369
+ag2372
+ag708
+ag1821
+ag1213
+ag1816
+ag1719
+ag233
+ag1481
+ag983
+ag865
+ag2525
+ag514
+ag1281
+ag868
+ag1923
+ag769
+ag716
+ag2178
+ag683
+ag169
+ag905
+ag1962
+ag579
+ag1293
+ag2248
+ag1138
+ag900
+ag1239
+ag1911
+ag2300
+ag1248
+ag1134
+ag1781
+ag218
+ag433
+ag1243
+ag588
+ag1181
+ag1107
+ag1846
+ag2129
+ag2389
+ag745
+ag2057
+ag2490
+ag1898
+ag1476
+ag1495
+ag159
+ag1234
+ag1007
+ag1673
+ag718
+ag1585
+ag2102
+ag287
+ag967
+ag2391
+ag1736
+ag2205
+ag1037
+ag1903
+ag1453
+ag1130
+ag1992
+ag2245
+ag2250
+ag156
+ag824
+ag2293
+ag1764
+ag12
+ag843
+ag573
+ag1547
+ag458
+ag2234
+ag1796
+ag1247
+ag804
+ag619
+ag96
+ag1354
+ag2387
+ag2281
+ag280
+ag692
+ag2418
+ag1144
+ag828
+ag1938
+ag518
+ag43
+ag1413
+ag939
+ag671
+ag1644
+ag358
+ag2472
+ag2030
+ag1179
+ag35
+ag543
+ag49
+ag855
+ag618
+ag494
+ag1931
+ag921
+ag987
+ag1077
+ag1199
+ag2242
+ag1787
+ag330
+ag290
+ag179
+ag2457
+ag191
+ag2310
+ag1167
+ag2231
+ag2118
+ag150
+ag236
+ag97
+ag1466
+ag1820
+ag1435
+ag72
+ag2138
+ag1291
+ag1362
+ag94
+ag198
+ag797
+ag2121
+ag1602
+ag2188
+ag1965
+ag1748
+ag2436
+ag357
+ag2167
+ag2055
+ag2506
+ag78
+ag1251
+ag2491
+ag1367
+ag1831
+ag912
+ag398
+ag1228
+ag1098
+ag1143
+ag1117
+ag1790
+ag1763
+ag1358
+ag623
+ag1057
+ag2091
+ag1525
+ag1116
+ag85
+ag860
+ag892
+ag1792
+ag33
+ag1832
+ag28
+ag1848
+ag60
+ag1428
+ag1065
+ag2395
+ag2215
+ag1211
+ag2284
+ag424
+ag234
+ag2520
+ag1779
+ag678
+ag1823
+ag706
+ag1973
+ag1414
+ag1264
+ag2113
+ag70
+ag2070
+ag273
+ag1687
+ag1914
+ag1920
+ag1509
+ag2332
+ag1204
+ag1737
+ag979
+ag1886
+ag1795
+ag277
+ag397
+ag337
+ag1600
+ag1854
+ag145
+ag2441
+ag1333
+ag1982
+ag270
+ag2015
+ag1721
+ag1124
+ag22
+ag314
+ag1554
+ag2326
+ag2122
+ag702
+ag1715
+ag1398
+ag1515
+ag2309
+ag931
+ag36
+ag776
+ag2008
+ag1209
+ag1446
+ag1947
+ag1758
+ag2216
+ag746
+ag73
+ag414
+ag65
+ag1559
+ag762
+ag2325
+ag524
+ag116
+ag2256
+ag2373
+ag833
+ag920
+ag1503
+ag264
+ag1296
+ag1012
+ag2396
+ag2346
+ag153
+ag2168
+ag2459
+ag568
+ag1109
+ag1804
+ag1028
+ag1608
+ag412
+ag482
+ag2476
+ag755
+ag2268
+ag2308
+ag2292
+ag1807
+ag1541
+ag470
+ag2496
+ag858
+ag2363
+ag1786
+ag2498
+ag294
+ag1986
+ag1694
+ag2187
+ag2502
+ag502
+ag1991
+ag1092
+ag93
+ag1941
+ag1294
+ag927
+ag323
+ag2475
+ag1531
+ag1376
+ag137
+ag402
+ag2227
+ag2405
+ag1261
+ag1518
+ag1783
+ag2371
+ag288
+ag1003
+ag1718
+ag1960
+ag600
+ag2488
+ag2010
+ag1260
+ag92
+ag752
+ag418
+ag2463
+ag1095
+ag2021
+ag170
+ag742
+ag1516
+ag1459
+ag539
+ag1638
+ag1667
+ag1268
+ag1425
+ag585
+ag670
+ag114
+ag2033
+ag1397
+ag1569
+ag2104
+ag174
+ag949
+ag782
+ag2354
+ag408
+ag1078
+ag971
+ag2048
+ag2203
+ag246
+ag575
+ag1299
+ag2100
+ag1472
+ag1002
+ag1814
+ag1502
+ag709
+ag219
+ag642
+ag1249
+ag2267
+ag1872
+ag2381
+ag1274
+ag346
+ag2249
+ag1901
+ag1431
+ag1421
+ag282
+ag2007
+ag1686
+ag2080
+ag1875
+ag2417
+ag799
+ag1610
+ag897
+ag1961
+ag1983
+ag687
+ag2092
+ag1283
+ag1583
+ag929
+ag616
+ag365
+ag1496
+ag1553
+ag2073
+ag2111
+ag2003
+ag295
+ag943
+ag2025
+ag442
+ag1589
+ag1162
+ag2174
+ag1310
+ag2263
+ag305
+ag1652
+ag217
+ag673
+ag1728
+ag81
+ag2347
+ag214
+ag254
+ag2296
+ag991
+ag582
+ag1532
+ag371
+ag2351
+ag199
+ag793
+ag469
+ag542
+ag786
+ag2356
+ag1681
+ag826
+ag1568
+ag1121
+ag2400
+ag1142
+ag329
+ag1841
+ag1074
+ag951
+ag767
+ag320
+ag14
+ag449
+ag599
+ag222
+ag602
+ag2108
+ag29
+ag1542
+ag1856
+ag1389
+ag1609
+ag894
+ag2031
+ag1539
+ag2226
+ag390
+ag1838
+ag1379
+ag430
+ag2290
+ag406
+ag520
+ag998
+ag1865
+ag389
+ag235
+ag2350
+ag1904
+ag1244
+ag2016
+ag386
+ag1861
+ag938
+ag1726
+ag526
+ag2079
+ag89
+ag216
+ag2160
+ag719
+ag2184
+ag1054
+ag1499
+ag2265
+ag936
+ag1356
+ag237
+ag187
+ag1467
+ag1382
+ag1374
+ag306
+ag2348
+ag580
+ag136
+ag26
+ag749
+ag1510
+ag2196
+ag2339
+ag172
+ag1596
+ag558
+ag501
+ag1400
+ag1044
+ag710
+ag1501
+ag1018
+ag1029
+ag1580
+ag2162
+ag1612
+ag2239
+ag1482
+ag2407
+ag2049
+ag820
+ag1833
+ag1957
+ag663
+ag2246
+ag863
+ag1329
+ag1322
+ag698
+ag930
+ag1705
+ag1837
+ag2204
+ag662
+ag1083
+ag2335
+ag2061
+ag637
+ag1301
+ag1859
+ag1085
+ag334
+ag1153
+ag1873
+ag546
+ag1772
+ag1131
+ag327
+ag405
+ag2364
+ag194
+ag885
+ag837
+ag132
+ag1889
+ag499
+ag1696
+ag2334
+ag1915
+ag2485
+ag644
+ag2443
+ag1876
+ag1063
+ag168
+ag935
+ag1222
+ag2299
+ag1906
+ag2473
+ag1802
+ag1655
+ag380
+ag2219
+ag396
+ag2428
+ag2289
+ag2456
+ag1677
+ag869
+ag1468
+ag148
+ag2224
+ag2401
+ag2455
+ag808
+ag1014
+ag2065
+ag2505
+ag567
+ag1031
+ag1090
+ag2355
+ag1890
+ag2305
+ag985
+ag890
+ag1132
+ag381
+ag960
+ag1996
+ag2202
+ag2009
+ag253
+ag1948
+ag1418
+ag1648
+ag2222
+ag1552
+ag2175
+ag34
+ag1527
+ag124
+ag1409
+ag1944
+ag2120
+ag2386
+ag90
+ag2083
+ag2093
+ag2125
+ag363
+ag429
+ag2412
+ag1026
+ag1808
+ag1907
+ag1229
+ag2324
+ag435
+ag2419
+ag1172
+ag1567
+ag1866
+ag1066
+ag109
+ag2273
+ag532
+ag349
+ag2189
+ag1819
+ag2074
+ag968
+ag147
+ag982
+ag2301
+ag1477
+ag981
+ag707
+ag1488
+ag2414
+ag1725
+ag521
+ag61
+ag1246
+ag1207
+ag1989
+ag1463
+ag309
+ag737
+ag2076
+ag248
+ag656
+ag1879
+ag2141
+ag2464
+ag1975
+ag1240
+ag1169
+ag2515
+ag2207
+ag839
+ag1438
+ag473
+ag1359
+ag986
+ag1386
+ag550
+ag229
+ag1950
+ag1148
+ag1289
+ag2365
+ag1423
+ag1670
+ag657
+ag1543
+ag1163
+ag2511
+ag603
+ag1205
+ag2172
+ag421
+ag1627
+ag1646
+ag1871
+ag2044
+ag1985
+ag1278
+ag1417
+ag2269
+ag2474
+ag1484
+ag1457
+ag2257
+ag2177
+ag483
+ag847
+ag743
+ag83
+ag1323
+ag522
+ag2211
+ag1027
+ag177
+ag307
+ag610
+ag1363
+ag1635
+ag792
+ag1277
+ag193
+ag474
+ag2038
+ag1751
+ag1826
+ag2192
+ag1678
+ag2317
+ag688
+ag1908
+ag2186
+ag1154
+ag463
+ag428
+ag1680
+ag761
+ag1733
+ag879
+ag293
+ag1724
+ag527
+ag2182
+ag1631
+ag593
+ag866
+ag608
+ag1419
+ag1588
+ag375
+ag668
+ag1769
+ag2514
+ag157
+ag1262
+ag2233
+ag2047
+ag2345
+ag955
+ag1155
+ag572
+ag1302
+ag829
+ag240
+ag2415
+ag2147
+ag1021
+ag1030
+ag62
+ag881
+ag1235
+ag313
+ag675
+ag403
+ag842
+ag202
+ag348
+ag1123
+ag379
+ag1371
+ag2140
+ag1701
+ag477
+ag1395
+ag1266
+ag2318
+ag126
+ag76
+ag2262
+ag1997
+ag1327
+ag937
+ag544
+ag2105
+ag476
+ag1139
+ag770
+ag1815
+ag2420
+ag2451
+ag2028
+ag1051
+ag2471
+ag1311
+ag814
+ag1072
+ag901
+ag1620
+ag1921
+ag1020
+ag67
+ag255
+ag1340
+ag1937
+ag2099
+ag2349
+ag744
+ag1566
+ag2322
+ag181
+ag1113
+ag989
+ag1136
+ag1870
+ag2367
+ag16
+ag1317
+ag411
+ag1520
+ag823
+ag2479
+ag529
+ag1654
+ag2344
+ag1794
+ag932
+ag262
+ag1523
+ag2088
+ag1766
+ag1314
+ag21
+ag508
+ag2487
+ag1465
+ag1416
+ag891
+ag1420
+ag1339
+ag1604
+ag583
+ag677
+ag1383
+ag2497
+ag1365
+ag1860
+ag615
+ag551
+ag533
+ag481
+ag1803
+ag1617
+ag41
+ag338
+ag301
+ag2040
+ag243
+ag1812
+ag1827
+ag25
+ag488
+ag559
+ag1373
+ag1166
+ag540
+ag195
+ag135
+ag2430
+ag973
+ag975
+ag448
+ag151
+ag1305
+ag2295
+ag1000
+ag625
+ag1272
+ag680
+ag996
+ag1177
+ag791
+ag1955
+ag756
+ag1319
+ag401
+ag2368
+ag1893
+ag1068
+ag2404
+ag2165
+ag1287
+ag2462
+ag2460
+ag830
+ag1156
+ag509
+ag1196
+ag1619
+ag1276
+ag1471
+ag1332
+ag117
+ag1735
+ag1624
+ag2316
+ag611
+ag1822
+ag1847
+ag1187
+ag2422
+ag807
+ag2279
+ag446
+ag728
+ag2064
+ag2503
+ag2026
+ag627
+ag197
+ag2212
+ag2213
+ag2035
+ag1101
+ag364
+ag462
+ag1218
+ag343
+ag753
+ag1175
+ag1315
+ag2027
+ag2053
+ag227
+ag714
+ag1270
+ag142
+ag795
+ag2148
+ag1964
+ag2504
+ag1536
+ag917
+ag2286
+ag296
+ag1475
+ag2145
+ag1712
+ag1524
+ag13
+ag1513
+ag643
+ag355
+ag2206
+ag478
+ag512
+ag207
+ag2449
+ag203
+ag984
+ag1128
+ag2287
+ag498
+ag1756
+ag2431
+ag1257
+ag388
+ag459
+ag777
+ag1298
+ag107
+ag1780
+ag453
+ag947
+ag1952
+ag152
+ag1765
+ag646
+ag2260
+ag496
+ag208
+ag1426
+ag1043
+ag1082
+ag2012
+ag1579
+ag978
+ag24
+ag10
+ag1990
+ag1601
+ag601
+ag2410
+ag701
+ag146
+ag275
+ag768
+ag1473
+ag201
+ag2312
+ag1442
+ag2139
+ag51
+ag713
+ag2237
+ag1690
+ag1165
+ag561
+ag903
+ag2045
+ag1469
+ag898
+ag1189
+ag614
+ag427
+ag1372
+ag1933
+ag1016
+ag633
+ag1891
+ag2109
+ag1038
+ag751
+ag1813
+ag2298
+ag188
+ag1598
+ag1070
+ag1288
+ag1364
+ag1182
+ag161
+ag77
+ag1171
+ag2315
+ag2483
+ag1507
+ag445
+ag1034
+ag2495
+ag257
+ag79
+ag342
+ag2146
+ag1782
+ag1004
+ag647
+ag133
+ag1742
+ag1745
+ag1430
+ag2071
+ag1894
+ag2037
+ag1198
+ag2067
+ag1533
+ag1775
+ag1805
+ag658
+ag594
+ag590
+ag1361
+ag693
+ag1461
+ag1926
+ag549
+ag2019
+ag1615
+ag1188
+ag570
+ag1755
+ag648
+ag534
+ag1845
+ag2353
+ag1176
+ag634
+ag2164
+ag1254
+ag731
+ag160
+ag825
+ag119
+ag827
+ag291
+ag2106
+ag2518
+ag134
+ag1840
+ag1953
+ag112
+ag2103
+ag1441
+ag2110
+ag115
+ag915
+ag299
+ag1835
+ag251
+ag1075
+ag457
+ag876
+ag1046
+ag2314
+ag2377
+ag537
+ag1741
+ag2399
+ag1770
+ag1798
+ag1490
+ag1160
+ag2124
+ag1041
+ag2238
+ag1855
+ag606
+ag1565
+ag66
+ag1300
+ag806
+ag1439
+ag739
+ag1392
+ag1330
+ag1939
+ag82
+ag2379
+ag1455
+ag2195
+ag816
+ag53
+ag1663
+ag1343
+ag872
+ag95
+ag149
+ag1183
+ag1658
+ag1605
+ag836
+ag852
+ag1622
+ag1050
+ag884
+ag434
+ag110
+ag1852
+ag1255
+ag1001
+ag2385
+ag686
+ag308
+ag303
+ag2424
+ag2123
+ag1703
+ag2150
+ag665
+ag654
+ag2438
+ag2467
+ag108
+ag2492
+ag1853
+ag1201
+ag655
+ag1403
+ag1099
+ag1924
+ag48
+ag1405
+ag904
+ag155
+ag1978
+ag1111
+ag261
+ag1341
+ag1192
+ag661
+ag2041
+ag1697
+ag1563
+ag167
+ag555
+ag1191
+ag213
+ag1878
+ag694
+ag2011
+ag2303
+ag1641
+ag2020
+ag942
+ag2068
+ag164
+ag2004
+ag1355
+ag1661
+ag1988
+ag870
+ag933
+ag1994
+ag182
+ag566
+ag369
+ag531
+ag2357
+ag1650
+ag1049
+ag1979
+ag2235
+ag2132
+ag1206
+ag510
+ag1047
+ag479
+ag596
+ag2378
+ag2075
+ag2439
+ag2374
+ag2425
+ag2149
+ag1857
+ag1749
+ag2278
+ag1824
+ag1863
+ag676
+ag1147
+ag515
+ag2144
+ag256
+ag919
+ag1158
+ag1492
+ag794
+ag419
+ag851
+ag141
+ag1114
+ag1651
+ag1434
+ag1956
+ag1216
+ag1227
+ag86
+ag1571
+ag832
+ag2114
+ag378
+ag439
+ag2342
+ag1910
+ag1250
+ag1508
+ag244
+ag1104
+ag1966
+ag626
+ag423
+ag2513
+ag1922
+ag1668
+ag788
+ag2157
+ag2169
+ag1905
+ag2291
+ag517
+ag1285
+ag2130
+ag2494
+ag1945
+ag232
+ag1954
+ag1307
+ag909
+ag1006
+ag1506
+ag617
+ag1226
+ag2480
+ag1556
+ag1943
+ag922
+ag1810
+ag560
+ag803
+ag1059
+ag11
+ag1411
+ag1180
+ag2271
+ag545
+ag1892
+ag2427
+ag456
+ag2469
+ag1460
+ag2360
+ag1676
+ag52
+ag651
+ag1366
+ag638
+ag624
+ag1048
+ag2042
+ag1995
+ag443
+ag2446
+ag1110
+ag1582
+ag689
+ag422
+ag696
+ag1331
+ag705
+ag1368
+ag1999
+ag350
+ag2512
+ag1706
+ag2014
+ag724
+ag1732
+ag1500
+ag1716
+ag1462
+ag413
+ag325
+ag404
+ag2220
+ag1081
+ag166
+ag2217
+ag1867
+ag650
+ag1974
+ag547
+ag963
+ag1671
+ag2232
+ag220
+ag2255
+ag2085
+ag2437
+ag1918
+ag241
+ag2454
+ag63
+ag918
+ag2375
+ag563
+ag2442
+ag268
+ag1862
+ag1900
+ag1451
+ag1344
+ag484
+ag80
+ag1378
+ag834
+ag1698
+ag1672
+ag2482
+ag1056
+ag1093
+ag2218
+ag840
+ag2329
+ag1643
+ag735
+ag993
+ag2411
+ag1683
+ag1660
+ag1447
+ag1729
+ag1308
+ag747
+ag2450
+ag1850
+ag848
+ag2082
+ag926
+ag609
+ag652
+ag98
+ag1236
+ag438
+ag2200
+ag2066
+ag1545
+ag1069
+ag204
+ag495
+ag1444
+ag812
+ag2280
+ag1590
+ag1346
+ag2302
+ag464
+ag556
+ag2087
+ag809
+ag1592
+ag1108
+ag56
+ag212
+ag467
+ag2452
+ag1511
+ag285
+ag1682
+ag1436
+ag1849
+ag574
+ag1370
+ag597
+ag377
+ag2252
+ag2243
+ag373
+ag493
+ag2199
+ag785
+ag844
+ag1773
+ag1551
+ag2116
+ag1839
+ag500
+ag1252
+ag2050
+ag228
+ag887
+ag1700
+ag1594
+ag441
+ag68
+ag802
+ag400
+ag210
+ag2081
+ag1704
+ag628
+ag1393
+ag266
+ag760
+ag444
+ag553
+ag163
+ag1493
+ag1864
+ag1088
+ag882
+ag1295
+ag1231
+ag316
+ag1058
+ag1785
+ag1197
+ag341
+ag704
+ag861
+ag1458
+ag1406
+ag1237
+ag2510
+ag1164
+ag1214
+ag552
+ag1223
+ag465
+ag471
+ag774
+ag659
+ag1656
+ag1273
+ag1024
+ag997
+ag1010
+ag1151
+ag2247
+ag1080
+ag1119
+ag1388
+ag475
+ag1843
+ag538
+ag1280
+ag1157
+ag1818
+ag750
+ag2393
+ag1224
+ag2078
+ag1740
+ag1526
+ag821
+ag720
+ag910
+ag2131
+ag8
+ag801
+ag460
+ag2493
+ag684
+ag1091
+ag577
+ag1776
+ag1265
+ag2521
+ag1632
+ag392
+ag2119
+ag347
+ag1412
+ag2107
+ag2484
+ag1445
+ag723
+ag339
+ag437
+ag1883
+ag344
+ag2500
+ag276
+ag2477
+ag491
+ag990
+ag394
+ag1897
+ag613
+ag1061
+ag2458
+ag2170
+ag2288
+ag173
+ag1102
+ag1625
+ag18
+ag1936
+ag754
+ag914
+ag410
+ag519
+ag1347
+ag1636
+ag691
+ag31
+ag2136
+ag1440
+ag736
+ag1713
+ag1282
+ag764
+ag1486
+ag317
+ag817
+ag1662
+ag200
+ag2126
+ag1591
+ag598
+ag2423
+ag250
+ag271
+ag2523
+ag376
+ag384
+ag1427
+ag1253
+ag578
+ag1987
+ag875
+ag1767
+ag1723
+ag340
+ag359
+ag732
+ag1788
+ag1424
+ag992
+ag1396
+ag1487
+ag1695
+ag1325
+ag883
+ag889
+ag2046
+ag2283
+ag2024
+ag1657
+ag1452
+ag525
+ag674
+ag2229
+ag102
+ag1042
+ag2434
+ag862
+ag345
+ag1599
+ag466
+ag1738
+ag106
+ag1230
+ag2388
+ag1877
+ag247
+ag1008
+ag265
+ag640
+ag536
+ag712
+ag787
+ag1118
+ag682
+ag2394
+ag144
+ag189
+ag1734
+ag631
+ag383
+ag805
+ag2002
+ag1184
+ag1263
+ag162
+ag838
+ag374
+ag431
+ag2507
+ag2142
+ag2241
+ag2366
+ag487
+ag2330
+ag1168
+ag186
+ag121
+ag535
+ag811
+ag40
+ag2197
+ag416
+ag2209
+ag1186
+ag941
+ag205
+ag2398
+ag1404
+ag1887
+ag595
+ag2277
+ag2185
+ag2191
+ag513
+ag907
+ag660
+ag1474
+ag1534
+ag99
+ag281
+ag284
+ag279
+ag1746
+ag1884
+ag871
+ag1039
+ag1699
+ag302
+ag472
+ag1394
+ag1053
+ag1759
+ag1639
+ag1195
+ag1353
+ag2323
+ag2402
+ag1647
+ag1633
+ag2158
+ag1935
+ag541
+ag2095
+ag2327
+ag64
+ag1084
+ag2340
+ag2282
+ag1429
+ag1150
+ag2328
+ag1505
+ag1558
+ag120
+ag2264
+ag57
+ag1076
+ag131
+ag1022
+ag796
+ag452
+ag130
+ag1774
+ag432
+ag1640
+ag1597
+ag953
+ag391
+ag1576
+ag1212
+ag649
+ag2392
+ag1799
+ag715
+ag1086
+ag17
+ag1390
+ag242
+ag1940
+ag1537
+ag319
+ag928
+ag2406
+ag1789
+ag1449
+ag2337
+ag2409
+ag185
+ag1998
+ag171
+ag1337
+ag1033
+ag32
+ag2096
+ag176
+ag1120
+ag71
+ag1275
+ag1115
+ag2183
+ag425
+ag503
+ag557
+ag111
+ag447
+ag128
+ag298
+ag2470
+ag1297
+ag274
+ag959
+ag896
+ag1190
+ag2171
+ag911
+ag2489
+ag2115
+ag105
+ag206
+ag1971
+ag367
+ag2272
+ag1868
+ag362
+ag38
+ag800
+ag1930
+ag1829
+ag1693
+ag1304
+ag1731
+ag353
+ag850
+ag632
+ag505
+ag1546
+ag19
+ag113
+ag440
+ag813
+ag1561
+ag1645
+ag2266
+ag407
+ag2258
+ag1064
+ag621
+ag1470
+ag2161
+ag2097
+ag138
+ag835
+ag1519
+ag1928
+ag775
+ag356
+ag1522
+ag104
+ag420
+ag2361
+ag725
+ag1351
+ag1757
+ag101
+ag1103
+ag722
+ag2152
+ag1407
+ag1727
+ag1135
+ag1768
+ag1800
+ag1666
+ag1882
+ag1456
+ag2383
+ag779
+ag370
+ag1096
+ag2382
+ag178
+ag1284
+ag934
+ag1707
+ag2072
+ag1415
+ag395
+ag196
+ag1161
+ag1717
+ag1691
+ag1584
+ag528
+ag154
+ag84
+ag239
+ag893
+ag360
+ag1203
+ag1013
+ag924
+ag1514
+ag506
+ag1828
+ag1754
+ag2466
+ag980
+ag2517
+ag957
+ag1336
+ag511
+ag2077
+ag1011
+ag2230
+ag1450
+ag1557
+ag636
+ag1221
+ag224
+ag1665
+ag507
+ag1750
+ag47
+ag190
+ag2098
+ag2413
+ag1927
+ag1259
+ag2333
+ag2285
+ag415
+ag1032
+ag1384
+ag886
+ag59
+ag426
+ag766
+ag1338
+ag873
+ag2017
+ag607
+ag878
+ag734
+ag2060
+ag2052
+ag2054
+ag999
+ag974
+ag2444
+ag1548
+ag977
+ag1017
+ag763
+ag1159
+ag1630
+ag1152
+ag2063
+ag1071
+ag2018
+ag1626
+ag1851
+ag1692
+ag2369
+ag781
+ag1141
+ag2190
+ag612
+ag23
+ag1942
+ag1210
+ag1062
+ag1480
+ag2259
+ag1777
+ag393
+ag1970
+ag587
+ag1512
+ag2501
+ag2380
+ag399
+ag569
+ag1256
+ag1173
+ag2445
+ag180
+ag1902
+ag2166
+ag798
+ag143
+ag605
+ag771
+ag841
+ag780
+ag1005
+ag260
+ag2527
+ag2193
+ag584
+ag2236
+ag783
+ag1549
+ag1528
+ag1145
+ag1679
+ag1292
+ag492
+ag1739
+ag958
+ag372
+ag2214
+ag2240
+ag945
+ag1137
+ag122
+ag184
+ag2225
+ag1817
+ag175
+ag278
+ag1517
+ag1744
+ag954
+ag1709
+ag1771
+ag1387
+ag2297
+ag321
+ag2341
+ag44
+ag849
+ag2429
+ag417
+ag1432
+ag2176
+ag902
+ag15
+ag1483
+ag1454
+ag480
+ag1127
+ag2143
+ag2522
+ag970
+ag192
+ag1185
+ag1801
+ag1623
+ag1949
+ag1806
+ag1797
+ag2526
+ag1087
+ag50
+ag895
+ag727
+ag2223
+ag620
+ag1929
+ag2181
+ag2311
+ag1811
+ag1544
+ag667
+ag1614
+ag368
+ag286
+ag2426
+ag1535
+ag328
+ag504
+ag961
+ag1174
+ag2516
+ag1391
+ag497
+ag1874
+ag2005
+ag267
+ag831
+ag2319
+ag908
+ag209
+ag324
+ag877
+ag685
+ag1909
+ag2086
+ag2112
+ag1219
+ag952
+ag2448
+ag592
+ag962
+ag1946
+ag1149
+ag490
+ag2137
+ag2274
+ag1613
+ag1951
+ag1375
+ag9
+ag1328
+ag1321
+ag315
+ag333
+ag91
+ag245
+ag1094
+ag27
+ag1348
+ag1306
+ag2294
+ag2059
+ag450
+ag1674
+ag2058
+ag2056
+ag1628
+ag1685
+ag336
+ag1919
+ag158
+ag1242
+ag757
+ag733
+ag586
+ag1675
+ag2408
+ag562
+ag2154
+ag2343
+ag2321
+ag1720
+ag382
+ag1743
+ag140
+ag1958
+ag1489
+ag1747
+ag2499
+ag1572
+ag2390
+ag361
+ag2156
+ag1836
+ag2253
+ag1984
+ag1607
+ag1025
+ag1925
+ag129
+ag1869
+ag1352
+ag2228
+ag758
+ag1844
+ag1881
+ag1303
+ag1009
+ag2208
+ag1689
+ag2331
+ag2468
+ag2062
+ag2159
+ag2336
+ag554
+ag2307
+ag741
+ag2134
+ag699
+ag1335
+ag571
+ag2151
+ag2440
+ag1916
+ag1659
+ag231
+ag1834
+ag1896
+ag1342
+ag1702
+ag1577
+ag2201
+ag1498
+ag2403
+ag1385
+ag1730
+ag653
+ag940
+ag1784
+ag913
+ag1316
+ag681
+ag815
+ag1279
+ag1225
+ag988
+ag1408
+ag819
+ag966
+ag1377
+ag351
+ag468
+ag635
+ag972
+ag1215
+ag976
+ag2051
+ag726
+ag1193
+ag679
+ag641
+ag2461
+ag645
+ag874
+ag2397
+ag1980
+ag1233
+ag1595
+ag1550
+ag1245
+ag1381
+ag1060
+ag965
+ag964
+ag1722
+ag695
+ag165
+ag516
+ag1825
+ag2359
+ag738
+ag1578
+ag748
+ag604
+ag1529
+ag1318
+ag387
+ag1913
+ag1045
+ag1684
+ag2478
+ag564
+ag916
+ag1653
+ag37
+ag455
+ag1895
+ag925
+ag103
+ag2486
+ag548
+ag1538
+ag1587
+ag1688
+ag1760
+ag58
+ag310
+ag790
+ag454
+ag1753
+ag1540
+ag589
+ag1073
+ag2270
+ag252
+ag1410
+ag335
+ag1309
+ag1560
+ag258
+ag1708
+ag300
+ag259
+ag1015
+ag74
+ag1312
+ag1521
+ag523
+ag1464
+ag2221
+ag703
+ag1637
+ag1761
+ag139
+ag2173
+ag2036
+ag2421
+ag530
+ag773
+ag2029
+asS'separator'
+p2532
+S'='
+sS'sparse'
+p2533
+I01
+sb.
