@@ -102,6 +102,9 @@ class Pipeline(object):
                 offsets = self.get_page_offsets(page_lengths)
                 for i, curr_offset in enumerate(offsets):
                     span = annotation["span"]
+                    if not span:
+                        log.debug("Annotation did not have a span: %s", annotation)
+                        continue
                     next_offset = offsets[i + 1] if (len(offsets) > i + 1) else offsets[i]
                     if span[0] < next_offset and curr_offset < span[1]:
                         log.debug("annotation [{}] on page [{}]".format(annotation["span"], i))
