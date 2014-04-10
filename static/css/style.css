@@ -136,9 +136,13 @@ canvas {
     padding: 10px 20px;
     color: #444;
     background-color: #e5e5e5;
-    transition: all 300ms ease-out 0s;
-    -webkit-transition: all 300ms ease-out 0s;
-    -moz-transition: all 300ms ease-out 0s;
+
+    -webkit-transition-property: background-color, border-color, box-shadow;
+    -webkit-transition-duration: 300ms;
+    -webkit-transition-timing-function: ease-out;
+    transition-property: background-color, border-color, box-shadow;
+    transition-duration: 300ms;
+    transition-timing-function: ease-out;
 }
 
 .block h4 a:hover {

@@ -81,8 +81,6 @@ var TextLayerBuilder = function textLayerBuilder(options) {
 
       CustomStyle.setProp('transform', textDiv, transform);
       CustomStyle.setProp('transformOrigin', textDiv, "0% 0%");
-
-
     }
 
     this.renderingDone = true;
