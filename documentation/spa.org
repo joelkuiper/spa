@@ -1,0 +1,47 @@
+#+TITLE: Spá: a web-based viewer for PDF text mining
+#+AUTHOR: Kuiper, J. \and Marshall I.J. \and Wallace, B.C. \and Swertz M.A.
+#+OPTIONS: toc:nil
+#+LATEX_HEADER: \usepackage{epstopdf}
+
+#+BEGIN_ABSTRACT
+When doing sentence extraction or document level predictions on unstructured text the results of trained models are often hard to interpret within the context of the documents at hand.
+Furthermore presenting results to end users can be a considerable user interface challenge.
+To this end we present Spá, a generic web-based visualizer for sentence and document level classifiers on unstructured PDF documents.
+Spá allows the results of sentence extractions to be visualized within the PDF document itself, and allows other results to be presented alongside it.
+#+END_ABSTRACT
+
+* Introduction
+  Finding sentences or words with particular characteristics within a larger document is an important task in natural language processing and machine learning.
+  For example, one may wish to identify the most important sentences in a document to automatically generate a summary, or extract words that match a certain ontology.
+
+* Architecture
+  #+BEGIN_SRC plantuml :file sequence_diagram.eps
+    skinparam monochrome true
+    skinparam shadowing false
+    actor user
+    user -> viewer: load file
+    viewer -> pdf.js
+
+    pdf.js -> viewer: render on <canvas>
+    pdf.js -> pdf.js: textNodes extraction
+
+    viewer --> server.py: HTTP POST request with textNodes
+    activate server.py
+
+    pdf.js -> viewer: render textNodes as overlay
+
+    user <- viewer: display
+    server.py -> pipelines
+    pipelines -> server.py
+
+    server.py --> viewer: HTTP POST response with annotated textNodes
+    deactivate server.py
+
+    viewer -> user: update display
+  #+END_SRC
+
+  #+RESULTS:
+  [[file:sequence_diagram.eps]]
+
+* Case Study
+* Discussion & Future work
