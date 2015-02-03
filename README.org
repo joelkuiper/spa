@@ -1,0 +1,7 @@
+This project has been split-up into the Vortext organization.
+
+The code from the ECML-PKDD [1] publication is being maintained at [[https://github.com/vortext/spa][vortext/spa]].
+
+A database-driven document management tool is being developed as [[https://github.com/vortext/vortext][Vortext]].
+
+1: [[http://dx.doi.org/10.1007/978-3-662-44845-8_33][doi:10.1007/978-3-662-44845-8_33]]
